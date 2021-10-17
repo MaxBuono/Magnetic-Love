@@ -34,14 +34,21 @@ public class GameManager : MonoBehaviour
 
 
     // Public
-
+    public (float, Vector2) gravity = (9.81f, Vector2.down);
 
     // Internals
     private bool _isGameOver = false;
+    private Dictionary<int, MagneticObject> _magneticObjects = new Dictionary<int, MagneticObject>();
+    private List<(float, Vector2)> _externalForces = new List<(float, Vector2)>();
 
+    // Properties
+    public Dictionary<int, MagneticObject> MagneticObjects { get { return _magneticObjects; } }
+    public List<(float, Vector2)> ExternalForces { get { return _externalForces; } }
 
     private void Start()
     {
+        _externalForces.Add(gravity);
+
         StartCoroutine(GameLoop());
     }
 
@@ -68,5 +75,19 @@ public class GameManager : MonoBehaviour
     private void ExitMatch()
     {
         SceneManager.LoadScene(0);
+    }
+
+
+    // Public Methods
+
+    public bool RegisterMagneticObject(int id, MagneticObject magneticObject)
+    {
+        if (!_magneticObjects.ContainsKey(id))
+        {
+            _magneticObjects.Add(id, magneticObject);
+            return true;
+        }
+
+        return false;
     }
 }
