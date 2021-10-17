@@ -54,7 +54,6 @@ public class PhysicsObject : MonoBehaviour {
         
         //ds = v*dt
         Vector2 deltaPosition = _velocity * Time.deltaTime;
-        
         Vector2 moveAlongGround = new Vector2(_groundNormal.y, -_groundNormal.x);
         Vector2 moveX = moveAlongGround * deltaPosition.x;
         

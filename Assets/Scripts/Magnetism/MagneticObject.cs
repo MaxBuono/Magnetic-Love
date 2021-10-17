@@ -24,6 +24,7 @@ public class MagneticObject : MonoBehaviour
     // the int represent the collider id of the object causing that force
     private Dictionary<int, Vector2> _forces = new Dictionary<int, Vector2>();
 
+
     private void Awake()
     {
         // Cache components

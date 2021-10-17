@@ -91,7 +91,8 @@ public class DetectCollision : MonoBehaviour
                     return pNext;
 
                 // direction along the hit surface
-                Vector2 surfaceParallel = moveDir - _hitNormal * moveDotNormal;
+                //Vector2 surfaceParallel = moveDir - _hitNormal * moveDotNormal;
+                Vector2 surfaceParallel = new Vector2(_hitNormal.y, -_hitNormal.x);
                 surfaceParallel = surfaceParallel.normalized;
                 parallels.Add(surfaceParallel);
 
