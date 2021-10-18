@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Temp/Daniele/Floor.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Temp/Daniele/Floor.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Temp/Daniele/MovementTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Temp/Daniele/MovementTest.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Daniele_testScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Daniele_testScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-    </list>
+    <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +69,7 @@
       <workItem from="1634400323351" duration="3612000" />
       <workItem from="1634545785325" duration="48000" />
       <workItem from="1634546642493" duration="3341000" />
-      <workItem from="1634550182770" duration="6244000" />
+      <workItem from="1634550182770" duration="6434000" />
     </task>
     <servers />
   </component>
