@@ -6,11 +6,13 @@ public class RedPlayerController : PhysicsObject {
 
     public float jumpTakeOffSpeed = 7;
     public float maxSpeed = 7;
-
-    private SpriteRenderer _spriteRenderer;
-    // Start is called before the first frame update
+    
+    private Transform _transform;
+    private bool _facingRight;
+   
     void Awake() {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _facingRight = true;
+        _transform = GetComponent<Transform>();
     }
     
     protected override void ComputeVelocity() {
@@ -27,11 +29,18 @@ public class RedPlayerController : PhysicsObject {
             }
         }
         
-        bool flipSprite = _spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f);
-        if (flipSprite) {
-            _spriteRenderer.flipX = !_spriteRenderer.flipX;
-        }
-        
+        Flip(move.x);
         _targetVelocity = move * maxSpeed;
+    }
+    
+    private void Flip(float horizontalMove) {
+        Vector3 characterScale = _transform.localScale;
+
+        if (horizontalMove > 0.01f && !_facingRight || horizontalMove < 0 && _facingRight) {
+            _facingRight = !_facingRight;
+
+            characterScale.x *= -1;
+            _transform.localScale = characterScale;
+        }
     }
 }
