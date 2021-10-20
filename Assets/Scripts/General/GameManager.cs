@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _externalForces.Add(gravity);
+        //_externalForces.Add(gravity);
 
         StartCoroutine(GameLoop());
     }

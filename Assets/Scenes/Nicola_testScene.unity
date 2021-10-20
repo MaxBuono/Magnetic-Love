@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59d92d5200d61e40b96d7414b266469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magneticStrength: 100
+  magneticStrength: 100000
 --- !u!58 &362227527
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -755,6 +755,7 @@ GameObject:
   - component: {fileID: 1784277488}
   - component: {fileID: 1784277487}
   - component: {fileID: 1784277491}
+  - component: {fileID: 1784277493}
   - component: {fileID: 1784277492}
   m_Layer: 0
   m_Name: player
@@ -869,7 +870,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784277486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.92, y: 2.41, z: 0}
+  m_LocalPosition: {x: -11.5, y: 0.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -898,10 +899,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1784277486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36078447c922caa43ab79c2fb7cdb8f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 41c647d9b43fe9245b0799fdf880e5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAngleDegree: 45
+  minGroundNormalY: 0.65
+  gravityModifier: 1
+--- !u!114 &1784277493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784277486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad53d75d9fb46a74081612e9579bb47f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minGroundNormalY: 0.65
+  gravityModifier: 1
+  jumpTakeOffSpeed: 7
+  maxSpeed: 7
 --- !u!1 &1842775951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,7 +1220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2029187455
 MonoBehaviour:
   m_ObjectHideFlags: 0

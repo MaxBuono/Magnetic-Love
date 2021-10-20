@@ -21,8 +21,12 @@ public class PhysicsObject : MonoBehaviour {
     //make sure we are not stucked inside another collider
     private const float _ShellRadius = 0.01f;
 
+    //test
+    private MagneticObject _magneticObject;
+
     private void OnEnable() {
         _rb = GetComponent<Rigidbody2D>();
+        _magneticObject = GetComponent<MagneticObject>();
     }
     
     void Start() {
@@ -47,11 +51,14 @@ public class PhysicsObject : MonoBehaviour {
     private void FixedUpdate() {
         //Physics2D.gravity is the Vector2(0, -9,8)
         //v(t) = v(0) + a * dt
-        _velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+        _velocity += gravityModifier * Physics2D.gravity;
         _velocity.x = _targetVelocity.x;
-        
+
+        //test
+        _velocity += _magneticObject.GetNextPos();
+
         _grounded = false;
-        
+
         //ds = v*dt
         Vector2 deltaPosition = _velocity * Time.deltaTime;
         Vector2 moveAlongGround = new Vector2(_groundNormal.y, -_groundNormal.x);
@@ -61,7 +68,7 @@ public class PhysicsObject : MonoBehaviour {
         
         //
         Vector2 moveY = Vector2.up * deltaPosition.y;
-        
+
         Movement(moveY, true);
     }
 

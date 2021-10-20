@@ -31,7 +31,13 @@ public class MagneticField : MonoBehaviour
     {
         (MagneticObject, Vector2) tuple = ComputeForce(collision);
         if (tuple.Item1 != null)
-            tuple.Item1.RegisterForce(_myID, tuple.Item2);
+        {
+            bool isValidId = tuple.Item1.RegisterForce(_myID, tuple.Item2);
+
+            if (!isValidId)
+                Debug.LogError(collision.gameObject.name + " ID was already registered!");
+        }
+            
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -49,7 +55,10 @@ public class MagneticField : MonoBehaviour
         if (GameManager.Instance.MagneticObjects.TryGetValue(collisionID, out magneticObject))
         {
             // unregister this force on colission object
-            magneticObject.UnregisterForce(_myID);
+            bool isValidId = magneticObject.UnregisterForce(_myID);
+
+            if (!isValidId)
+                Debug.LogError(collision.gameObject.name + " ID has not been found!");
         }
     }
 
