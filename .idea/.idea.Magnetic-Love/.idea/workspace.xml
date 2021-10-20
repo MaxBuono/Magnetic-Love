@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="" />
+    <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameLoop.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameLoop/DoorFrameTrigger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameLoop/DoorFrameTrigger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/General/GameLoopManager.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/General/GameLoopManager.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/GameLoopSO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/GameLoopSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Temp/Daniele/ResetScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Temp/Daniele/ResetScene.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,15 +22,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/Downloads/20211012-ClassProjectStart/20211012-ClassProjectStart/Assets/SmallRogue/Scripts/Passage.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b0e795e48cf04d7a9193ea9447af406a1b800/8f/3c4cac2b/Collider2D.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/20211012-ClassProjectStart/20211012-ClassProjectStart/Assets/SmallRogue/Scripts/MainScreen.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/20211012-ClassProjectStart/20211012-ClassProjectStart/Assets/SmallRogue/Scripts/SwitchControlledObject.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/20211012-ClassProjectStart/20211012-ClassProjectStart/Assets/SmallRogue/Scripts/Switch.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/20211012-ClassProjectStart/20211012-ClassProjectStart/Assets/SmallRogue/Scripts/FloorSwitch.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/20211012-ClassProjectStart/20211012-ClassProjectStart/Assets/SmallRogue/Scripts/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Temp/Daniele/ResetScene.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/20211012-ClassProjectStart/20211012-ClassProjectStart/Assets/SmallRogue/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/Character/CharacterData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/Door/DoorRedBlue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/Door/DoorBlueRed.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/General/EnumList.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/Door/DoorRed.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zay63RDFtBM6YhBQ2RiluZrggD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -70,6 +78,7 @@
       <workItem from="1634545785325" duration="48000" />
       <workItem from="1634546642493" duration="3341000" />
       <workItem from="1634550182770" duration="6434000" />
+      <workItem from="1634741781475" duration="5046000" />
     </task>
     <servers />
   </component>

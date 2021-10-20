@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ResetScene : MonoBehaviour
 {
-    public GameLoopSO gameLoop;
-    
+
     //Scene component
     public GameObject red;
     public GameObject blue;
@@ -46,7 +45,6 @@ public class ResetScene : MonoBehaviour
                 bluered.SetActive(true);
                 break;
         }
-        
-        gameLoop.levelRunning = true;
+ 
     }
 }
