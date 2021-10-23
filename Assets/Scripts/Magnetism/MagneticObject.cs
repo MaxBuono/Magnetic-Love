@@ -18,7 +18,6 @@ public class MagneticObject : MonoBehaviour
     private Vector2 _pNow;
     private Rigidbody2D _rb2d;
     private Collider2D _coll;
-    private DetectCollision _detectCollision;
 
     // Forces
     // the int represent the collider id of the object causing that force
@@ -30,7 +29,6 @@ public class MagneticObject : MonoBehaviour
         // Cache components
         _rb2d = GetComponent<Rigidbody2D>();
         _coll = GetComponent<Collider2D>();
-        _detectCollision = GetComponent<DetectCollision>();
     }
 
     private void Start()
@@ -44,13 +42,6 @@ public class MagneticObject : MonoBehaviour
         // Set starting positions
         _pNow = _rb2d.position;
         _pOld = _pNow;    // starts still
-
-        // Add external forces (like gravity)
-        List<(float, Vector2)> extForces = GameManager.Instance.ExternalForces;
-        for (int i = 0; i < extForces.Count; i++)
-        {
-            _forces.Add(i, extForces[i].Item2 * extForces[i].Item1);
-        }
     }
 
     //void FixedUpdate()

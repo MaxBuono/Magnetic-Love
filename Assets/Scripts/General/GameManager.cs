@@ -34,21 +34,20 @@ public class GameManager : MonoBehaviour
 
 
     // Public
-    public (float, Vector2) gravity = (9.81f, Vector2.down);
+
 
     // Internals
     private bool _isGameOver = false;
+    // Dictionaries used to save performances by caching components avoiding getting them at runtime
     private Dictionary<int, MagneticObject> _magneticObjects = new Dictionary<int, MagneticObject>();
-    private List<(float, Vector2)> _externalForces = new List<(float, Vector2)>();
+    private Dictionary<int, Controller2D> _controllers2D = new Dictionary<int, Controller2D>();
 
     // Properties
     public Dictionary<int, MagneticObject> MagneticObjects { get { return _magneticObjects; } }
-    public List<(float, Vector2)> ExternalForces { get { return _externalForces; } }
+    public Dictionary<int, Controller2D> Controllers2D { get { return _controllers2D; } }
 
     private void Start()
     {
-        //_externalForces.Add(gravity);
-
         StartCoroutine(GameLoop());
     }
 
@@ -85,6 +84,17 @@ public class GameManager : MonoBehaviour
         if (!_magneticObjects.ContainsKey(id))
         {
             _magneticObjects.Add(id, magneticObject);
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool RegisterController2D(int id, Controller2D controller2D)
+    {
+        if (!_controllers2D.ContainsKey(id))
+        {
+            _controllers2D.Add(id, controller2D);
             return true;
         }
 
