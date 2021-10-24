@@ -806,7 +806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 2049
   showRays: 1
   distBetweenRays: 0.25
   maxSlopeAngle: 50
@@ -907,7 +907,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238279052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.2, y: 18.92, z: -1}
+  m_LocalPosition: {x: 30.74, y: 16.23, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c35e82ab93a0c428d1a0738dc91369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  polarization: 1
+  polarization: 0
 --- !u!1 &272618995
 GameObject:
   m_ObjectHideFlags: 0
@@ -3130,7 +3130,7 @@ GameObject:
   - component: {fileID: 1916257303}
   - component: {fileID: 1916257305}
   - component: {fileID: 1916257304}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: magnitcField_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3163,8 +3163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59d92d5200d61e40b96d7414b266469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strengthX: 0
-  strengthY: 0
+  strengthX: 1500
+  strengthY: 600
 --- !u!58 &1916257305
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3284,7 +3284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982162764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.59, y: 10.7, z: 0}
+  m_LocalPosition: {x: 47.94, y: 16.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 362227525}
@@ -3305,13 +3305,14 @@ GameObject:
   - component: {fileID: 2029187458}
   - component: {fileID: 2029187455}
   - component: {fileID: 2029187460}
-  m_Layer: 0
+  - component: {fileID: 2029187461}
+  m_Layer: 11
   m_Name: magnet_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2029187455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3384,7 +3385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029187454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.69, y: 3.76, z: 0}
+  m_LocalPosition: {x: 35.84, y: 17.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1916257303}
@@ -3401,7 +3402,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 2029187454}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -3447,10 +3448,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 2029187454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36078447c922caa43ab79c2fb7cdb8f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 782e7a3bbfd8fc34294efc8d6d8ef489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAngleDegree: 45
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 65
+  showRays: 1
+  distBetweenRays: 0.25
+  maxSlopeAngle: 75
+--- !u!114 &2029187461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029187454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905502c484369c74aa115e84f45e213d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2069431282
 GameObject:
   m_ObjectHideFlags: 0

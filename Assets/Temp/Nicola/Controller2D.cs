@@ -74,7 +74,7 @@ public class Controller2D : RaycastController
         collisionInfo.inputVelocity = deltaMove;
         _playerInput = input;
 
-        
+
         if (deltaMove.y < 0)
         {
             DescendSlope(ref deltaMove);
@@ -220,7 +220,7 @@ public class Controller2D : RaycastController
 
             if (showRays)
                 Debug.DrawRay(rayOrigin, Vector2.up * directionY, Color.red);
-
+            
             if (hit)
             {
                 // if we want to go through an obstacle... 
