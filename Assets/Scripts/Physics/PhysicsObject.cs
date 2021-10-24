@@ -55,7 +55,7 @@ public class PhysicsObject : MonoBehaviour {
         _velocity.x = _targetVelocity.x;
 
         //test
-        _velocity += _magneticObject.GetNextPos();
+        _velocity += _magneticObject.GetMagneticForce();
 
         _grounded = false;
 

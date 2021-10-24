@@ -34,12 +34,14 @@ public class PlayerMovement : MonoBehaviour
     private bool _wallSliding;
     private Vector3 _velocity;
     private Controller2D _controller2D;
+    private MagneticObject _magneticObject;
     private Vector2 _directionalInput;
 
 
     private void Awake()
     {
         _controller2D = GetComponent<Controller2D>();
+        _magneticObject = GetComponent<MagneticObject>();
     }
 
     private void Start()
@@ -59,8 +61,6 @@ public class PlayerMovement : MonoBehaviour
         CalculateVelocity();
         HandleWallSliding();
 
-        // TODO apply magnetic force here
-
         // The frame independent multiplication with deltaTime is done here
         _controller2D.Move(_velocity * Time.deltaTime, _directionalInput);
 
@@ -70,8 +70,16 @@ public class PlayerMovement : MonoBehaviour
         {
             if (_controller2D.collisionInfo.slidingDownMaxSlope)
             {
-                // the steeper the slope, the smaller will be the slopeNormal.y countering gravity
-                _velocity.y += _controller2D.collisionInfo.slopeNormal.y * -_gravity * Time.deltaTime;
+                // slow down the fall only if the vertical force is negative
+                float verticalForce = CalculateVerticalForce();
+                if (Mathf.Sign(verticalForce) < 0)
+                {
+                    // the steeper the slope, the smaller will be the slopeNormal.y countering vertical forces
+                    _velocity.y += _controller2D.collisionInfo.slopeNormal.y * -verticalForce * Time.deltaTime;
+                }
+                    
+
+                //_velocity.y += _controller2D.collisionInfo.slopeNormal.y * -_gravity * Time.deltaTime;
             }
             else
             {
@@ -150,11 +158,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void CalculateVelocity()
     {
-        float targetVelocityX = _directionalInput.x * moveSpeed;
+        float targetVelocityX = _directionalInput.x * moveSpeed + CalculateHorizontalForce() * Time.deltaTime;
+
         // smooth the x velocity 
         _velocity.x = Mathf.SmoothDamp(_velocity.x, targetVelocityX, ref _smoothedVelocityX,
                                         _controller2D.collisionInfo.below ? _accelerationTimeGrounded : _accelerationTimeAirborne);
-        _velocity.y += _gravity * Time.deltaTime;
+        _velocity.y += CalculateVerticalForce() * Time.deltaTime;
     }
 
     private void HandleWallSliding()
@@ -194,5 +203,17 @@ public class PlayerMovement : MonoBehaviour
                 _timeToWallUnstick = wallStickTime;
             }
         }
+    }
+
+    // Returns the sum of all the external forces applied to the player on the x axis
+    private float CalculateHorizontalForce()
+    {
+        return _magneticObject.GetMagneticForce().x;
+    }
+
+    // Returns the sum of all the external forces applied to the player on the y axis
+    private float CalculateVerticalForce()
+    {
+        return _gravity + _magneticObject.GetMagneticForce().y;
     }
 }

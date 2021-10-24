@@ -11,7 +11,6 @@ public class MagneticObject : MonoBehaviour
 {
     // Public
     public Polarization polarization;
-    public float drag = 0.95f;
 
     // Internals
     private Vector2 _pOld;
@@ -44,51 +43,17 @@ public class MagneticObject : MonoBehaviour
         _pOld = _pNow;    // starts still
     }
 
-    //void FixedUpdate()
-    //{
-    //    //_pNow = _rb2d.position;
-
-    //    //// Get the acceleration by summing all the external forces and the dump
-    //    //Vector2 accel = Vector2.zero;
-    //    //foreach (var force in _forces)
-    //    //{
-    //    //    accel += force.Value;
-    //    //}
-    //    //float dump = 1 - drag * Time.fixedDeltaTime;
-
-    //    //// Verlet integration method used to get the next position
-    //    //Vector2 pNext = (1 + dump) * _pNow - dump * _pOld + accel * Mathf.Pow(Time.fixedDeltaTime, 2);
-
-    //    //// Check that the next position is a valid one (if it should detect collisions)
-    //    ////if (_detectCollision != null)
-    //    //    //pNext = _detectCollision.CheckForCollision(_pNow, pNext, _coll);
-
-    //    //// Update the positions
-    //    //_pOld = _pNow;
-    //    //_pNow = pNext;
-
-    //    // Finally move the object
-    //    //_rb2d.MovePosition(pNext);
-    //}
-
-    public Vector2 GetNextPos()
+    // returns the resulting magnetic force (aka acceleration because we aren't considering any mass)
+    public Vector2 GetMagneticForce()
     {
-        _pNow = _rb2d.position;
-        Vector2 accel = Vector2.zero;
+        Vector2 acceleration = Vector2.zero;
 
         foreach (var force in _forces)
         {
-            accel += force.Value;
+            acceleration += force.Value;
         }
-        float dump = 1 - drag * Time.fixedDeltaTime;
 
-        // Verlet integration method used to get the next position
-        Vector2 pNext = (1 + dump) * _pNow - dump * _pOld + accel * Mathf.Pow(Time.fixedDeltaTime, 2);
-
-        _pOld = _pNow;
-        _pNow = pNext;
-
-        return _pNow - _pOld;
+        return acceleration;
     }
     
 

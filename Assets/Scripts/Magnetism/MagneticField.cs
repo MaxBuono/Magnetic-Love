@@ -7,8 +7,9 @@ using UnityEngine;
 public class MagneticField : MonoBehaviour
 {
     // Public
-    [Tooltip("A positive strength means repulsive force while negative an attractive force (given an object with positive polarization).")]
-    public float magneticStrength;
+    // A positive strength means repulsive force while negative an attractive force (given an object with positive polarization)
+    public float strengthX;
+    public float strengthY;
 
     // Internals
     private int _myID;
@@ -74,9 +75,12 @@ public class MagneticField : MonoBehaviour
 
             //...then compute the force applied to it
             Vector2 distanceVec = (coll.transform.position - transform.position);
-            Vector2 force = (distanceVec.normalized * magneticStrength / distanceVec.sqrMagnitude) * polarization;
+            float squareDist = distanceVec.sqrMagnitude;
+            Vector2 normalizedDist = distanceVec.normalized;
+            float forceX = (normalizedDist * strengthX / squareDist).x * polarization;
+            float forceY = (normalizedDist * strengthY / squareDist).y * polarization;
 
-            return (magneticObject, force);
+            return (magneticObject, new Vector2(forceX, forceY));
         }
 
         return (null, Vector2.zero);
