@@ -173,7 +173,7 @@ public class Controller2D : RaycastController
                 }
 
                 // if I'm not climbing or I just hit an obstacle (while climbing or not)
-                if (!collisionInfo.climbingSlope || slopeAngle > maxSlopeAngle)
+                if ((!collisionInfo.climbingSlope || slopeAngle > maxSlopeAngle) && !collisionInfo.slidingDownMaxSlope)
                 {
                     // Note that you consider the Mathf.Min because if you are climbing a slope and you are here it means
                     // that you found an obstacle. In that case you have to check that the actual hit distance is < than the reduced x deltaMove
@@ -374,7 +374,7 @@ public class Controller2D : RaycastController
                             // projections of the diagonal deltaMove to x and y (like in ClimbSlope)
                             float descendVelocityY = Mathf.Sin(slopeAngle * Mathf.Deg2Rad) * moveDistance;
 
-                            deltaMove.x = Mathf.Cos(slopeAngle * Mathf.Deg2Rad) * moveDistance * collisionInfo.faceDir;
+                            deltaMove.x = Mathf.Cos(slopeAngle * Mathf.Deg2Rad) * deltaMove.x;
                             // avoid the y deltaMove to stop becoming stuck
                             deltaMove.y -= descendVelocityY;
 
