@@ -32,11 +32,12 @@ public class PlayerMovement : MonoBehaviour
     private float _timeToWallUnstick;
     private int _wallDirX;
     private bool _wallSliding;
-    private Vector3 _velocity;
+    private Vector2 _velocity;
     private Controller2D _controller2D;
     private MagneticObject _magneticObject;
     private Vector2 _directionalInput;
 
+    public Vector2 Velocity { get { return _velocity; } }
 
     private void Awake()
     {

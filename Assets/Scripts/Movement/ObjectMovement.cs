@@ -11,7 +11,7 @@ public class ObjectMovement : MonoBehaviour
     private float _gravity;
     private float _smoothedVelocityX;
     private float _accelerationTimeAirborne = 0.2f;
-    private Vector3 _velocity;
+    private Vector2 _velocity;
     private Controller2D _controller2D;
     private MagneticObject _magneticObject;
 
