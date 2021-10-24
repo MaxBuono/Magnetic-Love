@@ -46,11 +46,12 @@ public class PlayerMovement : MonoBehaviour
         // Custom gravity given by dx = v0*t + a*t^2 / 2 with dx = maxJumpHeight, v0 = 0 
         // acceleration = gravity and time = timetoJumpApex
         _gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
-        GameManager.Instance.Gravity = _gravity;
     }
 
     private void Start()
     {
+        GameManager.Instance.Gravity = _gravity;
+
         // v1 = v0 + a*t (v0 = 0)
         _maxJumpSpeed = Mathf.Abs(_gravity * timeToJumpApex);
         // v1^2 = v0^2 + 2 * a * dx (v0 = 0)

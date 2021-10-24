@@ -24,13 +24,16 @@ public class ObjectMovement : MonoBehaviour
 
     private void Start()
     {
-        _gravity = -90.0f;//GameManager.Instance.Gravity;
+        _gravity = GameManager.Instance.Gravity;
     }
 
     void Update()
     {
-        CalculateVelocity();
+        if (_gravity == 0)
+            _gravity = GameManager.Instance.Gravity;
 
+        CalculateVelocity();
+ 
         // The frame independent multiplication with deltaTime is done here
         _controller2D.Move(_velocity * Time.deltaTime);
 

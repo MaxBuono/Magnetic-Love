@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
 
     // Internals
-    private float _gravity;
+    private float _gravity = 0.0f;
     private bool _isGameOver = false;
     // Dictionaries used to save performances by caching components avoiding getting them at runtime
     private Dictionary<int, MagneticObject> _magneticObjects = new Dictionary<int, MagneticObject>();

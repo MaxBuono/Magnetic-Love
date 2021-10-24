@@ -15,6 +15,7 @@ public class Controller2D : RaycastController
 
     // Internals
     private Vector2 _playerInput;
+    private PlayerInput _playerInputScript;
 
     // store info about collision direction
     public struct CollisionInfo
@@ -48,6 +49,13 @@ public class Controller2D : RaycastController
             slopeAngle = 0.0f;
             slopeNormal = Vector2.zero;
         }
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        _playerInputScript = GetComponent<PlayerInput>();
     }
 
     protected override void Start()
@@ -240,7 +248,7 @@ public class Controller2D : RaycastController
                     }
 
                     //... or to jump off through that obstacle
-                    if (_playerInput.y == -1 && Input.GetButton("Jump")) 
+                    if (_playerInput.y == -1 && _playerInputScript != null && _playerInputScript.isPressingJump) 
                     {
                         collisionInfo.fallingThroughPlatform = hit.collider;
                         continue;

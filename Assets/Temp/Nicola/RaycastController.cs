@@ -36,7 +36,7 @@ public class RaycastController : MonoBehaviour
         public Vector2 bottomLeft, bottomRight;
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _collider2D = GetComponent<Collider2D>();
     }
