@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 2305
+    m_Bits: 321
   showRays: 0
   distBetweenRays: 0.25
   maxSlopeAngle: 50
@@ -705,7 +705,7 @@ Transform:
   m_LocalScale: {x: 4.3168406, y: 0.65871096, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &101362664
 GameObject:
@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: 238279054}
   - component: {fileID: 238279056}
   - component: {fileID: 238279060}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: PlayerBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 2177
+    m_Bits: 385
   showRays: 0
   distBetweenRays: 0.25
   maxSlopeAngle: 50
@@ -3785,7 +3785,7 @@ Transform:
   m_Children:
   - {fileID: 362227525}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2029187454
 GameObject:
@@ -3802,7 +3802,7 @@ GameObject:
   - component: {fileID: 2029187455}
   - component: {fileID: 2029187460}
   - component: {fileID: 2029187461}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: magneticObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3886,7 +3886,7 @@ Transform:
   m_Children:
   - {fileID: 1916257303}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2029187458
 Rigidbody2D:
@@ -3949,7 +3949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 385
+    m_Bits: 193
   showRays: 0
   distBetweenRays: 0.25
   maxSlopeAngle: 50
