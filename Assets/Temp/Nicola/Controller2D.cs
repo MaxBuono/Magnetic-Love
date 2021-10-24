@@ -74,26 +74,26 @@ public class Controller2D : RaycastController
         collisionInfo.inputVelocity = deltaMove;
         _playerInput = input;
 
-
+        
         if (deltaMove.y < 0)
         {
             DescendSlope(ref deltaMove);
         }
-
+        
         // this has to go after DescendSlope since it can modify the deltamove.x sign
         if (deltaMove.x != 0)
         {
             collisionInfo.faceDir = (int)Mathf.Sign(deltaMove.x);
         }
-
+        
         // we want to detect horizontal collisions also when standind still
         HorizontalCollisions(ref deltaMove);
-
+        
         if (deltaMove.y != 0)
         {
             VerticalCollisions(ref deltaMove);
         }
-
+        
         transform.Translate(deltaMove);
 
         // this allows us to jump while standing on a platform moving upward
@@ -401,7 +401,7 @@ public class Controller2D : RaycastController
             if (slopeAngle > maxSlopeAngle)
             {
                 // how much I should move along the slope on the x axis
-                deltaMove.x = (Mathf.Abs(deltaMove.y) - hit.distance) / Mathf.Tan(slopeAngle * Mathf.Deg2Rad);
+                deltaMove.x = (Mathf.Abs(deltaMove.y) - hit.distance + _skinWidth) / Mathf.Tan(slopeAngle * Mathf.Deg2Rad);
                 deltaMove.x *= Mathf.Sign(hit.normal.x);
 
                 collisionInfo.slopeAngle = slopeAngle;
