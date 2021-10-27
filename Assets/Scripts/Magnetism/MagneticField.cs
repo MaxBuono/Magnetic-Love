@@ -15,6 +15,8 @@ public class MagneticField : MonoBehaviour
     private int _myID;
     private Collider2D _field;
 
+    // Properties
+    public int ID { get { return _myID; } }
 
     private void Awake()
     {
@@ -55,6 +57,16 @@ public class MagneticField : MonoBehaviour
         MagneticObject magneticObject;
         if (GameManager.Instance.MagneticObjects.TryGetValue(collisionID, out magneticObject))
         {
+            Controller2D controller;
+            if (GameManager.Instance.Controllers2D.TryGetValue(collisionID, out controller))
+            {
+                // if the collision object unregistered and started the coroutine RegisterForceWhenBelow
+                // and then it exits from this field I have to stop it, otherwise I will unregister the id here
+                // and then register it again when the coroutine finishes and the object is outside the field!
+                if (controller.tillBelow != null)
+                    controller.StopTillBelow();
+            }
+
             // unregister this force on colission object
             bool isValidId = magneticObject.UnregisterForce(_myID);
 

@@ -12,10 +12,13 @@ public class Controller2D : RaycastController
     [Tooltip("Max angle to climb or descend a slope without sliding.")]
     public float maxSlopeAngle = 75.0f;
     public CollisionInfo collisionInfo;
+    public IEnumerator tillBelow;
 
     // Internals
     private Vector2 _playerInput;
     private PlayerInput _playerInputScript;
+    private MagneticObject _magneticObject;
+
 
     // store info about collision direction
     public struct CollisionInfo
@@ -56,6 +59,7 @@ public class Controller2D : RaycastController
         base.Awake();
 
         _playerInputScript = GetComponent<PlayerInput>();
+        _magneticObject = GetComponent<MagneticObject>();
     }
 
     protected override void Start()
@@ -218,6 +222,9 @@ public class Controller2D : RaycastController
         // to check if the actual box is going to collide
         float rayLength = Mathf.Abs(deltaMove.y) + _skinWidth;
 
+        // used to check that you are hitting only one object at a time
+        List<Collider2D> hitsId = new List<Collider2D>();
+
         for (int i = 0; i < verticalRayCount; i++)
         {
             Vector2 rayOrigin = (directionY == -1) ? _raycastOrigins.bottomLeft : _raycastOrigins.topLeft;
@@ -231,6 +238,9 @@ public class Controller2D : RaycastController
             
             if (hit)
             {
+                //test
+                hitsId.Add(hit.collider);
+
                 // if we want to go through an obstacle... 
                 // e.g. to jump on a platform from below
                 if (hit.collider.tag == "Passable")
@@ -276,6 +286,41 @@ public class Controller2D : RaycastController
                 // set the collision direction in the struct
                 collisionInfo.below = directionY == -1;
                 collisionInfo.above = directionY == 1;
+            }
+        }
+
+        // this block avoids the "flying effect" in which characters attract each other but they are 
+        // in air hence flying (because the one on the top sees the one below as "ground").
+        if (!collisionInfo.below && directionY == 1 && hitsId.Count != 0)
+        {
+            bool isTheSame = true;
+            int id = 0;
+            for (int i = 0; i < hitsId.Count; i++)
+            {
+                int thisID = hitsId[i].GetInstanceID();
+
+                if (i > 0)
+                {
+                    // check that you collided only with a single object 
+                    isTheSame = (thisID == id);
+                }
+
+                id = thisID;
+            }
+
+            if (isTheSame)
+            {
+                MagneticField otherField = hitsId[0].GetComponentInChildren<MagneticField>();
+                // if it has a magnetic field
+                if (otherField != null)
+                {
+                    // unregister...
+                    _magneticObject.UnregisterForce(otherField.ID);
+                    //...till below is true. We can use zero as force since once registered
+                    // the onStay will update it anyway (it will miss the force only in the first frame)
+                    tillBelow = RegisterForceWhenBelow(otherField.ID, Vector2.zero);
+                    StartCoroutine(tillBelow);
+                }
             }
         }
 
@@ -419,4 +464,21 @@ public class Controller2D : RaycastController
         }
     }
 
+
+    // Register the force on this magnetic object only when touching something below (fixing "flying effect")
+    private IEnumerator RegisterForceWhenBelow(int id, Vector2 force)
+    {
+        while (!collisionInfo.below)
+        {
+            yield return null;
+        }
+
+        _magneticObject.RegisterForce(id, force);
+    }
+
+    // called by the field of the object above you, to avoid potential bugs
+    public void StopTillBelow()
+    {
+        StopCoroutine(tillBelow);
+    }
 }
