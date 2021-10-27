@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public float maxJumpHeight = 4.0f;
     public float minJumpHeight = 1.0f;
     public float timeToJumpApex = 0.5f;
+    [Tooltip("Jump speed multiplier on the x axis (a value of 0.5 means that the character is jumping with half jump speed on the x axis.")]
+    public float jumpWidth = 0.5f;
     // Wall jumping stuff
     public float wallSlideMaxSpeed = 3.0f;
     [Tooltip("Amount of time that you will stay sticked to the wall before actually jumping off if you are moving in the opposite direction from the wall")]
@@ -99,6 +101,11 @@ public class PlayerMovement : MonoBehaviour
         _directionalInput = input;
     }
 
+    public void OnJumpOnCharacter()
+    {
+        
+    }
+
     public void OnJumpInputDown()
     {
         // and I'm sliding on a wall
@@ -127,6 +134,39 @@ public class PlayerMovement : MonoBehaviour
                 _velocity.y = wallLeap.y;
             }
         }
+
+
+        // Are we jumping while side colliding the other character?
+        //raycast to check collision with the other character since you may move in the opposite direction
+        // (hence not seeing the collision) but still be attached thanks to magnetism
+        bool collidingLeft = false;
+        bool collidingRight = false;
+        HashSet<Collider2D> colliders = new HashSet<Collider2D>();
+        if (_directionalInput.x == 1)
+        {
+            colliders = _controller2D.RaycastHorizontally(Vector2.left);
+            collidingLeft = colliders.Count != 0;
+        }
+        else if (_directionalInput.x == -1)
+        {
+            colliders = _controller2D.RaycastHorizontally(Vector2.right);
+            collidingRight = colliders.Count != 0;
+        }
+
+        if (collidingLeft || collidingRight)
+        {
+            foreach (Collider2D coll in colliders)
+            {
+                PlayerMovement allyMovement = coll.GetComponent<PlayerMovement>();
+                if (allyMovement != null)
+                {
+                    // in that case perform a side jump to unstick
+                    _velocity.x = _maxJumpSpeed * jumpWidth * _directionalInput.x;
+                    break;
+                }
+            }
+        }
+
 
         //and I'm grounded (hitting below) while not pressing the downward _directionalInput
         if (_controller2D.collisionInfo.below && _directionalInput.y != -1)

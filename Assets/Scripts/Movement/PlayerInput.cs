@@ -42,5 +42,6 @@ public class PlayerInput : MonoBehaviour
             _playerMovement.OnJumpInputUp();
             isPressingJump = false;
         }
+
     }
 }

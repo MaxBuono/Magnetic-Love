@@ -300,6 +300,7 @@ MonoBehaviour:
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.3
+  jumpOnCharacterForce: 0.5
   wallSlideMaxSpeed: 3
   wallStickTime: 0.15
   wallJumpClimb: {x: 7, y: 27}
@@ -429,7 +430,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15252515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.31, y: 15.98, z: -1}
+  m_LocalPosition: {x: 38.83, y: 16.09, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 596096975}
@@ -1053,6 +1054,7 @@ MonoBehaviour:
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.3
+  jumpOnCharacterForce: 0.5
   wallSlideMaxSpeed: 3
   wallStickTime: 0.15
   wallJumpClimb: {x: 7, y: 27}
@@ -1177,7 +1179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238279052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.95, y: 16.41, z: -1}
+  m_LocalPosition: {x: 32.66, y: 15.94, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 116326971}

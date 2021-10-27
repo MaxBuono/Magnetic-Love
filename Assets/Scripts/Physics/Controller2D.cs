@@ -43,6 +43,7 @@ public class Controller2D : RaycastController
         {
             above = below = false;
             left = right = false;
+
             climbingSlope = false;
             descendingSlope = false;
             slidingDownMaxSlope = false;
@@ -480,5 +481,26 @@ public class Controller2D : RaycastController
     public void StopTillBelow()
     {
         StopCoroutine(tillBelow);
+    }
+
+    // utility functions to cast rays manually in a given horizontal direction returning the colliders hit
+    public HashSet<Collider2D> RaycastHorizontally(Vector2 direction)
+    {
+        float rayLength = 2 * _skinWidth;
+        Vector2 rayOrigin = (direction.x == -1) ? _raycastOrigins.bottomLeft : _raycastOrigins.bottomRight;
+        HashSet<Collider2D> colliders = new HashSet<Collider2D>();
+
+        for (int i = 0; i < horizontalRayCount; i++)
+        {
+            rayOrigin += Vector2.up * (_horizontalRaySpacing * i);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, rayLength, collisionMask);
+            if (hit)
+            {
+                // add the collider to the hashset (so only unique elements, no check needed)
+                colliders.Add(hit.collider);
+            }
+        }
+
+        return colliders;
     }
 }
