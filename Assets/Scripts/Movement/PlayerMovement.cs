@@ -217,6 +217,21 @@ public class PlayerMovement : MonoBehaviour
         if ((_controller2D.collisionInfo.left || _controller2D.collisionInfo.right)
             && !_controller2D.collisionInfo.below && _velocity.y < 0)
         {
+            //Apply the Wall Sliding only on specific walls with the right tag
+            // this also prevents the magnetic objects to slide in the air if they are near each other 
+            HashSet<Collider2D> colliders = _controller2D.RaycastHorizontally(new Vector2(_wallDirX, 0));
+            bool isSlidingWall = false;
+            foreach (Collider2D coll in colliders)
+            {
+                if (coll.CompareTag("SlidingWall"))
+                {
+                    isSlidingWall = true;
+                    break;
+                }
+            }
+            if (!isSlidingWall) return;
+
+
             _wallSliding = true;
 
             // limit our sliding speed along walls
