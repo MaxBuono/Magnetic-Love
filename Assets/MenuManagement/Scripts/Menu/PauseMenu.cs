@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,16 @@ namespace MenuManagement
         public void OnQuitPressed()
         {
             Application.Quit();
+        }
+        
+        //Close pause menu with escape key
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Time.timeScale = 1f;
+                base.OnBackPressed();
+            }
         }
     }
 }
