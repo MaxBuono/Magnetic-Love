@@ -34,7 +34,10 @@ public abstract class Door : MonoBehaviour
             if (other.GetComponent<CharacterData>().color == color)
             {
                 Debug.Log("Level completed");
-                StartCoroutine(fadeAway(other.transform));
+                
+                //Go to the next scene
+                GameManager.Instance.LevelCompleted();
+                //StartCoroutine(fadeAway(other.transform));
             }
         }
     }

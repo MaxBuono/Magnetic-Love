@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MenuManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,8 @@ using UnityEngine.SceneManagement;
 // to the game objects themselves (e.g. game loop, registering colliders IDs and so on). 
 
 public class GameManager : MonoBehaviour
-{
+{   
+    [SerializeField] private TransitionFader endTransitionPrefab;     // transition screen for ending
     // Singleton
     private GameManager() { }
     private static GameManager _instance = null;
@@ -58,7 +60,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-
     // Manage the whole match cycle
     private IEnumerator GameLoop()
     {
@@ -101,5 +102,46 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
+    }
+    
+    public void LevelCompleted()
+    {
+        // - disable level controls
+        //   here all the active components of the level should be blocked while
+        //   the next screen level goes on
+        // - save the data
+        //   are there any statistics that need to be saved?
+
+        if (!LevelManager.CompletedAllLevels())
+        {
+            StartCoroutine(LevelCompletedRoutine());
+        }
+        else
+        {
+            print("GAME COMPLETED ROUTINE???");
+            StartCoroutine(GameCompletedRoutine());
+        }
+    }
+        
+    private IEnumerator LevelCompletedRoutine()
+    {
+        TransitionFader.PlayTransition(endTransitionPrefab);
+
+        float fadeDelay  = (endTransitionPrefab != null) ?
+            endTransitionPrefab.Delay + endTransitionPrefab.FadeOnDuration : 0f;
+            
+        yield return new WaitForSeconds(fadeDelay);
+        LevelCompletedScreen.Open();
+    }
+        
+    private IEnumerator GameCompletedRoutine()
+    {
+        TransitionFader.PlayTransition(endTransitionPrefab);
+
+        float fadeDelay  = (endTransitionPrefab != null) ?
+            endTransitionPrefab.Delay + endTransitionPrefab.FadeOnDuration : 0f;
+            
+        yield return new WaitForSeconds(fadeDelay);
+        GameCompletedScreen.Open();
     }
 }
