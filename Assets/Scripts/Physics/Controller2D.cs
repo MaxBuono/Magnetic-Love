@@ -219,6 +219,7 @@ public class Controller2D : RaycastController
     private void VerticalCollisions(ref Vector2 deltaMove)
     {
         float directionY = Mathf.Sign(deltaMove.y);
+
         // we are casting from inside the actual box so we have to sum the skinWidth
         // to check if the actual box is going to collide
         float rayLength = Mathf.Abs(deltaMove.y) + _skinWidth;

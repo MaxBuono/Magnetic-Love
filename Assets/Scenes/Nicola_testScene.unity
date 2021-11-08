@@ -300,12 +300,16 @@ MonoBehaviour:
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.3
-  jumpWidth: 0.5
+  jumpWidth: 1
   wallSlideMaxSpeed: 3
   wallStickTime: 0.15
   wallJumpClimb: {x: 7, y: 27}
   wallJumpOff: {x: 8.5, y: 7}
   wallLeap: {x: 18, y: 17}
+  allyMovement: {fileID: 238279054}
+  isStickToAlly: 0
+  resultingVelX: 0
+  resultingVelY: 0
 --- !u!114 &15252519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +325,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 321
-  showRays: 0
+  showRays: 1
   distBetweenRays: 0.25
   maxSlopeAngle: 50
 --- !u!61 &15252520
@@ -430,7 +434,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15252515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.83, y: 16.09, z: -1}
+  m_LocalPosition: {x: 36.43, y: 16.05, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 596096975}
@@ -961,6 +965,7 @@ GameObject:
   m_Component:
   - component: {fileID: 225955868}
   - component: {fileID: 225955869}
+  - component: {fileID: 225955870}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -994,6 +999,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5a5aa2d6b8de14b99a44216d2c3eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endTransitionPrefab: {fileID: 0}
+--- !u!114 &225955870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225955867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490e2028b79559148940b7537b1495cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementRed: {fileID: 15252518}
+  movementBlue: {fileID: 238279054}
 --- !u!1 &238279052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,12 +1074,16 @@ MonoBehaviour:
   maxJumpHeight: 4
   minJumpHeight: 1
   timeToJumpApex: 0.3
-  jumpWidth: 0.5
+  jumpWidth: 1
   wallSlideMaxSpeed: 3
   wallStickTime: 0.15
   wallJumpClimb: {x: 7, y: 27}
   wallJumpOff: {x: 8.5, y: 7}
   wallLeap: {x: 18, y: 17}
+  allyMovement: {fileID: 15252518}
+  isStickToAlly: 0
+  resultingVelX: 0
+  resultingVelY: 0
 --- !u!114 &238279055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,7 +1099,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 385
-  showRays: 0
+  showRays: 1
   distBetweenRays: 0.25
   maxSlopeAngle: 50
 --- !u!114 &238279056
@@ -1179,7 +1203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238279052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.21, y: 13.88, z: -1}
+  m_LocalPosition: {x: 33.72, y: 16.06, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 116326971}
@@ -3883,7 +3907,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029187454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.93, y: 16.45, z: 0}
+  m_LocalPosition: {x: 13.36, y: 19.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1916257303}
