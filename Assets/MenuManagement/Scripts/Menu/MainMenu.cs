@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using SimpleGame;
 using UnityEngine.SceneManagement;
 
 namespace MenuManagement
