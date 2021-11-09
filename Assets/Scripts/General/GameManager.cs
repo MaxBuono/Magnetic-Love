@@ -131,9 +131,10 @@ public class GameManager : MonoBehaviour
             endTransitionPrefab.Delay + endTransitionPrefab.FadeOnDuration : 0f;
             
         yield return new WaitForSeconds(fadeDelay);
-        LevelCompletedScreen.Open();
+        LevelManager.LoadNextLevel();
+        //LevelCompletedScreen.Open();
     }
-        
+    
     private IEnumerator GameCompletedRoutine()
     {
         TransitionFader.PlayTransition(endTransitionPrefab);
