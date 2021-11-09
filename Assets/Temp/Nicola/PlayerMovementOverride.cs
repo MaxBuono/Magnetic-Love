@@ -77,14 +77,52 @@ public class PlayerMovementOverride : MonoBehaviour
             {
                 _redVelY = 0.0f;
                 _blueVelY = 0.0f;
+
+                // and also set their y position to be the same as the one character on the ground
+                if (movementRed.Controller.collisionInfo.below)
+                {
+                    movementBlue.transform.position = new Vector2(movementBlue.transform.position.x, movementRed.transform.position.y);
+                }
+                if (movementBlue.Controller.collisionInfo.below)
+                {
+                    movementRed.transform.position = new Vector2(movementRed.transform.position.x, movementBlue.transform.position.y);
+                }
             }
 
             // apply the final velocities to the characters
             Vector2 finalRedVel = new Vector2(_redVelX, _redVelY);
             Vector2 finalBlueVel = new Vector2(_blueVelX, _blueVelY);
 
-            movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
-            movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+            // Apply movement in a specific order based on the x direction, otherwise one character
+            // will collide with the other countering it's movement
+            float blueToRed = Mathf.Sign(movementRed.transform.position.x - movementBlue.transform.position.x);
+            if (blueToRed == 1) // red on the right
+            {
+                if (_redVelX > 0) // and moving to the right
+                {
+                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                }
+                else // moving to the left
+                {
+                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                }
+            }
+            else //red on the left
+            {
+                if (_redVelX > 0) // and moving to the right
+                {
+                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                }
+                else // moving to the left
+                {
+                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                }
+            }
+
 
             // reset the resultant
             if (movementRed.Controller.collisionInfo.below || movementRed.Controller.collisionInfo.above ||
@@ -105,8 +143,6 @@ public class PlayerMovementOverride : MonoBehaviour
         //find in which direction you have to jump to unplug
         bool isMovementRed = movement.GetInstanceID() == movementRed.GetInstanceID();
         PlayerMovement otherMovement = isMovementRed ? movementBlue : movementRed;
-
-
         // opposite direction from the other character
         float oppositeDir = Mathf.Sign(movement.transform.position.x - otherMovement.transform.position.x);
 
@@ -116,6 +152,10 @@ public class PlayerMovementOverride : MonoBehaviour
             movement.isStickToAlly = false;
             otherMovement.isStickToAlly = false;
             unplugging = true;
+
+            // re-activate characters fields interaction
+            movementRed.MagneticObject.RegisterForce(movementRed.AllyField.ID, Vector2.zero);
+            movementBlue.MagneticObject.RegisterForce(movementBlue.AllyField.ID, Vector2.zero);
 
             movement.OnJumpInputDown();
         }

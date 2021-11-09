@@ -42,18 +42,24 @@ public class PlayerMovement : MonoBehaviour
     private bool _wallSliding;
     private Vector2 _velocity;
     private Controller2D _controller2D;
+    private Collider2D _collider;
     private MagneticObject _magneticObject;
+    private MagneticField _allyField;
     private Vector2 _directionalInput;
 
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public Controller2D Controller { get { return _controller2D; } }
     public Vector2 DirectionalInput { get { return _directionalInput; } }
     public float MaxJumpSpeed { get { return _maxJumpSpeed; } }
+    public MagneticObject MagneticObject { get { return _magneticObject; } }
+    public MagneticField AllyField { get { return _allyField; } }
 
     private void Awake()
     {
         _controller2D = GetComponent<Controller2D>();
+        _collider = GetComponent<Collider2D>();
         _magneticObject = GetComponent<MagneticObject>();
+        _allyField = allyMovement.GetComponentInChildren<MagneticField>();
 
         // Custom gravity given by dx = v0*t + a*t^2 / 2 with dx = maxJumpHeight, v0 = 0 
         // acceleration = gravity and time = timetoJumpApex
@@ -72,10 +78,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // set the stick bool if characters are (almost) attached
-        CheckIfSticked();
+        // set the stick bool if characters are (almost) attached and then ignore the ally field
+        if (CheckIfSticked())
+        {
+            // if they are sticked each character should ignore the ally field
+            _magneticObject.UnregisterForce(_allyField.ID);
+        }
 
-        //Debug.Log(LayerMask.LayerToName(gameObject.layer) + ": " + isStickToAlly);
+        if (!isStickToAlly)
+        {
+            //Debug.Log(LayerMask.LayerToName(gameObject.layer) + ": " + isStickToAlly);
+        }
 
         CalculateVelocity();
         HandleWallSliding();
@@ -286,13 +299,24 @@ public class PlayerMovement : MonoBehaviour
         // Note that this is totally independent from the rays used for collision in the Controller2D script
         isStickToAlly = false;
         Vector2 fromMeToAlly = allyMovement.transform.position - transform.position;
-        HashSet<Collider2D> colliders = _controller2D.RaycastHorizontally(new Vector2(Mathf.Sign(fromMeToAlly.x), 0), 0.075f);
+        Vector3 toAllyDir = new Vector2(Mathf.Sign(fromMeToAlly.x), 0);
+        // the length has to be higher than the _skinWidth
+        float rayLength = 0.05f;
+        HashSet<Collider2D> colliders = _controller2D.RaycastHorizontally(toAllyDir, rayLength);
+
         foreach (Collider2D coll in colliders)
         {
             string layer = LayerMask.LayerToName(coll.gameObject.layer);
             if (layer == "PlayerRed" || layer == "PlayerBlue")
             {
-                isStickToAlly = true;
+                // check also that they are close enough on the y axis
+                float extentY = _collider.bounds.extents.y;
+                Vector3 allyPos = allyMovement.transform.position;
+                if (allyPos.y < (transform.position + Vector3.up * extentY).y &&
+                    allyPos.y > (transform.position - Vector3.up * extentY).y)
+                {
+                    isStickToAlly = true;
+                }
             }
         }
 

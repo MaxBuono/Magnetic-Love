@@ -13,8 +13,6 @@ public class MagneticObject : MonoBehaviour
     public Polarization polarization;
 
     // Internals
-    private Vector2 _pOld;
-    private Vector2 _pNow;
     private Rigidbody2D _rb2d;
     private Collider2D _coll;
 
@@ -37,10 +35,6 @@ public class MagneticObject : MonoBehaviour
 
         // Be sure that the rigidbody is setup correctly
         _rb2d.isKinematic = true;
-
-        // Set starting positions
-        _pNow = _rb2d.position;
-        _pOld = _pNow;    // starts still
     }
 
     // returns the resulting magnetic force (aka acceleration because we aren't considering any mass)
@@ -73,7 +67,7 @@ public class MagneticObject : MonoBehaviour
     public Vector2 UpdateForce(int id, Vector2 force)
     {
         if (_forces.ContainsKey(id))
-        {  
+        {
             _forces[id] = force;
             return force;
         }

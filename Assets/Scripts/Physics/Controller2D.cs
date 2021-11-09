@@ -19,7 +19,6 @@ public class Controller2D : RaycastController
     private PlayerInput _playerInputScript;
     private MagneticObject _magneticObject;
 
-
     // store info about collision direction
     public struct CollisionInfo
     {
@@ -102,19 +101,7 @@ public class Controller2D : RaycastController
         // we want to detect horizontal collisions also when standind still
         HorizontalCollisions(ref deltaMove);
 
-        //if (deltaMove.y != 0)
-        //{
-        //    VerticalCollisions(ref deltaMove);
-        //}
-
-        if (deltaMove.y == 0)
-        {
-            collisionInfo.below = true;
-        }
-        else
-        {
-            VerticalCollisions(ref deltaMove);
-        }
+        VerticalCollisions(ref deltaMove);
 
         transform.Translate(deltaMove);
 
@@ -228,6 +215,12 @@ public class Controller2D : RaycastController
     private void VerticalCollisions(ref Vector2 deltaMove)
     {
         float directionY = Mathf.Sign(deltaMove.y);
+        // if y deltamove is zero you are on the ground and should still raycast downwards
+        // this is like a Mathf.Sign override, since Sign(0)=1 and we want -1
+        if (deltaMove.y == 0)
+        {
+            directionY = -1;
+        }
 
         // we are casting from inside the actual box so we have to sum the skinWidth
         // to check if the actual box is going to collide
@@ -485,6 +478,7 @@ public class Controller2D : RaycastController
         }
 
         _magneticObject.RegisterForce(id, force);
+        tillBelow = null;
     }
 
     // called by the field of the object above you, to avoid potential bugs
