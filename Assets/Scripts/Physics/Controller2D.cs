@@ -101,12 +101,21 @@ public class Controller2D : RaycastController
         
         // we want to detect horizontal collisions also when standind still
         HorizontalCollisions(ref deltaMove);
-        
-        if (deltaMove.y != 0)
+
+        //if (deltaMove.y != 0)
+        //{
+        //    VerticalCollisions(ref deltaMove);
+        //}
+
+        if (deltaMove.y == 0)
+        {
+            collisionInfo.below = true;
+        }
+        else
         {
             VerticalCollisions(ref deltaMove);
         }
-        
+
         transform.Translate(deltaMove);
 
         // this allows us to jump while standing on a platform moving upward

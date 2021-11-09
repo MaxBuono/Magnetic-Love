@@ -80,14 +80,17 @@ public class PlayerMovement : MonoBehaviour
         CalculateVelocity();
         HandleWallSliding();
 
-        //// avoid vertical rays to flicker in and out when stick together
-        if (isStickToAlly && _velocity.y == 0)
-        {
-            _velocity.y = -0.001f;
-        }
-
         // if you characters are stick together let the Override script handle the Move function for both
-        if (isStickToAlly) return;
+        if (isStickToAlly)
+        {
+            if (_controller2D.collisionInfo.below || _controller2D.collisionInfo.above ||
+                allyMovement.Controller.collisionInfo.below || allyMovement.Controller.collisionInfo.above)
+            {
+                _velocity.y = 0.0f;
+            }
+
+            return;
+        }
 
 
         // The frame independent multiplication with deltaTime is done here

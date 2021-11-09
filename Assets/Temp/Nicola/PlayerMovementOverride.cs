@@ -71,6 +71,14 @@ public class PlayerMovementOverride : MonoBehaviour
                 _blueVelY += redY + blueY;
             }
 
+            // if only one character is touching the ground the other should remain sticked
+            if ((movementRed.Controller.collisionInfo.below || movementBlue.Controller.collisionInfo.below)
+                && (_redVelY < 0 || _blueVelY < 0))
+            {
+                _redVelY = 0.0f;
+                _blueVelY = 0.0f;
+            }
+
             // apply the final velocities to the characters
             Vector2 finalRedVel = new Vector2(_redVelX, _redVelY);
             Vector2 finalBlueVel = new Vector2(_blueVelX, _blueVelY);
@@ -78,10 +86,9 @@ public class PlayerMovementOverride : MonoBehaviour
             movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
             movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
 
-
             // reset the resultant
-            if ((movementRed.Controller.collisionInfo.below || movementRed.Controller.collisionInfo.above ||
-                movementBlue.Controller.collisionInfo.below || movementBlue.Controller.collisionInfo.above))
+            if (movementRed.Controller.collisionInfo.below || movementRed.Controller.collisionInfo.above ||
+                movementBlue.Controller.collisionInfo.below || movementBlue.Controller.collisionInfo.above)
             {
                 movementRed.resultingVelY = 0.0f;
                 movementBlue.resultingVelY = 0.0f;
