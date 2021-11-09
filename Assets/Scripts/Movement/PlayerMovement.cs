@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 wallLeap;
     public PlayerMovement allyMovement;
 
+    // sticked characters variables
     [HideInInspector] public bool isStickToAlly;
     [HideInInspector] public float resultingVelX;
     [HideInInspector] public float resultingVelY;
@@ -71,26 +72,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // cast rays towards your ally to check if you should stick together
-        // Note that this is totally independent from the rays used for collision in the Controller2D script
-        isStickToAlly = false;
-        Vector2 fromMeToAlly = allyMovement.transform.position - transform.position;
-        HashSet<Collider2D> colliders = _controller2D.RaycastHorizontally(new Vector2(Mathf.Sign(fromMeToAlly.x), 0));
-        foreach (Collider2D coll in colliders)
-        {
-            string layer = LayerMask.LayerToName(coll.gameObject.layer);
-            if (layer == "PlayerRed" || layer == "PlayerBlue")
-            {
-                if (Mathf.Abs(transform.position.y - coll.transform.position.y) < 0.5f)
-                {
-                    //coll.transform.position = new Vector2(coll.transform.position.x, transform.position.y);
+        // set the stick bool if characters are (almost) attached
+        CheckIfSticked();
 
-                    //isStickToAlly = true;
-                }
-                isStickToAlly = true;
-            }
-        }
-
+        //Debug.Log(LayerMask.LayerToName(gameObject.layer) + ": " + isStickToAlly);
 
         CalculateVelocity();
         HandleWallSliding();
@@ -120,10 +105,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     // the steeper the slope, the smaller will be the slopeNormal.y countering vertical forces
                     _velocity.y += _controller2D.collisionInfo.slopeNormal.y * -verticalForce * Time.deltaTime;
-                }
-                    
-
-                //_velocity.y += _controller2D.collisionInfo.slopeNormal.y * -_gravity * Time.deltaTime;
+                }         
             }
             else
             {
@@ -170,37 +152,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-
-        // Are we jumping while side colliding the other character?
-        //raycast to check collision with the other character since you may move in the opposite direction
-        // (hence not seeing the collision) but still be attached thanks to magnetism
-        //bool collidingLeft = false;
-        //bool collidingRight = false;
-        //HashSet<Collider2D> colliders = new HashSet<Collider2D>();
-        //if (_directionalInput.x == 1)
-        //{
-        //    colliders = _controller2D.RaycastHorizontally(Vector2.left);
-        //    collidingLeft = colliders.Count != 0;
-        //}
-        //else if (_directionalInput.x == -1)
-        //{
-        //    colliders = _controller2D.RaycastHorizontally(Vector2.right);
-        //    collidingRight = colliders.Count != 0;
-        //}
-
-        //if (collidingLeft || collidingRight)
-        //{
-        //    foreach (Collider2D coll in colliders)
-        //    {
-        //        PlayerMovement allyMovement = coll.GetComponent<PlayerMovement>();
-        //        if (allyMovement != null)
-        //        {
-        //            // in that case perform a side jump to unstick
-        //            resultingVelX = _maxJumpSpeed * jumpWidth * _directionalInput.x;
-        //            break;
-        //        }
-        //    }
-        //}
+        // unstick from the other character
+        if (PlayerMovementOverride.Instance.unplugging)
+        {
+            _velocity.x = _maxJumpSpeed * jumpWidth * _directionalInput.x;
+        }
 
 
         //and I'm grounded (hitting below) while not pressing the downward _directionalInput
@@ -225,6 +181,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJumpInputUp()
     {
+        PlayerMovementOverride.Instance.unplugging = false;
+
         // if I'm going up, stop jumping up
         if (_velocity.y > _minJumpSpeed)
         {
@@ -239,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
         float velX = _directionalInput.x * moveSpeed + CalculateHorizontalForce() * Time.deltaTime;
         float velY = CalculateVerticalForce() * Time.deltaTime;
         resultingVelX = velX;
-        resultingVelY += velY;
+        resultingVelY = velY;
 
         // smooth the x velocity 
         _velocity.x = Mathf.SmoothDamp(_velocity.x, velX, ref _smoothedVelocityX,
@@ -314,5 +272,27 @@ public class PlayerMovement : MonoBehaviour
     private float CalculateVerticalForce()
     {
         return _gravity + _magneticObject.GetMagneticForce().y;
+    }
+
+    // Set the isStickToAlly bool and returns it
+    private bool CheckIfSticked()
+    {
+        if (PlayerMovementOverride.Instance.unplugging) return false;
+
+        // cast rays towards your ally to check if you should stick together
+        // Note that this is totally independent from the rays used for collision in the Controller2D script
+        isStickToAlly = false;
+        Vector2 fromMeToAlly = allyMovement.transform.position - transform.position;
+        HashSet<Collider2D> colliders = _controller2D.RaycastHorizontally(new Vector2(Mathf.Sign(fromMeToAlly.x), 0), 0.075f);
+        foreach (Collider2D coll in colliders)
+        {
+            string layer = LayerMask.LayerToName(coll.gameObject.layer);
+            if (layer == "PlayerRed" || layer == "PlayerBlue")
+            {
+                isStickToAlly = true;
+            }
+        }
+
+        return isStickToAlly;
     }
 }

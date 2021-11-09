@@ -131,7 +131,8 @@ public class PlatformController : RaycastController
             if (passenger.moveBeforePlatform == moveBeforePlatform)
             {
                 // use the game manager to retrieve the controller component and call its Move function
-                GameManager.Instance.Controllers2D[passenger.collider.GetInstanceID()].Move(passenger.velocity, passenger.isStandingOnPlatform);
+                Controller2D controller = GameManager.Instance.Controllers2D[passenger.collider.GetInstanceID()];
+                controller.Move(passenger.velocity, passenger.isStandingOnPlatform);
             }
         }
     }

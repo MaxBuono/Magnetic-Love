@@ -18,13 +18,11 @@ public class PlayerInput : MonoBehaviour
 
     // Internals
     private PlayerMovement _playerMovement;
-    private PlayerMovementOverride _movementOverride;
 
 
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
-        _movementOverride = GameManager.Instance.GetComponent<PlayerMovementOverride>();
     }
 
     void Update()
@@ -38,7 +36,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (_playerMovement.isStickToAlly)
             {
-                _movementOverride.OnJumpInputDown(_playerMovement);
+                PlayerMovementOverride.Instance.OnJumpInputDown(_playerMovement);
             }
             else
             {

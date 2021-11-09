@@ -504,4 +504,24 @@ public class Controller2D : RaycastController
 
         return colliders;
     }
+
+    // overload to also provide rayLength (for special cases)
+    public HashSet<Collider2D> RaycastHorizontally(Vector2 direction, float rayLength)
+    {
+        Vector2 rayOrigin = (direction.x == -1) ? _raycastOrigins.bottomLeft : _raycastOrigins.bottomRight;
+        HashSet<Collider2D> colliders = new HashSet<Collider2D>();
+
+        for (int i = 0; i < horizontalRayCount; i++)
+        {
+            rayOrigin += Vector2.up * (_horizontalRaySpacing * i);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, rayLength, collisionMask);
+            if (hit)
+            {
+                // add the collider to the hashset (so only unique elements, no check needed)
+                colliders.Add(hit.collider);
+            }
+        }
+
+        return colliders;
+    }
 }
