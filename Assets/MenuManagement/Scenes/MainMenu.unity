@@ -282,7 +282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33aa44e256384c7a9cacde6498157a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endTransitionPrefab: {fileID: 9001649552736723920, guid: 7e049116e771b42049d34fb11c023084, type: 3}
 --- !u!1 &634305525
 GameObject:
   m_ObjectHideFlags: 0

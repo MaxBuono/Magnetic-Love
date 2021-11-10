@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         if (CheckIfSticked())
         {
             // if they are sticked each character should ignore the ally field
-            _magneticObject.UnregisterForce(_allyField.ID);
+            //_magneticObject.UnregisterForce(_allyField.ID);
         }
 
         if (!isStickToAlly)
@@ -172,6 +172,23 @@ public class PlayerMovement : MonoBehaviour
         if (PlayerMovementOverride.Instance.unplugging)
         {
             _velocity.x = _maxJumpSpeed * jumpWidth * _directionalInput.x;
+        }
+
+
+        // side jump from a magnetic object (that is not a character)
+        Vector2 oppositeDir = _directionalInput.x == 1 ? Vector2.left : Vector2.right;
+        HashSet <Collider2D> colliders = _controller2D.RaycastHorizontally(oppositeDir);
+        foreach (Collider2D coll in colliders)
+        {
+            string collLayer = LayerMask.LayerToName(coll.gameObject.layer);
+            if (collLayer != "PlayerRed" && collLayer != "PlayerBlue")
+            {
+                MagneticObject magneticObj = coll.GetComponent<MagneticObject>();
+                if (magneticObj != null)
+                {
+                    _velocity.x = _maxJumpSpeed * jumpWidth * _directionalInput.x;
+                }
+            }
         }
 
 
