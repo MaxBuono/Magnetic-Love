@@ -153,10 +153,6 @@ public class PlayerMovementOverride : MonoBehaviour
             otherMovement.isStickToAlly = false;
             unplugging = true;
 
-            // re-activate characters fields interaction
-            movementRed.MagneticObject.RegisterForce(movementRed.AllyField.ID, Vector2.zero);
-            movementBlue.MagneticObject.RegisterForce(movementBlue.AllyField.ID, Vector2.zero);
-
             movement.OnJumpInputDown();
         }
         // jump as a whole
