@@ -17,7 +17,7 @@ TagManager:
   - PlayerBlue
   - PlayerRed
   - MagneticObject
-  - 
+  - IgnoreCollider
   - 
   - 
   - 
