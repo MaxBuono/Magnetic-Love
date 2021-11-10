@@ -4,7 +4,8 @@
     <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Daniele_testScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Daniele_testScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level0.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level0.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/Level2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,7 @@
       <workItem from="1634741781475" duration="5647000" />
       <workItem from="1634751019013" duration="653000" />
       <workItem from="1634753047157" duration="1411000" />
-      <workItem from="1636537937161" duration="8035000" />
+      <workItem from="1636537937161" duration="11490000" />
     </task>
     <servers />
   </component>
