@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         if (CheckIfSticked())
         {
             // if they are sticked each character should ignore the ally field
-            //_magneticObject.UnregisterForce(_allyField.ID);
+            _magneticObject.UnregisterForce(_allyField.ID);
         }
 
         if (!isStickToAlly)
@@ -168,17 +168,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        // unstick from the other character
-        if (PlayerMovementOverride.Instance.unplugging)
-        {
-            _velocity.x = _maxJumpSpeed * jumpWidth * _directionalInput.x;
-        }
-
-
         // side jump from a magnetic object (that is not a character)
-        Vector2 oppositeDir = _directionalInput.x == 1 ? Vector2.left : Vector2.right;
-        HashSet <Collider2D> colliders = _controller2D.RaycastHorizontally(oppositeDir);
-        foreach (Collider2D coll in colliders)
+        HashSet <Collider2D> rightColliders = _controller2D.RaycastHorizontally(Vector2.right);
+        HashSet<Collider2D> leftColliders = _controller2D.RaycastHorizontally(Vector2.left);
+        foreach (Collider2D coll in rightColliders)
         {
             string collLayer = LayerMask.LayerToName(coll.gameObject.layer);
             if (collLayer != "PlayerRed" && collLayer != "PlayerBlue")
@@ -186,7 +179,19 @@ public class PlayerMovement : MonoBehaviour
                 MagneticObject magneticObj = coll.GetComponent<MagneticObject>();
                 if (magneticObj != null)
                 {
-                    _velocity.x = _maxJumpSpeed * jumpWidth * _directionalInput.x;
+                    _velocity.x = _maxJumpSpeed * jumpWidth * Vector2.left.x;
+                }
+            }
+        }
+        foreach (Collider2D coll in leftColliders)
+        {
+            string collLayer = LayerMask.LayerToName(coll.gameObject.layer);
+            if (collLayer != "PlayerRed" && collLayer != "PlayerBlue")
+            {
+                MagneticObject magneticObj = coll.GetComponent<MagneticObject>();
+                if (magneticObj != null)
+                {
+                    _velocity.x = _maxJumpSpeed * jumpWidth * Vector2.right.x;
                 }
             }
         }
@@ -214,8 +219,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJumpInputUp()
     {
-        PlayerMovementOverride.Instance.unplugging = false;
-
         // if I'm going up, stop jumping up
         if (_velocity.y > _minJumpSpeed)
         {
@@ -236,9 +239,6 @@ public class PlayerMovement : MonoBehaviour
         _velocity.x = Mathf.SmoothDamp(_velocity.x, velX, ref _smoothedVelocityX,
                                         _controller2D.collisionInfo.below ? _accelerationTimeGrounded : _accelerationTimeAirborne);
         _velocity.y += velY;
-
-
-        resultingVelX = _velocity.x;
     }
 
     private void HandleWallSliding()
@@ -310,7 +310,9 @@ public class PlayerMovement : MonoBehaviour
     // Set the isStickToAlly bool and returns it
     private bool CheckIfSticked()
     {
-        if (PlayerMovementOverride.Instance.unplugging) return false;
+        // fake that they are sticked together when they are unplugging 
+        // so that you can handle everything from the Override script
+        if (PlayerMovementOverride.Instance.unplugging) return true;
 
         // cast rays towards your ally to check if you should stick together
         // Note that this is totally independent from the rays used for collision in the Controller2D script

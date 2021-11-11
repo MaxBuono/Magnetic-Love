@@ -487,10 +487,9 @@ public class Controller2D : RaycastController
         StopCoroutine(tillBelow);
     }
 
-    // utility functions to cast rays manually in a given horizontal direction returning the colliders hit
-    public HashSet<Collider2D> RaycastHorizontally(Vector2 direction)
+    // overload to also provide rayLength (for special cases)
+    public HashSet<Collider2D> RaycastHorizontally(Vector2 direction, float rayLength = 2 * _skinWidth)
     {
-        float rayLength = 2 * _skinWidth;
         Vector2 rayOrigin = (direction.x == -1) ? _raycastOrigins.bottomLeft : _raycastOrigins.bottomRight;
         HashSet<Collider2D> colliders = new HashSet<Collider2D>();
 
@@ -509,14 +508,14 @@ public class Controller2D : RaycastController
     }
 
     // overload to also provide rayLength (for special cases)
-    public HashSet<Collider2D> RaycastHorizontally(Vector2 direction, float rayLength)
+    public HashSet<Collider2D> RaycastVertically(Vector2 direction, float rayLength = 2 * _skinWidth)
     {
-        Vector2 rayOrigin = (direction.x == -1) ? _raycastOrigins.bottomLeft : _raycastOrigins.bottomRight;
+        Vector2 rayOrigin = (direction.y == -1) ? _raycastOrigins.bottomLeft : _raycastOrigins.topLeft;
         HashSet<Collider2D> colliders = new HashSet<Collider2D>();
 
-        for (int i = 0; i < horizontalRayCount; i++)
+        for (int i = 0; i < verticalRayCount; i++)
         {
-            rayOrigin += Vector2.up * (_horizontalRaySpacing * i);
+            rayOrigin += Vector2.right * (_verticalRaySpacing * i);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, rayLength, collisionMask);
             if (hit)
             {

@@ -37,8 +37,10 @@ public class MagneticField : MonoBehaviour
         {
             bool isValidId = tuple.Item1.RegisterForce(_myID, tuple.Item2);
 
-            if (!isValidId)
-                Debug.LogError(collision.gameObject.name + " ID was already registered!");
+            //if (!isValidId)
+            //{
+            //    Debug.LogError(collision.gameObject.name + " ID was already registered!");
+            //}
         }
             
     }
@@ -70,8 +72,10 @@ public class MagneticField : MonoBehaviour
             // unregister this force on colission object
             bool isValidId = magneticObject.UnregisterForce(_myID);
 
-            if (!isValidId)
-                Debug.LogError(collision.gameObject.name + " ID has not been found!");
+            //if (!isValidId)
+            //{
+            //    Debug.LogError(collision.gameObject.name + " ID has not been found!");
+            //}
         }
     }
 

@@ -7,15 +7,22 @@ using UnityEngine;
 
 public class PlayerMovementOverride : MonoBehaviour
 {
+    // Public
     public PlayerMovement movementRed;
     public PlayerMovement movementBlue;
+    public float timeToUnplug = 2.0f;
+    public float unplugForce = 1.0f;
 
     [HideInInspector] public bool unplugging = false;
 
+    // Internals
     private float _redVelX;
     private float _redVelY;
     private float _blueVelX;
     private float _blueVelY;
+
+    private IEnumerator _unplugCoroutine = null;
+
 
     // Singleton
     private PlayerMovementOverride() { }
@@ -45,13 +52,30 @@ public class PlayerMovementOverride : MonoBehaviour
     {
         if (movementRed.isStickToAlly || movementBlue.isStickToAlly)
         {
+            // Handle unplug situation when both characters are moving 
+            // in opposite directions from each other on the x axis
+            if (movementRed.DirectionalInput.x != movementBlue.DirectionalInput.x && _unplugCoroutine == null)
+            {
+                _unplugCoroutine = UnplugCharacters();
+                StartCoroutine(_unplugCoroutine);
+            }
+
+
             // NOTE that below I'm just taking the frame resultant and then
             // applying the sum and the reset on the y axis here.
             // It's fundamental to keep the two different movements (sticked or not) completely separated.
 
             // resulting x axis velocity 
-            _redVelX = movementRed.resultingVelX + movementBlue.resultingVelX;
-            _blueVelX = movementRed.resultingVelX + movementBlue.resultingVelX;
+            _redVelX += movementRed.resultingVelX + movementBlue.resultingVelX;
+            _blueVelX += movementRed.resultingVelX + movementBlue.resultingVelX;
+
+            // avoid to go at double the speed on the x axis when both move in the same direction
+            if (movementRed.DirectionalInput.x == movementBlue.DirectionalInput.x &&
+                movementRed.DirectionalInput.x != 0 && movementBlue.DirectionalInput.x != 0)
+            {
+                _redVelX -= movementRed.moveSpeed * movementRed.DirectionalInput.x;
+                _blueVelX -= movementBlue.moveSpeed * movementBlue.DirectionalInput.x;
+            }
 
             // resulting y axis velocity 
             float redY = movementRed.resultingVelY;
@@ -124,7 +148,7 @@ public class PlayerMovementOverride : MonoBehaviour
             }
 
 
-            // reset the resultant
+            // reset the resultant y axis if at least one of them is colliding verically
             if (movementRed.Controller.collisionInfo.below || movementRed.Controller.collisionInfo.above ||
                 movementBlue.Controller.collisionInfo.below || movementBlue.Controller.collisionInfo.above)
             {
@@ -135,28 +159,54 @@ public class PlayerMovementOverride : MonoBehaviour
                 _blueVelY = 0.0f;
             }
         }
+
+        // and always on the x axis unless they are just unplugging
+        if (!unplugging)
+        {
+            _redVelX = 0.0f;
+            _blueVelX = 0.0f;
+        }
+    }
+
+    private IEnumerator UnplugCharacters()
+    {
+        float timer = 0.0f;
+        float redXDir = movementRed.DirectionalInput.x;
+        float blueXDir = movementBlue.DirectionalInput.x;
+
+        while ( ((movementRed.DirectionalInput.x == 1 && movementBlue.DirectionalInput.x == -1) || (movementRed.DirectionalInput.x == -1 && movementBlue.DirectionalInput.x == 1)) && timer < timeToUnplug)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        if (timer > timeToUnplug)
+        {
+            unplugging = true;
+
+            // unplug them
+            _redVelX += unplugForce * movementRed.DirectionalInput.x;
+            _blueVelX += unplugForce * movementBlue.DirectionalInput.x;
+
+            yield return new WaitForSeconds(0.2f);
+
+            unplugging = false;
+
+            // register their fields again (if the unplug force is not strong enough to make you exit)
+            //movementRed.MagneticObject.RegisterForce(movementRed.AllyField.ID, Vector2.zero);
+            //movementBlue.MagneticObject.RegisterForce(movementBlue.AllyField.ID, Vector2.zero);
+        }
+
+        _unplugCoroutine = null;
     }
 
     // if a character jump and they are sticked together
     public void OnJumpInputDown(PlayerMovement movement)
     {
-        //find in which direction you have to jump to unplug
-        bool isMovementRed = movement.GetInstanceID() == movementRed.GetInstanceID();
-        PlayerMovement otherMovement = isMovementRed ? movementBlue : movementRed;
-        // opposite direction from the other character
-        float oppositeDir = Mathf.Sign(movement.transform.position.x - otherMovement.transform.position.x);
+        HashSet<Collider2D> colliders = movement.Controller.RaycastVertically(Vector2.down, 0.2f);
 
-        // unplug
-        if (movement.DirectionalInput.x == oppositeDir)
-        {
-            movement.isStickToAlly = false;
-            otherMovement.isStickToAlly = false;
-            unplugging = true;
-
-            movement.OnJumpInputDown();
-        }
-        // jump as a whole
-        else
+        // jump only if you are touching or close enough to the ground
+        if (colliders.Count != 0)
         {
             // the 0.5 factor is used since if both characters are jumping their jump forces will sum up
             _redVelY += movementRed.MaxJumpSpeed * 0.5f;
