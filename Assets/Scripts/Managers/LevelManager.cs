@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     private static int _nextLevel = 0;
-    private static int _maxLevel = 2;
+    private static int _maxLevel = 3;
     private static int _levelPlayed = -1;
 
     private static string SceneName(int level)
@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
         if (level < _maxLevel)
         {
             _levelPlayed = level;
-            _nextLevel = level+1;
+            _nextLevel = level + 1;
             SceneManager.LoadScene(SceneName(_levelPlayed));        
         }
     }
@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour
     {
         _levelPlayed = 0;
         _nextLevel = 1;
+        Debug.Log("first level -> " + _levelPlayed);
         SceneManager.LoadScene(SceneName(_levelPlayed));
     }
 
@@ -42,11 +43,13 @@ public class LevelManager : MonoBehaviour
         if (_nextLevel < _maxLevel)
         {
             _levelPlayed = _nextLevel;
-            _nextLevel = _nextLevel + 1;
+            _nextLevel += 1;
+            Debug.Log("level " + _levelPlayed);
             SceneManager.LoadScene(SceneName(_levelPlayed));
         }
     }
 
+    
     public static void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

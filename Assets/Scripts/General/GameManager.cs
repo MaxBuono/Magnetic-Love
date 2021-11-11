@@ -106,9 +106,6 @@ public class GameManager : MonoBehaviour
     
     public void LevelCompleted()
     {
-        // - disable level controls
-        //   here all the active components of the level should be blocked while
-        //   the next screen level goes on
         // - save the data
         //   are there any statistics that need to be saved?
 
@@ -132,7 +129,6 @@ public class GameManager : MonoBehaviour
             
         yield return new WaitForSeconds(fadeDelay);
         LevelManager.LoadNextLevel();
-        //LevelCompletedScreen.Open();
     }
     
     private IEnumerator GameCompletedRoutine()

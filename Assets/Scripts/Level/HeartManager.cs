@@ -6,15 +6,17 @@ using UnityEngine;
 public class HeartManager : MonoBehaviour
 {
     //Externals
-    public float _maxProgress = 100f;
-    public float _increment = 50f;
+    public float maxProgress = 100f;
+    public float increment = 50f;
     
     //Internals
     public float _progress = 0f;
-    private bool blueIsOnGoal = false;
-    private bool redIsOnGoal = false;
+    private bool _blueIsOnGoal = false;
+    private bool _redIsOnGoal = false;
     private bool _isGrowing = false;
     private SpriteRenderer _spriteRenderer;
+    //I use this variable to not call levelCompleted more than once during the end level animation
+    private bool _firstTimeReachMaxProgress = true;
 
     private void Start()
     {
@@ -32,29 +34,30 @@ public class HeartManager : MonoBehaviour
     {
         if (_isGrowing)
         {
-            _progress += _increment * Time.fixedDeltaTime;
-            if (_progress > _maxProgress)
+            _progress += increment * Time.fixedDeltaTime;
+            if (_progress > maxProgress && _firstTimeReachMaxProgress)
             {
                 //Go to next Level
+                _firstTimeReachMaxProgress = false;
                 GameManager.Instance.LevelCompleted();
             }
         }
         else
         {
-            if (_progress - _increment * Time.fixedDeltaTime < 0)
+            if (_progress - increment * Time.fixedDeltaTime < 0)
             {
                 _progress = 0;
-            }else _progress -= _increment * Time.fixedDeltaTime;
+            }else _progress -= increment * Time.fixedDeltaTime;
         }
     }
 
     public void setBooleans(CharColor _color, bool _isOnGoal)
     {
         if (_color == CharColor.Blue)
-            blueIsOnGoal = _isOnGoal;
+            _blueIsOnGoal = _isOnGoal;
         else if (_color == CharColor.Red)
-            redIsOnGoal = _isOnGoal;
-        if (blueIsOnGoal && redIsOnGoal)
+            _redIsOnGoal = _isOnGoal;
+        if (_blueIsOnGoal && _redIsOnGoal)
             _isGrowing = true;
         else _isGrowing = false;
     }
