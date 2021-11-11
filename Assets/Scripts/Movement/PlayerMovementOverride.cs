@@ -171,10 +171,9 @@ public class PlayerMovementOverride : MonoBehaviour
     private IEnumerator UnplugCharacters()
     {
         float timer = 0.0f;
-        float redXDir = movementRed.DirectionalInput.x;
-        float blueXDir = movementBlue.DirectionalInput.x;
 
-        while ( ((movementRed.DirectionalInput.x == 1 && movementBlue.DirectionalInput.x == -1) || (movementRed.DirectionalInput.x == -1 && movementBlue.DirectionalInput.x == 1)) && timer < timeToUnplug)
+        while ( ((movementRed.DirectionalInput.x == 1 && movementBlue.DirectionalInput.x == -1) || 
+                (movementRed.DirectionalInput.x == -1 && movementBlue.DirectionalInput.x == 1)) && timer < timeToUnplug)
         {
             timer += Time.deltaTime;
             yield return null;

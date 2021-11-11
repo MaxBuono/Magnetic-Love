@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public float timeToJumpApex = 0.5f;
     [Tooltip("Jump speed multiplier on the x axis (a value of 0.5 means that the character is jumping with half jump speed on the x axis.")]
     public float jumpWidth = 0.5f;
+    [Tooltip("Amount of vertical force you get when jumping (keeping it pressed) on the other character")]
+    public float jumpPushForce = 1.7f;
     // Wall jumping stuff
     public float wallSlideMaxSpeed = 3.0f;
     [Tooltip("Amount of time that you will stay sticked to the wall before actually jumping off if you are moving in the opposite direction from the wall")]
@@ -40,12 +42,14 @@ public class PlayerMovement : MonoBehaviour
     private float _timeToWallUnstick;
     private int _wallDirX;
     private bool _wallSliding;
+    private bool _isAboveCharacter;
     private Vector2 _velocity;
     private Controller2D _controller2D;
     private Collider2D _collider;
     private MagneticObject _magneticObject;
     private MagneticField _allyField;
     private Vector2 _directionalInput;
+    private IEnumerator _pushUpCoroutine = null;
 
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public Controller2D Controller { get { return _controller2D; } }
@@ -88,6 +92,13 @@ public class PlayerMovement : MonoBehaviour
         if (!isStickToAlly)
         {
             //Debug.Log(LayerMask.LayerToName(gameObject.layer) + ": " + isStickToAlly);
+        }
+
+        // Handle the "vertical unplug"
+        if (CheckIfAboveCharacter() && DirectionalInput.y == 1 && _pushUpCoroutine == null)
+        {
+            _pushUpCoroutine = PushMeUp();
+            StartCoroutine(_pushUpCoroutine);
         }
 
         CalculateVelocity();
@@ -340,5 +351,47 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return isStickToAlly;
+    }
+
+    // check if this character is above the other character
+    private bool CheckIfAboveCharacter()
+    {
+        // if you are in the air you are not above the other character 
+        if (!_controller2D.collisionInfo.below) return false;
+
+        // This can be implemented in a much more light way in the Controller2D script
+        // but raycasting vertically again here gives a lot more control
+        _isAboveCharacter = false;
+        HashSet<Collider2D> colliders = _controller2D.RaycastVertically(Vector2.down);
+        foreach (Collider2D coll in colliders)
+        {
+            string layer = LayerMask.LayerToName(coll.gameObject.layer);
+            if (layer == "PlayerRed" || layer == "PlayerBlue")
+            {
+                _isAboveCharacter = true;
+            }
+        }
+
+        return _isAboveCharacter;
+    }
+
+    // a sort of unplug but in vertical when you are above the other character
+    private IEnumerator PushMeUp()
+    {
+        float timer = 0.0f;
+
+        while ( _isAboveCharacter && DirectionalInput.y == 1 && timer < PlayerMovementOverride.Instance.timeToUnplug)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        if (timer > PlayerMovementOverride.Instance.timeToUnplug)
+        {
+            // push up
+            _velocity.y += _maxJumpSpeed * jumpPushForce;
+        }
+
+        _pushUpCoroutine = null;
     }
 }
