@@ -61,101 +61,12 @@ public class PlayerMovementOverride : MonoBehaviour
             }
 
 
-            // NOTE that below I'm just taking the frame resultant and then
-            // applying the sum and the reset on the y axis here.
-            // It's fundamental to keep the two different movements (sticked or not) completely separated.
-
-            // resulting x axis velocity 
-            _redVelX += movementRed.resultingVelX + movementBlue.resultingVelX;
-            _blueVelX += movementRed.resultingVelX + movementBlue.resultingVelX;
-
-            // avoid to go at double the speed on the x axis when both move in the same direction
-            if (movementRed.DirectionalInput.x == movementBlue.DirectionalInput.x &&
-                movementRed.DirectionalInput.x != 0 && movementBlue.DirectionalInput.x != 0)
-            {
-                _redVelX -= movementRed.moveSpeed * movementRed.DirectionalInput.x;
-                _blueVelX -= movementBlue.moveSpeed * movementBlue.DirectionalInput.x;
-            }
-
-            // resulting y axis velocity 
-            float redY = movementRed.resultingVelY;
-            float blueY = movementBlue.resultingVelY;
-
-            // if the resulting velocities on the y axis have the same direction
-            if (Mathf.Sign(redY) == Mathf.Sign(blueY))
-            {
-                // take the (absolute) higher 
-                _redVelY += Mathf.Abs(redY) > Mathf.Abs(blueY) ? redY : blueY;
-                _blueVelY += Mathf.Abs(redY) > Mathf.Abs(blueY) ? redY : blueY;
-            }
-            else
-            {
-                // otherwise just sum
-                _redVelY += redY + blueY;
-                _blueVelY += redY + blueY;
-            }
-
-            // if only one character is touching the ground the other should remain sticked
-            if ((movementRed.Controller.collisionInfo.below || movementBlue.Controller.collisionInfo.below)
-                && (_redVelY < 0 || _blueVelY < 0))
-            {
-                _redVelY = 0.0f;
-                _blueVelY = 0.0f;
-
-                // and also set their y position to be the same as the one character on the ground
-                if (movementRed.Controller.collisionInfo.below)
-                {
-                    movementBlue.transform.position = new Vector2(movementBlue.transform.position.x, movementRed.transform.position.y);
-                }
-                if (movementBlue.Controller.collisionInfo.below)
-                {
-                    movementRed.transform.position = new Vector2(movementRed.transform.position.x, movementBlue.transform.position.y);
-                }
-            }
+            CalculateResultantVelocity();
 
             // apply the final velocities to the characters
             Vector2 finalRedVel = new Vector2(_redVelX, _redVelY);
             Vector2 finalBlueVel = new Vector2(_blueVelX, _blueVelY);
-
-            // Apply movement in a specific order based on the x direction, otherwise one character
-            // will collide with the other countering it's movement
-            float blueToRed = Mathf.Sign(movementRed.transform.position.x - movementBlue.transform.position.x);
-            if (blueToRed == 1) // red on the right
-            {
-                if (_redVelX > 0 || _blueVelX > 0) // and moving to the right
-                {
-                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
-                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
-                }
-                else if (_redVelX < 0 || _blueVelX < 0) // moving to the left
-                {
-                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
-                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
-                }
-                else // in this case it doesn't matter which one you move first
-                {
-                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
-                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
-                }
-            }
-            else //red on the left
-            { 
-                if (_redVelX > 0 || _blueVelX > 0) // and moving to the right
-                {
-                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
-                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
-                }
-                else if (_redVelX < 0 || _blueVelX < 0) // moving to the left
-                {
-                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
-                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
-                }
-                else // in this case it doesn't matter which one you move first
-                {
-                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
-                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
-                }
-            }
+            ApplyMovement(finalRedVel, finalBlueVel);
 
 
             // reset the resultant y axis if at least one of them is colliding verically
@@ -222,6 +133,104 @@ public class PlayerMovementOverride : MonoBehaviour
         }
 
         _unplugCoroutine = null;
+    }
+
+    private void CalculateResultantVelocity()
+    {
+        // NOTE that below I'm just taking the frame resultant and then
+        // applying the sum and the reset on the y axis here.
+        // It's fundamental to keep the two different movements (sticked or not) completely separated.
+
+        // resulting x axis velocity 
+        _redVelX += movementRed.resultingVelX + movementBlue.resultingVelX;
+        _blueVelX += movementRed.resultingVelX + movementBlue.resultingVelX;
+
+        // avoid to go at double the speed on the x axis when both move in the same direction
+        if (movementRed.DirectionalInput.x == movementBlue.DirectionalInput.x &&
+            movementRed.DirectionalInput.x != 0 && movementBlue.DirectionalInput.x != 0)
+        {
+            _redVelX -= movementRed.moveSpeed * movementRed.DirectionalInput.x;
+            _blueVelX -= movementBlue.moveSpeed * movementBlue.DirectionalInput.x;
+        }
+
+        // resulting y axis velocity 
+        float redY = movementRed.resultingVelY;
+        float blueY = movementBlue.resultingVelY;
+
+        // if the resulting velocities on the y axis have the same direction
+        if (Mathf.Sign(redY) == Mathf.Sign(blueY))
+        {
+            // take the (absolute) higher 
+            _redVelY += Mathf.Abs(redY) > Mathf.Abs(blueY) ? redY : blueY;
+            _blueVelY += Mathf.Abs(redY) > Mathf.Abs(blueY) ? redY : blueY;
+        }
+        else
+        {
+            // otherwise just sum
+            _redVelY += redY + blueY;
+            _blueVelY += redY + blueY;
+        }
+
+        // if only one character is touching the ground the other should remain sticked
+        if ((movementRed.Controller.collisionInfo.below || movementBlue.Controller.collisionInfo.below)
+            && (_redVelY < 0 || _blueVelY < 0))
+        {
+            _redVelY = 0.0f;
+            _blueVelY = 0.0f;
+
+            // and also set their y position to be the same as the one character on the ground
+            if (movementRed.Controller.collisionInfo.below)
+            {
+                movementBlue.transform.position = new Vector2(movementBlue.transform.position.x, movementRed.transform.position.y);
+            }
+            if (movementBlue.Controller.collisionInfo.below)
+            {
+                movementRed.transform.position = new Vector2(movementRed.transform.position.x, movementBlue.transform.position.y);
+            }
+        }
+    }
+
+    private void ApplyMovement(Vector2 finalRedVel, Vector2 finalBlueVel)
+    {
+        // Apply movement in a specific order based on the x direction, otherwise one character
+        // will collide with the other countering it's movement
+        float blueToRed = Mathf.Sign(movementRed.transform.position.x - movementBlue.transform.position.x);
+        if (blueToRed == 1) // red on the right
+        {
+            if (_redVelX > 0 || _blueVelX > 0) // and moving to the right
+            {
+                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+            }
+            else if (_redVelX < 0 || _blueVelX < 0) // moving to the left
+            {
+                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+            }
+            else // in this case it doesn't matter which one you move first
+            {
+                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+            }
+        }
+        else //red on the left
+        {
+            if (_redVelX > 0 || _blueVelX > 0) // and moving to the right
+            {
+                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+            }
+            else if (_redVelX < 0 || _blueVelX < 0) // moving to the left
+            {
+                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+            }
+            else // in this case it doesn't matter which one you move first
+            {
+                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+            }
+        }
     }
 
     // if a character jump and they are sticked together
