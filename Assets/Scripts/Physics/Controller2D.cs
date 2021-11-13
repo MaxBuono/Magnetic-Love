@@ -490,12 +490,13 @@ public class Controller2D : RaycastController
     // overload to also provide rayLength (for special cases)
     public HashSet<Collider2D> RaycastHorizontally(Vector2 direction, float rayLength = 2 * _skinWidth)
     {
-        Vector2 rayOrigin = (direction.x == -1) ? _raycastOrigins.bottomLeft : _raycastOrigins.bottomRight;
         HashSet<Collider2D> colliders = new HashSet<Collider2D>();
 
         for (int i = 0; i < horizontalRayCount; i++)
         {
+            Vector2 rayOrigin = (direction.x == -1) ? _raycastOrigins.bottomLeft : _raycastOrigins.bottomRight;
             rayOrigin += Vector2.up * (_horizontalRaySpacing * i);
+
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, rayLength, collisionMask);
             if (hit)
             {
@@ -508,14 +509,17 @@ public class Controller2D : RaycastController
     }
 
     // overload to also provide rayLength (for special cases)
-    public HashSet<Collider2D> RaycastVertically(Vector2 direction, float rayLength = 2 * _skinWidth)
+    public HashSet<Collider2D> RaycastVertically(Vector2 direction, float deltaMoveX, float rayLength = 2 * _skinWidth)
     {
-        Vector2 rayOrigin = (direction.y == -1) ? _raycastOrigins.bottomLeft : _raycastOrigins.topLeft;
         HashSet<Collider2D> colliders = new HashSet<Collider2D>();
 
         for (int i = 0; i < verticalRayCount; i++)
         {
-            rayOrigin += Vector2.right * (_verticalRaySpacing * i);
+            Vector2 rayOrigin = (direction.y == -1) ? _raycastOrigins.bottomLeft : _raycastOrigins.topLeft;
+            rayOrigin += Vector2.right * (_verticalRaySpacing * i + deltaMoveX);
+
+            Debug.DrawRay(rayOrigin, Vector2.up * direction.y, Color.red);
+
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, rayLength, collisionMask);
             if (hit)
             {

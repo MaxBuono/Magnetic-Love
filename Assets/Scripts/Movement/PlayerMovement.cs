@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     // sticked characters variables
     [HideInInspector] public bool isStickToAlly;
+    [HideInInspector] public bool isAboveCharacter;
     [HideInInspector] public float resultingVelX;
     [HideInInspector] public float resultingVelY;
 
@@ -42,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
     private float _timeToWallUnstick;
     private int _wallDirX;
     private bool _wallSliding;
-    private bool _isAboveCharacter;
     private Vector2 _velocity;
     private Controller2D _controller2D;
     private Collider2D _collider;
@@ -327,11 +327,21 @@ public class PlayerMovement : MonoBehaviour
 
         // cast rays towards your ally to check if you should stick together
         // Note that this is totally independent from the rays used for collision in the Controller2D script
-        isStickToAlly = false;
         Vector2 fromMeToAlly = allyMovement.transform.position - transform.position;
         Vector3 toAllyDir = new Vector2(Mathf.Sign(fromMeToAlly.x), 0);
-        // the length has to be higher than the _skinWidth
-        float rayLength = 0.05f;
+        // the length has to be always higher than the _skinWidth
+        float rayLength;
+        if (isStickToAlly)
+        {
+            // when they are already sticked use a longer ray to be super sure that they stay sticked
+            rayLength = 0.2f;
+        }
+        else
+        {
+            rayLength = 0.025f;
+        }
+
+        isStickToAlly = false;
         HashSet<Collider2D> colliders = _controller2D.RaycastHorizontally(toAllyDir, rayLength);
 
         foreach (Collider2D coll in colliders)
@@ -346,6 +356,7 @@ public class PlayerMovement : MonoBehaviour
                     allyPos.y > (transform.position - Vector3.up * extentY).y)
                 {
                     isStickToAlly = true;
+                    return isStickToAlly;
                 }
             }
         }
@@ -356,23 +367,23 @@ public class PlayerMovement : MonoBehaviour
     // check if this character is above the other character
     private bool CheckIfAboveCharacter()
     {
-        // if you are in the air you are not above the other character 
-        if (!_controller2D.collisionInfo.below) return false;
+        // if you are in the air or sticked, you are not above the other character 
+        if (!_controller2D.collisionInfo.below || isStickToAlly) return false;
 
         // This can be implemented in a much more light way in the Controller2D script
         // but raycasting vertically again here gives a lot more control
-        _isAboveCharacter = false;
-        HashSet<Collider2D> colliders = _controller2D.RaycastVertically(Vector2.down);
+        isAboveCharacter = false;
+        HashSet<Collider2D> colliders = _controller2D.RaycastVertically(Vector2.down, _velocity.x * Time.deltaTime);
         foreach (Collider2D coll in colliders)
         {
             string layer = LayerMask.LayerToName(coll.gameObject.layer);
             if (layer == "PlayerRed" || layer == "PlayerBlue")
             {
-                _isAboveCharacter = true;
+                isAboveCharacter = true;
             }
         }
 
-        return _isAboveCharacter;
+        return isAboveCharacter;
     }
 
     // a sort of unplug but in vertical when you are above the other character
@@ -380,7 +391,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float timer = 0.0f;
 
-        while ( _isAboveCharacter && DirectionalInput.y == 1 && timer < PlayerMovementOverride.Instance.timeToUnplug)
+        while ( isAboveCharacter && DirectionalInput.y == 1 && timer < PlayerMovementOverride.Instance.timeToUnplug)
         {
             timer += Time.deltaTime;
             yield return null;

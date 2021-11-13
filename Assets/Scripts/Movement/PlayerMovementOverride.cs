@@ -122,25 +122,35 @@ public class PlayerMovementOverride : MonoBehaviour
             float blueToRed = Mathf.Sign(movementRed.transform.position.x - movementBlue.transform.position.x);
             if (blueToRed == 1) // red on the right
             {
-                if (_redVelX > 0) // and moving to the right
+                if (_redVelX > 0 || _blueVelX > 0) // and moving to the right
                 {
                     movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
                     movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
                 }
-                else // moving to the left
+                else if (_redVelX < 0 || _blueVelX < 0) // moving to the left
+                {
+                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                }
+                else // in this case it doesn't matter which one you move first
                 {
                     movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
                     movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
                 }
             }
             else //red on the left
-            {
-                if (_redVelX > 0) // and moving to the right
+            { 
+                if (_redVelX > 0 || _blueVelX > 0) // and moving to the right
                 {
                     movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
                     movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
                 }
-                else // moving to the left
+                else if (_redVelX < 0 || _blueVelX < 0) // moving to the left
+                {
+                    movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                    movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                }
+                else // in this case it doesn't matter which one you move first
                 {
                     movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
                     movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
@@ -160,11 +170,21 @@ public class PlayerMovementOverride : MonoBehaviour
             }
         }
 
-        // and always on the x axis unless they are just unplugging
+        // always reset the resultant x axis unless they are just unplugging
         if (!unplugging)
         {
             _redVelX = 0.0f;
             _blueVelX = 0.0f;
+        }
+
+        // if you are above the other character, his X movement will influence yours
+        if (movementRed.isAboveCharacter)
+        {
+            movementRed.Controller.Move(Vector2.right * movementBlue.Velocity.x * Time.deltaTime, movementBlue.DirectionalInput);
+        }
+        else if (movementBlue.isAboveCharacter)
+        {
+            movementBlue.Controller.Move(Vector2.right * movementRed.Velocity.x * Time.deltaTime, movementRed.DirectionalInput);
         }
     }
 
@@ -191,9 +211,14 @@ public class PlayerMovementOverride : MonoBehaviour
 
             unplugging = false;
 
-            // register their fields again (if the unplug force is not strong enough to make you exit)
-            //movementRed.MagneticObject.RegisterForce(movementRed.AllyField.ID, Vector2.zero);
-            //movementBlue.MagneticObject.RegisterForce(movementBlue.AllyField.ID, Vector2.zero);
+            // register their fields again if the unplug force is not strong enough to make you exit
+            Collider2D redField = movementBlue.AllyField.Field;
+            // we only need to check one field since they are symmetrical
+            if (redField.OverlapPoint(movementBlue.transform.position))
+            {
+                movementRed.MagneticObject.RegisterForce(movementRed.AllyField.ID, Vector2.zero);
+                movementBlue.MagneticObject.RegisterForce(movementBlue.AllyField.ID, Vector2.zero);
+            }
         }
 
         _unplugCoroutine = null;
@@ -202,10 +227,22 @@ public class PlayerMovementOverride : MonoBehaviour
     // if a character jump and they are sticked together
     public void OnJumpInputDown(PlayerMovement movement)
     {
-        HashSet<Collider2D> colliders = movement.Controller.RaycastVertically(Vector2.down, 0.2f);
+        HashSet<Collider2D> colliders = movement.Controller.RaycastVertically(Vector2.down, 0.0f, 0.02f);
+
+        int hits = 0;
+        foreach (Collider2D coll in colliders)
+        {
+            string layerName = LayerMask.LayerToName(coll.gameObject.layer);
+            if (layerName == "PlayerRed" || layerName == "PlayerBlue")
+            {
+                continue;
+            }
+
+            hits++;
+        }
 
         // jump only if you are touching or close enough to the ground
-        if (colliders.Count != 0)
+        if (hits != 0)
         {
             // the 0.5 factor is used since if both characters are jumping their jump forces will sum up
             _redVelY += movementRed.MaxJumpSpeed * 0.5f;
