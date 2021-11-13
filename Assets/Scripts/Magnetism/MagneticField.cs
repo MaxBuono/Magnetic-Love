@@ -17,6 +17,7 @@ public class MagneticField : MonoBehaviour
 
     // Properties
     public int ID { get { return _myID; } }
+    public Collider2D Field { get { return _field; } }
 
     private void Awake()
     {
