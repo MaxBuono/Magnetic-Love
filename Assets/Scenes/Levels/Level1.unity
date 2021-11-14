@@ -139,27 +139,13 @@ GameObject:
   - component: {fileID: 33583416}
   - component: {fileID: 33583415}
   - component: {fileID: 33583414}
-  - component: {fileID: 33583413}
   m_Layer: 7
   m_Name: PlayerRed
-  m_TagString: Untagged
+  m_TagString: PlayerRed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &33583413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33583412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08252b6ab6c6bcc40b2d77c5c3cc75da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 0
 --- !u!114 &33583414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +192,7 @@ MonoBehaviour:
   minJumpHeight: 1
   timeToJumpApex: 0.3
   jumpWidth: 0.7
+  jumpPushForce: 1.7
   wallSlideMaxSpeed: 3
   wallStickTime: 0.15
   wallJumpClimb: {x: 7, y: 27}
@@ -213,6 +200,7 @@ MonoBehaviour:
   wallLeap: {x: 18, y: 17}
   allyMovement: {fileID: 1378296040}
   isStickToAlly: 0
+  isAboveCharacter: 0
   resultingVelX: 0
   resultingVelY: 0
 --- !u!114 &33583417
@@ -477,6 +465,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5339860467302864793, guid: 8820b65c0b817f84e95f9c67d06e4683, type: 3}
+      propertyPath: heart
+      value: 
+      objectReference: {fileID: 474770848}
     - target: {fileID: 8304293400067053146, guid: 8820b65c0b817f84e95f9c67d06e4683, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1209,6 +1201,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementRed: {fileID: 33583416}
   movementBlue: {fileID: 1378296040}
+  timeToUnplug: 2
+  unplugForce: 1
   unplugging: 0
 --- !u!114 &1351523657
 MonoBehaviour:
@@ -1256,7 +1250,7 @@ GameObject:
   - component: {fileID: 1378296041}
   m_Layer: 6
   m_Name: PlayerBlue
-  m_TagString: Untagged
+  m_TagString: PlayerBlue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1278,6 +1272,7 @@ MonoBehaviour:
   minJumpHeight: 1
   timeToJumpApex: 0.3
   jumpWidth: 0.7
+  jumpPushForce: 1.7
   wallSlideMaxSpeed: 3
   wallStickTime: 0.15
   wallJumpClimb: {x: 7, y: 27}
@@ -1285,6 +1280,7 @@ MonoBehaviour:
   wallLeap: {x: 18, y: 17}
   allyMovement: {fileID: 33583416}
   isStickToAlly: 0
+  isAboveCharacter: 0
   resultingVelX: 0
   resultingVelY: 0
 --- !u!114 &1378296041
@@ -1472,6 +1468,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5339860467302864793, guid: 8820b65c0b817f84e95f9c67d06e4683, type: 3}
+      propertyPath: heart
+      value: 
+      objectReference: {fileID: 474770848}
     - target: {fileID: 8304293400067053146, guid: 8820b65c0b817f84e95f9c67d06e4683, type: 3}
       propertyPath: m_RootOrder
       value: 1

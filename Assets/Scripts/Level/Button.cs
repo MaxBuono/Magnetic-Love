@@ -15,26 +15,24 @@ public class Button : MonoBehaviour
     private bool _isClicked = false;
     private Rigidbody2D parentRB;
     private Transform parentTransform;
+    private string _tagToCompare;
 
     private void Start()
     {
         parentRB = GetComponentInParent<Rigidbody2D>();
         parentTransform = GetComponentInParent<Transform>();
+        _tagToCompare = "Player" + color.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<MagneticField>())
-        {
-            return;
-        }
-        if (other.GetComponent<CharacterData>().color == color)
+        if (other.CompareTag(_tagToCompare))
         {
             _isClicked = true;
             //Click button
-                //Something here
-                //Open door
-            door.openDoor();
+            //Something here
+            //Open door
+            door.openDoor();    
         }
     }
     
@@ -42,12 +40,7 @@ public class Button : MonoBehaviour
     {
         if (needContinuosPressure)
         {
-            if (other.GetComponent<MagneticField>())
-            {
-                return;
-            }
-
-            if (other.GetComponent<CharacterData>().color == color)
+            if (other.CompareTag(_tagToCompare))
             {
                 _isClicked = false;
                 //Release Button

@@ -185,10 +185,9 @@ GameObject:
   - component: {fileID: 1110936705139367034}
   - component: {fileID: 8662717353668755853}
   - component: {fileID: 7350617689008117473}
-  - component: {fileID: 8121507617433568788}
   m_Layer: 7
   m_Name: PlayerRed
-  m_TagString: Untagged
+  m_TagString: PlayerRed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -349,6 +348,7 @@ MonoBehaviour:
   wallLeap: {x: 18, y: 17}
   allyMovement: {fileID: 4910409348797774707}
   isStickToAlly: 0
+  isAboveCharacter: 0
   resultingVelX: 0
   resultingVelY: 0
 --- !u!114 &8662717353668755853
@@ -380,19 +380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   polarization: 0
---- !u!114 &8121507617433568788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319198114396283255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08252b6ab6c6bcc40b2d77c5c3cc75da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 0
 --- !u!1 &2278566781217327474
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,10 +577,9 @@ GameObject:
   - component: {fileID: 4910409348797774707}
   - component: {fileID: 6018927990136360912}
   - component: {fileID: 7118746260702065544}
-  - component: {fileID: 871912209155763348}
   m_Layer: 6
   m_Name: PlayerBlue
-  m_TagString: Untagged
+  m_TagString: PlayerBlue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,6 +740,7 @@ MonoBehaviour:
   wallLeap: {x: 18, y: 17}
   allyMovement: {fileID: 1110936705139367034}
   isStickToAlly: 0
+  isAboveCharacter: 0
   resultingVelX: 0
   resultingVelY: 0
 --- !u!114 &6018927990136360912
@@ -785,19 +772,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   polarization: 1
---- !u!114 &871912209155763348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2683831885065657634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08252b6ab6c6bcc40b2d77c5c3cc75da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 1
 --- !u!1 &4946983501904276074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,6 +1357,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4203245626330196850, guid: 4d1e7870135a0e44980a1845ad12a462, type: 3}
+      propertyPath: increment
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 4203245626330196851, guid: 4d1e7870135a0e44980a1845ad12a462, type: 3}
       propertyPath: m_Color.b
       value: 0.24292453
@@ -1418,6 +1396,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1904248973940252455}
     m_Modifications:
+    - target: {fileID: 5339860467302864793, guid: 8820b65c0b817f84e95f9c67d06e4683, type: 3}
+      propertyPath: heart
+      value: 
+      objectReference: {fileID: 7349383525627369228}
     - target: {fileID: 8304293400067053146, guid: 8820b65c0b817f84e95f9c67d06e4683, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1508,6 +1490,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1904248973940252455}
     m_Modifications:
+    - target: {fileID: 5339860467302864793, guid: 8820b65c0b817f84e95f9c67d06e4683, type: 3}
+      propertyPath: heart
+      value: 
+      objectReference: {fileID: 7349383525627369228}
     - target: {fileID: 8304293400067053146, guid: 8820b65c0b817f84e95f9c67d06e4683, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 39946603}
   m_Layer: 7
   m_Name: PlayerRed
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,6 +193,7 @@ MonoBehaviour:
   minJumpHeight: 1
   timeToJumpApex: 0.3
   jumpWidth: 0.7
+  jumpPushForce: 1.7
   wallSlideMaxSpeed: 3
   wallStickTime: 0.15
   wallJumpClimb: {x: 7, y: 27}
@@ -200,6 +201,7 @@ MonoBehaviour:
   wallLeap: {x: 18, y: 17}
   allyMovement: {fileID: 446779406}
   isStickToAlly: 0
+  isAboveCharacter: 0
   resultingVelX: 0
   resultingVelY: 0
 --- !u!114 &39946598
@@ -405,6 +407,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementRed: {fileID: 39946597}
   movementBlue: {fileID: 446779406}
+  timeToUnplug: 2
+  unplugForce: 1
   unplugging: 0
 --- !u!1 &186755701
 GameObject:
@@ -654,6 +658,7 @@ MonoBehaviour:
   minJumpHeight: 1
   timeToJumpApex: 0.3
   jumpWidth: 0.7
+  jumpPushForce: 1.7
   wallSlideMaxSpeed: 3
   wallStickTime: 0.15
   wallJumpClimb: {x: 7, y: 27}
@@ -661,6 +666,7 @@ MonoBehaviour:
   wallLeap: {x: 18, y: 17}
   allyMovement: {fileID: 39946597}
   isStickToAlly: 0
+  isAboveCharacter: 0
   resultingVelX: 0
   resultingVelY: 0
 --- !u!114 &446779407

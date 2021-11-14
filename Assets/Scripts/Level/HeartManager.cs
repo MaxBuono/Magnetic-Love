@@ -27,14 +27,9 @@ public class HeartManager : MonoBehaviour
     {
         //Here have to be the animation of the heart based on _progress
         
-    }
-
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
         if (_isGrowing)
         {
-            _progress += increment * Time.fixedDeltaTime;
+            _progress += increment * Time.deltaTime;
             if (_progress > maxProgress && _firstTimeReachMaxProgress)
             {
                 //Go to next Level
@@ -44,14 +39,15 @@ public class HeartManager : MonoBehaviour
         }
         else
         {
-            if (_progress - increment * Time.fixedDeltaTime < 0)
+            if (_progress - increment * Time.deltaTime < 0)
             {
                 _progress = 0;
-            }else _progress -= increment * Time.fixedDeltaTime;
+            }else _progress -= increment * Time.deltaTime;
         }
+        
     }
-
-    public void setBooleans(CharColor _color, bool _isOnGoal)
+    
+    public void setIsOnGoal(CharColor _color, bool _isOnGoal)
     {
         if (_color == CharColor.Blue)
             _blueIsOnGoal = _isOnGoal;

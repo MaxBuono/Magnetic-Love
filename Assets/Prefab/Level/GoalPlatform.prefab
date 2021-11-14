@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8304293400067053149}
   - component: {fileID: 8304293400067053148}
   - component: {fileID: 8304293400067053151}
+  - component: {fileID: 5339860467302864793}
   m_Layer: 0
   m_Name: GoalPlatform
   m_TagString: Passable
@@ -160,6 +161,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5339860467302864793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8304293400067053150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b735bb6da6d66574590540fa58d394bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  heart: {fileID: 0}
 --- !u!1 &8304293400268201296
 GameObject:
   m_ObjectHideFlags: 0

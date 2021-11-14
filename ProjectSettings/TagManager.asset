@@ -7,6 +7,8 @@ TagManager:
   - Door
   - Passable
   - SlidingWall
+  - PlayerRed
+  - PlayerBlue
   layers:
   - Default
   - TransparentFX
