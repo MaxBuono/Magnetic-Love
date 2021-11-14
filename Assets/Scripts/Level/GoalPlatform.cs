@@ -9,16 +9,19 @@ public class GoalPlatform : MonoBehaviour
 {
     //Externals
     public CharColor color;
-    public GameObject heart;
 
     //Internals
     private bool isOnGoal = false;
     private HeartManager _heartManager;
     private string _tagToCompare;
 
+    private void Awake()
+    {
+        _heartManager = GameObject.FindGameObjectWithTag("Heart").GetComponent<HeartManager>();
+    }
+
     private void Start()
     {
-        _heartManager = heart.GetComponent<HeartManager>();
         _tagToCompare = "Player" + color.ToString();
     }
 
@@ -26,7 +29,7 @@ public class GoalPlatform : MonoBehaviour
     {
         if (other.CompareTag(_tagToCompare))
         {
-            _heartManager.setIsOnGoal(color,true); 
+            _heartManager.SetIsOnGoal(color,true); 
         }
     }
 
@@ -34,7 +37,7 @@ public class GoalPlatform : MonoBehaviour
     {
         if (other.CompareTag(_tagToCompare))
         {
-            _heartManager.setIsOnGoal(color,false); 
+            _heartManager.SetIsOnGoal(color,false); 
         }
     }
 }

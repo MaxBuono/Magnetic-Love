@@ -10,7 +10,7 @@ public class HeartManager : MonoBehaviour
     public float increment = 50f;
     
     //Internals
-    public float _progress = 0f;
+    private float _progress = 0f;
     private bool _blueIsOnGoal = false;
     private bool _redIsOnGoal = false;
     private bool _isGrowing = false;
@@ -42,17 +42,18 @@ public class HeartManager : MonoBehaviour
             if (_progress - increment * Time.deltaTime < 0)
             {
                 _progress = 0;
-            }else _progress -= increment * Time.deltaTime;
+            }else 
+                _progress -= increment * Time.deltaTime;
         }
         
     }
     
-    public void setIsOnGoal(CharColor _color, bool _isOnGoal)
+    public void SetIsOnGoal(CharColor color, bool isOnGoal)
     {
-        if (_color == CharColor.Blue)
-            _blueIsOnGoal = _isOnGoal;
-        else if (_color == CharColor.Red)
-            _redIsOnGoal = _isOnGoal;
+        if (color == CharColor.Blue)
+            _blueIsOnGoal = isOnGoal;
+        else if (color == CharColor.Red)
+            _redIsOnGoal = isOnGoal;
         if (_blueIsOnGoal && _redIsOnGoal)
             _isGrowing = true;
         else _isGrowing = false;

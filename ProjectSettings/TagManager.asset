@@ -9,6 +9,7 @@ TagManager:
   - SlidingWall
   - PlayerRed
   - PlayerBlue
+  - Heart
   layers:
   - Default
   - TransparentFX
