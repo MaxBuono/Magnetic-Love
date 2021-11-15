@@ -14,6 +14,7 @@ public class PlayerMovementOverride : MonoBehaviour
     public float unplugForce = 1.0f;
 
     [HideInInspector] public bool unplugging = false;
+    [HideInInspector] public bool waitingForSecondJump;
 
     // Internals
     private float _redVelX;
@@ -233,9 +234,27 @@ public class PlayerMovementOverride : MonoBehaviour
         }
     }
 
+    // used to enlarge the double jump window for the player
+    private IEnumerator WaitForSecondJump()
+    {
+        waitingForSecondJump = true;
+
+        yield return new WaitForSeconds(0.05f);
+
+        waitingForSecondJump = false;
+    }
+
     // if a character jump and they are sticked together
     public void OnJumpInputDown(PlayerMovement movement)
     {
+        // second jump in a short span of time
+        if (waitingForSecondJump)
+        {
+            _redVelY += movementRed.MaxJumpSpeed * 0.5f;
+            _blueVelY += movementBlue.MaxJumpSpeed * 0.5f;
+            return;
+        }
+
         HashSet<Collider2D> colliders = movement.Controller.RaycastVertically(Vector2.down, 0.0f, 0.02f);
 
         int hits = 0;
@@ -256,6 +275,8 @@ public class PlayerMovementOverride : MonoBehaviour
             // the 0.5 factor is used since if both characters are jumping their jump forces will sum up
             _redVelY += movementRed.MaxJumpSpeed * 0.5f;
             _blueVelY += movementBlue.MaxJumpSpeed * 0.5f;
+
+            StartCoroutine(WaitForSecondJump());
         }
     }
 }
