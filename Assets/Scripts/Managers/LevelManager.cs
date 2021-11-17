@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     private static int _nextLevel = 0;
-    private static int _maxLevel = 4;
+    private static int _maxLevel = 7;
     private static int _levelPlayed = -1;
 
     private static string SceneName(int level)
