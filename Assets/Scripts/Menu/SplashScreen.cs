@@ -13,7 +13,7 @@ namespace MenuManagement
     public class SplashScreen : MonoBehaviour
     {
         private ScreenFader _screenFader;
-        [SerializeField] private Button _startButton;
+        public Button startButton;
         [SerializeField] private TMP_Text _subtitleText;
         
         public bool automatic = false;
@@ -58,17 +58,17 @@ namespace MenuManagement
 
         private void InitSplashScreenComponents()
         {
-            if (_startButton != null)
+            if (startButton != null)
             {
                 if (automatic)
                 {
                     // disable button?
-                    _startButton.enabled = false;
+                    startButton.enabled = false;
                 }
                 else
                 {
                     Debug.Log("Splash Screen Button Enabled");
-                    _startButton.enabled = true;
+                    startButton.enabled = true;
                 }
             }
 

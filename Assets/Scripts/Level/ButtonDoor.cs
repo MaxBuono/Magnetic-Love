@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Button : MonoBehaviour
+public class ButtonDoor : MonoBehaviour
 {
     //Externals
     public CharColor color;
