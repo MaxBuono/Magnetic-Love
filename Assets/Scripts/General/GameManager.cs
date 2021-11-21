@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using MenuManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 // NOTE: the game manager is supposed to handle everything that requires
 // a higher level management, usually aspects not directly related
 // to the game objects themselves (e.g. game loop, registering colliders IDs and so on). 
 
 public class GameManager : MonoBehaviour
-{   
+{
     [SerializeField] private TransitionFader endTransitionPrefab;     // transition screen for ending
     // Singleton
     private GameManager() { }
@@ -32,11 +33,20 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+        // cache all the (enabled) scenes file path to use the correct level names in the LevelManager script
+        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        {
+            if (scene.enabled)
+            {
+                _levels.Add(scene.path);
+                Debug.Log(_levels[_levels.Count - 1]);
+            }
+        }
     }
 
 
     // Public
-
 
     // Internals
     private float _gravity = 0.0f;
@@ -44,6 +54,7 @@ public class GameManager : MonoBehaviour
     // Dictionaries used to save performances by caching components avoiding getting them at runtime
     private Dictionary<int, MagneticObject> _magneticObjects = new Dictionary<int, MagneticObject>();
     private Dictionary<int, Controller2D> _controllers2D = new Dictionary<int, Controller2D>();
+    private List<string> _levels = new List<string>();
 
     // Properties
     public Dictionary<int, MagneticObject> MagneticObjects { get { return _magneticObjects; } }
