@@ -87,8 +87,8 @@ GameObject:
   - component: {fileID: 7038121740130065323}
   - component: {fileID: 7038121740130065322}
   - component: {fileID: 7038121740130065321}
-  - component: {fileID: 3873941312146540294}
   - component: {fileID: 7576093374136586597}
+  - component: {fileID: 2661218152228705225}
   m_Layer: 5
   m_Name: TransitionScreen
   m_TagString: Untagged
@@ -178,18 +178,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3873941312146540294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7038121740130065320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4da762b3ab10e4e5a81c7d48e8992e39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7576093374136586597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +200,18 @@ MonoBehaviour:
   lifetime: 2
   delay: 0.3
   transitionText: {fileID: 7038121740313636596}
+--- !u!114 &2661218152228705225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038121740130065320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8992e31ed3987584397c38d132ef10a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7038121740313636602
 GameObject:
   m_ObjectHideFlags: 0

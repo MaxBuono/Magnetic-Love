@@ -24,6 +24,12 @@ namespace MenuManagement
             CreditsScreen.Open();
         }
         
+        public void OnSelectLevelPressed()
+        {
+            print("LEVEL SELECT");
+            SelectLevelMenu.Open();
+        }
+        
         public void OnPlayPressed()
         {
             if (fadeToPlay)

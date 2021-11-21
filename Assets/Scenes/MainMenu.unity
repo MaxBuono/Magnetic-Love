@@ -351,6 +351,7 @@ MonoBehaviour:
   mainMenuPrefab: {fileID: 6092510080712798837, guid: 723ab75ca93d85f46a6529b381b1ab0b, type: 3}
   settingsMenuPrefab: {fileID: 6443077626859581411, guid: c7a573353bbfa614ebd327ed6061dfba, type: 3}
   creditsScreenPrefab: {fileID: 2527524264483612585, guid: 18aeb9ffe6a6113439d61eb2ada54ea4, type: 3}
+  SelectLevelMenuPrefab: {fileID: 5419417749958870743, guid: 93cbc06bd89702c4483f7331ac49fb58, type: 3}
   gameMenuPrefab: {fileID: 512288497080825901, guid: d10577298f1701540b619c58799f15a5, type: 3}
   pauseMenuPrefab: {fileID: 365491642438586408, guid: 764e8edf4665f1e48a65af692cff2498, type: 3}
   levelCompletedScreen: {fileID: 422376531716639787, guid: e97a60fed0d203046845a21f2bc8a386, type: 3}
