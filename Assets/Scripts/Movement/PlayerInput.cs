@@ -23,6 +23,7 @@ public class PlayerInput : MonoBehaviour
     void Start()
     {
         _playerMovement = GetComponent<PlayerMovement>();
+        isPressingJump = false;
     }
 
     void Update()
@@ -32,7 +33,7 @@ public class PlayerInput : MonoBehaviour
         _playerMovement.SetDirectionalInput(directionalInput);
 
         // Jump
-        if (Input.GetButtonDown(jump))
+        if (Input.GetButton(jump) && !isPressingJump)
         {
             if (_playerMovement.isStickToAlly)
             {
