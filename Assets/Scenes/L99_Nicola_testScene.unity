@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 15252516}
   m_Layer: 7
   m_Name: PlayerRed
-  m_TagString: Untagged
+  m_TagString: PlayerRed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1034,8 +1034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490e2028b79559148940b7537b1495cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementRed: {fileID: 15252518}
-  movementBlue: {fileID: 238279054}
   timeToUnplug: 1.5
   unplugForce: 15
   unplugging: 0
@@ -1058,7 +1056,7 @@ GameObject:
   - component: {fileID: 238279060}
   m_Layer: 6
   m_Name: PlayerBlue
-  m_TagString: Untagged
+  m_TagString: PlayerBlue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

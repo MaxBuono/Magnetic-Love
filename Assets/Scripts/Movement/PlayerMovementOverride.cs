@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
 
 // This script allows the characters to move as a single entity when they stick 
 // to each other (due to magnetic forces) by controlling and overriding their movements
@@ -8,8 +10,6 @@ using UnityEngine;
 public class PlayerMovementOverride : MonoBehaviour
 {
     // Public
-    public PlayerMovement movementRed;
-    public PlayerMovement movementBlue;
     public float timeToUnplug = 2.0f;
     public float unplugForce = 1.0f;
 
@@ -22,6 +22,8 @@ public class PlayerMovementOverride : MonoBehaviour
     private float _blueVelX;
     private float _blueVelY;
 
+    private PlayerMovement movementRed;
+    private PlayerMovement movementBlue;
     private IEnumerator _unplugCoroutine = null;
 
 
@@ -48,9 +50,11 @@ public class PlayerMovementOverride : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
     void Update()
     {
+        // avoid to process anything if you are not inside a level scene
+        if (movementRed == null || movementBlue == null) return;
+
         if (movementRed.isStickToAlly || movementBlue.isStickToAlly)
         {
             // Handle unplug situation when both characters are moving 
@@ -97,6 +101,35 @@ public class PlayerMovementOverride : MonoBehaviour
         else if (movementBlue.isAboveCharacter)
         {
             movementBlue.Controller.Move(Vector2.right * movementRed.Velocity.x * Time.deltaTime, movementRed.DirectionalInput);
+        }
+    }
+
+    private void OnEnable()
+    {
+        // Cache the characters movements
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // if I'm in a level, cache the characters movements
+        string pattern = @"^L\d+.*";
+        Regex rg = new Regex(pattern);
+
+        if (rg.IsMatch(scene.name))
+        {
+            movementRed = GameObject.FindGameObjectWithTag("PlayerRed").GetComponent<PlayerMovement>();
+            movementBlue = GameObject.FindGameObjectWithTag("PlayerBlue").GetComponent<PlayerMovement>();
+        }
+        else
+        {
+            movementRed = null;
+            movementBlue = null;
         }
     }
 
@@ -273,8 +306,8 @@ public class PlayerMovementOverride : MonoBehaviour
         if (hits != 0)
         {
             // the 0.5 factor is used since if both characters are jumping their jump forces will sum up
-            _redVelY += movementRed.MaxJumpSpeed * 0.5f;
-            _blueVelY += movementBlue.MaxJumpSpeed * 0.5f;
+            _redVelY += movementRed.MaxJumpSpeed * 0.7f;
+            _blueVelY += movementBlue.MaxJumpSpeed * 0.7f;
 
             StartCoroutine(WaitForSecondJump());
         }
