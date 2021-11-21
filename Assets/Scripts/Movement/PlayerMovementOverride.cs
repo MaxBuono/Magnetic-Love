@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Text.RegularExpressions;
 
 // This script allows the characters to move as a single entity when they stick 
 // to each other (due to magnetic forces) by controlling and overriding their movements

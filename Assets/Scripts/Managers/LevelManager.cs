@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
 
     private static string SceneName(int level)
     {
-        return "Scenes/Levels/L" + level + "-LevelName";
+        return GameManager.Instance.Levels[level - 1];
     }
     
     public static void LoadLevel(int level)

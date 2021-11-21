@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: cb3ae9960b2a09049987a57852252bf4
   - enabled: 1
-    path: Assets/Scenes/Levels/L1-LevelName.unity
+    path: Assets/Scenes/Levels/L1-pluto.unity
     guid: d8afebf1eac3d6a40be100c9556b9161
   - enabled: 1
-    path: Assets/Scenes/Levels/L2-LevelName.unity
+    path: Assets/Scenes/Levels/L2-pippo.unity
     guid: f9cdc2c79dc03e349b3c5f2ae5f85066
   - enabled: 1
     path: Assets/Scenes/Levels/L3-LevelName.unity

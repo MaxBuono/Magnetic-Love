@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using MenuManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,13 +35,18 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        // cache all the (enabled) scenes file path to use the correct level names in the LevelManager script
+        // cache all the (enabled) level names to use in the LevelManager script
+        string pattern = @"L\d+-\w*";
+        Regex rg = new Regex(pattern);
         foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
         {
             if (scene.enabled)
             {
-                _levels.Add(scene.path);
-                Debug.Log(_levels[_levels.Count - 1]);
+                Match match = rg.Match(scene.path);
+                if (match.Success)
+                {
+                    _levels.Add(match.Value);
+                }
             }
         }
     }
@@ -60,6 +66,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<int, MagneticObject> MagneticObjects { get { return _magneticObjects; } }
     public Dictionary<int, Controller2D> Controllers2D { get { return _controllers2D; } }
     public float Gravity { get { return _gravity; } set { _gravity = value; } }
+    public List<string> Levels { get { return _levels; } }
 
     private void Start()
     {
