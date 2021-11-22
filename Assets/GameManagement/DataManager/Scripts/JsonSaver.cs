@@ -10,7 +10,7 @@ namespace GameManagement.Data
 {
     public class JsonSaver
     {
-        private static readonly string _filename = "saveData1.sav";
+        private static readonly string _filename = "saveData.sav";
 
         public static string GetSaveFilename()
         {
@@ -54,7 +54,8 @@ namespace GameManagement.Data
                 using (StreamReader reader = new StreamReader(filestream))
                 {
                     json = reader.ReadToEnd();
-
+                    
+                    //Check the hash
                     if (CheckData(json))
                     {
                         Debug.Log("DATA CHECK OK!");
@@ -92,7 +93,7 @@ namespace GameManagement.Data
         private bool CheckData(string json)
         {
             SaveData tempSaveData = new SaveData();
-            Debug.Log("JSON IN "+json);
+            Debug.Log("JSON IN " + json);
             
             JsonUtility.FromJsonOverwrite(json, tempSaveData);
 

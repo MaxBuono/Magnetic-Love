@@ -9,23 +9,12 @@ namespace GameManagement.Data
     public class DataManager : MonoBehaviour
     {
         private SaveData _saveData;
-        private JsonSaver _jsonSaver; 
+        private JsonSaver _jsonSaver;
 
-        public float MasterVolume
+        public int LevelAt
         {
-            get { return _saveData.MasterVolume;  }
-            set { _saveData.MasterVolume = value; }
-        }
-        
-        public float SFXVolume
-        {
-            get { return _saveData.SfxVolume;  }
-            set { _saveData.SfxVolume = value; }
-        }
-        public float MusicVolume
-        {
-            get { return _saveData.MusicVolume;  }
-            set { _saveData.MusicVolume = value; }
+            get { return _saveData.LevelAt;  }
+            set { _saveData.LevelAt = value; }
         }
 
         private void Awake()
@@ -37,6 +26,7 @@ namespace GameManagement.Data
         public void Save()
         {
             _jsonSaver.Save(_saveData);
+            Debug.Log("Save on json");
         }
 
         public void Load()
@@ -44,7 +34,7 @@ namespace GameManagement.Data
             _jsonSaver.Load(_saveData);
             Debug.Log(_saveData);
         }
-
+        
         private void OnApplicationQuit()
         {
             _jsonSaver.Save(_saveData);

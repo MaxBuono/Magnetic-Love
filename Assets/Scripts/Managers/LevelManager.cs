@@ -48,7 +48,6 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene(SceneName(_levelPlayed));
         }
     }
-
     
     public static void ReloadLevel()
     {
@@ -59,5 +58,10 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene("Scenes/MainMenu");
         MainMenu.Open();
+    }
+
+    public static int GetLevelPlayed()
+    {
+        return _levelPlayed;
     }
 }

@@ -5,15 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
-    public float MasterVolume = 0f;
-    public float SfxVolume = 0f;
-    public float MusicVolume = 0f;
+    public int LevelAt = 2;
     public string hashValue;
-
+    
     public SaveData()
     {
-        MasterVolume = 0f;
-        SfxVolume = 0f;
-        MusicVolume = 0f;
+        LevelAt = 2;
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameManagement.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,20 +13,15 @@ namespace MenuManagement
         public Button[] levelButtons;
         [SerializeField] private float playDelay = 0.5f;
         [SerializeField] private TransitionFader transitionFaderPrefab;
-        
-        public void OnLevelButtonPressed()
+
+        private DataManager _dataManager;
+
+        protected override void Awake()
         {
-            if (fadeToPlay)
-            {
-                StartCoroutine(OnPlayPressedRoutine());
-            }
-            else
-            {
-                LevelManager.LoadLevel(1);
-                GameMenu.Open();
-            }
+            base.Awake();
+            _dataManager = FindObjectOfType<DataManager>();
         }
-        
+
         private IEnumerator OnPlayPressedRoutine()
         {
             print("ACTIVATE THE TRANSITION FADER");
@@ -37,14 +33,29 @@ namespace MenuManagement
 
         private void Start()
         {
+            LoadData();
+        }
+        
+        public void LoadData()
+        {
+            if (_dataManager == null )
+                return;
+            
+            _dataManager.Load();
+            
             //Level of the player
-            int levelAt = 2;
-
-            for (int i = 0; i < levelButtons.Length; i++)
+            int levelAt = _dataManager.LevelAt;
+            Debug.Log("Level of the player" + levelAt);
+            
+            for (int i = 0; i< levelButtons.Length; i++)
             {
                 if (i > levelAt)
                 {
                     levelButtons[i].interactable = false;
+                }
+                else
+                {
+                    levelButtons[i].interactable = true;
                 }
             }
         }

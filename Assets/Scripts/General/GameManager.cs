@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using GameManagement.Data;
 using MenuManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     // Singleton
     private GameManager() { }
     private static GameManager _instance = null;
+    private DataManager _dataManager;
 
     public static GameManager Instance { get { return _instance; } }
 
@@ -49,6 +51,9 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        
+        _dataManager = FindObjectOfType<DataManager>();
+        //_dataManager.Delete();
     }
 
 
@@ -124,9 +129,18 @@ public class GameManager : MonoBehaviour
     
     public void LevelCompleted()
     {
-        // - save the data
-        //   are there any statistics that need to be saved?
-
+        int levelAt = LevelManager.GetLevelPlayed();
+        if (_dataManager != null)
+        {
+            Debug.Log("datamanager != null" + "datamanager.leveAt" + _dataManager.LevelAt + levelAt);
+            if (levelAt > _dataManager.LevelAt)
+            {
+                _dataManager.LevelAt = levelAt;
+                _dataManager.Save();
+            }
+            
+        }
+        
         if (!LevelManager.CompletedAllLevels())
         {
             StartCoroutine(LevelCompletedRoutine());
