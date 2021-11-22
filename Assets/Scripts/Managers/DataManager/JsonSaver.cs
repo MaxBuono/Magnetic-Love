@@ -49,16 +49,21 @@ namespace GameManagement.Data
             string loadFilename = GetSaveFilename();
             string json;
 
-            try
+            /*try
             {
                 File.Open(loadFilename, FileMode.Open);
             }
             catch (FileNotFoundException e)
             {
                 InitializeJson();
+            }*/
+
+            if (!File.Exists(loadFilename))
+            {
+                InitializeJson();
             }
             
-            using FileStream filestream = File.Open(loadFilename, FileMode.Open);
+            FileStream filestream = new FileStream(loadFilename, FileMode.Open);
             
             if (File.Exists(loadFilename))
             {
