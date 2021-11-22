@@ -27,7 +27,7 @@ namespace MenuManagement
         public void OnSelectLevelPressed()
         {
             print("LEVEL SELECT");
-            SelectLevelMenu.Open();
+            SceneManager.LoadScene("Scenes/SelectLevelScene");
         }
         
         public void OnPlayPressed()

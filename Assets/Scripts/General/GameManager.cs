@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     private GameManager() { }
     private static GameManager _instance = null;
     private DataManager _dataManager;
+    public SelectLevelMenu SelectLevelMenuPrefab;
 
     public static GameManager Instance { get { return _instance; } }
 
@@ -53,7 +54,6 @@ public class GameManager : MonoBehaviour
         }
         
         _dataManager = FindObjectOfType<DataManager>();
-        //_dataManager.Delete();
     }
 
 
@@ -132,7 +132,6 @@ public class GameManager : MonoBehaviour
         int levelAt = LevelManager.GetLevelPlayed();
         if (_dataManager != null)
         {
-            Debug.Log("datamanager != null" + "datamanager.leveAt" + _dataManager.LevelAt + levelAt);
             if (levelAt > _dataManager.LevelAt)
             {
                 _dataManager.LevelAt = levelAt;
