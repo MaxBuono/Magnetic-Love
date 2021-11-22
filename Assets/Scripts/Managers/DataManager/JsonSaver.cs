@@ -11,9 +11,11 @@ namespace GameManagement.Data
     public class JsonSaver
     {
         private static readonly string _filename = "saveData.sav";
+        private SaveData _saveData = new SaveData();
 
         public static string GetSaveFilename()
         {
+            // C:/Users/UserName/AppData/LocalLow/DefaultCompany/MagneticLove
             return Application.persistentDataPath + "/" + _filename;
         }
 
@@ -47,8 +49,17 @@ namespace GameManagement.Data
             string loadFilename = GetSaveFilename();
             string json;
 
-            FileStream filestream = new FileStream(loadFilename, FileMode.Open);
-
+            try
+            {
+                File.Open(loadFilename, FileMode.Open);
+            }
+            catch (FileNotFoundException e)
+            {
+                InitializeJson();
+            }
+            
+            using FileStream filestream = File.Open(loadFilename, FileMode.Open);
+            
             if (File.Exists(loadFilename))
             {
                 using (StreamReader reader = new StreamReader(filestream))
@@ -121,6 +132,11 @@ namespace GameManagement.Data
                 hexString += hash[i].ToString("x2");
 
             return hexString;
+        }
+
+        private void InitializeJson()
+        {
+            Save(_saveData);
         }
     }
 }
