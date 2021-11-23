@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9942476, g: 0.8820755, b: 1, a: 1}
+  m_Color: {r: 0.9490196, g: 0.93333334, b: 0.90588236, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Programmer\nProgrammer \nProgrammer\nLevel Designer\nDesigner/Artist\n"
+  m_text: "Programmer\nProgrammer \nProgrammer\nGame Designer\nDesigner/Artist\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3eceab745b273684ebea541ad2273c6c, type: 2}
   m_sharedMaterial: {fileID: -8511370793331104217, guid: 3eceab745b273684ebea541ad2273c6c, type: 2}
