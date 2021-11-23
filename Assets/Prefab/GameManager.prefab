@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endTransitionPrefab: {fileID: 9001649552736723920, guid: 7e049116e771b42049d34fb11c023084, type: 3}
+  SelectLevelMenuPrefab: {fileID: 0}
 --- !u!114 &6886589232747700170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490e2028b79559148940b7537b1495cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToUnplug: 1.5
+  timeToUnplug: 0.9
   unplugForce: 15
   unplugging: 0
   waitingForSecondJump: 0
