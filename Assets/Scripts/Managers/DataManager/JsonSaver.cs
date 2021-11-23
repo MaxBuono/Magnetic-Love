@@ -48,16 +48,8 @@ namespace GameManagement.Data
         {
             string loadFilename = GetSaveFilename();
             string json;
-
-            /*try
-            {
-                File.Open(loadFilename, FileMode.Open);
-            }
-            catch (FileNotFoundException e)
-            {
-                InitializeJson();
-            }*/
-
+            
+            //Check if file exist. If not Create a file with unlocked level 1-2
             if (!File.Exists(loadFilename))
             {
                 InitializeJson();
