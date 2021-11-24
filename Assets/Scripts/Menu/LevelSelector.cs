@@ -9,6 +9,9 @@ using UnityEngine.UI;
 public class LevelSelector : MonoBehaviour
 {
    public Button[] levelButtons;
+   public Sprite notInteractableButtonSprite;
+   public Sprite interactableButtonSprite;
+   
    private DataManager _dataManager;
    public void Select(int level)
    {
@@ -37,10 +40,12 @@ public class LevelSelector : MonoBehaviour
          if (i > levelAt)
          {
             levelButtons[i].interactable = false;
+            levelButtons[i].image.sprite = notInteractableButtonSprite;
          }
          else
          {
             levelButtons[i].interactable = true;
+            levelButtons[i].image.sprite = interactableButtonSprite;
          }
       }
    }

@@ -25,7 +25,6 @@ namespace MenuManagement
         public void OnMainMenuPressed()
         {
             Time.timeScale = 1f;
-            SceneManager.LoadScene("MenuManagement/Scenes/MainMenu");
             MainMenu.Open();
         }
         

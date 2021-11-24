@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8304293400067053146}
   - component: {fileID: 8304293400067053149}
   - component: {fileID: 8304293400067053148}
-  - component: {fileID: 8304293400067053151}
   - component: {fileID: 5339860467302864793}
   m_Layer: 0
   m_Name: GoalPlatformRed
@@ -112,55 +111,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8304293400067053151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8304293400067053150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ac5e61d7609ccb41ab98149890c4ec9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collisionMask:
-    serializedVersion: 2
-    m_Bits: 1
-  showRays: 0
-  distBetweenRays: 0.25
-  passengerMask:
-    serializedVersion: 2
-    m_Bits: 448
-  localWaypoints:
-  - {x: 0, y: 0, z: 0}
-  isCyclic: 0
-  speed: 2
-  waitTime: 0
-  easeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &5339860467302864793
 MonoBehaviour:
   m_ObjectHideFlags: 0

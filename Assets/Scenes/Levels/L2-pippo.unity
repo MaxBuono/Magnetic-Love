@@ -537,6 +537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoalPlatformBlue
       objectReference: {fileID: 0}
+    - target: {fileID: 8304293400067053151, guid: 8820b65c0b817f84e95f9c67d06e4683, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8304293400268201294, guid: 8820b65c0b817f84e95f9c67d06e4683, type: 3}
       propertyPath: m_Size.x
       value: 0.95
@@ -739,6 +743,10 @@ PrefabInstance:
     - target: {fileID: 8304293400067053150, guid: cc5cea3611d126c48842d753f367fb26, type: 3}
       propertyPath: m_Name
       value: GoalPlatformRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304293400067053151, guid: cc5cea3611d126c48842d753f367fb26, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc5cea3611d126c48842d753f367fb26, type: 3}
@@ -1226,6 +1234,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8956573372271756226, guid: ca5da7096e7644045830d980c6263422, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8956573372271756229, guid: ca5da7096e7644045830d980c6263422, type: 3}
       propertyPath: m_Name
       value: Platform
@@ -1281,6 +1293,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8956573372271756225, guid: ca5da7096e7644045830d980c6263422, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956573372271756226, guid: ca5da7096e7644045830d980c6263422, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8956573372271756229, guid: ca5da7096e7644045830d980c6263422, type: 3}
@@ -1414,7 +1430,6 @@ GameObject:
   - component: {fileID: 1378296040}
   - component: {fileID: 1378296043}
   - component: {fileID: 1378296042}
-  - component: {fileID: 1378296041}
   m_Layer: 6
   m_Name: PlayerBlue
   m_TagString: PlayerBlue
@@ -1450,18 +1465,6 @@ MonoBehaviour:
   isAboveCharacter: 0
   resultingVelX: 0
   resultingVelY: 0
---- !u!114 &1378296041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378296039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08252b6ab6c6bcc40b2d77c5c3cc75da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1378296042
 MonoBehaviour:
   m_ObjectHideFlags: 0
