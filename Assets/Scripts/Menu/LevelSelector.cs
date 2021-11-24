@@ -44,4 +44,10 @@ public class LevelSelector : MonoBehaviour
          }
       }
    }
+   
+   public void OnBackPressed()
+   {
+      print("LEVEL SELECT");
+      MainMenu.Open();
+   }
 }

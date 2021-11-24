@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     private GameManager() { }
     private static GameManager _instance = null;
     private DataManager _dataManager;
-    public SelectLevelMenu SelectLevelMenuPrefab;
 
     public static GameManager Instance { get { return _instance; } }
 
