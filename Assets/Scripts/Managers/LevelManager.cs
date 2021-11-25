@@ -15,6 +15,11 @@ public class LevelManager : MonoBehaviour
         return GameManager.Instance.Levels[level - 1];
     }
     
+    public static int GetLevel()
+    {
+        return _levelPlayed;
+    }
+
     public static void LoadLevel(int level)
     {
         if (level < _maxLevel)

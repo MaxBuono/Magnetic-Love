@@ -964,16 +964,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Basciotti Daniele
+  m_text: 'Daniele Basciotti
 
-    Buono Massimo
+    Massimo Buono
 
-    Iadicco Nicola Giorgio
+    Nicola Giorgio Iadicco
 
-    Muto
     Giuliana
+    Muto
 
-    You Bo-Cheng'
+    Bo-Cheng You'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3eceab745b273684ebea541ad2273c6c, type: 2}
   m_sharedMaterial: {fileID: -8511370793331104217, guid: 3eceab745b273684ebea541ad2273c6c, type: 2}
