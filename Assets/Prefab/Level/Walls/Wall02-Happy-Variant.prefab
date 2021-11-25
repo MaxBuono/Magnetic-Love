@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &392675513269341239
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1712642610412603217, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712642610412603217, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712642610412603217, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712642610412603217, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712642610412603217, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712642610412603217, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712642610412603217, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712642610412603217, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712642610412603217, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712642610412603217, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712642610412603217, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961841416444743086, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Size.x
+      value: 10.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961841416444743086, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Size.y
+      value: 2.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961841416444743086, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bf916fdaf58bda9428807216322d21d9, type: 3}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0.39999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 10.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 10.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629281948061017720, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Name
+      value: Wall02-Happy-Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
