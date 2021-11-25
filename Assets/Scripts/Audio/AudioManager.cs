@@ -31,10 +31,8 @@ public class AudioManager : MonoBehaviour
     // Singleton
     private AudioManager() { }
     private static AudioManager _instance = null;
-    private AudioSource _musicSource = null;
 
     public static AudioManager Instance { get { return _instance; } }
-    public AudioSource MusicSource { get { return _musicSource; } }
 
     private void Awake()
     {
@@ -108,6 +106,7 @@ public class AudioManager : MonoBehaviour
     // ***
 
     // INTERNALS
+    private AudioSource _musicSource = null;
     [SerializeField] private AudioMixer _mixer = null;
     // number of ojbects in the sound pool
     [SerializeField] private int _maxSounds = 10;
@@ -121,6 +120,9 @@ public class AudioManager : MonoBehaviour
     private ulong _idGiver = 0;
     private Transform _listenerPos = null;
 
+    // Properties
+    public AudioSource MusicSource { get { return _musicSource; } }
+    public AudioMixer Mixer { get { return _mixer; } }
 
     public AudioMixerGroup GetMixerGroupFromName(string name)
     {
