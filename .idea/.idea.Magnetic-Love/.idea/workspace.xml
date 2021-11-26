@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Heart/Heart.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Heart/Heart.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Heart/Heart.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Heart/Heart.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Wall03-Romance-Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Wall03-Romance-Variant.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Daniele_testScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Daniele_testScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L1-pluto.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L1-pluto.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level/HeartManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level/HeartManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L2-pippo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L2-pippo.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +76,7 @@
       <workItem from="1636898770014" duration="366000" />
       <workItem from="1637232329820" duration="161000" />
       <workItem from="1637854907023" duration="809000" />
-      <workItem from="1637923870797" duration="956000" />
+      <workItem from="1637923870797" duration="1167000" />
     </task>
     <servers />
   </component>
