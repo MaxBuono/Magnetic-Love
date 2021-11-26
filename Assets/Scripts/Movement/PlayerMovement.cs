@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 wallJumpClimb;
     public Vector2 wallJumpOff;
     public Vector2 wallLeap;
-    public PlayerMovement allyMovement;
 
     // sticked characters variables
     [HideInInspector] public bool isStickToAlly;
@@ -47,9 +46,11 @@ public class PlayerMovement : MonoBehaviour
     private Controller2D _controller2D;
     private Collider2D _collider;
     private MagneticObject _magneticObject;
+    private PlayerMovement _allyMovement;
     private MagneticField _allyField;
     private Vector2 _directionalInput;
     private IEnumerator _pushUpCoroutine = null;
+
 
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public Controller2D Controller { get { return _controller2D; } }
@@ -63,7 +64,10 @@ public class PlayerMovement : MonoBehaviour
         _controller2D = GetComponent<Controller2D>();
         _collider = GetComponent<Collider2D>();
         _magneticObject = GetComponent<MagneticObject>();
-        _allyField = allyMovement.GetComponentInChildren<MagneticField>();
+
+        string allyTag = gameObject.tag == "PlayerRed" ? "PlayerBlue" : "PlayerRed";
+        _allyMovement = GameObject.FindGameObjectWithTag(allyTag).GetComponent<PlayerMovement>();
+        _allyField = _allyMovement.GetComponentInChildren<MagneticField>();
 
         // Custom gravity given by dx = v0*t + a*t^2 / 2 with dx = maxJumpHeight, v0 = 0 
         // acceleration = gravity and time = timetoJumpApex
@@ -108,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
         if (isStickToAlly)
         {
             if (_controller2D.collisionInfo.below || _controller2D.collisionInfo.above ||
-                allyMovement.Controller.collisionInfo.below || allyMovement.Controller.collisionInfo.above)
+                _allyMovement.Controller.collisionInfo.below || _allyMovement.Controller.collisionInfo.above)
             {
                 _velocity.y = 0.0f;
             }
@@ -327,7 +331,7 @@ public class PlayerMovement : MonoBehaviour
 
         // cast rays towards your ally to check if you should stick together
         // Note that this is totally independent from the rays used for collision in the Controller2D script
-        Vector2 fromMeToAlly = allyMovement.transform.position - transform.position;
+        Vector2 fromMeToAlly = _allyMovement.transform.position - transform.position;
         Vector3 toAllyDir = new Vector2(Mathf.Sign(fromMeToAlly.x), 0);
         // the length has to be always higher than the _skinWidth
         float rayLength;
@@ -351,7 +355,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 // check also that they are close enough on the y axis
                 float extentY = _collider.bounds.extents.y;
-                Vector3 allyPos = allyMovement.transform.position;
+                Vector3 allyPos = _allyMovement.transform.position;
                 if (allyPos.y < (transform.position + Vector3.up * extentY).y &&
                     allyPos.y > (transform.position - Vector3.up * extentY).y)
                 {
