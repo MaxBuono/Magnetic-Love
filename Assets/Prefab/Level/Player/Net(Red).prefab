@@ -70,6 +70,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PlayerRed
       objectReference: {fileID: 0}
+    - target: {fileID: 8900021729868056091, guid: 99430b4602e9f79458d2be3d92e62b4f, type: 3}
+      propertyPath: allyMovement
+      value: 
+      objectReference: {fileID: 5874244506456263262}
+    - target: {fileID: 8900021729868056091, guid: 99430b4602e9f79458d2be3d92e62b4f, type: 3}
+      propertyPath: maxJumpHeight
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8900021729868056093, guid: 99430b4602e9f79458d2be3d92e62b4f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -84,11 +92,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8900021729868056098, guid: 99430b4602e9f79458d2be3d92e62b4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8900021729868056098, guid: 99430b4602e9f79458d2be3d92e62b4f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 8900021729868056098, guid: 99430b4602e9f79458d2be3d92e62b4f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -129,3 +137,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8900021729868056090, guid: 99430b4602e9f79458d2be3d92e62b4f, type: 3}
   m_PrefabInstance: {fileID: 3028311048262683717}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5874244506456263262 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8900021729868056091, guid: 99430b4602e9f79458d2be3d92e62b4f, type: 3}
+  m_PrefabInstance: {fileID: 3028311048262683717}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874244506456263263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfecce890eb57b44dae67d4572ecf4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
