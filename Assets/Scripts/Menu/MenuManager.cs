@@ -10,6 +10,8 @@ namespace MenuManagement
     {
         [Header("Menu Prefabs")]
         public MainMenu mainMenuPrefab;
+
+        public SelectLevelMenu selectLevelMenu;
         
         public SettingsMenu settingsMenuPrefab;
 
@@ -109,7 +111,7 @@ namespace MenuManagement
 
             // keeps all the menu active during the scene switch
             
-            Menu[] menuObjects = {mainMenuPrefab,settingsMenuPrefab,creditsScreenPrefab, 
+            Menu[] menuObjects = {mainMenuPrefab,selectLevelMenu,settingsMenuPrefab,creditsScreenPrefab, 
                 gameMenuPrefab,pauseMenuPrefab,levelCompletedScreen,gameCompletedScreen};
 
             for (int menu = 0; menu < menuObjects.Length; menu++)

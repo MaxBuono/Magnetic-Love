@@ -1,13 +1,23 @@
-using MenuManagement;
+using GameManagement.Data;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class SelectLevelMenu : MonoBehaviour
+namespace MenuManagement
 {
-    public void OnBackPressed()
+    public class SelectLevelMenu : Menu<SelectLevelMenu>
     {
-        print("LEVEL SELECT");
-        MainMenu.Open();
+        public LevelSelector LevelSelector;
+
+        public void Select(int level)
+        {
+            LevelManager.LoadLevel(level);
+            GameMenu.Open();
+        }
+
+        private void OnEnable()
+        {
+            LevelSelector.FromJson();
+        }
+
     }
-    
 }

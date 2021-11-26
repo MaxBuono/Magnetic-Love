@@ -24,7 +24,7 @@ public class LevelSelector : MonoBehaviour
       _dataManager = FindObjectOfType<DataManager>();
    }
 
-   private void Start()
+   public void FromJson()
    {
       if (_dataManager == null )
          return;
@@ -48,11 +48,5 @@ public class LevelSelector : MonoBehaviour
             levelButtons[i].image.sprite = interactableButtonSprite;
          }
       }
-   }
-   
-   public void OnBackPressed()
-   {
-      print("LEVEL SELECT");
-      MainMenu.Open();
    }
 }
