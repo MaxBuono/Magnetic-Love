@@ -1093,6 +1093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall02-Happy-Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8264754555237427791, guid: d533bbca1dc57e64ca4ef752048be479, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d533bbca1dc57e64ca4ef752048be479, type: 3}
 --- !u!1 &1942446635

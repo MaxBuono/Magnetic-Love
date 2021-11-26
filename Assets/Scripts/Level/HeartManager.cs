@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeartManager : MonoBehaviour
 {
@@ -15,12 +16,15 @@ public class HeartManager : MonoBehaviour
     private bool _redIsOnGoal = false;
     private bool _isGrowing = false;
     private SpriteRenderer _spriteRenderer;
+    private Image _image;
     //I use this variable to not call levelCompleted more than once during the end level animation
-    private bool _firstTimeReachMaxProgress = true;
+    private bool _firstTimeReachMaxProgress = false;
 
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _image = GetComponent<Image>();
+        _image.fillAmount = 0;
     }
 
     private void Update()
@@ -30,10 +34,10 @@ public class HeartManager : MonoBehaviour
         if (_isGrowing)
         {
             _progress += increment * Time.deltaTime;
-            if (_progress > maxProgress && _firstTimeReachMaxProgress)
+            if (_progress > maxProgress && !_firstTimeReachMaxProgress)
             {
                 //Go to next Level
-                _firstTimeReachMaxProgress = false;
+                _firstTimeReachMaxProgress = true;
                 GameManager.Instance.LevelCompleted();
             }
         }
@@ -42,10 +46,18 @@ public class HeartManager : MonoBehaviour
             if (_progress - increment * Time.deltaTime < 0)
             {
                 _progress = 0;
-            }else 
+            }
+            else
                 _progress -= increment * Time.deltaTime;
         }
+
+        if (!_firstTimeReachMaxProgress)
+        {
+            _image.fillAmount = _progress/100;
+        }
+
         
+
     }
     
     public void SetIsOnGoal(CharColor color, bool isOnGoal)
