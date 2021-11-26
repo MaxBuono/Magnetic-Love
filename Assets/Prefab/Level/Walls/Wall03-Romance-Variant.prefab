@@ -51,9 +51,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 2961841416444743086, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7d163e5536d07a84e872f42c64b23a3c, type: 3}
     - target: {fileID: 8629281948061017720, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
       propertyPath: m_Name
-      value: WallBase
+      value: Wall03-Romance-Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
