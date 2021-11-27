@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  maxJumpHeight: 3.5
+  maxJumpHeight: 3.1
   minJumpHeight: 1
   timeToJumpApex: 0.3
   jumpWidth: 0.7
@@ -239,7 +239,6 @@ MonoBehaviour:
   wallJumpClimb: {x: 7, y: 27}
   wallJumpOff: {x: 8.5, y: 7}
   wallLeap: {x: 18, y: 17}
-  allyMovement: {fileID: 0}
   isStickToAlly: 0
   isAboveCharacter: 0
   resultingVelX: 0

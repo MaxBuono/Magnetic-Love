@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5941733937965200185, guid: ba710a588de9e2e40a6e2edcc4a3f257, type: 3}
       propertyPath: strengthY
-      value: -800
+      value: -700
       objectReference: {fileID: 0}
     - target: {fileID: 5941733939223694384, guid: ba710a588de9e2e40a6e2edcc4a3f257, type: 3}
       propertyPath: m_Sprite
@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5941733939223694390, guid: ba710a588de9e2e40a6e2edcc4a3f257, type: 3}
       propertyPath: m_Name
-      value: JumpMagnet--- Variant
+      value: JumpMagnet ---
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba710a588de9e2e40a6e2edcc4a3f257, type: 3}
