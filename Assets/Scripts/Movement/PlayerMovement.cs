@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 wallLeap;
 
     // sticked characters variables
+    [HideInInspector] public bool isJumping;
     [HideInInspector] public bool isStickToAlly;
     [HideInInspector] public bool isAboveCharacter;
     [HideInInspector] public float resultingVelX;
@@ -42,14 +43,22 @@ public class PlayerMovement : MonoBehaviour
     private float _timeToWallUnstick;
     private int _wallDirX;
     private bool _wallSliding;
+    private bool _wasInAir;
     private Vector2 _velocity;
     private Controller2D _controller2D;
     private Collider2D _collider;
     private MagneticObject _magneticObject;
     private PlayerMovement _allyMovement;
     private MagneticField _allyField;
+    private Animator _animator;
     private Vector2 _directionalInput;
     private IEnumerator _pushUpCoroutine = null;
+
+    // animators hashes
+    private int _moveSpeedHash;
+    private int _isGroundedHash;
+    private int _startJumpHash;
+    private int _endJumpHash;
 
 
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
@@ -68,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         string allyTag = gameObject.tag == "PlayerRed" ? "PlayerBlue" : "PlayerRed";
         _allyMovement = GameObject.FindGameObjectWithTag(allyTag).GetComponent<PlayerMovement>();
         _allyField = _allyMovement.GetComponentInChildren<MagneticField>();
+        _animator = GetComponent<Animator>();
 
         // Custom gravity given by dx = v0*t + a*t^2 / 2 with dx = maxJumpHeight, v0 = 0 
         // acceleration = gravity and time = timetoJumpApex
@@ -77,6 +87,12 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.Gravity = _gravity;
+
+        // cache animator's parameters hashes
+        _moveSpeedHash = Animator.StringToHash("moveSpeed");
+        _isGroundedHash = Animator.StringToHash("isGrounded");
+        _startJumpHash = Animator.StringToHash("startJump");
+        _endJumpHash = Animator.StringToHash("endJump");
 
         // v1 = v0 + a*t (v0 = 0)
         _maxJumpSpeed = Mathf.Abs(_gravity * timeToJumpApex);
@@ -120,6 +136,9 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+
+        // Update the animator
+        UpdateAnimator(_velocity.x);
 
         // The frame independent multiplication with deltaTime is done here
         _controller2D.Move(_velocity * Time.deltaTime, _directionalInput);
@@ -408,5 +427,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _pushUpCoroutine = null;
+    }
+
+    private void UpdateAnimator(float velX)
+    {
+        _animator.SetFloat(_moveSpeedHash, Mathf.Abs(velX));
+        _animator.SetBool(_isGroundedHash, _controller2D.collisionInfo.below);
+        _animator.SetBool(_startJumpHash, isJumping);
+        _animator.SetBool(_endJumpHash, _controller2D.collisionInfo.below && _wasInAir);
+
+        // store the grounded state of the previous frame
+        _wasInAir = !_controller2D.collisionInfo.below;
     }
 }
