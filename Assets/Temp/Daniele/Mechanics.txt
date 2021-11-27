@@ -1,0 +1,4 @@
+Meccaniche aggiuntive:
+-HelpingHand ->Blue is on a platform not reachable by simple jump but with magnetism can help Red to jump more height.
+
+-SplitJump -> Use split force to do a jump. Must force the player to do it or is useless. Maybe Red need Blue to go on her goalplatform but 
