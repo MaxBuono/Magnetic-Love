@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,9 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     private static int _nextLevel = 1;
-    private static int _maxLevel = 8;
+    private static int _maxLevel = SceneManager.sceneCountInBuildSettings-1;
     private static int _levelPlayed = -1;
-
+    
     private static string SceneName(int level)
     {
         return GameManager.Instance.Levels[level - 1];
