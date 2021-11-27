@@ -33,6 +33,13 @@ public class PlayerInput : MonoBehaviour
         _playerMovement.SetDirectionalInput(directionalInput);
 
         // Jump
+        // this is for the animator
+        if (Input.GetButtonDown(jump) && !isPressingJump)
+        {
+            _playerMovement.isJumping = true;
+        }
+
+        // actual jump
         if (Input.GetButton(jump) && !isPressingJump)
         {
             if (_playerMovement.isStickToAlly)
@@ -46,10 +53,12 @@ public class PlayerInput : MonoBehaviour
 
             isPressingJump = true;
         }
+
         if (Input.GetButtonUp(jump))
         {
             _playerMovement.OnJumpInputUp();
             isPressingJump = false;
+            _playerMovement.isJumping = false;
         }
     }
 }
