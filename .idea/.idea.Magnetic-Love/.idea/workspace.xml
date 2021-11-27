@@ -3,7 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/NetFinishJumpAnim.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/NetFinishJumpAnim.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls01-Angry-Variant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls01-Angry-Variant.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls02-Happy-Variant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls02-Happy-Variant.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls03-Romance-Variant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls03-Romance-Variant.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls04-Sad-Variant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls04-Sad-Variant.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Daniele_testScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Daniele_testScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L5-LevelName.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L5-LevelName.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +86,8 @@
       <workItem from="1637232329820" duration="161000" />
       <workItem from="1637854907023" duration="809000" />
       <workItem from="1637923870797" duration="1167000" />
-      <workItem from="1638025579767" duration="850000" />
+      <workItem from="1638025579767" duration="1447000" />
+      <workItem from="1638029147745" duration="606000" />
     </task>
     <servers />
   </component>
