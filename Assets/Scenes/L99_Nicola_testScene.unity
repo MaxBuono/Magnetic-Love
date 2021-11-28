@@ -1093,7 +1093,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5a5aa2d6b8de14b99a44216d2c3eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endTransitionPrefab: {fileID: 0}
+  fromMainToFirstLevel: {fileID: 7576093374136586597, guid: 9009e0bc37e7b5a4eaa596d39b3a446b, type: 3}
+  fromLevelToLevel: {fileID: 7576093374136586597, guid: 969e099a43d5248028144b08456ca209, type: 3}
 --- !u!114 &225955870
 MonoBehaviour:
   m_ObjectHideFlags: 0
