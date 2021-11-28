@@ -94,8 +94,8 @@ public class MagneticField : MonoBehaviour
             Vector2 distanceVec = (coll.transform.position - transform.position);
             float squareDist = distanceVec.sqrMagnitude;
             Vector2 normalizedDist = distanceVec.normalized;
-            float forceX = (normalizedDist * strengthX / squareDist).x * polarization;
-            float forceY = (normalizedDist * strengthY / squareDist).y * polarization;
+            float forceX = (normalizedDist * strengthX / squareDist).x * polarization * Time.deltaTime;
+            float forceY = (normalizedDist * strengthY / squareDist).y * polarization * Time.deltaTime;
 
             return (magneticObject, new Vector2(forceX, forceY));
         }
