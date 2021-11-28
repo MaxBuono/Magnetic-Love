@@ -50,7 +50,9 @@ public class MagneticField : MonoBehaviour
     {
         (MagneticObject, Vector2) tuple = ComputeForce(collision);
         if (tuple.Item1 != null)
+        {
             tuple.Item1.UpdateForce(_myID, tuple.Item2);
+        }
     }
 
 
@@ -94,8 +96,8 @@ public class MagneticField : MonoBehaviour
             Vector2 distanceVec = (coll.transform.position - transform.position);
             float squareDist = distanceVec.sqrMagnitude;
             Vector2 normalizedDist = distanceVec.normalized;
-            float forceX = (normalizedDist * strengthX / squareDist).x * polarization * Time.deltaTime;
-            float forceY = (normalizedDist * strengthY / squareDist).y * polarization * Time.deltaTime;
+            float forceX = (normalizedDist * strengthX / squareDist).x * polarization;
+            float forceY = (normalizedDist * strengthY / squareDist).y * polarization;
 
             return (magneticObject, new Vector2(forceX, forceY));
         }

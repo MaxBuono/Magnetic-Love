@@ -50,7 +50,12 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
+
+        // test different frame rates
+        //QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        //Application.targetFrameRate = 10;
+
+
         _dataManager = FindObjectOfType<DataManager>();
     }
 

@@ -264,8 +264,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void CalculateVelocity()
     {
-        float velX = _directionalInput.x * moveSpeed + CalculateHorizontalForce(); 
-        float velY = CalculateVerticalForce();  
+        float velX = _directionalInput.x * moveSpeed + CalculateHorizontalForce() * Time.deltaTime; 
+        float velY = CalculateVerticalForce() * Time.deltaTime;  
         resultingVelX = velX;
         resultingVelY = velY;
 
@@ -338,7 +338,7 @@ public class PlayerMovement : MonoBehaviour
     // Returns the sum of all the external forces applied to the player on the y axis
     private float CalculateVerticalForce()
     {
-        return _gravity * Time.deltaTime + _magneticObject.GetMagneticForce().y;
+        return _gravity + _magneticObject.GetMagneticForce().y;
     }
 
     // Set the isStickToAlly bool and returns it
