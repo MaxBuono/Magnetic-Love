@@ -431,7 +431,7 @@ PrefabInstance:
     - target: {fileID: 1159657445184765998, guid: 602b076a5914c534a83a00c2ef107359, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: bb2f35d75ae40764abea94e8e536e066, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1159657445184765998, guid: 602b076a5914c534a83a00c2ef107359, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -494,9 +494,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6886589232747700168, guid: 2abca09f033546c4cad0482d19da5e3e, type: 3}
+      propertyPath: transitionPrefab
+      value: 
+      objectReference: {fileID: 7576093374136586597, guid: 9009e0bc37e7b5a4eaa596d39b3a446b, type: 3}
+    - target: {fileID: 6886589232747700168, guid: 2abca09f033546c4cad0482d19da5e3e, type: 3}
       propertyPath: levels.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6886589232747700168, guid: 2abca09f033546c4cad0482d19da5e3e, type: 3}
+      propertyPath: endTransitionPrefab
+      value: 
+      objectReference: {fileID: 7576093374136586597, guid: 969e099a43d5248028144b08456ca209, type: 3}
     - target: {fileID: 6886589232747700169, guid: 2abca09f033546c4cad0482d19da5e3e, type: 3}
       propertyPath: m_RootOrder
       value: 4

@@ -11,9 +11,9 @@ public class ScreenFader : MonoBehaviour
 
     [SerializeField] protected float clearAlpha = 0.0f;
 
-    [SerializeField] private float fadeOnDuration = 2f;
+    [SerializeField] protected float fadeOnDuration = 2f;
 
-    [SerializeField] private float fadeOffDuration = 2f;
+    [SerializeField] protected float fadeOffDuration = 2f;
 
     [SerializeField] private MaskableGraphic[] graphicsToFade;
 
