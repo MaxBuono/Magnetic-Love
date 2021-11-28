@@ -9,8 +9,6 @@ namespace MenuManagement
     public class MainMenu : Menu<MainMenu>
     {
         public bool fadeToPlay = true;                          // should it use the fading transition?
-        [SerializeField] private float playDelay = 0.5f;        // # seconds before loading the gameplay screen
-        [SerializeField] private TransitionFader transitionFaderPrefab;
         
         public void OnSettingsPressed()
         {
@@ -46,9 +44,9 @@ namespace MenuManagement
         private IEnumerator OnPlayPressedRoutine()
         {
             print("ACTIVATE THE TRANSITION FADER");
-            TransitionFader.PlayTransition(transitionFaderPrefab);
+            TransitionFader.PlayTransition(GameManager.Instance.fromMainToFirstLevel);
+            yield return new WaitForSeconds(GameManager.Instance.fromMainToFirstLevel.FadeOnDuration + GameManager.Instance.fromMainToFirstLevel.delay);
             LevelManager.LoadFirstLevel();
-            yield return new WaitForSeconds(playDelay);
             GameMenu.Open();
         }
 

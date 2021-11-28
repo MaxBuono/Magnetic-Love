@@ -6,14 +6,9 @@ using UnityEngine;
 
 public class TransitionFader : ScreenFader
 {
-    [SerializeField] private float lifetime = 1f;
-    [SerializeField] private float delay = 0.3f;
-    [SerializeField] private TMP_Text transitionText;
-
-    public float Delay
-    {
-        get { return delay; }
-    }
+    public float lifetime = 1f;
+    public float delay = 0.3f;
+    public TMP_Text transitionText;
     
     private void Awake()
     {
@@ -28,10 +23,10 @@ public class TransitionFader : ScreenFader
         }
     }
     
-    private IEnumerator PlayRoutine()
+    private IEnumerator PlayRoutine(float time = 0.0f)
     {   
         SetAlpha(clearAlpha);
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delay - time);
 
         FadeOn();
 
@@ -50,12 +45,26 @@ public class TransitionFader : ScreenFader
         StartCoroutine(PlayRoutine());
     }
 
-    public static void PlayTransition(TransitionFader transitionPrefab, string text = "READY")
+    public void FirstPlay()
+    {
+        StartCoroutine(PlayRoutine(0.3f));
+    }
+
+    public static void PlayTransition(TransitionFader transitionPrefab, string text = "")
     {
         if (transitionPrefab != null)
         {
             print("Transition Fader Created");
             TransitionFader instance = Instantiate(transitionPrefab, Vector3.zero, Quaternion.identity);
+
+            // handle special case for the transition from main menu to the first level
+            //if (text == "Menu")
+            //{
+            //    instance.SetText("");
+            //    instance.FirstPlay();
+            //    return;
+            //}
+
             instance.SetText(text);
             print("Transition Fader Created <" + instance.gameObject.name + ">");
             instance.Play();

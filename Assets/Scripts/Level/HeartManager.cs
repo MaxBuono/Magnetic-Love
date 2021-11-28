@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class HeartManager : MonoBehaviour
 {
     //Externals
+    public GameObject heartBorder;
+    public GameObject heartImage;
     public float maxProgress = 100f;
     public float increment = 50f;
     
@@ -22,8 +24,8 @@ public class HeartManager : MonoBehaviour
 
     private void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _image = GetComponent<Image>();
+        _spriteRenderer = heartImage.GetComponent<SpriteRenderer>();
+        _image = heartImage.GetComponent<Image>();
         _image.fillAmount = 0;
     }
 
@@ -59,7 +61,7 @@ public class HeartManager : MonoBehaviour
         
 
     }
-    
+
     public void SetIsOnGoal(CharColor color, bool isOnGoal)
     {
         if (color == CharColor.Blue)
