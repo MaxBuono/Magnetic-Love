@@ -426,6 +426,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5680469830065547764, guid: 1ca15b309def05841ae1dec27704208c, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5680469830065547769, guid: 1ca15b309def05841ae1dec27704208c, type: 3}
       propertyPath: m_Name
       value: SideWalls02-Happy-Variant
@@ -439,6 +443,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6709673294202976441, guid: a7075db0416d62e459ada2fb04093e53, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6709673294202976442, guid: a7075db0416d62e459ada2fb04093e53, type: 3}
       propertyPath: m_Name
       value: GoalPlatformBlue-Variant
