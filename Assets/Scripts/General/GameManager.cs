@@ -13,7 +13,6 @@ using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private TransitionFader endTransitionPrefab;     // transition screen for ending
     // Singleton
     private GameManager() { }
     private static GameManager _instance = null;
@@ -56,7 +55,9 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // Public
+    // Public/Serialized
+    public TransitionFader fromMainToFirstLevel;
+    public TransitionFader fromLevelToLevel;
 
     // Internals
     private float _gravity = 0.0f;
@@ -149,24 +150,32 @@ public class GameManager : MonoBehaviour
             StartCoroutine(GameCompletedRoutine());
         }
     }
+
+    // returns false when you are not in a level scene
+    public bool IsLevelPlaying()
+    {
+        string pattern = @"L\d+-\w*";
+        Regex rg = new Regex(pattern);
+        return rg.IsMatch(SceneManager.GetActiveScene().name);        
+    }
         
     private IEnumerator LevelCompletedRoutine()
     {
-        TransitionFader.PlayTransition(endTransitionPrefab);
+        TransitionFader.PlayTransition(fromLevelToLevel, "Level Complete!");
 
-        float fadeDelay  = (endTransitionPrefab != null) ?
-            endTransitionPrefab.Delay + endTransitionPrefab.FadeOnDuration : 0f;
-            
+        float fadeDelay  = (fromLevelToLevel != null) ?
+            fromLevelToLevel.delay + fromLevelToLevel.FadeOnDuration : 0f;
+
         yield return new WaitForSeconds(fadeDelay);
         LevelManager.LoadNextLevel();
     }
     
     private IEnumerator GameCompletedRoutine()
     {
-        TransitionFader.PlayTransition(endTransitionPrefab);
+        TransitionFader.PlayTransition(fromLevelToLevel, "Congratulation!\nYou completed the game!");
 
-        float fadeDelay  = (endTransitionPrefab != null) ?
-            endTransitionPrefab.Delay + endTransitionPrefab.FadeOnDuration : 0f;
+        float fadeDelay  = (fromLevelToLevel != null) ?
+            fromLevelToLevel.delay + fromLevelToLevel.FadeOnDuration : 0f;
             
         yield return new WaitForSeconds(fadeDelay);
         GameCompletedScreen.Open();

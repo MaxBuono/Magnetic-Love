@@ -84,12 +84,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1005427865914281099}
-  - component: {fileID: 7005035757405777567}
   - component: {fileID: 6983806417769816442}
   - component: {fileID: 5718968242090023981}
   m_Layer: 0
   m_Name: Heart Image
-  m_TagString: Heart
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,20 +112,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 786, y: 680}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7005035757405777567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7005035757405777552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a62602f5dc0ee054eac90916576458f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxProgress: 100
-  increment: 80
 --- !u!222 &6983806417769816442
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -177,9 +162,10 @@ GameObject:
   - component: {fileID: 7692952471962653395}
   - component: {fileID: 7692952471962653394}
   - component: {fileID: 7692952471962653405}
+  - component: {fileID: 3741390145354981266}
   m_Layer: 5
   m_Name: Heart
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,3 +252,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3741390145354981266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692952471962653404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62602f5dc0ee054eac90916576458f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartBorder: {fileID: 5163305678255063976}
+  heartImage: {fileID: 7005035757405777552}
+  maxProgress: 100
+  increment: 80

@@ -1090,8 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeToPlay: 1
-  playDelay: 1
-  transitionFaderPrefab: {fileID: 7576093374136586597, guid: 969e099a43d5248028144b08456ca209, type: 3}
+  playDelay: 0
 --- !u!1 &1926839093369349202
 GameObject:
   m_ObjectHideFlags: 0
