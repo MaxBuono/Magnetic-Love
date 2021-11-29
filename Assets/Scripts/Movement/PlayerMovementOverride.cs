@@ -59,20 +59,28 @@ public class PlayerMovementOverride : MonoBehaviour
         {
             // Handle unplug situation when both characters are moving 
             // in opposite directions from each other on the x axis
-            if (movementRed.DirectionalInput.x != movementBlue.DirectionalInput.x && _unplugCoroutine == null)
+            if (((movementRed.DirectionalInput.x == 1 && movementBlue.DirectionalInput.x == -1) ||
+                (movementRed.DirectionalInput.x == -1 && movementBlue.DirectionalInput.x == 1)) && _unplugCoroutine == null)
             {
                 _unplugCoroutine = UnplugCharacters();
                 StartCoroutine(_unplugCoroutine);
             }
+        }
+    }
 
+    // put here only what's related to the movement
+    private void FixedUpdate()
+    {
+        // avoid to process anything if you are not inside a level scene
+        if (movementRed == null || movementBlue == null) return;
 
+        if (movementRed.isStickToAlly || movementBlue.isStickToAlly)
+        {
             CalculateResultantVelocity();
-
             // apply the final velocities to the characters
             Vector2 finalRedVel = new Vector2(_redVelX, _redVelY);
             Vector2 finalBlueVel = new Vector2(_blueVelX, _blueVelY);
             ApplyMovement(finalRedVel, finalBlueVel);
-
 
             // reset the resultant y axis if at least one of them is colliding verically
             if (movementRed.Controller.collisionInfo.below || movementRed.Controller.collisionInfo.above ||
@@ -96,11 +104,11 @@ public class PlayerMovementOverride : MonoBehaviour
         // if you are above the other character, his X movement will influence yours
         if (movementRed.isAboveCharacter)
         {
-            movementRed.Controller.Move(Vector2.right * movementBlue.Velocity.x * Time.deltaTime, movementBlue.DirectionalInput);
+            movementRed.Controller.Move(Vector2.right * movementBlue.Velocity.x * GameManager.Instance.gameVelocityMultiplier, movementBlue.DirectionalInput);
         }
         else if (movementBlue.isAboveCharacter)
         {
-            movementBlue.Controller.Move(Vector2.right * movementRed.Velocity.x * Time.deltaTime, movementRed.DirectionalInput);
+            movementBlue.Controller.Move(Vector2.right * movementRed.Velocity.x * GameManager.Instance.gameVelocityMultiplier, movementRed.DirectionalInput);
         }
     }
 
@@ -229,40 +237,42 @@ public class PlayerMovementOverride : MonoBehaviour
         // Apply movement in a specific order based on the x direction, otherwise one character
         // will collide with the other countering it's movement
         float blueToRed = Mathf.Sign(movementRed.transform.position.x - movementBlue.transform.position.x);
+        finalBlueVel *= GameManager.Instance.gameVelocityMultiplier;
+        finalRedVel *= GameManager.Instance.gameVelocityMultiplier;
         if (blueToRed == 1) // red on the right
         {
             if (_redVelX > 0 || _blueVelX > 0) // and moving to the right
             {
-                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
-                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
+                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
             }
             else if (_redVelX < 0 || _blueVelX < 0) // moving to the left
             {
-                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
-                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
+                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
             }
             else // in this case it doesn't matter which one you move first
             {
-                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
-                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
+                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
             }
         }
         else //red on the left
         {
             if (_redVelX > 0 || _blueVelX > 0) // and moving to the right
             {
-                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
-                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
+                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
+                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
             }
             else if (_redVelX < 0 || _blueVelX < 0) // moving to the left
             {
-                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
-                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
+                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
             }
             else // in this case it doesn't matter which one you move first
             {
-                movementRed.Controller.Move(finalRedVel * Time.deltaTime, movementRed.DirectionalInput);
-                movementBlue.Controller.Move(finalBlueVel * Time.deltaTime, movementBlue.DirectionalInput);
+                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
+                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
             }
         }
     }

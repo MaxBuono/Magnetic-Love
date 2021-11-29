@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 
         // test different frame rates
         //QualitySettings.vSyncCount = 0;  // VSync must be disabled
-        //Application.targetFrameRate = 10;
+        //Application.targetFrameRate = 100;
 
 
         _dataManager = FindObjectOfType<DataManager>();
@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     // Public/Serialized
     public TransitionFader fromMainToFirstLevel;
     public TransitionFader fromLevelToLevel;
+    public float gameVelocityMultiplier = 0.04f;
 
     // Internals
     private float _gravity = 0.0f;
