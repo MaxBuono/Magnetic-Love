@@ -1022,6 +1022,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3032358701411862426, guid: 002a1696cba5fb2429eb8d0d4a334901, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032358701411862427, guid: 002a1696cba5fb2429eb8d0d4a334901, type: 3}
+      propertyPath: strengthX
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032358701411862427, guid: 002a1696cba5fb2429eb8d0d4a334901, type: 3}
+      propertyPath: strengthY
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032358701411862427, guid: 002a1696cba5fb2429eb8d0d4a334901, type: 3}
+      propertyPath: collisionMask.m_Bits
+      value: 448
+      objectReference: {fileID: 0}
     - target: {fileID: 3032358702301313169, guid: 002a1696cba5fb2429eb8d0d4a334901, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -1491,6 +1507,14 @@ PrefabInstance:
       propertyPath: allyMovement
       value: 
       objectReference: {fileID: 1568705055}
+    - target: {fileID: 317930588974383366, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
+      propertyPath: maxJumpHeight
+      value: 3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 317930588974383366, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
+      propertyPath: timeToJumpApex
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 317930588974383367, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
       propertyPath: m_Name
       value: Mag(Blue)
@@ -1501,11 +1525,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 317930588974383423, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.79
+      value: 12.91
       objectReference: {fileID: 0}
     - target: {fileID: 317930588974383423, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.63
+      value: -3.64
       objectReference: {fileID: 0}
     - target: {fileID: 317930588974383423, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1538,6 +1562,10 @@ PrefabInstance:
     - target: {fileID: 317930588974383423, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 317930589873766711, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
+      propertyPath: collisionMask.m_Bits
+      value: 384
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aa2418b07866b04793512e373c8c536, type: 3}

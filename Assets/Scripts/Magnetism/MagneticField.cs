@@ -55,7 +55,6 @@ public class MagneticField : MonoBehaviour
         }
     }
 
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         int collisionID = collision.GetInstanceID();
@@ -96,8 +95,8 @@ public class MagneticField : MonoBehaviour
             Vector2 distanceVec = (coll.transform.position - transform.position);
             float squareDist = distanceVec.sqrMagnitude;
             Vector2 normalizedDist = distanceVec.normalized;
-            float forceX = (normalizedDist * strengthX / squareDist).x * polarization;
-            float forceY = (normalizedDist * strengthY / squareDist).y * polarization;
+            float forceX = (normalizedDist.x * strengthX / squareDist) * polarization;
+            float forceY = (normalizedDist.y * strengthY / squareDist) * polarization;
 
             return (magneticObject, new Vector2(forceX, forceY));
         }

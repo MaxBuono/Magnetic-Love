@@ -100,7 +100,25 @@ public class PlayerMovement : MonoBehaviour
         _minJumpSpeed = Mathf.Sqrt(2 * Mathf.Abs(_gravity) * minJumpHeight);
     }
 
-    void Update()
+    private void Update()
+    {
+        // check if sticked here
+
+        // Handle the "vertical unplug"
+        if (CheckIfAboveCharacter() && DirectionalInput.y == 1 && _pushUpCoroutine == null)
+        {
+            _pushUpCoroutine = PushMeUp();
+            StartCoroutine(_pushUpCoroutine);
+        }
+
+        // Calculate Velocity was here
+
+        // Update the animator
+        UpdateAnimator(_velocity.x);
+    }
+
+    // put here only what's related to the movement
+    void FixedUpdate()
     {
         // set the stick bool if characters are (almost) attached and then ignore the ally field
         if (CheckIfSticked())
@@ -112,13 +130,6 @@ public class PlayerMovement : MonoBehaviour
         if (!isStickToAlly)
         {
             //Debug.Log(LayerMask.LayerToName(gameObject.layer) + ": " + isStickToAlly);
-        }
-
-        // Handle the "vertical unplug"
-        if (CheckIfAboveCharacter() && DirectionalInput.y == 1 && _pushUpCoroutine == null)
-        {
-            _pushUpCoroutine = PushMeUp();
-            StartCoroutine(_pushUpCoroutine);
         }
 
         CalculateVelocity();
@@ -136,12 +147,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-
-        // Update the animator
-        UpdateAnimator(_velocity.x);
-
         // The frame independent multiplication with deltaTime is done here
-        _controller2D.Move(_velocity * Time.deltaTime, _directionalInput);
+        _controller2D.Move(_velocity * GameManager.Instance.gameVelocityMultiplier, _directionalInput);
 
         // we call this at the end because if for instance we are on a moving platform, it's going
         // to call Move too, potentially altering the below/above values.
@@ -154,8 +161,8 @@ public class PlayerMovement : MonoBehaviour
                 if (Mathf.Sign(verticalForce) < 0)
                 {
                     // the steeper the slope, the smaller will be the slopeNormal.y countering vertical forces
-                    _velocity.y += _controller2D.collisionInfo.slopeNormal.y * -verticalForce * Time.deltaTime;
-                }         
+                    _velocity.y += _controller2D.collisionInfo.slopeNormal.y * -verticalForce;
+                }
             }
             else
             {
@@ -264,8 +271,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void CalculateVelocity()
     {
-        float velX = _directionalInput.x * moveSpeed + CalculateHorizontalForce() * Time.deltaTime; 
-        float velY = CalculateVerticalForce() * Time.deltaTime;  
+        float playerInput = _directionalInput.x * moveSpeed;
+        float velX = playerInput + CalculateHorizontalForce();
+        float velY = CalculateVerticalForce();  
         resultingVelX = velX;
         resultingVelY = velY;
 
@@ -338,7 +346,7 @@ public class PlayerMovement : MonoBehaviour
     // Returns the sum of all the external forces applied to the player on the y axis
     private float CalculateVerticalForce()
     {
-        return _gravity + _magneticObject.GetMagneticForce().y;
+        return _gravity * GameManager.Instance.gameVelocityMultiplier + _magneticObject.GetMagneticForce().y;
     }
 
     // Set the isStickToAlly bool and returns it
@@ -354,10 +362,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 toAllyDir = new Vector2(Mathf.Sign(fromMeToAlly.x), 0);
         // the length has to be always higher than the _skinWidth
         float rayLength;
-        if (isStickToAlly)
+        if (isStickToAlly || _allyMovement.isStickToAlly)
         {
             // when they are already sticked use a longer ray to be super sure that they stay sticked
-            rayLength = 0.2f;
+            rayLength = 0.5f;
         }
         else
         {
@@ -391,12 +399,12 @@ public class PlayerMovement : MonoBehaviour
     private bool CheckIfAboveCharacter()
     {
         // if you are in the air or sticked, you are not above the other character 
-        if (!_controller2D.collisionInfo.below || isStickToAlly) return false;
+        if (!_controller2D.collisionInfo.below || isStickToAlly || _allyMovement.isStickToAlly) return false;
 
         // This can be implemented in a much more light way in the Controller2D script
         // but raycasting vertically again here gives a lot more control
         isAboveCharacter = false;
-        HashSet<Collider2D> colliders = _controller2D.RaycastVertically(Vector2.down, _velocity.x * Time.deltaTime);
+        HashSet<Collider2D> colliders = _controller2D.RaycastVertically(Vector2.down, 0.0f);
         foreach (Collider2D coll in colliders)
         {
             string layer = LayerMask.LayerToName(coll.gameObject.layer);
