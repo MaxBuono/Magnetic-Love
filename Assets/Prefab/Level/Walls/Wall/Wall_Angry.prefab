@@ -51,9 +51,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 2961841416444743086, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Size.x
+      value: 9.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961841416444743086, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Size.y
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961841416444743086, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -435805337444314806, guid: b436de3154a019441811711f392dba31, type: 3}
+    - target: {fileID: 2961841416444743086, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Size.x
+      value: 9.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Size.y
+      value: 0.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 9.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 9.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549505912375659744, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.83
+      objectReference: {fileID: 0}
     - target: {fileID: 8629281948061017720, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}
       propertyPath: m_Name
-      value: WallBase
+      value: Wall_Angry
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 131c31cecabc0bc45a0e9292f9fa4ed9, type: 3}

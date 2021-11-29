@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bf916fdaf58bda9428807216322d21d9
+guid: c1561de97c22de44e9fbae124924460a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5576107289491270363
-    second: Wall02-Happy_0
+      213: -3116675982157906449
+    second: Wall_Sad_Half
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -44,13 +44,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
-  spriteExtrude: 0
+  spriteMode: 2
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 40, y: 63, z: 62, w: 63}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -72,7 +72,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 8
+    compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -84,7 +84,19 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 8
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -94,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wall02-Happy_0
+      name: Wall_Sad_Half
       rect:
         serializedVersion: 2
         x: 40
-        y: 62
-        width: 968
-        height: 84
+        y: 63
+        width: 490
+        height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -108,8 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5251864b6ffad92b0800000000000000
-      internalID: -5576107289491270363
+      spriteID: fed7c7305b75fb4d0800000000000000
+      internalID: -3116675982157906449
       vertices: []
       indices: 
       edges: []

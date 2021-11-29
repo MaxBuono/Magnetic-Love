@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 29216837e5c8e3546b445ad8a9342a2c
+guid: 57d4e5eb1fb870c4897fef07298d4b5f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7236599563202639251
-    second: PlatformBigFull
+      213: -5576107289491270363
+    second: Wall_Happy_Half
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -45,12 +45,12 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 40, y: 63, z: 62, w: 63}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -72,7 +72,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
+    compressionQuality: 8
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -84,7 +84,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
+    compressionQuality: 8
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -96,7 +96,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
+    compressionQuality: 8
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -106,12 +106,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlatformBigFull
+      name: Wall_Happy_Half
       rect:
         serializedVersion: 2
-        x: 59
+        x: 40
         y: 63
-        width: 1464
+        width: 490
         height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -120,8 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 395b07a26f09d6460800000000000000
-      internalID: 7236599563202639251
+      spriteID: 5251864b6ffad92b0800000000000000
+      internalID: -5576107289491270363
       vertices: []
       indices: 
       edges: []
