@@ -1032,7 +1032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3032358701411862427, guid: 002a1696cba5fb2429eb8d0d4a334901, type: 3}
       propertyPath: strengthY
-      value: -150
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 3032358701411862427, guid: 002a1696cba5fb2429eb8d0d4a334901, type: 3}
       propertyPath: collisionMask.m_Bits
