@@ -33,25 +33,25 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/L7-LevelName.unity
     guid: 5912b16ad1c43484ca920a15b1924df1
   - enabled: 1
-    path: Assets/Scenes/Levels/L8.unity
+    path: Assets/Scenes/Levels/L8-Name.unity
     guid: 901e0f98f92f8dc45bc5fb8061ac1f8f
   - enabled: 1
-    path: Assets/Scenes/Levels/L9.unity
+    path: Assets/Scenes/Levels/L9-LevelName.unity
     guid: 873ca89681ea4c343929358b56c649e3
   - enabled: 1
-    path: Assets/Scenes/Levels/L10.unity
+    path: Assets/Scenes/Levels/L10-LevelName.unity
     guid: 6486420f1c3d2b34987204b64678ce3d
   - enabled: 1
-    path: Assets/Scenes/Levels/L11.unity
+    path: Assets/Scenes/Levels/L11-LevelName.unity
     guid: 1de50fbdaf7eb574380e8a514c6b63a5
   - enabled: 1
-    path: Assets/Scenes/Levels/L12.unity
+    path: Assets/Scenes/Levels/L12-LevelName.unity
     guid: eb44aeeca5b00bc478293b6debffe231
   - enabled: 1
-    path: Assets/Scenes/Levels/L13.unity
+    path: Assets/Scenes/Levels/L13-LevelName.unity
     guid: 337f7a4deb88e3848bc0a0f35bd80588
   - enabled: 1
-    path: Assets/Scenes/Levels/L14.unity
+    path: Assets/Scenes/Levels/L14-LevelName.unity
     guid: 9ece3f375362b5843b2a8e36024fdf3e
   - enabled: 1
     path: Assets/Scenes/Levels/L15.unity
