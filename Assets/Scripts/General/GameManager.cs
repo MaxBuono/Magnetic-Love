@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour
         }
 
         // test different frame rates
-        //QualitySettings.vSyncCount = 0;  // VSync must be disabled
-        //Application.targetFrameRate = 100;
+        QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        Application.targetFrameRate = 1000;
 
 
         _dataManager = FindObjectOfType<DataManager>();

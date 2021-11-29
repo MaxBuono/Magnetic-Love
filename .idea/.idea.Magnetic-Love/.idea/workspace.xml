@@ -3,18 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/NetFinishJumpAnim.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/NetFinishJumpAnim.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls01-Angry-Variant.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls01-Angry-Variant.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls02-Happy-Variant.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls02-Happy-Variant.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls03-Romance-Variant.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls03-Romance-Variant.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls04-Sad-Variant.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Big Side/SideWalls04-Sad-Variant.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Daniele_testScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Daniele_testScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet - .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet - .prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet -- .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet -- .prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet ---.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet ---.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Player/Mag(Blue).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Player/Mag(Blue).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Player/Net(Red).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Player/Net(Red).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Player/PlayerBase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Player/PlayerBase.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JumpMagnetSampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/JumpMagnetSampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L5-LevelName.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L5-LevelName.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +22,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ca496b8c93454b2f9b9924292c19379f13b800/d7/ff7b77d5/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/HeartManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zay63RDFtBM6YhBQ2RiluZrggD" />
@@ -88,6 +84,7 @@
       <workItem from="1637923870797" duration="1167000" />
       <workItem from="1638025579767" duration="1447000" />
       <workItem from="1638029147745" duration="606000" />
+      <workItem from="1638207752996" duration="1459000" />
     </task>
     <servers />
   </component>
