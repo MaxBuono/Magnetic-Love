@@ -10,8 +10,11 @@ public class PlayerMovement : MonoBehaviour
     // Public
     public float moveSpeed = 6.0f;
     // we use this instead of a "jump speed" variable because they are more intuitive
+    [Tooltip("Maximum height at which the character will arrive when jumping. Modifies gravity.")]
     public float maxJumpHeight = 4.0f;
+    [Tooltip("Minimum height at which the character will arrive when jumping.")]
     public float minJumpHeight = 1.0f;
+    [Tooltip("Time to get to the maximum height. Modifies gravity.")]
     public float timeToJumpApex = 0.5f;
     [Tooltip("Jump speed multiplier on the x axis (a value of 0.5 means that the character is jumping with half jump speed on the x axis.")]
     public float jumpWidth = 0.5f;
