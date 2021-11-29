@@ -233,7 +233,7 @@ MonoBehaviour:
   minJumpHeight: 1
   timeToJumpApex: 0.5
   jumpWidth: 0.7
-  jumpPushForce: 1.7
+  jumpPushForce: 1.85
   wallSlideMaxSpeed: 3
   wallStickTime: 0.15
   wallJumpClimb: {x: 7, y: 27}

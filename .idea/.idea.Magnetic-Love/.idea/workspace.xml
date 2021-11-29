@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet - .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet - .prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet -- .prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet -- .prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet ---.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Jump Magnet/Blue/JumpMagnet ---.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Player/Mag(Blue).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Player/Mag(Blue).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Player/Net(Red).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Player/Net(Red).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Player/PlayerBase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Player/PlayerBase.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JumpMagnetSampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/JumpMagnetSampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L5-LevelName.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L5-LevelName.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" afterDir="false" />
-    </list>
+    <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
