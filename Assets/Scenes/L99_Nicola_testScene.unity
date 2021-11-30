@@ -518,6 +518,10 @@ PrefabInstance:
       propertyPath: strengthY
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 4709136312905715327, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
 --- !u!114 &38671925 stripped
@@ -3144,7 +3148,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.4
+  orthographic size: 11.22
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

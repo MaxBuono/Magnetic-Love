@@ -260,8 +260,8 @@ public class AudioManager : MonoBehaviour
     }
 
     // Scripts can call this to play a sound...
-    public ulong PlayOneShotSound(string mixerGroupName, AudioClip clip, Vector3 position, float volume,
-                                        float spatialBlend, int priority = 128)
+    public ulong PlayOneShotSound(string mixerGroupName, AudioClip clip, Vector3 position, float volume = 1,
+                                        float spatialBlend = 1, int priority = 128)
     {
         if (!_mixerGroups.ContainsKey(mixerGroupName) || clip == null || volume == 0.0f) return 0;
 
