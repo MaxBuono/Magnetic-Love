@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5941733937965200185, guid: 4cff3d73f1b8a65409f89d5bf0daf0e3, type: 3}
       propertyPath: strengthX
-      value: 50000
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5941733937965200185, guid: 4cff3d73f1b8a65409f89d5bf0daf0e3, type: 3}
       propertyPath: strengthY
