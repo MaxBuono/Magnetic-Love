@@ -808,6 +808,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1034440199}
     m_Modifications:
+    - target: {fileID: 1751472361277830211, guid: 4517a7e26349ee04c956e3d9d4548b85, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3065934438442275346, guid: 4517a7e26349ee04c956e3d9d4548b85, type: 3}
       propertyPath: m_Name
       value: PlatformBigFull
@@ -2223,7 +2227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4788197664682701700, guid: 1a0ee22c37c9d9b489f6244955ae0c6e, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4895908124911454179, guid: 1a0ee22c37c9d9b489f6244955ae0c6e, type: 3}
       propertyPath: m_Name
