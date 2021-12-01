@@ -108,7 +108,8 @@ public class PlayerMovement : MonoBehaviour
         // check if sticked here
 
         // Handle the "vertical unplug"
-        if (CheckIfAboveCharacter() && DirectionalInput.y == 1 && _pushUpCoroutine == null)
+        bool isAbove = CheckIfAboveCharacter();
+        if (isAbove && DirectionalInput.y == 1 && _pushUpCoroutine == null)
         {
             _pushUpCoroutine = PushMeUp();
             StartCoroutine(_pushUpCoroutine);
@@ -401,17 +402,18 @@ public class PlayerMovement : MonoBehaviour
     // check if this character is above the other character
     private bool CheckIfAboveCharacter()
     {
+        isAboveCharacter = false;
         // if you are in the air or sticked, you are not above the other character 
         if (!_controller2D.collisionInfo.below || isStickToAlly || _allyMovement.isStickToAlly) return false;
 
         // This can be implemented in a much more light way in the Controller2D script
         // but raycasting vertically again here gives a lot more control
-        isAboveCharacter = false;
         HashSet<Collider2D> colliders = _controller2D.RaycastVertically(Vector2.down, 0.0f);
+
         foreach (Collider2D coll in colliders)
         {
             string layer = LayerMask.LayerToName(coll.gameObject.layer);
-            if (layer == "PlayerRed" || layer == "PlayerBlue")
+            if (layer == _allyMovement.gameObject.tag)
             {
                 isAboveCharacter = true;
             }
