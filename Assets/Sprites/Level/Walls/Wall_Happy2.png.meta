@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2aff71ba55788e049a16ed620d5141c8
+guid: bf916fdaf58bda9428807216322d21d9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8857145826361546777
-    second: (Small)Wall_Happy_2_0
+      213: -5576107289491270363
+    second: Wall_Happy
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -50,7 +50,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 40, y: 63, z: 62, w: 63}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -72,7 +72,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
+    compressionQuality: 8
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -84,7 +84,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
+    compressionQuality: 8
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -96,7 +96,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
+    compressionQuality: 8
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
@@ -106,12 +106,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: (Small)Wall_Happy_2_0
+      name: Wall_Happy
       rect:
         serializedVersion: 2
-        x: 44
+        x: 40
         y: 63
-        width: 978
+        width: 979
         height: 83
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -120,8 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9181d10b337eaea70800000000000000
-      internalID: 8857145826361546777
+      spriteID: 5251864b6ffad92b0800000000000000
+      internalID: -5576107289491270363
       vertices: []
       indices: 
       edges: []

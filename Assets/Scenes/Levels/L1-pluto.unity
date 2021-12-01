@@ -439,8 +439,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5680469830065547764, guid: 1ca15b309def05841ae1dec27704208c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 12a993c645a0117458f46888cffa58b3, type: 3}
+    - target: {fileID: 5680469830065547764, guid: 1ca15b309def05841ae1dec27704208c, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680469830065547764, guid: 1ca15b309def05841ae1dec27704208c, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5680469830065547769, guid: 1ca15b309def05841ae1dec27704208c, type: 3}
       propertyPath: m_Name
@@ -941,6 +949,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2178037324867923100, guid: 4660f6e0dbf982642b2e041c27fa2c6e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: de6dbec3c5280744d9b23e6120b84547, type: 3}
     - target: {fileID: 2178037324867923101, guid: 4660f6e0dbf982642b2e041c27fa2c6e, type: 3}
       propertyPath: m_Name
       value: Background02-Happy-Variant
@@ -1205,7 +1217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1348712836519332710, guid: d533bbca1dc57e64ca4ef752048be479, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.69
+      value: -6.7604184
       objectReference: {fileID: 0}
     - target: {fileID: 1348712836519332710, guid: d533bbca1dc57e64ca4ef752048be479, type: 3}
       propertyPath: m_LocalPosition.z
