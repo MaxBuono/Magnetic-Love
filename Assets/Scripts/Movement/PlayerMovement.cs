@@ -417,8 +417,9 @@ public class PlayerMovement : MonoBehaviour
 
         // This can be implemented in a much more light way in the Controller2D script
         // but raycasting vertically again here gives a lot more control
+        isAboveCharacter = false;
         HashSet<Collider2D> colliders = _controller2D.RaycastVertically(Vector2.down, 0.0f);
-        
+
         foreach (Collider2D coll in colliders)
         {
             string layer = LayerMask.LayerToName(coll.gameObject.layer);

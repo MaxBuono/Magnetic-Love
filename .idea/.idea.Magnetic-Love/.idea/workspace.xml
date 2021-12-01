@@ -1,7 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="" />
+    <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_Half2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_Half2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_OneThird2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_OneThird2.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/UI/Credits.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/UI/Select level.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/UI/Settings.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/UI/Settings.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Half/HalfWall_Happy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Half/HalfWall_Happy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/OneThird/OneThirdWall_Happy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/OneThird/OneThirdWall_Happy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Wall/Wall_Happy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Level/Walls/Wall/Wall_Happy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/CreditsScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/CreditsScreen.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/SelectLevelMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/SelectLevelMenu.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/SettingsMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/SettingsMenu.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L1-pluto.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L1-pluto.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L11-DanieleLevel 3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L11-DanieleLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L11-DanieleLevel 3.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L11-DanieleLevel.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L12-DanieleLevel 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L12-DanieleLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L12-DanieleLevel 1.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L12-DanieleLevel.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L13-DanieleLevel 2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L13-DanieleLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L13-DanieleLevel 2.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L13-DanieleLevel.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L14-DanieleLevel 4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L14-DanieleLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L14-DanieleLevel 4.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L14-DanieleLevel.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L15-DanieleLevel 5.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L15-DanieleLevel 5.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L15-DanieleLevel.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L15-DanieleLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L15-DanieleLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L2-pippo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L2-pippo.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L3-LevelName.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L3-LevelName.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L4-LevelName.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L4-LevelName.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/DataManager/SaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/DataManager/SaveData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/GameMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/GameMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/LevelSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/LevelSelector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/MenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/MenuManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/PauseMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/PauseMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/SelectLevelMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/SelectLevelMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Level/Backgrounds/Background02-Happy.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Backgrounds/Background02-Happy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Level/Backgrounds/Background02-Happy.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Backgrounds/Background02-Happy.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Level/SideWalls/SideWall02-Happy.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Level/SideWalls/SideWall02-Happy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Level/SideWalls/SideWall02-Happy.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Level/SideWalls/SideWall02-Happy.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_Half.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_Half.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_Half.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_Half.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_OneThird.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_OneThird.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_OneThird.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Level/Walls/Wall_Happy_OneThird.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/UI/Logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Logo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/UI/Logo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/NEW_Magnet.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/UI/NEW_Magnet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/NEW_Magnet.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/UI/NEW_Magnet.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/PinkHeart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/PinkHeart.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/UI/Credits.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/rounded-rectangle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/rounded-rectangle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/UI/Select level.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,6 +136,7 @@
       <workItem from="1638025579767" duration="1447000" />
       <workItem from="1638029147745" duration="606000" />
       <workItem from="1638207752996" duration="1459000" />
+      <workItem from="1638382883233" duration="625000" />
     </task>
     <servers />
   </component>
