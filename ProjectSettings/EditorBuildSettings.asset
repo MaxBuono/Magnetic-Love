@@ -53,7 +53,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/L15-DanieleLevel.unity
     guid: 4bfaab91fedeee74e981f4f33c4642e0
-  - enabled: 1
-    path: Assets/Scenes/Levels/L80-Ritocco.unity
-    guid: 9ece3f375362b5843b2a8e36024fdf3e
   m_configObjects: {}
