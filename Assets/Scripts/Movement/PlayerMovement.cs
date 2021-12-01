@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 wallJumpClimb;
     public Vector2 wallJumpOff;
     public Vector2 wallLeap;
+    public AudioClip plugAudioClip;
 
     // sticked characters variables
     [HideInInspector] public bool isJumping;
@@ -62,6 +63,10 @@ public class PlayerMovement : MonoBehaviour
     private int _isGroundedHash;
     private int _startJumpHash;
     private int _endJumpHash;
+    
+    //Audio internals
+    private bool _isStickBefore = false;
+    private bool _touchedGround = true;
 
 
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
@@ -108,7 +113,8 @@ public class PlayerMovement : MonoBehaviour
         // check if sticked here
 
         // Handle the "vertical unplug"
-        if (CheckIfAboveCharacter() && DirectionalInput.y == 1 && _pushUpCoroutine == null)
+        bool isAbove = CheckIfAboveCharacter();
+        if (isAbove && DirectionalInput.y == 1 && _pushUpCoroutine == null)
         {
             _pushUpCoroutine = PushMeUp();
             StartCoroutine(_pushUpCoroutine);
@@ -135,6 +141,8 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(LayerMask.LayerToName(gameObject.layer) + ": " + isStickToAlly);
         }
 
+        UpdateSounds();
+        
         CalculateVelocity();
         HandleWallSliding();
 
@@ -244,6 +252,8 @@ public class PlayerMovement : MonoBehaviour
         //and I'm grounded (hitting below) while not pressing the downward _directionalInput
         if (_controller2D.collisionInfo.below && _directionalInput.y != -1)
         {
+            AudioManager.Instance.PlayJump();
+            
             if (_controller2D.collisionInfo.slidingDownMaxSlope)
             {
                 // if not jumping against a max slope
@@ -401,23 +411,45 @@ public class PlayerMovement : MonoBehaviour
     // check if this character is above the other character
     private bool CheckIfAboveCharacter()
     {
+        isAboveCharacter = false;
         // if you are in the air or sticked, you are not above the other character 
         if (!_controller2D.collisionInfo.below || isStickToAlly || _allyMovement.isStickToAlly) return false;
 
         // This can be implemented in a much more light way in the Controller2D script
         // but raycasting vertically again here gives a lot more control
-        isAboveCharacter = false;
         HashSet<Collider2D> colliders = _controller2D.RaycastVertically(Vector2.down, 0.0f);
+        
         foreach (Collider2D coll in colliders)
         {
             string layer = LayerMask.LayerToName(coll.gameObject.layer);
-            if (layer == "PlayerRed" || layer == "PlayerBlue")
+            if (layer == _allyMovement.gameObject.tag)
             {
                 isAboveCharacter = true;
             }
         }
 
         return isAboveCharacter;
+    }
+    
+    // check if this character is below the other character
+    private bool CheckIfBelowCharacter()
+    {
+        // if you are in the air or sticked, you are not above the other character 
+        if (!_controller2D.collisionInfo.above || isStickToAlly || _allyMovement.isStickToAlly) return false;
+
+        // This can be implemented in a much more light way in the Controller2D script
+        // but raycasting vertically again here gives a lot more control
+        HashSet<Collider2D> colliders = _controller2D.RaycastVertically(Vector2.up, 0.0f);
+        foreach (Collider2D coll in colliders)
+        {
+            string layer = LayerMask.LayerToName(coll.gameObject.layer);
+            if (layer == _allyMovement.gameObject.tag)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     // a sort of unplug but in vertical when you are above the other character
@@ -449,5 +481,31 @@ public class PlayerMovement : MonoBehaviour
 
         // store the grounded state of the previous frame
         _wasInAir = !_controller2D.collisionInfo.below;
+    }
+
+    private void UpdateSounds()
+    {
+        //Play sound only if they are stick for the first time
+        if (_isStickBefore != isStickToAlly)
+        {
+            _isStickBefore = !_isStickBefore;
+            if (_isStickBefore)
+            {
+                
+                AudioManager.Instance.PlayOneShotSound("SFX", plugAudioClip, Vector3.zero);
+            }
+        }
+        
+        //Use touchedGround to check if the player touched the ground before the impact. 
+        if (_controller2D.collisionInfo.above && _touchedGround && !CheckIfBelowCharacter())
+        {
+            AudioManager.Instance.PlayCollision();
+            _touchedGround = false;
+        }
+        
+        if (_controller2D.collisionInfo.below )
+        {
+            _touchedGround = true;
+        }
     }
 }

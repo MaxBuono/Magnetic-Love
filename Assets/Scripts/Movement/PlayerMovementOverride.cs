@@ -155,7 +155,8 @@ public class PlayerMovementOverride : MonoBehaviour
         if (timer > timeToUnplug)
         {
             unplugging = true;
-
+            AudioManager.Instance.PlayUnplug();
+            
             // unplug them
             _redVelX += unplugForce * movementRed.DirectionalInput.x;
             _blueVelX += unplugForce * movementBlue.DirectionalInput.x;

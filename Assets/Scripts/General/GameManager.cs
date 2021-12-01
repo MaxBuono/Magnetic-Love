@@ -143,6 +143,7 @@ public class GameManager : MonoBehaviour
     public void LevelCompleted()
     {
         int levelAt = LevelManager.GetLevelPlayed();
+        
         if (_dataManager != null)
         {
             if (levelAt > _dataManager.LevelAt)
@@ -156,6 +157,7 @@ public class GameManager : MonoBehaviour
         if (!LevelManager.CompletedAllLevels())
         {
             StartCoroutine(LoadNextLevelRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
+            AudioManager.Instance.PlayCompletedLevel();
         }
         else
         {

@@ -31,7 +31,13 @@ public class AudioManager : MonoBehaviour
     // Singleton
     private AudioManager() { }
     private static AudioManager _instance = null;
-
+    
+    //Public
+    public AudioCollection jump;
+    public AudioClip unplug;
+    public AudioCollection collision;
+    public AudioClip completedLevel;
+    
     public static AudioManager Instance { get { return _instance; } }
 
     private void Awake()
@@ -300,5 +306,25 @@ public class AudioManager : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         PlayOneShotSound(mixerGroupName, clip, position, volume, spatialBlend, priority);
+    }
+
+    public void PlayJump()
+    {
+        PlayOneShotSound("SFX", jump.AudioClip, Vector3.zero);
+    }
+    
+    public void PlayUnplug()
+    {
+        PlayOneShotSound("SFX", unplug, Vector3.zero);
+    }
+
+    public void PlayCollision()
+    {
+        PlayOneShotSound("SFX", collision.AudioClip, Vector3.zero);
+    }
+    
+    public void PlayCompletedLevel()
+    {
+        PlayOneShotSound("SFX", completedLevel, Vector3.zero);
     }
 }

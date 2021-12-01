@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3fa0ad6c6ab1f440808e4db3bd93e75, type: 3}
-  m_Name: salto
+  m_Name: Jump
   m_EditorClassIdentifier: 
   _mixerGroupName: SFX
   _volume: 1
@@ -18,9 +18,9 @@ MonoBehaviour:
   _priority: 128
   _clipBanks:
   - clips:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 8300000, guid: 63c8f1c6b1ebcfc4da1dd09ca3d14687, type: 3}
+    - {fileID: 8300000, guid: 4411f3f4f2129994495f46d1f302ca1d, type: 3}
+    - {fileID: 8300000, guid: 8495c2040dc7f414b8cb8fb3ae11d5bc, type: 3}
   - clips:
     - {fileID: 0}
     - {fileID: 0}
