@@ -197,7 +197,7 @@ MonoBehaviour:
   graphicsToFade:
   - {fileID: 7038121738970789739}
   - {fileID: 7038121740313636596}
-  lifetime: 3.5
+  lifetime: 4
   delay: 0.3
   transitionText: {fileID: 7038121740313636596}
 --- !u!114 &2661218152228705225

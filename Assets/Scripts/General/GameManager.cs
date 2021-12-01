@@ -38,7 +38,9 @@ public class GameManager : MonoBehaviour
 
         // cache all the (enabled) level names to use in the LevelManager script
         string pattern = @"L\d+-\w*";
+        string nameFilter = @"\w+$";
         Regex rg = new Regex(pattern);
+        Regex filter = new Regex(nameFilter);
         foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
         {
             if (scene.enabled)
@@ -47,6 +49,9 @@ public class GameManager : MonoBehaviour
                 if (match.Success)
                 {
                     _levels.Add(match.Value);
+
+                    Match nameMatch = filter.Match(match.Value);
+                    _levelNames.Add(nameMatch.Value);
                 }
             }
         }
@@ -72,12 +77,14 @@ public class GameManager : MonoBehaviour
     private Dictionary<int, MagneticObject> _magneticObjects = new Dictionary<int, MagneticObject>();
     private Dictionary<int, Controller2D> _controllers2D = new Dictionary<int, Controller2D>();
     private List<string> _levels = new List<string>();
+    private List<string> _levelNames = new List<string>();
 
     // Properties
     public Dictionary<int, MagneticObject> MagneticObjects { get { return _magneticObjects; } }
     public Dictionary<int, Controller2D> Controllers2D { get { return _controllers2D; } }
     public float Gravity { get { return _gravity; } set { _gravity = value; } }
     public List<string> Levels { get { return _levels; } }
+    public List<string> LevelNames { get { return _levelNames; } }
 
     private void Start()
     {
@@ -148,7 +155,7 @@ public class GameManager : MonoBehaviour
         
         if (!LevelManager.CompletedAllLevels())
         {
-            StartCoroutine(LevelCompletedRoutine());
+            StartCoroutine(LoadNextLevelRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
         }
         else
         {
@@ -165,9 +172,9 @@ public class GameManager : MonoBehaviour
         return rg.IsMatch(SceneManager.GetActiveScene().name);        
     }
         
-    private IEnumerator LevelCompletedRoutine()
+    private IEnumerator LoadNextLevelRoutine(string str = "")
     {
-        TransitionFader.PlayTransition(fromLevelToLevel, "Level Complete!");
+        TransitionFader.PlayTransition(fromLevelToLevel, str);
 
         float fadeDelay  = (fromLevelToLevel != null) ?
             fromLevelToLevel.delay + fromLevelToLevel.FadeOnDuration : 0f;

@@ -8,7 +8,7 @@ namespace MenuManagement
 {
     public class MainMenu : Menu<MainMenu>
     {
-        public bool fadeToPlay = true;                          // should it use the fading transition?
+        public bool fadeToPlay = true;   // should it use the fading transition?
         
         public void OnSettingsPressed()
         {
@@ -43,8 +43,7 @@ namespace MenuManagement
 
         private IEnumerator OnPlayPressedRoutine()
         {
-            print("ACTIVATE THE TRANSITION FADER");
-            TransitionFader.PlayTransition(GameManager.Instance.fromMainToFirstLevel);
+            TransitionFader.PlayTransition(GameManager.Instance.fromMainToFirstLevel, GameManager.Instance.LevelNames[0]);
             yield return new WaitForSeconds(GameManager.Instance.fromMainToFirstLevel.FadeOnDuration + GameManager.Instance.fromMainToFirstLevel.delay);
             LevelManager.LoadFirstLevel();
             GameMenu.Open();
