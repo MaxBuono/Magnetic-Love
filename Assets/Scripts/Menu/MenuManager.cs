@@ -56,6 +56,33 @@ namespace MenuManagement
             // InitializeMenu();
         }
 
+        private void Update()
+        {
+            // ****** ESC key
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                // if we are inside a level scene, open/close pause menu
+                if (GameManager.Instance.IsLevelPlaying())
+                {
+                    if (Time.timeScale == 1)    // pause
+                    {
+                        Time.timeScale = 0f;
+                        PauseMenu.Open();
+                    }
+                    else    // resume
+                    {
+                        Time.timeScale = 1f;
+                        CloseMenu();
+                    }
+                }
+                else    // main menu
+                {
+                    CloseMenu();
+                }
+            }
+            // ******
+        }
+
         public void OpenMenu(Menu menuInstance)
         {
             if (menuInstance == null)
@@ -80,7 +107,7 @@ namespace MenuManagement
 
         public void CloseMenu()
         {
-            if (_menuStack.Count == 0)
+            if (_menuStack.Count <= 1)
             {
                 Debug.LogWarning("MENU MANAGER: no menu to close");
                 return;

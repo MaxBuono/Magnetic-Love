@@ -14,14 +14,5 @@ namespace MenuManagement
             PauseMenu.Open();
         }
         
-        //Pause Menu with escape key
-        public void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Time.timeScale = 0f;
-                PauseMenu.Open();
-            }
-        }
     }
 }
