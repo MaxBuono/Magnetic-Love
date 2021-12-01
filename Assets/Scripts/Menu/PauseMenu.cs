@@ -32,16 +32,6 @@ namespace MenuManagement
         {
             Application.Quit();
         }
-        
-        //Close pause menu with escape key
-        public void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Time.timeScale = 1f;
-                base.OnBackPressed();
-            }
-        }
 
         // lower the background music when pausing
         private void OnEnable()

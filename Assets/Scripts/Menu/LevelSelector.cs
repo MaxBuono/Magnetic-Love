@@ -37,16 +37,27 @@ public class LevelSelector : MonoBehaviour
       
       for (int i = 0; i< levelButtons.Length; i++)
       {
-         if (i > levelAt)
+         
+         //Tutorial levels
+         if (levelAt < 8)
          {
-            levelButtons[i].interactable = false;
-            levelButtons[i].image.sprite = notInteractableButtonSprite;
+            if (i > levelAt)
+            {
+               levelButtons[i].interactable = false;
+               levelButtons[i].image.sprite = notInteractableButtonSprite;
+            }
+            else
+            {
+               levelButtons[i].interactable = true;
+               levelButtons[i].image.sprite = interactableButtonSprite;
+            }
          }
          else
          {
             levelButtons[i].interactable = true;
             levelButtons[i].image.sprite = interactableButtonSprite;
          }
+         
       }
    }
 }

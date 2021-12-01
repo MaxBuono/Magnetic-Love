@@ -1,3 +1,4 @@
+using System.Collections;
 using GameManagement.Data;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,8 +11,7 @@ namespace MenuManagement
 
         public void Select(int level)
         {
-            LevelManager.LoadLevel(level);
-            GameMenu.Open();
+            StartCoroutine(WaitBeforeLoad(level));
         }
 
         private void OnEnable()
@@ -19,5 +19,12 @@ namespace MenuManagement
             LevelSelector.FromJson();
         }
 
+        private IEnumerator WaitBeforeLoad(int level)
+        {
+            TransitionFader.PlayTransition(GameManager.Instance.fromMainToFirstLevel, GameManager.Instance.LevelNames[level - 1]);
+            yield return new WaitForSeconds(GameManager.Instance.fromMainToFirstLevel.FadeOnDuration + GameManager.Instance.fromMainToFirstLevel.delay);
+            LevelManager.LoadLevel(level);
+            GameMenu.Open();
+        }
     }
 }

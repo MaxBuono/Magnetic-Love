@@ -15,11 +15,6 @@ public class LevelManager : MonoBehaviour
     {
         return GameManager.Instance.Levels[level - 1];
     }
-    
-    public static int GetLevel()
-    {
-        return _levelPlayed;
-    }
 
     public static void LoadLevel(int level)
     {
@@ -27,7 +22,8 @@ public class LevelManager : MonoBehaviour
         {
             _levelPlayed = level;
             _nextLevel = level + 1;
-            SceneManager.LoadScene(SceneName(_levelPlayed));        
+            Debug.Log(SceneName(_levelPlayed));
+            SceneManager.LoadScene(SceneName(_levelPlayed));  
         }
     }
 

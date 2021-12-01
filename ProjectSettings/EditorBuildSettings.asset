@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: cb3ae9960b2a09049987a57852252bf4
@@ -33,30 +30,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/L7-LevelName.unity
     guid: 5912b16ad1c43484ca920a15b1924df1
   - enabled: 1
-    path: Assets/Scenes/Levels/L8-Name.unity
-    guid: 901e0f98f92f8dc45bc5fb8061ac1f8f
-  - enabled: 1
-    path: Assets/Scenes/Levels/L10-LevelName.unity
-    guid: 873ca89681ea4c343929358b56c649e3
-  - enabled: 1
     path: Assets/Scenes/Levels/L8-LevelName.unity
     guid: 6486420f1c3d2b34987204b64678ce3d
-  - enabled: 1
-    path: Assets/Scenes/Levels/L11-LevelName.unity
-    guid: 1de50fbdaf7eb574380e8a514c6b63a5
   - enabled: 1
     path: Assets/Scenes/Levels/L9-LevelName.unity
     guid: eb44aeeca5b00bc478293b6debffe231
   - enabled: 1
-    path: Assets/Scenes/Levels/L13-LevelName.unity
-    guid: 337f7a4deb88e3848bc0a0f35bd80588
+    path: Assets/Scenes/Levels/L10-LevelName.unity
+    guid: 873ca89681ea4c343929358b56c649e3
   - enabled: 1
-    path: Assets/Scenes/Levels/L80-Ritocco.unity
-    guid: 9ece3f375362b5843b2a8e36024fdf3e
+    path: Assets/Scenes/Levels/L11-DanieleLevel.unity
+    guid: 5bcc4e4e1689ddd4686d43cc3c4727e5
   - enabled: 1
-    path: Assets/Scenes/Levels/L15.unity
-    guid: b8733b057f971004283ed3855a9f161f
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Levels/L12-DanieleLevel.unity
+    guid: b456853533c55d049b2e9232af27627a
+  - enabled: 1
+    path: Assets/Scenes/Levels/L13-DanieleLevel.unity
+    guid: 87459fd9ed8815146952c2eed438159a
+  - enabled: 1
+    path: Assets/Scenes/Levels/L14-DanieleLevel.unity
+    guid: 2f831a09a986e0e4e9426873d64d7af2
+  - enabled: 1
+    path: Assets/Scenes/Levels/L15-DanieleLevel.unity
+    guid: 4bfaab91fedeee74e981f4f33c4642e0
   m_configObjects: {}
