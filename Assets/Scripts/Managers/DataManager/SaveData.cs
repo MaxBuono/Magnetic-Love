@@ -5,11 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
-    public int LevelAt = 2;
+    public int LevelAt = 0;
     public string hashValue;
     
     public SaveData()
     {
-        LevelAt = 2;
+        LevelAt = 0;
     }
 }

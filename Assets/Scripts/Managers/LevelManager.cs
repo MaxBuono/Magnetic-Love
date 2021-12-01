@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
         {
             _levelPlayed = level;
             _nextLevel = level + 1;
+            Debug.Log(SceneName(_levelPlayed));
             SceneManager.LoadScene(SceneName(_levelPlayed));        
         }
     }
