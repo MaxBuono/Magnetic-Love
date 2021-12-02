@@ -62,6 +62,8 @@ public class PlayerMovement : MonoBehaviour
     private int _isGroundedHash;
     private int _startJumpHash;
     private int _endJumpHash;
+    private int _isStickedHash;
+    private int _startUnplugHash;
     
     //Audio internals
     private bool _isStickBefore = false;
@@ -101,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
         _isGroundedHash = Animator.StringToHash("isGrounded");
         _startJumpHash = Animator.StringToHash("startJump");
         _endJumpHash = Animator.StringToHash("endJump");
+        _isStickedHash = Animator.StringToHash("isSticked");
+        _startUnplugHash = Animator.StringToHash("startUnplug");
 
         // v1 = v0 + a*t (v0 = 0)
         _maxJumpSpeed = Mathf.Abs(_gravity * timeToJumpApex);
@@ -482,6 +486,8 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetBool(_isGroundedHash, _controller2D.collisionInfo.below);
         _animator.SetBool(_startJumpHash, isJumping);
         _animator.SetBool(_endJumpHash, _controller2D.collisionInfo.below && _wasInAir);
+        _animator.SetBool(_isStickedHash, isStickToAlly);
+        _animator.SetBool(_startUnplugHash, PlayerMovementOverride.startUnplug);
 
         // store the grounded state of the previous frame
         _wasInAir = !_controller2D.collisionInfo.below;
