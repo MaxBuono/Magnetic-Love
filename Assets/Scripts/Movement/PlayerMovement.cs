@@ -499,7 +499,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (_controller2D.collisionInfo.above && !_wasAbove && !CheckIfBelowCharacter())
+        if (_controller2D.collisionInfo.above && !_wasAbove && !_allyMovement.isAboveCharacter)
         {
             AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.collision.AudioClip);
         }

@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1159657445184765998, guid: 602b076a5914c534a83a00c2ef107359, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2086758323899578090, guid: 602b076a5914c534a83a00c2ef107359, type: 3}
       propertyPath: m_RootOrder
       value: 5
