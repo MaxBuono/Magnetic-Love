@@ -155,8 +155,7 @@ public class PlayerMovementOverride : MonoBehaviour
         if (timer > timeToUnplug)
         {
             unplugging = true;
-            AudioManager.Instance.PlayUnplug();
-            
+
             // unplug them
             _redVelX += unplugForce * movementRed.DirectionalInput.x;
             _blueVelX += unplugForce * movementBlue.DirectionalInput.x;
@@ -172,6 +171,10 @@ public class PlayerMovementOverride : MonoBehaviour
             {
                 movementRed.MagneticObject.RegisterForce(movementRed.AllyField.ID, Vector2.zero);
                 movementBlue.MagneticObject.RegisterForce(movementBlue.AllyField.ID, Vector2.zero);
+            }
+            else
+            {
+                AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.unplug, Vector3.zero);
             }
         }
 

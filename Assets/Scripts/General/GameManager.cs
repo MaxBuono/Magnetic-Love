@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
         if (!LevelManager.CompletedAllLevels())
         {
             StartCoroutine(LoadNextLevelRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
-            AudioManager.Instance.PlayCompletedLevel();
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.completedLevel, Vector3.zero);
         }
         else
         {

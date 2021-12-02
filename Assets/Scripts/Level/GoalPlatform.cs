@@ -12,12 +12,12 @@ public class GoalPlatform : MonoBehaviour
 
     //Internals
     private bool isOnGoal = false;
-    private HeartManager _heartManager;
+    private HeartManagerSplit _heartManager;
     private string _tagToCompare;
 
     private void Awake()
     {
-        _heartManager = GameObject.FindGameObjectWithTag("Heart").GetComponent<HeartManager>();
+        _heartManager = GameObject.FindGameObjectWithTag("Heart").GetComponent<HeartManagerSplit>();
     }
 
     private void Start()

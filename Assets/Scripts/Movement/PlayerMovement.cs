@@ -252,7 +252,7 @@ public class PlayerMovement : MonoBehaviour
         //and I'm grounded (hitting below) while not pressing the downward _directionalInput
         if (_controller2D.collisionInfo.below && _directionalInput.y != -1)
         {
-            AudioManager.Instance.PlayJump();
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.jump.AudioClip, Vector3.zero);
             
             if (_controller2D.collisionInfo.slidingDownMaxSlope)
             {
@@ -500,7 +500,7 @@ public class PlayerMovement : MonoBehaviour
         //Use touchedGround to check if the player touched the ground before the impact. 
         if (_controller2D.collisionInfo.above && _touchedGround && !CheckIfBelowCharacter())
         {
-            AudioManager.Instance.PlayCollision();
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.collision.AudioClip, Vector3.zero);
             _touchedGround = false;
         }
         

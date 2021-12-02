@@ -37,6 +37,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip unplug;
     public AudioCollection collision;
     public AudioClip completedLevel;
+    public AudioClip buttonPressed;
+    public AudioClip buttonExitPressed;
+    public AudioClip heartCharge;
     
     public static AudioManager Instance { get { return _instance; } }
 
@@ -307,24 +310,5 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
         PlayOneShotSound(mixerGroupName, clip, position, volume, spatialBlend, priority);
     }
-
-    public void PlayJump()
-    {
-        PlayOneShotSound("SFX", jump.AudioClip, Vector3.zero);
-    }
     
-    public void PlayUnplug()
-    {
-        PlayOneShotSound("SFX", unplug, Vector3.zero);
-    }
-
-    public void PlayCollision()
-    {
-        PlayOneShotSound("SFX", collision.AudioClip, Vector3.zero);
-    }
-    
-    public void PlayCompletedLevel()
-    {
-        PlayOneShotSound("SFX", completedLevel, Vector3.zero);
-    }
 }

@@ -85,17 +85,23 @@ namespace MenuManagement
 
         public void OpenMenu(Menu menuInstance)
         {
+            
             if (menuInstance == null)
             {
                 Debug.LogWarning("MENU MANAGER: opening invalid menu");
                 return;
             }
-
+            
             if (_menuStack.Count > 0)
             {
+                if (!(menuInstance is GameMenu))
+                {
+                     AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.buttonPressed, Vector3.zero);
+                }
                 foreach (Menu menu in _menuStack)
                 {
                     menu.gameObject.SetActive(false);
+                    
                 }
             }
 
@@ -107,6 +113,7 @@ namespace MenuManagement
 
         public void CloseMenu()
         {
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.buttonExitPressed, Vector3.zero);
             if (_menuStack.Count <= 1)
             {
                 Debug.LogWarning("MENU MANAGER: no menu to close");
