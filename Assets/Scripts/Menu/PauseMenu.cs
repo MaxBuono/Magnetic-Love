@@ -40,14 +40,21 @@ namespace MenuManagement
         // lower the background music when pausing
         private void OnEnable()
         {
-            float volume = AudioManager.Instance.MusicSource.volume;
-            AudioManager.Instance.MusicSource.volume = volume * 0.5f;
+            if (AudioManager.Instance != null)
+            {
+                float volume = AudioManager.Instance.MusicSource.volume;
+                AudioManager.Instance.MusicSource.volume = volume * 0.5f;
+            }
+
         }
 
         private void OnDisable()
         {
-            float volume = AudioManager.Instance.MusicSource.volume;
-            AudioManager.Instance.MusicSource.volume = volume * 2.0f;
+            if (AudioManager.Instance != null)
+            {
+                float volume = AudioManager.Instance.MusicSource.volume;
+                AudioManager.Instance.MusicSource.volume = volume * 2.0f;
+            }
         }
     }
 }
