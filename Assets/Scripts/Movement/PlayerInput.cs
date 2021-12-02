@@ -28,6 +28,9 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
+        // Take player (movement) inputs only if they are not blocked
+        if (GameManager.Instance.PlayerControlsBlocked) return;
+
         // Horizontal/Vertical Input
         Vector2 directionalInput = new Vector2(Input.GetAxisRaw(horizontal), Input.GetAxisRaw(vertical));
         _playerMovement.SetDirectionalInput(directionalInput);

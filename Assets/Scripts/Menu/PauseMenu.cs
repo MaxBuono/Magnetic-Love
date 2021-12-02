@@ -11,12 +11,14 @@ namespace MenuManagement
     {
         public void OnResumePressed()
         {
+            MenuManager.Instance.PauseMenuOpen = false;
             Time.timeScale = 1f;
             base.OnBackPressed();
         }
 
         public void OnRestartPressed()
         {
+            MenuManager.Instance.PauseMenuOpen = false;
             Time.timeScale = 1f;
             base.OnBackPressed();
             LevelManager.ReloadLevel();
@@ -24,8 +26,11 @@ namespace MenuManagement
         
         public void OnMainMenuPressed()
         {
+            MenuManager.Instance.PauseMenuOpen = false;
+            MenuManager.Instance.CloseMenu();
+            MenuManager.Instance.ClearStack();
             Time.timeScale = 1f;
-            MainMenu.Open();
+            LevelManager.LoadMainMenuLevel();
         }
         
         public void OnQuitPressed()

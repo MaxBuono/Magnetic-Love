@@ -24,7 +24,8 @@ public class TransitionFader : ScreenFader
     }
     
     private IEnumerator PlayRoutine(float time = 0.0f)
-    {   
+    {
+        GameManager.Instance.PlayerControlsBlocked = true;
         SetAlpha(clearAlpha);
         yield return new WaitForSeconds(delay - time);
 
@@ -34,7 +35,8 @@ public class TransitionFader : ScreenFader
         yield return new WaitForSeconds(onTime);
 
         FadeOff();
-        
+        GameManager.Instance.PlayerControlsBlocked = false;
+
         print("FADER DESTROYED");
         
         Destroy(gameObject, FadeOffDuration);

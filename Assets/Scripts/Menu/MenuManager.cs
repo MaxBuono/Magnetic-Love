@@ -30,6 +30,11 @@ namespace MenuManagement
 
         private Stack<Menu> _menuStack = new Stack<Menu>();
 
+        // Handle pause menu specifically
+        private bool _isPauseMenuOpen = false;
+        public bool PauseMenuOpen { get { return _isPauseMenuOpen; } set { _isPauseMenuOpen = value; } }
+
+
         private static MenuManager _instance;
         public static MenuManager Instance
         {
@@ -64,14 +69,16 @@ namespace MenuManagement
                 // if we are inside a level scene, open/close pause menu
                 if (GameManager.Instance.IsLevelPlaying())
                 {
-                    if (Time.timeScale == 1)    // pause
+                    if (!_isPauseMenuOpen)    // pause
                     {
                         Time.timeScale = 0f;
+                        _isPauseMenuOpen = true;
                         PauseMenu.Open();
                     }
                     else    // resume
                     {
                         Time.timeScale = 1f;
+                        _isPauseMenuOpen = false;
                         CloseMenu();
                     }
                 }
@@ -127,6 +134,14 @@ namespace MenuManagement
             {
                 Menu nextMenu = _menuStack.Peek();
                 nextMenu.gameObject.SetActive(true);
+            }
+        }
+
+        public void ClearStack()
+        {
+            while (_menuStack.Count > 1)
+            {
+                _menuStack.Pop();
             }
         }
 
