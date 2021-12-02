@@ -148,17 +148,15 @@ public class PlayerMovementOverride : MonoBehaviour
         bool redRightBlueLeft = (movementRed.DirectionalInput.x == 1 && movementBlue.DirectionalInput.x == -1);
         bool redLeftBlueRight = (movementRed.DirectionalInput.x == -1 && movementBlue.DirectionalInput.x == 1);
 
-        // Handle animation bool
-        if ((redRightBlueLeft && _blueToRed == 1) || (redLeftBlueRight && _blueToRed == -1))
-        {
-            startUnplug = true;
-        }
-
         float timer = 0.0f;
 
-        while ( (redRightBlueLeft || redLeftBlueRight) && timer < timeToUnplug)
+        while (((redRightBlueLeft && _blueToRed == 1) || (redLeftBlueRight && _blueToRed == -1)) && timer < timeToUnplug)
         {
             timer += Time.deltaTime;
+            startUnplug = true;
+            // it's fundamental to update the bool at every iteration
+            redRightBlueLeft = (movementRed.DirectionalInput.x == 1 && movementBlue.DirectionalInput.x == -1);
+            redLeftBlueRight = (movementRed.DirectionalInput.x == -1 && movementBlue.DirectionalInput.x == 1);
             yield return null;
         }
 
@@ -171,7 +169,6 @@ public class PlayerMovementOverride : MonoBehaviour
             _blueVelX += unplugForce * movementBlue.DirectionalInput.x;
 
             AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.unplug);
-            startUnplug = false;
 
             yield return new WaitForSeconds(0.2f);
 
@@ -187,6 +184,7 @@ public class PlayerMovementOverride : MonoBehaviour
             }
         }
 
+        startUnplug = false;
         _unplugCoroutine = null;
     }
 
