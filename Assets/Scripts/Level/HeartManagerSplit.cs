@@ -49,7 +49,6 @@ public class HeartManagerSplit : MonoBehaviour
             if (_progressBlue <= maxProgress)
             {
                 _progressBlue += increment * Time.deltaTime;
-                Debug.Log(idBlueAudio);
             }
         }
         else if(!_isGrowingBlue)
@@ -67,7 +66,6 @@ public class HeartManagerSplit : MonoBehaviour
             if (_progressRed <= maxProgress)
             {
                 _progressRed += increment * Time.deltaTime;
-                Debug.Log(idRedAudio);
             }
         }
         else if(!_isGrowingRed)
@@ -102,7 +100,7 @@ public class HeartManagerSplit : MonoBehaviour
         {
             _isGrowingBlue = isOnGoal;
             if (isOnGoal) 
-                idBlueAudio = AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.heartCharge, Vector3.zero);
+                idBlueAudio = AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.heartCharge);
             else
                 AudioManager.Instance.StopOneShotSound(idBlueAudio);
         }
@@ -111,7 +109,7 @@ public class HeartManagerSplit : MonoBehaviour
         {
             _isGrowingRed = isOnGoal;
             if (isOnGoal)
-                idRedAudio = AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.heartCharge, Vector3.zero);
+                idRedAudio = AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.heartCharge);
             else
                 AudioManager.Instance.StopOneShotSound(idRedAudio);
         }

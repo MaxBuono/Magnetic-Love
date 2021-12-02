@@ -96,7 +96,7 @@ namespace MenuManagement
             {
                 if (!(menuInstance is GameMenu))
                 {
-                     AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.buttonPressed, Vector3.zero);
+                     AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.buttonPressed);
                 }
                 foreach (Menu menu in _menuStack)
                 {
@@ -113,7 +113,7 @@ namespace MenuManagement
 
         public void CloseMenu()
         {
-            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.buttonExitPressed, Vector3.zero);
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.buttonExitPressed);
             if (_menuStack.Count <= 1)
             {
                 Debug.LogWarning("MENU MANAGER: no menu to close");

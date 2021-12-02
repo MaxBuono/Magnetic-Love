@@ -160,6 +160,8 @@ public class PlayerMovementOverride : MonoBehaviour
             _redVelX += unplugForce * movementRed.DirectionalInput.x;
             _blueVelX += unplugForce * movementBlue.DirectionalInput.x;
 
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.unplug);
+
             yield return new WaitForSeconds(0.2f);
 
             unplugging = false;
@@ -171,10 +173,6 @@ public class PlayerMovementOverride : MonoBehaviour
             {
                 movementRed.MagneticObject.RegisterForce(movementRed.AllyField.ID, Vector2.zero);
                 movementBlue.MagneticObject.RegisterForce(movementBlue.AllyField.ID, Vector2.zero);
-            }
-            else
-            {
-                AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.unplug, Vector3.zero);
             }
         }
 

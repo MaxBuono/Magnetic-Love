@@ -34,6 +34,7 @@ public class AudioManager : MonoBehaviour
     
     //Public
     public AudioCollection jump;
+    public AudioClip plug;
     public AudioClip unplug;
     public AudioCollection collision;
     public AudioClip completedLevel;
@@ -269,10 +270,11 @@ public class AudioManager : MonoBehaviour
     }
 
     // Scripts can call this to play a sound...
-    public ulong PlayOneShotSound(string mixerGroupName, AudioClip clip, Vector3 position, float volume = 1,
-                                        float spatialBlend = 1, int priority = 128)
+    public ulong PlayOneShotSound(string mixerGroupName, AudioClip clip, float volume = 1, float spatialBlend = 1, int priority = 128)
     {
         if (!_mixerGroups.ContainsKey(mixerGroupName) || clip == null || volume == 0.0f) return 0;
+
+        Vector3 position = Vector3.zero;
 
         // Calculate the unimportance of the sound
         float unimportance = (_listenerPos.position - position).sqrMagnitude / Mathf.Max(1, priority);
@@ -308,7 +310,7 @@ public class AudioManager : MonoBehaviour
                                         float spatialBlend, float duration, int priority = 128)
     {
         yield return new WaitForSeconds(duration);
-        PlayOneShotSound(mixerGroupName, clip, position, volume, spatialBlend, priority);
+        PlayOneShotSound(mixerGroupName, clip, volume, spatialBlend, priority);
     }
     
 }

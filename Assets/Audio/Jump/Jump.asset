@@ -19,7 +19,3 @@ MonoBehaviour:
   _clipBanks:
   - clips:
     - {fileID: 8300000, guid: 8495c2040dc7f414b8cb8fb3ae11d5bc, type: 3}
-  - clips:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}

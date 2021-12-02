@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 wallJumpClimb;
     public Vector2 wallJumpOff;
     public Vector2 wallLeap;
-    public AudioClip plugAudioClip;
 
     // sticked characters variables
     [HideInInspector] public bool isJumping;
@@ -66,15 +65,16 @@ public class PlayerMovement : MonoBehaviour
     
     //Audio internals
     private bool _isStickBefore = false;
-    private bool _touchedGround = true;
+    private bool _wasAbove = false;
 
-
+    // Properties
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public Controller2D Controller { get { return _controller2D; } }
     public Vector2 DirectionalInput { get { return _directionalInput; } }
     public float MaxJumpSpeed { get { return _maxJumpSpeed; } }
     public MagneticObject MagneticObject { get { return _magneticObject; } }
     public MagneticField AllyField { get { return _allyField; } }
+
 
     private void Awake()
     {
@@ -124,6 +124,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Update the animator
         UpdateAnimator(_velocity.x);
+
+        // Sounds
+        UpdateSounds();
     }
 
     // put here only what's related to the movement
@@ -140,8 +143,6 @@ public class PlayerMovement : MonoBehaviour
         {
             //Debug.Log(LayerMask.LayerToName(gameObject.layer) + ": " + isStickToAlly);
         }
-
-        UpdateSounds();
         
         CalculateVelocity();
         HandleWallSliding();
@@ -252,8 +253,8 @@ public class PlayerMovement : MonoBehaviour
         //and I'm grounded (hitting below) while not pressing the downward _directionalInput
         if (_controller2D.collisionInfo.below && _directionalInput.y != -1)
         {
-            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.jump.AudioClip, Vector3.zero);
-            
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.jump.AudioClip);
+
             if (_controller2D.collisionInfo.slidingDownMaxSlope)
             {
                 // if not jumping against a max slope
@@ -269,6 +270,8 @@ public class PlayerMovement : MonoBehaviour
                 _velocity.y = _maxJumpSpeed;
             }
         }
+
+
     }
 
     public void OnJumpInputUp()
@@ -492,21 +495,15 @@ public class PlayerMovement : MonoBehaviour
             _isStickBefore = !_isStickBefore;
             if (_isStickBefore)
             {
-                
-                AudioManager.Instance.PlayOneShotSound("SFX", plugAudioClip, Vector3.zero);
+                AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.plug);
             }
         }
-        
-        //Use touchedGround to check if the player touched the ground before the impact. 
-        if (_controller2D.collisionInfo.above && _touchedGround && !CheckIfBelowCharacter())
+
+        if (_controller2D.collisionInfo.above && !_wasAbove)
         {
-            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.collision.AudioClip, Vector3.zero);
-            _touchedGround = false;
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.collision.AudioClip);
         }
-        
-        if (_controller2D.collisionInfo.below )
-        {
-            _touchedGround = true;
-        }
+
+        _wasAbove = _controller2D.collisionInfo.above;
     }
 }
