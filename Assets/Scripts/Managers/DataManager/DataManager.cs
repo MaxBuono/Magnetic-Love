@@ -21,6 +21,8 @@ namespace GameManagement.Data
         {
             _saveData = new SaveData();
             _jsonSaver = new JsonSaver();
+
+            DontDestroyOnLoad(gameObject);
         }
 
         public void Save()

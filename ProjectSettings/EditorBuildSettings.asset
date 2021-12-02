@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/L15-DanieleLevel.unity
     guid: 4bfaab91fedeee74e981f4f33c4642e0
+  - enabled: 1
+    path: Assets/Scenes/MainMenu_2.unity
+    guid: 55641290ac50e774592dea950ba9f4fd
   m_configObjects: {}

@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
     // Public/Serialized
     public TransitionFader fromMainToFirstLevel;
     public TransitionFader fromLevelToLevel;
+    public TransitionFader fromLastToMain;
     public float gameVelocityMultiplier = 0.04f;
 
     // Internals
@@ -169,11 +170,12 @@ public class GameManager : MonoBehaviour
     }
 
     // returns false when you are not in a level scene
-    public bool IsLevelPlaying()
+    public bool IsLevelPlaying(string sceneName = "")
     {
         string pattern = @"L\d+-\w*";
         Regex rg = new Regex(pattern);
-        return rg.IsMatch(SceneManager.GetActiveScene().name);        
+        string name = sceneName == "" ? SceneManager.GetActiveScene().name : sceneName;
+        return rg.IsMatch(name);        
     }
         
     private IEnumerator LoadNextLevelRoutine(string str = "")
@@ -189,12 +191,15 @@ public class GameManager : MonoBehaviour
     
     private IEnumerator GameCompletedRoutine()
     {
-        TransitionFader.PlayTransition(fromLevelToLevel, "Congratulation!\nYou completed the game!");
+        TransitionFader.PlayTransition(fromLastToMain, "Congratulation, you completed the game!\n\n" +
+                                                            "Thank you for playing :)");
 
-        float fadeDelay  = (fromLevelToLevel != null) ?
-            fromLevelToLevel.delay + fromLevelToLevel.FadeOnDuration : 0f;
+        float fadeDelay  = (fromLastToMain != null) ?
+            fromLastToMain.delay + fromLastToMain.FadeOnDuration : 0f;
             
         yield return new WaitForSeconds(fadeDelay);
-        GameCompletedScreen.Open();
+        //GameCompletedScreen.Open();
+
+        LevelManager.LoadMainMenuLevel();
     }
 }

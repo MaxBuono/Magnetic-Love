@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5359771363141487639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5359771363141487638}
+  - component: {fileID: 5359771363141487633}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5359771363141487638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5359771363141487639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 409.83966, y: 217.23628, z: -701.2757}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5359771363141487633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5359771363141487639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd83c79b9bb4e7347a345922f2203a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuPrefab: {fileID: 6092510080712798837, guid: 723ab75ca93d85f46a6529b381b1ab0b, type: 3}
+  selectLevelMenu: {fileID: 737161458467598457, guid: ad9f8411211d4e442b953a947fb8e731, type: 3}
+  settingsMenuPrefab: {fileID: 6443077626859581411, guid: c7a573353bbfa614ebd327ed6061dfba, type: 3}
+  creditsScreenPrefab: {fileID: 2527524264483612585, guid: 18aeb9ffe6a6113439d61eb2ada54ea4, type: 3}
+  gameMenuPrefab: {fileID: 512288497080825901, guid: d10577298f1701540b619c58799f15a5, type: 3}
+  pauseMenuPrefab: {fileID: 365491642438586408, guid: 764e8edf4665f1e48a65af692cff2498, type: 3}
+  levelCompletedScreen: {fileID: 422376531716639787, guid: e97a60fed0d203046845a21f2bc8a386, type: 3}
+  gameCompletedScreen: {fileID: 8331149839779100073, guid: f712b2c80c11e264ea4c56302a50cd6a, type: 3}
+  _menuParent: {fileID: 0}

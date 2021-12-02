@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     private static int _nextLevel = 1;
-    private static int _maxLevel = SceneManager.sceneCountInBuildSettings-1;
+    private static int _maxLevel = SceneManager.sceneCountInBuildSettings - 1;
     private static int _levelPlayed = -1;
     
     private static string SceneName(int level)
@@ -58,7 +58,8 @@ public class LevelManager : MonoBehaviour
 
     public static void LoadMainMenuLevel()
     {
-        SceneManager.LoadScene("Scenes/MainMenu");
+        MenuManager.Instance.ClearStack();
+        SceneManager.LoadScene("Scenes/MainMenu_2");
         MainMenu.Open();
     }
 

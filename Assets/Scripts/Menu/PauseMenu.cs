@@ -28,7 +28,6 @@ namespace MenuManagement
         {
             MenuManager.Instance.PauseMenuOpen = false;
             MenuManager.Instance.CloseMenu();
-            MenuManager.Instance.ClearStack();
             Time.timeScale = 1f;
             LevelManager.LoadMainMenuLevel();
         }

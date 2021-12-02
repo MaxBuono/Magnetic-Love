@@ -8,6 +8,8 @@ namespace MenuManagement
 {
     public class MenuManager : MonoBehaviour
     {
+        public bool enableAllLevels = false;
+
         [Header("Menu Prefabs")]
         public MainMenu mainMenuPrefab;
 
