@@ -14,6 +14,7 @@ public class PlayerMovementOverride : MonoBehaviour
     public float unplugForce = 1.0f;
 
     [HideInInspector] public bool unplugging = false;
+    [HideInInspector] public static bool startUnplug = false;
     [HideInInspector] public bool waitingForSecondJump;
 
     // Internals
@@ -21,6 +22,7 @@ public class PlayerMovementOverride : MonoBehaviour
     private float _redVelY;
     private float _blueVelX;
     private float _blueVelY;
+    private float _blueToRed;
 
     private PlayerMovement movementRed;
     private PlayerMovement movementBlue;
@@ -143,10 +145,18 @@ public class PlayerMovementOverride : MonoBehaviour
 
     private IEnumerator UnplugCharacters()
     {
+        bool redRightBlueLeft = (movementRed.DirectionalInput.x == 1 && movementBlue.DirectionalInput.x == -1);
+        bool redLeftBlueRight = (movementRed.DirectionalInput.x == -1 && movementBlue.DirectionalInput.x == 1);
+
+        // Handle animation bool
+        if ((redRightBlueLeft && _blueToRed == 1) || (redLeftBlueRight && _blueToRed == -1))
+        {
+            startUnplug = true;
+        }
+
         float timer = 0.0f;
 
-        while ( ((movementRed.DirectionalInput.x == 1 && movementBlue.DirectionalInput.x == -1) || 
-                (movementRed.DirectionalInput.x == -1 && movementBlue.DirectionalInput.x == 1)) && timer < timeToUnplug)
+        while ( (redRightBlueLeft || redLeftBlueRight) && timer < timeToUnplug)
         {
             timer += Time.deltaTime;
             yield return null;
@@ -161,6 +171,7 @@ public class PlayerMovementOverride : MonoBehaviour
             _blueVelX += unplugForce * movementBlue.DirectionalInput.x;
 
             AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.unplug);
+            startUnplug = false;
 
             yield return new WaitForSeconds(0.2f);
 
@@ -238,10 +249,10 @@ public class PlayerMovementOverride : MonoBehaviour
     {
         // Apply movement in a specific order based on the x direction, otherwise one character
         // will collide with the other countering it's movement
-        float blueToRed = Mathf.Sign(movementRed.transform.position.x - movementBlue.transform.position.x);
+        _blueToRed = Mathf.Sign(movementRed.transform.position.x - movementBlue.transform.position.x);
         finalBlueVel *= GameManager.Instance.gameVelocityMultiplier;
         finalRedVel *= GameManager.Instance.gameVelocityMultiplier;
-        if (blueToRed == 1) // red on the right
+        if (_blueToRed == 1) // red on the right
         {
             if (_redVelX > 0 || _blueVelX > 0) // and moving to the right
             {
