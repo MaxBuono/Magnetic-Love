@@ -48,6 +48,23 @@ MonoBehaviour:
   fromLevelToLevel: {fileID: 7576093374136586597, guid: 969e099a43d5248028144b08456ca209, type: 3}
   fromLastToMain: {fileID: 7576093374136586597, guid: 39ffe1c5bcde0a5418d679901f693a9d, type: 3}
   gameVelocityMultiplier: 0.04
+  _levels:
+  - L1-pluto
+  - L2-pippo
+  - L3-LevelName
+  - L4-LevelName
+  - L5-LevelName
+  - L6-LevelName
+  - L7-LevelName
+  - L8-LevelName
+  - L9-LevelName
+  - L10-LevelName
+  - L11-DanieleLevel
+  - L12-DanieleLevel
+  - L13-DanieleLevel
+  - L14-DanieleLevel
+  - L15-DanieleLevel
+  _levelNames: []
 --- !u!114 &6886589232747700170
 MonoBehaviour:
   m_ObjectHideFlags: 0

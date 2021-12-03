@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using GameManagement.Data;
-using MenuManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 
 // NOTE: the game manager is supposed to handle everything that requires
 // a higher level management, usually aspects not directly related
@@ -36,29 +34,18 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        // cache all the (enabled) level names to use in the LevelManager script
-        string pattern = @"L\d+-\w*";
+        // cache all the level names to use in the LevelManager script
         string nameFilter = @"\w+$";
-        Regex rg = new Regex(pattern);
         Regex filter = new Regex(nameFilter);
-        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        foreach (string str in _levels)
         {
-            if (scene.enabled)
-            {
-                Match match = rg.Match(scene.path);
-                if (match.Success)
-                {
-                    _levels.Add(match.Value);
-
-                    Match nameMatch = filter.Match(match.Value);
-                    _levelNames.Add(nameMatch.Value);
-                }
-            }
+            Match nameMatch = filter.Match(str);
+            _levelNames.Add(nameMatch.Value);
         }
 
         // test different frame rates
-        QualitySettings.vSyncCount = 0;  // VSync must be disabled
-        Application.targetFrameRate = 1000;
+        //QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        //Application.targetFrameRate = 1000;
 
 
         _dataManager = FindObjectOfType<DataManager>();
@@ -71,6 +58,8 @@ public class GameManager : MonoBehaviour
     public TransitionFader fromLastToMain;
     public float gameVelocityMultiplier = 0.04f;
 
+    [SerializeField] private List<string> _levels = new List<string>();
+
     // Internals
     private float _gravity = 0.0f;
     private bool _isGameOver = false;
@@ -78,7 +67,6 @@ public class GameManager : MonoBehaviour
     // Dictionaries used to save performances by caching components avoiding getting them at runtime
     private Dictionary<int, MagneticObject> _magneticObjects = new Dictionary<int, MagneticObject>();
     private Dictionary<int, Controller2D> _controllers2D = new Dictionary<int, Controller2D>();
-    private List<string> _levels = new List<string>();
     private List<string> _levelNames = new List<string>();
 
     // Properties
