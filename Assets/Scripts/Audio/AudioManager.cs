@@ -306,8 +306,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // ...or this if the sound has to be delayed
-    public IEnumerator PlayOneShotSoundDelayed(string mixerGroupName, AudioClip clip, Vector3 position, float volume,
-                                        float spatialBlend, float duration, int priority = 128)
+    public IEnumerator PlayOneShotSoundDelayed(string mixerGroupName, AudioClip clip, float duration, float volume = 1, float spatialBlend = 1, int priority = 128)
     {
         yield return new WaitForSeconds(duration);
         PlayOneShotSound(mixerGroupName, clip, volume, spatialBlend, priority);

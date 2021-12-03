@@ -23,10 +23,15 @@ public class PlayerMovementOverride : MonoBehaviour
     private float _blueVelX;
     private float _blueVelY;
     private float _blueToRed;
+    private float _timeToWaitForSecondJumpInput = 0.1f;
 
     private PlayerMovement movementRed;
     private PlayerMovement movementBlue;
     private IEnumerator _unplugCoroutine = null;
+    private IEnumerator _waitForJumpInput = null;
+
+    // audio parameter
+    private ulong _delayedID;
 
 
     // Singleton
@@ -288,12 +293,19 @@ public class PlayerMovementOverride : MonoBehaviour
         }
     }
 
+    private IEnumerator WaitBeforePlay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _delayedID = AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.jump.AudioClip);
+        _waitForJumpInput = null;
+    }
+
     // used to enlarge the double jump window for the player
     private IEnumerator WaitForSecondJump()
     {
         waitingForSecondJump = true;
 
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(_timeToWaitForSecondJumpInput);
 
         waitingForSecondJump = false;
     }
@@ -306,6 +318,11 @@ public class PlayerMovementOverride : MonoBehaviour
         {
             _redVelY += movementRed.MaxJumpSpeed * 0.5f;
             _blueVelY += movementBlue.MaxJumpSpeed * 0.5f;
+
+            StopCoroutine(_waitForJumpInput);
+            _waitForJumpInput = null;
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.jump[1]);
+
             return;
         }
 
@@ -326,9 +343,15 @@ public class PlayerMovementOverride : MonoBehaviour
         // jump only if you are touching or close enough to the ground
         if (hits != 0)
         {
-            // the 0.5 factor is used since if both characters are jumping their jump forces will sum up
+            // if both characters are jumping their jump forces will sum up
             _redVelY += movementRed.MaxJumpSpeed * 0.7f;
             _blueVelY += movementBlue.MaxJumpSpeed * 0.7f;
+
+            if (_waitForJumpInput == null)
+            {
+                _waitForJumpInput = WaitBeforePlay(_timeToWaitForSecondJumpInput);
+                StartCoroutine(_waitForJumpInput);
+            }
 
             StartCoroutine(WaitForSecondJump());
         }
