@@ -299,6 +299,8 @@ public class PlayerMovement : MonoBehaviour
         resultingVelX = velX;
         resultingVelY = velY;
 
+        velX = Mathf.Clamp(velX, -40f, 40f);
+
         // smooth the x velocity 
         _velocity.x = Mathf.SmoothDamp(_velocity.x, velX, ref _smoothedVelocityX,
                                         _controller2D.collisionInfo.below ? _accelerationTimeGrounded : _accelerationTimeAirborne);
