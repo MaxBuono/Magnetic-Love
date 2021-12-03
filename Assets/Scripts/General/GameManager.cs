@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         // cache all the level names to use in the LevelManager script
-        string nameFilter = @"\w+$";
+        string nameFilter = @"(\w|\s|'|,)+$";
         Regex filter = new Regex(nameFilter);
         foreach (string str in _levels)
         {
