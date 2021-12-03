@@ -49,21 +49,21 @@ MonoBehaviour:
   fromLastToMain: {fileID: 7576093374136586597, guid: 39ffe1c5bcde0a5418d679901f693a9d, type: 3}
   gameVelocityMultiplier: 0.04
   _levels:
-  - L1-First meeting
-  - L2-Love at first sight
-  - L3-Don't take that leap
-  - L4-Do you want to go out with me
-  - L5-One kiss
-  - L6-Feeling of Togetherness
-  - L7-I'm in love with the shape of you
-  - L8-Respect and love each other
-  - L9-Blame the other
-  - L10-That's enough, let's go make peace
-  - L11-I want more from the relationship
-  - L12-Let's try again
-  - L13-The course of true love never did run smooth
-  - L14-It does not work like that
-  - L15-I still love you but we can't be together
+  - L1-The Path To Love
+  - L2-Similarities
+  - L3-Shared Passion
+  - L4-Love At First Sight
+  - L5-First kiss
+  - L6-Discovering Each Other
+  - L7-Love Is In The Air
+  - L8-I Got Your Back
+  - L9-You Push Me Over The Edge
+  - L10-And That's Why I Love You
+  - L11-I Fall Down Without You
+  - L12-Responsability
+  - L13-Carry Me Over Your Shoulders
+  - L14-Sliding Through Obstacles
+  - L15-Finding Our Own Space
 --- !u!114 &6886589232747700170
 MonoBehaviour:
   m_ObjectHideFlags: 0
