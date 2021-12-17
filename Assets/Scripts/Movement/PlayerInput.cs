@@ -10,11 +10,11 @@ public class PlayerInput : MonoBehaviour
     // Public
     // INPUTS
     public string horizontal;
-    public string vertical;
     public string jump;
 
-    [HideInInspector]
-    public bool isPressingJump;
+    // Hidden
+    [HideInInspector] public bool isPressingJump;
+    [HideInInspector] public bool isPressingUnplug;
 
     // Internals
     private PlayerMovement _playerMovement;
@@ -24,6 +24,7 @@ public class PlayerInput : MonoBehaviour
     {
         _playerMovement = GetComponent<PlayerMovement>();
         isPressingJump = false;
+        isPressingUnplug = false;
     }
 
     void Update()
@@ -32,7 +33,7 @@ public class PlayerInput : MonoBehaviour
         if (GameManager.Instance.PlayerControlsBlocked) return;
 
         // Horizontal/Vertical Input
-        Vector2 directionalInput = new Vector2(Input.GetAxisRaw(horizontal), Input.GetAxisRaw(vertical));
+        Vector2 directionalInput = new Vector2(Input.GetAxisRaw(horizontal), Input.GetAxisRaw(jump));
         _playerMovement.SetDirectionalInput(directionalInput);
 
         // Jump
@@ -62,6 +63,18 @@ public class PlayerInput : MonoBehaviour
             _playerMovement.OnJumpInputUp();
             isPressingJump = false;
             _playerMovement.isJumping = false;
+        }
+
+        // unplug
+        if (Input.GetButtonDown("Unplug"))
+        {
+            PlayerMovementOverride.Instance.OnUnplugInput();
+            isPressingUnplug = true;
+        }
+
+        if (Input.GetButtonUp("Unplug"))
+        {
+            isPressingUnplug = false;
         }
     }
 }

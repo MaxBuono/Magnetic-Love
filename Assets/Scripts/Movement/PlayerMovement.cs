@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     private MagneticObject _magneticObject;
     private PlayerMovement _allyMovement;
     private MagneticField _allyField;
+    private PlayerInput _input;
     private Animator _animator;
     private Vector2 _directionalInput;
     private IEnumerator _pushUpCoroutine = null;
@@ -77,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
     public float MaxJumpSpeed { get { return _maxJumpSpeed; } }
     public MagneticObject MagneticObject { get { return _magneticObject; } }
     public MagneticField AllyField { get { return _allyField; } }
+    public PlayerInput Input { get { return _input; } }
 
 
     private void Awake()
@@ -88,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         string allyTag = gameObject.tag == "PlayerRed" ? "PlayerBlue" : "PlayerRed";
         _allyMovement = GameObject.FindGameObjectWithTag(allyTag).GetComponent<PlayerMovement>();
         _allyField = _allyMovement.GetComponentInChildren<MagneticField>();
+        _input = GetComponent<PlayerInput>();
         _animator = GetComponent<Animator>();
 
         // Custom gravity given by dx = v0*t + a*t^2 / 2 with dx = maxJumpHeight, v0 = 0 

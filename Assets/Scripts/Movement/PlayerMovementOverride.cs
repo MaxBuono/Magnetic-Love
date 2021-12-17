@@ -12,6 +12,7 @@ public class PlayerMovementOverride : MonoBehaviour
     // Public
     public float timeToUnplug = 2.0f;
     public float unplugForce = 1.0f;
+    public float dragWhileUnplugging = 0.2f;
 
     [HideInInspector] public bool unplugging = false;
     [HideInInspector] public static bool startUnplug = false;
@@ -61,18 +62,6 @@ public class PlayerMovementOverride : MonoBehaviour
     {
         // avoid to process anything if you are not inside a level scene
         if (movementRed == null || movementBlue == null) return;
-
-        if (movementRed.isStickToAlly || movementBlue.isStickToAlly)
-        {
-            // Handle unplug situation when both characters are moving 
-            // in opposite directions from each other on the x axis
-            if (((movementRed.DirectionalInput.x == 1 && movementBlue.DirectionalInput.x == -1) ||
-                (movementRed.DirectionalInput.x == -1 && movementBlue.DirectionalInput.x == 1)) && _unplugCoroutine == null)
-            {
-                _unplugCoroutine = UnplugCharacters();
-                StartCoroutine(_unplugCoroutine);
-            }
-        }
     }
 
     // put here only what's related to the movement
@@ -106,6 +95,12 @@ public class PlayerMovementOverride : MonoBehaviour
         {
             _redVelX = 0.0f;
             _blueVelX = 0.0f;
+        }
+        // add some drag while they are unplugging so that it gives more a magnetic feeling
+        else
+        {
+            _redVelX -= dragWhileUnplugging * GetBlueToRedDir();
+            _blueVelX += dragWhileUnplugging * GetBlueToRedDir();
         }
 
         // if you are above the other character, his X movement will influence yours
@@ -148,20 +143,19 @@ public class PlayerMovementOverride : MonoBehaviour
         }
     }
 
+    private int GetBlueToRedDir()
+    {
+        return movementRed.transform.position.x > movementBlue.transform.position.x ? 1 : -1;
+    }
+
     private IEnumerator UnplugCharacters()
     {
-        bool redRightBlueLeft = (movementRed.DirectionalInput.x == 1 && movementBlue.DirectionalInput.x == -1);
-        bool redLeftBlueRight = (movementRed.DirectionalInput.x == -1 && movementBlue.DirectionalInput.x == 1);
-
         float timer = 0.0f;
 
-        while (((redRightBlueLeft && _blueToRed == 1) || (redLeftBlueRight && _blueToRed == -1)) && timer < timeToUnplug)
+        while ((movementRed.Input.isPressingUnplug || movementBlue.Input.isPressingUnplug) && timer < timeToUnplug)
         {
             timer += Time.deltaTime;
             startUnplug = true;
-            // it's fundamental to update the bool at every iteration
-            redRightBlueLeft = (movementRed.DirectionalInput.x == 1 && movementBlue.DirectionalInput.x == -1);
-            redLeftBlueRight = (movementRed.DirectionalInput.x == -1 && movementBlue.DirectionalInput.x == 1);
             yield return null;
         }
 
@@ -169,9 +163,12 @@ public class PlayerMovementOverride : MonoBehaviour
         {
             unplugging = true;
 
+            // Get the direction of the unplug force
+            int redDir = GetBlueToRedDir();
+            int blueDir = -redDir;
             // unplug them
-            _redVelX += unplugForce * movementRed.DirectionalInput.x;
-            _blueVelX += unplugForce * movementBlue.DirectionalInput.x;
+            _redVelX += unplugForce * redDir;
+            _blueVelX += unplugForce * blueDir;
 
             AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.unplug);
 
@@ -209,6 +206,13 @@ public class PlayerMovementOverride : MonoBehaviour
         {
             _redVelX -= movementRed.moveSpeed * movementRed.DirectionalInput.x;
             _blueVelX -= movementBlue.moveSpeed * movementBlue.DirectionalInput.x;
+        }
+
+        // Clamp the X velocity when sticked to avoid weird behaviors when connecting
+        if (!unplugging)
+        {
+            _redVelX = Mathf.Clamp(_redVelX, -movementRed.moveSpeed, movementRed.moveSpeed);
+            _blueVelX = Mathf.Clamp(_blueVelX, -movementBlue.moveSpeed, movementBlue.moveSpeed);
         }
 
         // resulting y axis velocity 
@@ -354,6 +358,16 @@ public class PlayerMovementOverride : MonoBehaviour
             }
 
             StartCoroutine(WaitForSecondJump());
+        }
+    }
+
+    // when the player presses the unplug button while the characters are sticked
+    public void OnUnplugInput()
+    {
+        if ((movementRed.isStickToAlly || movementBlue.isStickToAlly) && _unplugCoroutine == null)
+        {
+            _unplugCoroutine = UnplugCharacters();
+            StartCoroutine(_unplugCoroutine);
         }
     }
 }

@@ -76,7 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490e2028b79559148940b7537b1495cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToUnplug: 0.9
-  unplugForce: 9
+  timeToUnplug: 0.5
+  unplugForce: 12
+  dragWhileUnplugging: 1.5
   unplugging: 0
   waitingForSecondJump: 0
