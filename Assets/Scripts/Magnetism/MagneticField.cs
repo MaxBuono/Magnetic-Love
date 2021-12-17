@@ -14,6 +14,8 @@ public class MagneticField : MonoBehaviour
     // Internals
     private int _myID;
     private Collider2D _field;
+    private Collider2D _parentCollider;
+    private float _parentDiagonalLength;
 
     // Properties
     public int ID { get { return _myID; } }
@@ -23,12 +25,27 @@ public class MagneticField : MonoBehaviour
     {
         // Cache components
         _field = GetComponent<Collider2D>();
+
+        // Get the parent collider (not this object collider)
+        Collider2D[] colliders = GetComponentsInParent<Collider2D>();
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            // skip this object collider and take the next, which is the parent collider
+            if (colliders[i].GetInstanceID() != _field.GetInstanceID())
+            {
+                _parentCollider = colliders[i];
+                break;
+            }
+        }
     }
 
     private void Start()
     {
         // Cache your own id (representing the force this object applies to other magnetic objects)
         _myID = _field.GetInstanceID();
+
+        // calculate the (square) length of the parent collider diagonal
+        _parentDiagonalLength = new Vector3(_parentCollider.bounds.extents.x, _parentCollider.bounds.extents.y, 0).magnitude;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -93,10 +110,15 @@ public class MagneticField : MonoBehaviour
 
             //...then compute the force applied to it
             Vector2 distanceVec = (coll.transform.position - transform.position);
+
             float squareDist = distanceVec.sqrMagnitude;
+            float minSquare = Mathf.Pow(magneticObject.DiagonalLength + _parentDiagonalLength, 2);
+            // have a maximum force on Y to avoid to being pushed up harder when arriving on the magnet at high speed
+            float squareDistY = Mathf.Max(minSquare, squareDist);
+
             Vector2 normalizedDist = distanceVec.normalized;
             float forceX = (normalizedDist.x * strengthX / squareDist) * polarization;
-            float forceY = (normalizedDist.y * strengthY / squareDist) * polarization;
+            float forceY = (normalizedDist.y * strengthY / squareDistY) * polarization;
 
             return (magneticObject, new Vector2(forceX, forceY));
         }

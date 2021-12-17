@@ -18,11 +18,14 @@ public class MagneticObject : MonoBehaviour
     // Internals
     private Rigidbody2D _rb2d;
     private Collider2D _coll;
+    private float _diagonalLength;
 
     // Forces
     // the int represent the collider id of the object causing that force
     private Dictionary<int, Vector2> _forces = new Dictionary<int, Vector2>();
 
+    // Properties
+    public float DiagonalLength { get { return _diagonalLength; } }
 
     private void Awake()
     {
@@ -38,6 +41,9 @@ public class MagneticObject : MonoBehaviour
 
         // Be sure that the rigidbody is setup correctly
         _rb2d.isKinematic = true;
+
+        // calculate the (square) length of this collider diagonal
+        _diagonalLength = new Vector3(_coll.bounds.extents.x, _coll.bounds.extents.y, 0).magnitude;
     }
 
     // returns the resulting magnetic force (aka acceleration because we aren't considering any mass)
