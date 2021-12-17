@@ -65,7 +65,6 @@ public class PlayerMovement : MonoBehaviour
     private int _endJumpHash;
     private int _isStickedHash;
     private int _startUnplugHash;
-    private int _startSuperJumpHash;
     
     //Audio internals
     private bool _isStickBefore = false;
@@ -109,7 +108,6 @@ public class PlayerMovement : MonoBehaviour
         _endJumpHash = Animator.StringToHash("endJump");
         _isStickedHash = Animator.StringToHash("isSticked");
         _startUnplugHash = Animator.StringToHash("startUnplug");
-        _startSuperJumpHash = Animator.StringToHash("startSuperJump");
 
         // v1 = v0 + a*t (v0 = 0)
         _maxJumpSpeed = Mathf.Abs(_gravity * timeToJumpApex);
@@ -119,17 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // check if sticked here
-
-        // Handle the "vertical unplug"
-        bool isAbove = CheckIfAboveCharacter();
-        if (isAbove && DirectionalInput.y == 1 && _pushUpCoroutine == null)
-        {
-            _pushUpCoroutine = PushMeUp();
-            StartCoroutine(_pushUpCoroutine);
-        }
-
-        // Calculate Velocity was here
+        CheckIfAboveCharacter();
 
         // Update the animator
         UpdateAnimator(_velocity.x);
@@ -495,7 +483,6 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetBool(_endJumpHash, _controller2D.collisionInfo.below && _wasInAir);
         _animator.SetBool(_isStickedHash, isStickToAlly);
         _animator.SetBool(_startUnplugHash, PlayerMovementOverride.startUnplug);
-        _animator.SetBool(_startSuperJumpHash, _pushUpCoroutine != null);
 
         // store the grounded state of the previous frame
         _wasInAir = !_controller2D.collisionInfo.below;
