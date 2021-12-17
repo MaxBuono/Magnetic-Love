@@ -27,15 +27,17 @@ public class ObjectMovement : MonoBehaviour
         _gravity = GameManager.Instance.Gravity;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (_gravity == 0)
+        {
             _gravity = GameManager.Instance.Gravity;
+        }
 
         CalculateVelocity();
  
         // The frame independent multiplication with deltaTime is done here
-        _controller2D.Move(_velocity * Time.deltaTime);
+        _controller2D.Move(_velocity * GameManager.Instance.gameVelocityMultiplier);
 
         // we call this at the end because if for instance we are on a moving platform, it's going
         // to call Move too, potentially altering the below/above values.
@@ -62,11 +64,11 @@ public class ObjectMovement : MonoBehaviour
 
     private void CalculateVelocity()
     {
-        float targetVelocityX = CalculateHorizontalForce() * Time.deltaTime;
+        float targetVelocityX = CalculateHorizontalForce();
 
         // smooth the x velocity 
         _velocity.x = Mathf.SmoothDamp(_velocity.x, targetVelocityX, ref _smoothedVelocityX, _accelerationTimeAirborne);
-        _velocity.y += CalculateVerticalForce() * Time.deltaTime;
+        _velocity.y += CalculateVerticalForce();
     }
 
     // Returns the sum of all the external forces applied to the player on the x axis

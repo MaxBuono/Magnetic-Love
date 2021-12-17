@@ -16,10 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public float minJumpHeight = 1.0f;
     [Tooltip("Time to get to the maximum height. Modifies gravity.")]
     public float timeToJumpApex = 0.5f;
-    [Tooltip("Jump speed multiplier on the x axis (a value of 0.5 means that the character is jumping with half jump speed on the x axis.")]
-    public float jumpWidth = 0.5f;
-    [Tooltip("Amount of vertical force you get when jumping (keeping it pressed) on the other character")]
-    public float jumpPushForce = 1.7f;
+    [Tooltip("Jump speed multiplier on the x axis when jumping while sticked to a magnetic object(a value of 0.5 means that the character is jumping with half jump speed on the x axis.")]
+    public float jumpFromObjectX = 0.5f;
     // Wall jumping stuff
     public float wallSlideMaxSpeed = 3.0f;
     [Tooltip("Amount of time that you will stay sticked to the wall before actually jumping off if you are moving in the opposite direction from the wall")]
@@ -142,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         CalculateVelocity();
-        HandleWallSliding();
+        //HandleWallSliding();
 
         // if you characters are stick together let the Override script handle the Move function for both
         if (isStickToAlly)
@@ -229,7 +227,7 @@ public class PlayerMovement : MonoBehaviour
                 MagneticObject magneticObj = coll.GetComponent<MagneticObject>();
                 if (magneticObj != null)
                 {
-                    _velocity.x = _maxJumpSpeed * jumpWidth * Vector2.left.x;
+                    _velocity.x = _maxJumpSpeed * jumpFromObjectX * Vector2.left.x;
                 }
             }
         }
@@ -241,7 +239,7 @@ public class PlayerMovement : MonoBehaviour
                 MagneticObject magneticObj = coll.GetComponent<MagneticObject>();
                 if (magneticObj != null)
                 {
-                    _velocity.x = _maxJumpSpeed * jumpWidth * Vector2.right.x;
+                    _velocity.x = _maxJumpSpeed * jumpFromObjectX * Vector2.right.x;
                 }
             }
         }
@@ -453,26 +451,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return false;
-    }
-
-    // a sort of unplug but in vertical when you are above the other character
-    private IEnumerator PushMeUp()
-    {
-        float timer = 0.0f;
-
-        while ( isAboveCharacter && DirectionalInput.y == 1 && timer < PlayerMovementOverride.Instance.timeToUnplug)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        if (timer > PlayerMovementOverride.Instance.timeToUnplug)
-        {
-            // push up
-            _velocity.y += _maxJumpSpeed * jumpPushForce;
-        }
-
-        _pushUpCoroutine = null;
     }
 
     private void UpdateAnimator(float velX)

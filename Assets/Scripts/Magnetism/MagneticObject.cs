@@ -11,6 +11,9 @@ public class MagneticObject : MonoBehaviour
 {
     // Public
     public Polarization polarization;
+    [Tooltip("A value of one means that the object receives full strenght force while zero means no force received at all.")]
+    [Range(0, 1)]
+    public float forceReceived = 1.0f;
 
     // Internals
     private Rigidbody2D _rb2d;
@@ -44,7 +47,7 @@ public class MagneticObject : MonoBehaviour
 
         foreach (var force in _forces)
         {
-            acceleration += force.Value;
+            acceleration += force.Value * forceReceived;
         }
 
         return acceleration;
