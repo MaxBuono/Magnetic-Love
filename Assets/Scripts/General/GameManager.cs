@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         //QualitySettings.vSyncCount = 0;  // VSync must be disabled
         //Application.targetFrameRate = 1000;
 
-
+        // Cache Objects
         _dataManager = FindObjectOfType<DataManager>();
     }
 
@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     private float _gravity = 0.0f;
     private bool _isGameOver = false;
     private bool _playerControlsBlocked = false;
+    private float _cameraSizeRatio;
     // Dictionaries used to save performances by caching components avoiding getting them at runtime
     private Dictionary<int, MagneticObject> _magneticObjects = new Dictionary<int, MagneticObject>();
     private Dictionary<int, Controller2D> _controllers2D = new Dictionary<int, Controller2D>();
@@ -79,12 +80,29 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // game loop
         StartCoroutine(GameLoop());
     }
 
     private void Update()
     {
 
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // On scene loaded adjust camera size
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        AdjustCameraSize();
     }
 
     // Manage the whole match cycle
@@ -106,6 +124,43 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    private IEnumerator LoadNextLevelRoutine(string str = "")
+    {
+        TransitionFader.PlayTransition(fromLevelToLevel, str);
+
+        float fadeDelay = (fromLevelToLevel != null) ?
+            fromLevelToLevel.delay + fromLevelToLevel.FadeOnDuration : 0f;
+
+        yield return new WaitForSeconds(fadeDelay);
+        LevelManager.LoadNextLevel();
+    }
+
+    private IEnumerator GameCompletedRoutine()
+    {
+        TransitionFader.PlayTransition(fromLastToMain, "Congratulation, you completed the game!\n\n" +
+                                                            "Thank you for playing :)");
+
+        float fadeDelay = (fromLastToMain != null) ?
+            fromLastToMain.delay + fromLastToMain.FadeOnDuration : 0f;
+
+        yield return new WaitForSeconds(fadeDelay);
+        //GameCompletedScreen.Open();
+
+        LevelManager.LoadMainMenuLevel();
+    }
+
+    // used to dynamically adjust the camera size based on player's resolution
+    private void AdjustCameraSize()
+    {
+        Camera mainCamera = Camera.main;
+        float aspectRatio = (float)Screen.width / (float)Screen.height;
+        // in the first run we tune the sizeRatio for a 16:9 ratio with a specific size
+        if (_cameraSizeRatio == 0)
+        {
+            _cameraSizeRatio = mainCamera.orthographicSize * (16.0f / 9.0f);
+        }
+        mainCamera.orthographicSize = _cameraSizeRatio / aspectRatio;
+    }
 
     // Public Methods
 
@@ -165,29 +220,5 @@ public class GameManager : MonoBehaviour
         string name = sceneName == "" ? SceneManager.GetActiveScene().name : sceneName;
         return rg.IsMatch(name);        
     }
-        
-    private IEnumerator LoadNextLevelRoutine(string str = "")
-    {
-        TransitionFader.PlayTransition(fromLevelToLevel, str);
-
-        float fadeDelay  = (fromLevelToLevel != null) ?
-            fromLevelToLevel.delay + fromLevelToLevel.FadeOnDuration : 0f;
-
-        yield return new WaitForSeconds(fadeDelay);
-        LevelManager.LoadNextLevel();
-    }
-    
-    private IEnumerator GameCompletedRoutine()
-    {
-        TransitionFader.PlayTransition(fromLastToMain, "Congratulation, you completed the game!\n\n" +
-                                                            "Thank you for playing :)");
-
-        float fadeDelay  = (fromLastToMain != null) ?
-            fromLastToMain.delay + fromLastToMain.FadeOnDuration : 0f;
-            
-        yield return new WaitForSeconds(fadeDelay);
-        //GameCompletedScreen.Open();
-
-        LevelManager.LoadMainMenuLevel();
-    }
+       
 }
