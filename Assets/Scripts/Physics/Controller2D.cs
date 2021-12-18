@@ -255,6 +255,8 @@ public class Controller2D : RaycastController
                 // e.g. to jump on a platform from below
                 if (hit.collider.tag == "Passable")
                 {
+                    collisionInfo.below = directionY == -1;
+
                     //... moving up and not being stuck in it
                     if (directionY == 1 || hit.distance == 0)
                     {

@@ -73,6 +73,7 @@ public class PlayerMovementOverride : MonoBehaviour
         if (movementRed.isStickToAlly || movementBlue.isStickToAlly)
         {
             CalculateResultantVelocity();
+
             // apply the final velocities to the characters
             Vector2 finalRedVel = new Vector2(_redVelX, _redVelY);
             Vector2 finalBlueVel = new Vector2(_blueVelX, _blueVelY);
@@ -232,24 +233,6 @@ public class PlayerMovementOverride : MonoBehaviour
             _redVelY += redY + blueY;
             _blueVelY += redY + blueY;
         }
-
-        // if only one character is touching the ground the other should remain sticked
-        if ((movementRed.Controller.collisionInfo.below || movementBlue.Controller.collisionInfo.below)
-            && (_redVelY < 0 || _blueVelY < 0))
-        {
-            _redVelY = 0.0f;
-            _blueVelY = 0.0f;
-
-            // and also set their y position to be the same as the one character on the ground
-            if (movementRed.Controller.collisionInfo.below)
-            {
-                movementBlue.transform.position = new Vector2(movementBlue.transform.position.x, movementRed.transform.position.y);
-            }
-            if (movementBlue.Controller.collisionInfo.below)
-            {
-                movementRed.transform.position = new Vector2(movementRed.transform.position.x, movementBlue.transform.position.y);
-            }
-        }
     }
 
     private void ApplyMovement(Vector2 finalRedVel, Vector2 finalBlueVel)
@@ -293,6 +276,25 @@ public class PlayerMovementOverride : MonoBehaviour
             {
                 movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
                 movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
+            }
+        }
+
+        // if only one character is touching the ground the other should remain sticked
+        // This has to go after I called Move to properly set the below boolean
+        if ((movementRed.Controller.collisionInfo.below || movementBlue.Controller.collisionInfo.below)
+            && (_redVelY < 0 || _blueVelY < 0))
+        {
+            _redVelY = 0.0f;
+            _blueVelY = 0.0f;
+
+            // and also set their y position to be the same as the one character on the ground
+            if (movementRed.Controller.collisionInfo.below)
+            {
+                movementBlue.transform.position = new Vector2(movementBlue.transform.position.x, movementRed.transform.position.y);
+            }
+            if (movementBlue.Controller.collisionInfo.below)
+            {
+                movementRed.transform.position = new Vector2(movementRed.transform.position.x, movementBlue.transform.position.y);
             }
         }
     }
