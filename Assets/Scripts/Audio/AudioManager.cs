@@ -311,5 +311,29 @@ public class AudioManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
         PlayOneShotSound(mixerGroupName, clip, volume, spatialBlend, priority);
     }
-    
+
+    public void SetMusicVolume(float volume)
+    {
+        _musicSource.volume = volume;
+    }
+
+    // lower music, wait, increase it again slowly to the original level
+    public IEnumerator LowerMusicFor(float otherClipLength, float timeToGetBackToMax)
+    {
+        // lower music
+        float lowerTo = 0.4f;
+        SetMusicVolume(_musicSource.volume * lowerTo);
+        // then wait for the other sound to be finished
+        yield return new WaitForSeconds(otherClipLength);
+        // and finally increase the volume slowly back to the original level
+        float timer = 0.0f;
+        float oldVolume = _musicSource.volume;
+        float targetVolume = _musicSource.volume / lowerTo;
+        while (timer < timeToGetBackToMax)
+        {
+            timer += Time.deltaTime;
+            SetMusicVolume(Mathf.Lerp(oldVolume, targetVolume, timer / timeToGetBackToMax));
+            yield return null;
+        }
+    }
 }

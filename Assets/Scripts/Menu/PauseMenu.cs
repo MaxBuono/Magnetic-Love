@@ -43,7 +43,7 @@ namespace MenuManagement
             if (AudioManager.Instance != null)
             {
                 float volume = AudioManager.Instance.MusicSource.volume;
-                AudioManager.Instance.MusicSource.volume = volume * 0.5f;
+                AudioManager.Instance.SetMusicVolume(volume * 0.4f);
             }
 
         }
@@ -53,7 +53,7 @@ namespace MenuManagement
             if (AudioManager.Instance != null)
             {
                 float volume = AudioManager.Instance.MusicSource.volume;
-                AudioManager.Instance.MusicSource.volume = volume * 2.0f;
+                AudioManager.Instance.SetMusicVolume(volume * 2.5f);
             }
         }
     }

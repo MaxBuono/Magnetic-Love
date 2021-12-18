@@ -378,7 +378,7 @@ public class PlayerMovement : MonoBehaviour
         if (isStickToAlly || _allyMovement.isStickToAlly)
         {
             // when they are already sticked use a longer ray to be super sure that they stay sticked
-            rayLength = 0.5f;
+            rayLength = 0.7f;
         }
         else
         {

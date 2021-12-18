@@ -162,6 +162,7 @@ public class GameManager : MonoBehaviour
         mainCamera.orthographicSize = _cameraSizeRatio / aspectRatio;
     }
 
+
     // Public Methods
 
     public bool RegisterMagneticObject(int id, MagneticObject magneticObject)
@@ -203,7 +204,10 @@ public class GameManager : MonoBehaviour
         if (!LevelManager.CompletedAllLevels())
         {
             StartCoroutine(LoadNextLevelRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
+
+            // lower the background music to avoid going above the completed level sound
             AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.completedLevel);
+            StartCoroutine(AudioManager.Instance.LowerMusicFor(AudioManager.Instance.completedLevel.length, 1.0f));
         }
         else
         {

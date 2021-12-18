@@ -144,7 +144,7 @@ MonoBehaviour:
   plug: {fileID: 8300000, guid: c477113d7d4cdc344887a900a7385167, type: 3}
   unplug: {fileID: 8300000, guid: 153aa105337505242ab9462ca031ab98, type: 3}
   collision: {fileID: 11400000, guid: 94613acd36c68af419c8332b7375e5d0, type: 2}
-  completedLevel: {fileID: 8300000, guid: ad79a1616b2d4a646b83d34887e9b14e, type: 3}
+  completedLevel: {fileID: 8300000, guid: 56ff5d4e2ef9aaa4c80628e6b79ad1e4, type: 3}
   buttonPressed: {fileID: 8300000, guid: 9e884314029b9a34a9fa671ec25da8dd, type: 3}
   buttonExitPressed: {fileID: 8300000, guid: 619a71cef2777ab41b026b9b7d72d11d, type: 3}
   heartCharge: {fileID: 8300000, guid: 457e3a45156e0914fb16e4fabb813a51, type: 3}
