@@ -147,6 +147,12 @@ public class Controller2D : RaycastController
                     continue;
                 }
 
+                // handle lateral platform hits
+                if (hit.collider.tag == "Passable")
+                {
+                    continue;
+                }
+
                 // if we hit a slope, find its angle with the ground
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
