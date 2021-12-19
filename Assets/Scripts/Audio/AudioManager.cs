@@ -272,7 +272,7 @@ public class AudioManager : MonoBehaviour
     // Scripts can call this to play a sound...
     public ulong PlayOneShotSound(string mixerGroupName, AudioClip clip, float volume = 1, float spatialBlend = 1, int priority = 128)
     {
-        if (!_mixerGroups.ContainsKey(mixerGroupName) || clip == null || volume == 0.0f) return 0;
+        if (!_mixerGroups.ContainsKey(mixerGroupName) || clip == null || volume == 0.0f || MenuManagement.MenuManager.Instance.PauseMenuOpen) return 0;
 
         Vector3 position = Vector3.zero;
 
