@@ -10,6 +10,7 @@ TagManager:
   - PlayerRed
   - PlayerBlue
   - Heart
+  - MainInteractable
   layers:
   - Default
   - TransparentFX

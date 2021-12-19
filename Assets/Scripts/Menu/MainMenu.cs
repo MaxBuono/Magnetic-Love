@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace MenuManagement
 {
     public class MainMenu : Menu<MainMenu>
     {
         public bool fadeToPlay = true;   // should it use the fading transition?
-        
+
         public void OnSettingsPressed()
         {
             print("SETTINGS");

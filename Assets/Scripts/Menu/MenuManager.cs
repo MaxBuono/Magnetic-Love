@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.EventSystems;
 
 namespace MenuManagement
 {
@@ -37,6 +38,9 @@ namespace MenuManagement
         private int _pauseMenuStackCout;
         // Handle pause menu specifically
         private bool _isPauseMenuOpen = false;
+        // Keyboard events
+        private GameObject _mainButton;
+        private GameObject _lastSelectedButton;
 
         // Properties
         public bool PauseMenuOpen { get { return _isPauseMenuOpen; } set { _isPauseMenuOpen = value; } }
@@ -68,8 +72,25 @@ namespace MenuManagement
             // InitializeMenu();
         }
 
+        private void Start()
+        {
+            
+            _mainButton = GameObject.FindGameObjectWithTag("MainInteractable");
+            _lastSelectedButton = _mainButton;
+        }
+
         private void Update()
         {
+            // keep the selection if I click somewhere on the screen
+            if (EventSystem.current.currentSelectedGameObject == null)
+            {
+                EventSystem.current.SetSelectedGameObject(_lastSelectedButton);
+            }
+            else
+            {
+                _lastSelectedButton = EventSystem.current.currentSelectedGameObject;
+            }
+
             // ****** ESC key
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -130,7 +151,10 @@ namespace MenuManagement
 
             menuInstance.gameObject.SetActive(true);
             _menuStack.Push(menuInstance);
-            
+
+            // select the main button if any
+            SelectMainButton();
+
             print("STACK CONTAINS "+_menuStack.Count);
         }
 
@@ -151,6 +175,9 @@ namespace MenuManagement
                 Menu nextMenu = _menuStack.Peek();
                 nextMenu.gameObject.SetActive(true);
             }
+
+            // select the main button if any
+            SelectMainButton();
         }
 
         public void ClearStack()
@@ -193,6 +220,15 @@ namespace MenuManagement
                 }
             }
             
+        }
+
+        private void SelectMainButton()
+        {
+            GameObject button = GameObject.FindGameObjectWithTag("MainInteractable");
+            if (button != null)
+            {
+                EventSystem.current.SetSelectedGameObject(button);
+            }
         }
     }
 }

@@ -115,6 +115,16 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         }
     }
 
+    private void OnEnable()
+    {
+        if (_scrollRectComponent != null)
+        {
+            // reset to the first page
+            SetPage(startingPage);
+            SetPageSelection(startingPage);
+        }
+    }
+
     //------------------------------------------------------------------------
     private void SetPagePositions() {
         int width = 0;
@@ -225,12 +235,14 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     //------------------------------------------------------------------------
     private void NextScreen() {
-        LerpToPage(_currentPage + 1);
+        LerpToPage((_currentPage + 1) % _pageCount);
     }
 
     //------------------------------------------------------------------------
     private void PreviousScreen() {
-        LerpToPage(_currentPage - 1);
+        int nextPage = _currentPage - 1;
+        nextPage = nextPage < 0 ? _pageCount - 1 : nextPage;
+        LerpToPage(nextPage);
     }
 
     //------------------------------------------------------------------------
