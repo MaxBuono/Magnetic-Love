@@ -24,6 +24,11 @@ namespace MenuManagement
             LevelManager.ReloadLevel();
         }
         
+        public void OnSettingsPressed()
+        {
+            SettingsMenu.Open();
+        }
+
         public void OnMainMenuPressed()
         {
             MenuManager.Instance.PauseMenuOpen = false;

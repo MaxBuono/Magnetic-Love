@@ -8,6 +8,7 @@ namespace MenuManagement
 {
     public class MenuManager : MonoBehaviour
     {
+        // Public
         public bool enableAllLevels = false;
 
         [Header("Menu Prefabs")]
@@ -30,13 +31,17 @@ namespace MenuManagement
         
         [SerializeField] private Transform _menuParent;
 
+        // Internals
         private Stack<Menu> _menuStack = new Stack<Menu>();
-
+        // used to handle nested menus inside the pause menu (e.g. setings)
+        private int _pauseMenuStackCout;
         // Handle pause menu specifically
         private bool _isPauseMenuOpen = false;
+
+        // Properties
         public bool PauseMenuOpen { get { return _isPauseMenuOpen; } set { _isPauseMenuOpen = value; } }
 
-
+        // Pseudo-Singleton
         private static MenuManager _instance;
         public static MenuManager Instance
         {
@@ -68,17 +73,26 @@ namespace MenuManagement
             // ****** ESC key
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                // if we are inside a level scene, open/close pause menu
+                // if we are inside a level scene
                 if (GameManager.Instance.IsLevelPlaying())
                 {
-                    if (!_isPauseMenuOpen)    // pause
+                    // open pause menu
+                    if (!_isPauseMenuOpen)
                     {
                         Time.timeScale = 0f;
                         _isPauseMenuOpen = true;
                         PauseMenu.Open();
+                        _pauseMenuStackCout = _menuStack.Count;
                     }
-                    else    // resume
+                    // closing a nested menu while game is still paused
+                    else if (_menuStack.Count > _pauseMenuStackCout)
                     {
+                        CloseMenu();
+                    }
+                    // close pause menu resuming the game
+                    else
+                    {
+                        _pauseMenuStackCout = 0;
                         Time.timeScale = 1f;
                         _isPauseMenuOpen = false;
                         CloseMenu();
