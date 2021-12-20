@@ -28,6 +28,9 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     [Tooltip("Container with page images (optional)")]
     public Transform pageSelectionIcons;
 
+    public GameObject[] firstButtons;
+    public GameObject[] lastButtons;
+
     // fast swipes should be fast and short. If too long, then it is not fast swipe
     private int _fastSwipeThresholdMaxLimit;
 
@@ -40,6 +43,7 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     // number of pages in container
     private int _pageCount;
     private int _currentPage;
+    private int _previousPage;
 
     // whether lerping is in progress and target lerp position
     private bool _lerp;
@@ -59,6 +63,7 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     // container with Image components - one Image for each page
     private List<Image> _pageSelectionImages;
 
+    private GameObject _lastSelectedGameObject;
     //------------------------------------------------------------------------
     void Start() {
         _scrollRectComponent = GetComponent<ScrollRect>();
@@ -113,6 +118,17 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
                 SetPageSelection(GetNearestPage());
             }
         }
+        
+        //Avoid selecting buttons in page different from the current page
+        if (_lastSelectedGameObject == nextButton && Input.GetKeyDown("right")) {
+            EventSystem.current.SetSelectedGameObject(nextButton);
+        }
+        
+        if (_lastSelectedGameObject == prevButton && Input.GetKeyDown("left")) {
+            EventSystem.current.SetSelectedGameObject(prevButton);
+        }
+
+        _lastSelectedGameObject = EventSystem.current.currentSelectedGameObject;
     }
 
     private void OnEnable()
@@ -186,6 +202,13 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         _lerpTo = _pagePositions[aPageIndex];
         _lerp = true;
         _currentPage = aPageIndex;
+        
+        if (aPageIndex > _previousPage) {
+          EventSystem.current.SetSelectedGameObject(firstButtons[aPageIndex]);
+        }
+        else {
+          EventSystem.current.SetSelectedGameObject(lastButtons[aPageIndex]);
+        }
     }
 
     //------------------------------------------------------------------------
@@ -235,11 +258,15 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     //------------------------------------------------------------------------
     private void NextScreen() {
+        if (_currentPage == _pageCount - 1) return;
+        _previousPage = _currentPage;
         LerpToPage((_currentPage + 1) % _pageCount);
     }
 
     //------------------------------------------------------------------------
     private void PreviousScreen() {
+        if (_currentPage == 0) return;
+        _previousPage = _currentPage;
         int nextPage = _currentPage - 1;
         nextPage = nextPage < 0 ? _pageCount - 1 : nextPage;
         LerpToPage(nextPage);
