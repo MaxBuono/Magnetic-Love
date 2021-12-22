@@ -28,9 +28,6 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     [Tooltip("Container with page images (optional)")]
     public Transform pageSelectionIcons;
 
-    public GameObject[] firstButtons;
-    public GameObject[] lastButtons;
-
     // fast swipes should be fast and short. If too long, then it is not fast swipe
     private int _fastSwipeThresholdMaxLimit;
 
@@ -62,14 +59,34 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     private int _previousPageSelectionIndex;
     // container with Image components - one Image for each page
     private List<Image> _pageSelectionImages;
-
     private GameObject _lastSelectedGameObject;
+
+    // lists of the first and last level buttons
+    private List<GameObject> _firstButtons = new List<GameObject>();
+    private List<GameObject> _lastButtons = new List<GameObject>();
+
     //------------------------------------------------------------------------
     void Start() {
         _scrollRectComponent = GetComponent<ScrollRect>();
         _scrollRectRect = GetComponent<RectTransform>();
         _container = _scrollRectComponent.content;
         _pageCount = _container.childCount;
+
+        // cache the first and last buttons automatically
+        for (int i = 0; i < _pageCount; i++)
+        {
+            Transform page = _container.GetChild(i);
+            _firstButtons.Add(page.GetChild(0).gameObject);
+            for (int j = 0; j < page.childCount; j++)
+            {
+                GameObject lastButton = page.GetChild(page.childCount - 1 - j).gameObject;
+                if (lastButton.activeInHierarchy)
+                {
+                    _lastButtons.Add(lastButton);
+                    break;
+                }
+            }
+        }
 
         // is it horizontal or vertical scrollrect
         if (_scrollRectComponent.horizontal && !_scrollRectComponent.vertical) {
@@ -118,13 +135,13 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
                 SetPageSelection(GetNearestPage());
             }
         }
-        
+
         //Avoid selecting buttons in page different from the current page
-        if (_lastSelectedGameObject == nextButton && Input.GetKeyDown("right")) {
+        if (_lastSelectedGameObject == nextButton && Input.GetAxisRaw("Horizontal") == 1) {
             EventSystem.current.SetSelectedGameObject(nextButton);
         }
         
-        if (_lastSelectedGameObject == prevButton && Input.GetKeyDown("left")) {
+        if (_lastSelectedGameObject == prevButton && Input.GetAxisRaw("Horizontal") == -1) {
             EventSystem.current.SetSelectedGameObject(prevButton);
         }
 
@@ -202,12 +219,16 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         _lerpTo = _pagePositions[aPageIndex];
         _lerp = true;
         _currentPage = aPageIndex;
-        
-        if (aPageIndex > _previousPage) {
-          EventSystem.current.SetSelectedGameObject(firstButtons[aPageIndex]);
+
+        Debug.Log(aPageIndex + " - " + _previousPage);
+
+        if (aPageIndex == (_previousPage + 1) % _pageCount)
+        {
+          EventSystem.current.SetSelectedGameObject(_firstButtons[aPageIndex]);
         }
-        else {
-          EventSystem.current.SetSelectedGameObject(lastButtons[aPageIndex]);
+        else if (aPageIndex == _previousPage - 1 || (aPageIndex == _pageCount - 1 && _previousPage == 0))
+        {
+          EventSystem.current.SetSelectedGameObject(_lastButtons[aPageIndex]);
         }
     }
 
@@ -258,14 +279,12 @@ public class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
 
     //------------------------------------------------------------------------
     private void NextScreen() {
-        if (_currentPage == _pageCount - 1) return;
         _previousPage = _currentPage;
         LerpToPage((_currentPage + 1) % _pageCount);
     }
 
     //------------------------------------------------------------------------
     private void PreviousScreen() {
-        if (_currentPage == 0) return;
         _previousPage = _currentPage;
         int nextPage = _currentPage - 1;
         nextPage = nextPage < 0 ? _pageCount - 1 : nextPage;
