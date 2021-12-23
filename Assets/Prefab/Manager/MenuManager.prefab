@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableAllLevels: 0
+  enableStartingMenu: 1
   mainMenuPrefab: {fileID: 6092510080712798837, guid: 723ab75ca93d85f46a6529b381b1ab0b, type: 3}
   selectLevelMenu: {fileID: 737161458467598457, guid: ad9f8411211d4e442b953a947fb8e731, type: 3}
   settingsMenuPrefab: {fileID: 6443077626859581411, guid: c7a573353bbfa614ebd327ed6061dfba, type: 3}

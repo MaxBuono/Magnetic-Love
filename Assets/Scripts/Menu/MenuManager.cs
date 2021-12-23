@@ -11,6 +11,7 @@ namespace MenuManagement
     {
         // Public
         public bool enableAllLevels = false;
+        public bool enableStartingMenu = false;
 
         [Header("Menu Prefabs")]
         public MainMenu mainMenuPrefab;
@@ -64,8 +65,11 @@ namespace MenuManagement
             else
             {
                 _instance = this;
-                InitializeMenu();
                 DontDestroyOnLoad(gameObject);
+                if (enableStartingMenu)
+                {
+                    InitializeMenu();
+                }
             }
             // base.Awake();
             
