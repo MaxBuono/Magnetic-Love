@@ -49,13 +49,13 @@ MonoBehaviour:
   fromLastToMain: {fileID: 7576093374136586597, guid: 39ffe1c5bcde0a5418d679901f693a9d, type: 3}
   gameVelocityMultiplier: 0.04
   _levels:
-  - L1-The Path To Love
-  - L2-Similarities
-  - L3-Shared Passion
-  - L4-Love At First Sight
+  - L1-It's love at first sight
+  - L2-Perfect match
+  - L3-Opposites are crossed
+  - L4- So... will you go out with me?
   - L5-First kiss
   - L6-Discovering Each Other
-  - L7-Love Is In The Air
+  - L7-Always much love, love, love.
   - L8-I Got Your Back
   - L9-You Push Me Over The Edge
   - L10-And That's Why I Love You

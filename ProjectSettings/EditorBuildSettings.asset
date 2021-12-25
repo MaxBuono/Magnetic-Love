@@ -9,16 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: cb3ae9960b2a09049987a57852252bf4
   - enabled: 1
-    path: Assets/Scenes/Levels/L1-The Path To Love.unity
+    path: Assets/Scenes/Levels/L1-It's love at first sight.unity
     guid: d8afebf1eac3d6a40be100c9556b9161
   - enabled: 1
-    path: Assets/Scenes/Levels/L2-Similarities.unity
+    path: Assets/Scenes/Levels/L2-Perfect match.unity
     guid: f9cdc2c79dc03e349b3c5f2ae5f85066
   - enabled: 1
-    path: Assets/Scenes/Levels/L3-Shared Passion.unity
+    path: Assets/Scenes/Levels/L3-Opposites are crossed.unity
     guid: 32bfe8b761e44ee43ba8f4b99fbabeb8
   - enabled: 1
-    path: Assets/Scenes/Levels/L4-Love At First Sight.unity
+    path: Assets/Scenes/Levels/L4- So... will you go out with me.unity
     guid: 17ba1f906a745ab418a81eb7b42536d6
   - enabled: 1
     path: Assets/Scenes/Levels/L5-First kiss.unity
@@ -27,10 +27,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/L6-Discovering Each Other.unity
     guid: 149fca167ead5a541ae5a3a355e2ad26
   - enabled: 1
-    path: Assets/Scenes/Levels/L7-Love Is In The Air.unity
+    path: Assets/Scenes/Levels/L8-Love Is In The Air.unity
     guid: 5912b16ad1c43484ca920a15b1924df1
   - enabled: 1
-    path: Assets/Scenes/Levels/L8-I Got Your Back.unity
+    path: Assets/Scenes/Levels/L7-Always much love, love, love..unity
     guid: 6486420f1c3d2b34987204b64678ce3d
   - enabled: 1
     path: Assets/Scenes/Levels/L9-You Push Me Over The Edge.unity
