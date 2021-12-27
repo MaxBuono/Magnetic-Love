@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 193
+    m_Bits: 449
   showRays: 0
   distBetweenRays: 0.25
   maxSlopeAngle: 50

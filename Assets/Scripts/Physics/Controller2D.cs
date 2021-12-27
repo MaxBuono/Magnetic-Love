@@ -18,6 +18,7 @@ public class Controller2D : RaycastController
     private Vector2 _playerInput;
     private PlayerInput _playerInputScript;
     private MagneticObject _magneticObject;
+    private Collider2D _thisCollider;
 
     // store info about collision direction
     public struct CollisionInfo
@@ -60,6 +61,7 @@ public class Controller2D : RaycastController
 
         _playerInputScript = GetComponent<PlayerInput>();
         _magneticObject = GetComponent<MagneticObject>();
+        _thisCollider = GetComponent<Collider2D>();
     }
 
     protected override void Start()
@@ -134,12 +136,14 @@ public class Controller2D : RaycastController
             Vector2 rayOrigin = (directionX == -1) ? _raycastOrigins.bottomLeft : _raycastOrigins.bottomRight;
             // we sum deltaMove.x to cast the ray from the point we will be 
             rayOrigin += Vector2.up * (_horizontalRaySpacing * i);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
+            RaycastHit2D hit = new RaycastHit2D();
+            bool otherHit = ProcessHits(hits, out hit);
 
             if (showRays)
                 Debug.DrawRay(rayOrigin, Vector2.right * directionX, Color.red);
 
-            if (hit)
+            if (otherHit)
             {
                 // if we are stuck inside something (e.g. a platform) we'll check for collision with another ray
                 if (hit.distance == 0.0f)
@@ -241,14 +245,15 @@ public class Controller2D : RaycastController
             // we sum deltaMove.x to cast the ray from the point we will be
             // (in the move function we first change the x deltaMove)
             rayOrigin += Vector2.right * (_verticalRaySpacing * i + deltaMove.x);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
+            RaycastHit2D hit;
+            bool otherHit = ProcessHits(hits, out hit);
 
             if (showRays)
                 Debug.DrawRay(rayOrigin, Vector2.up * directionY, Color.red);
             
-            if (hit)
+            if (otherHit)
             {
-                //test
                 hitsId.Add(hit.collider);
 
                 // if we want to go through an obstacle... 
@@ -362,6 +367,39 @@ public class Controller2D : RaycastController
                 }
             }
         }
+    }
+
+    // pass all the hits and filter yourself, returning true if you hit something else
+    private bool ProcessHits(RaycastHit2D[] hits, out RaycastHit2D hit)
+    {
+        bool otherHit = false;
+        RaycastHit2D firstHit = new RaycastHit2D();
+
+        if (hits.Length > 1)
+        {
+            if (hits[0].collider.GetInstanceID() == _thisCollider.GetInstanceID())
+            {
+                firstHit = hits[1];
+            }
+            else
+            {
+                firstHit = hits[0];
+            }
+
+            otherHit = true;
+        }
+        // only 1 hit
+        else if (hits.Length > 0)
+        {
+            if (hits[0].collider.GetInstanceID() != _thisCollider.GetInstanceID())
+            {
+                firstHit = hits[0];
+                otherHit = true;
+            }
+        }
+
+        hit = firstHit;
+        return otherHit;
     }
 
     // Set a new deltaMove (x and y components) based on the slope angle
