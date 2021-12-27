@@ -50,7 +50,7 @@ public class ObjectMovement : MonoBehaviour
                 if (Mathf.Sign(verticalForce) < 0)
                 {
                     // the steeper the slope, the smaller will be the slopeNormal.y countering vertical forces
-                    _velocity.y += _controller2D.collisionInfo.slopeNormal.y * -verticalForce * Time.deltaTime;
+                    _velocity.y += _controller2D.collisionInfo.slopeNormal.y * -verticalForce;
                 }
             }
             else
@@ -80,6 +80,6 @@ public class ObjectMovement : MonoBehaviour
     // Returns the sum of all the external forces applied to the player on the y axis
     private float CalculateVerticalForce()
     {
-        return _gravity + _magneticObject.GetMagneticForce().y;
+        return _gravity * GameManager.Instance.gameVelocityMultiplier + _magneticObject.GetMagneticForce().y;
     }
 }
