@@ -47,6 +47,7 @@ MonoBehaviour:
   fromMainToFirstLevel: {fileID: 7576093374136586597, guid: 9009e0bc37e7b5a4eaa596d39b3a446b, type: 3}
   fromLevelToLevel: {fileID: 7576093374136586597, guid: 969e099a43d5248028144b08456ca209, type: 3}
   fromLastToMain: {fileID: 7576093374136586597, guid: 39ffe1c5bcde0a5418d679901f693a9d, type: 3}
+  fromLevelToLevelEndTutorial: {fileID: 7576093374136586597, guid: 83270d410a02b7b4b827436773f072e9, type: 3}
   gameVelocityMultiplier: 0.04
   _levels:
   - L1-It's love at first sight

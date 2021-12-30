@@ -60,4 +60,34 @@ public class ScreenFader : MonoBehaviour
         SetAlpha(clearAlpha);
         Fade(solidAlpha,fadeOnDuration);
     }
+    
+    public void FirstStringFadeOn()
+    {
+        graphicsToFade[0].canvasRenderer.SetAlpha(clearAlpha);
+        graphicsToFade[1].canvasRenderer.SetAlpha(clearAlpha);
+        graphicsToFade[0].CrossFadeAlpha(solidAlpha, fadeOnDuration, true);
+        graphicsToFade[1].CrossFadeAlpha(solidAlpha, fadeOnDuration, true);
+    }
+
+    public void FirstStringFadeOff()
+    {
+        graphicsToFade[0].canvasRenderer.SetAlpha(solidAlpha);
+        graphicsToFade[1].canvasRenderer.SetAlpha(solidAlpha);
+        graphicsToFade[1].CrossFadeAlpha(clearAlpha, fadeOffDuration, true);
+    }
+    
+    public void SecondStringFadeOn()
+    {
+        graphicsToFade[0].canvasRenderer.SetAlpha(solidAlpha);
+        graphicsToFade[2].canvasRenderer.SetAlpha(clearAlpha);
+        graphicsToFade[2].CrossFadeAlpha(solidAlpha, fadeOnDuration, true);
+    }
+    
+    public void SecondStringFadeOff()
+    {
+        graphicsToFade[0].canvasRenderer.SetAlpha(solidAlpha);
+        graphicsToFade[2].canvasRenderer.SetAlpha(solidAlpha);
+        graphicsToFade[0].CrossFadeAlpha(clearAlpha, fadeOffDuration, true);
+    }
+    
 }

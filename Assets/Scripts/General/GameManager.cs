@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     public TransitionFader fromMainToFirstLevel;
     public TransitionFader fromLevelToLevel;
     public TransitionFader fromLastToMain;
+    public TransitionFader fromLevelToLevelEndTutorial;
     public float gameVelocityMultiplier = 0.04f;
 
     [SerializeField] private List<string> _levels = new List<string>();
@@ -134,6 +135,18 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(fadeDelay);
         LevelManager.LoadNextLevel();
     }
+    
+    private IEnumerator LoadNextLevelFinishedTutorialRoutine(string str = "")
+    {
+        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Tutorial finito!!", 
+            str);
+
+        float fadeDelay = (fromLevelToLevel != null) ?
+            fromLevelToLevel.delay + fromLevelToLevel.FadeOnDuration : 0f;
+
+        yield return new WaitForSeconds(fadeDelay);
+        LevelManager.LoadNextLevel();
+    }
 
     private IEnumerator GameCompletedRoutine()
     {
@@ -203,8 +216,16 @@ public class GameManager : MonoBehaviour
         
         if (!LevelManager.CompletedAllLevels())
         {
-            StartCoroutine(LoadNextLevelRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
-
+            //if levelAt is the last tutorial level
+            if (levelAt == 6)
+            {
+                StartCoroutine(LoadNextLevelFinishedTutorialRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
+            }
+            else
+            {
+                StartCoroutine(LoadNextLevelRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
+            }
+            
             // lower the background music to avoid going above the completed level sound
             AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.completedLevel);
             StartCoroutine(AudioManager.Instance.LowerMusicFor(AudioManager.Instance.completedLevel.length, 1.0f));
