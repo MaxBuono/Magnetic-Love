@@ -88,6 +88,7 @@ public class ScreenFader : MonoBehaviour
         graphicsToFade[0].canvasRenderer.SetAlpha(solidAlpha);
         graphicsToFade[2].canvasRenderer.SetAlpha(solidAlpha);
         graphicsToFade[0].CrossFadeAlpha(clearAlpha, fadeOffDuration, true);
+        graphicsToFade[2].CrossFadeAlpha(clearAlpha, fadeOffDuration, true);
     }
     
 }

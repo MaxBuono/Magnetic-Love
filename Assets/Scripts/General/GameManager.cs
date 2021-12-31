@@ -138,7 +138,8 @@ public class GameManager : MonoBehaviour
     
     private IEnumerator LoadNextLevelFinishedTutorialRoutine(string str = "")
     {
-        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Tutorial finito!!", 
+        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Congratulations you " +
+            "have completed all tutorial levels!\n\n\n" + "All levels are unlocked in the level selector", 
             str);
 
         float fadeDelay = (fromLevelToLevel != null) ?

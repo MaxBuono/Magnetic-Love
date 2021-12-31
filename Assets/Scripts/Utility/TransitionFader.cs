@@ -53,7 +53,7 @@ public class TransitionFader : ScreenFader
         FirstStringFadeOn();
         
         float onTime = lifetime - (FadeOffDuration + delay);
-        yield return new WaitForSeconds(onTime);
+        yield return new WaitForSeconds(onTime + 2f);
         
         //StringToStringFadeOn();
         FirstStringFadeOff();
