@@ -90,6 +90,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d5222ea72ca423f44b8b8c69f7e47fce, type: 3}
+    - target: {fileID: 8900021729868056093, guid: 99430b4602e9f79458d2be3d92e62b4f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8900021729868056094, guid: 99430b4602e9f79458d2be3d92e62b4f, type: 3}
       propertyPath: collisionMask.m_Bits
       value: 321
