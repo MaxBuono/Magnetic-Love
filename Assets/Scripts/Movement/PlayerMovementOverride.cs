@@ -25,6 +25,7 @@ public class PlayerMovementOverride : MonoBehaviour
     private float _blueVelY;
     private float _blueToRed;
     private float _timeToWaitForSecondJumpInput = 0.1f;
+    private bool _validityCheckDone = false;
 
     private PlayerMovement movementRed;
     private PlayerMovement movementBlue;
@@ -72,6 +73,12 @@ public class PlayerMovementOverride : MonoBehaviour
 
         if (movementRed.isStickToAlly || movementBlue.isStickToAlly)
         {
+            if (!_validityCheckDone)
+            {
+                CheckSticknessValidity();
+                _validityCheckDone = true;
+            }
+            
             CalculateResultantVelocity();
 
             // apply the final velocities to the characters
@@ -89,6 +96,10 @@ public class PlayerMovementOverride : MonoBehaviour
                 _redVelY = 0.0f;
                 _blueVelY = 0.0f;
             }
+        }
+        else
+        {
+            _validityCheckDone = false;
         }
 
         // always reset the resultant x axis unless they are just unplugging
@@ -314,6 +325,25 @@ public class PlayerMovementOverride : MonoBehaviour
         yield return new WaitForSeconds(_timeToWaitForSecondJumpInput);
 
         waitingForSecondJump = false;
+    }
+
+    // check that characters are stick for real, if not, stick them manually
+    private void CheckSticknessValidity()
+    {
+        float distance = Mathf.Abs(movementBlue.transform.position.x - movementRed.transform.position.x);
+        float desiredDistance = movementBlue.Collider.bounds.extents.x * 2;
+        float tolerance = 0.01f;
+
+        // if they are not really attached as they should be 
+        if (distance > desiredDistance + tolerance)
+        {
+            // then attach them
+            float offset = (distance - desiredDistance - tolerance) * 0.5f;
+            float blueOffset = movementBlue.transform.position.x + offset * _blueToRed;
+            float redOffset = movementRed.transform.position.x - offset * _blueToRed;
+            movementBlue.transform.position = new Vector3(blueOffset, movementBlue.transform.position.y, 0.0f);
+            movementRed.transform.position = new Vector3(redOffset, movementRed.transform.position.y, 0.0f);
+        }
     }
 
     // if a character jump and they are sticked together

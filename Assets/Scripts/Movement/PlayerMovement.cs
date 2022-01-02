@@ -55,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput _input;
     private Animator _animator;
     private Vector2 _directionalInput;
-    private IEnumerator _pushUpCoroutine = null;
 
     // animators hashes
     private int _moveSpeedHash;
@@ -72,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
     // Properties
     public Vector2 Velocity { get { return _velocity; } set { _velocity = value; } }
     public Controller2D Controller { get { return _controller2D; } }
+    public Collider2D Collider { get { return _collider; } }
     public Vector2 DirectionalInput { get { return _directionalInput; } }
     public float MaxJumpSpeed { get { return _maxJumpSpeed; } }
     public MagneticObject MagneticObject { get { return _magneticObject; } }
