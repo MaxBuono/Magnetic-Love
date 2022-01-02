@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private float _gravity;
     private float _maxJumpSpeed;
     private float _minJumpSpeed;
+    private float _currentJumpSpeed;
     private float _smoothedVelocityX;
     private float _accelerationTimeAirborne = 0.2f;
     private float _accelerationTimeGrounded = 0.1f;
@@ -174,7 +175,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 // this avoids gravity (or other constant forces) to some up to some crazy value
-                _velocity.y = 0.0f;
+                _velocity.y = _currentJumpSpeed = 0.0f;
             }
         }
     }
@@ -262,7 +263,7 @@ public class PlayerMovement : MonoBehaviour
             //jump normally
             else
             {
-                _velocity.y = _maxJumpSpeed;
+                _velocity.y = _currentJumpSpeed = _maxJumpSpeed;
             }
         }
 
@@ -359,7 +360,26 @@ public class PlayerMovement : MonoBehaviour
     // Returns the sum of all the external forces applied to the player on the y axis
     private float CalculateVerticalForce()
     {
-        return _gravity * GameManager.Instance.gameVelocityMultiplier + _magneticObject.GetMagneticForce().y;
+        float finalForce;
+        float gravity = _gravity * GameManager.Instance.gameVelocityMultiplier;
+        float forces = _magneticObject.GetMagneticForce().y;
+        // update current jump speed
+        _currentJumpSpeed = Mathf.Max(0.0f, _currentJumpSpeed + gravity);
+
+        // if I'm jumping and forces direction is up
+        if (_currentJumpSpeed > 0 && forces > 0)
+        {
+            // if my jump speed is higher than the magnetic force, don't do anything
+            // (to avoid them to sum up exploiting the height of the level)
+            finalForce = _currentJumpSpeed > forces ? 0.0f : forces;
+        }
+        // standard case
+        else
+        {
+            finalForce = forces;
+        }
+
+        return gravity + finalForce;
     }
 
     // Set the isStickToAlly bool and returns it
