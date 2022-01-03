@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     // animators hashes
     private int _moveSpeedHash;
+    private int _stickedSpeedHash;
     private int _isGroundedHash;
     private int _startJumpHash;
     private int _endJumpHash;
@@ -102,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
 
         // cache animator's parameters hashes
         _moveSpeedHash = Animator.StringToHash("moveSpeed");
+        _stickedSpeedHash = Animator.StringToHash("stickedSpeed");
         _isGroundedHash = Animator.StringToHash("isGrounded");
         _startJumpHash = Animator.StringToHash("startJump");
         _endJumpHash = Animator.StringToHash("endJump");
@@ -476,6 +478,7 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateAnimator(float velX)
     {
         _animator.SetFloat(_moveSpeedHash, Mathf.Abs(velX));
+        _animator.SetFloat(_stickedSpeedHash, Mathf.Abs(velX) + Mathf.Abs(_allyMovement.Velocity.x));
         _animator.SetBool(_isGroundedHash, _controller2D.collisionInfo.below);
         _animator.SetBool(_startJumpHash, isJumping);
         _animator.SetBool(_endJumpHash, _controller2D.collisionInfo.below && _wasInAir);
