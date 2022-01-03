@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// Note: the "PlaySomethingHandleSound" functions should be refactored in one using a delegate and referenced argumensts
+
 public class AudioSettings : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _masterValue;
@@ -25,21 +27,21 @@ public class AudioSettings : MonoBehaviour
         // then set the text
         _masterValue.text = value.ToString();
 
-        PlaySliderHandleSound(_masterCoroutine, _masterSound);
+        PlayMasterHandleSound();
     }
     public void OnMusicChange(System.Single value)
     {
         AudioManager.Instance.Mixer.SetFloat("MusicVolume", NormalizeVolume(value));
         _musicValue.text = value.ToString();
 
-        PlaySliderHandleSound(_musicCoroutine, _musicSound);
+        PlayMusicHandleSound();
     }
     public void OnSFXChange(System.Single value)
     {
         AudioManager.Instance.Mixer.SetFloat("SFXVolume", NormalizeVolume(value));
         _sfxValue.text = value.ToString();
 
-        PlaySliderHandleSound(_sfxCoroutine, _sfxSound);
+        PlaySfxHandleSound();
     }
 
     // mixers volume should go from -80 dB to 0 dB
@@ -52,23 +54,74 @@ public class AudioSettings : MonoBehaviour
     }
 
     // play a sound whenever the slider value change and stop it before doing it if it's already playing
-    private void PlaySliderHandleSound(IEnumerator coroutine, ulong soundID)
+    private void PlayMasterHandleSound()
     {
         // if another sound is already playing stop it
-        if (coroutine != null)
+        if (_masterCoroutine != null)
         {
-            AudioManager.Instance.StopOneShotSound(soundID);
-            StopCoroutine(coroutine);
-            coroutine = null;
+            AudioManager.Instance.StopOneShotSound(_masterSound);
+            StopCoroutine(_masterCoroutine);
+            _masterCoroutine = null;
         }
-        soundID = AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.buttonExitPressed);
-        coroutine = WaitForSoundToEnd(AudioManager.Instance.buttonExitPressed.length);
-        StartCoroutine(coroutine);
+        else
+        {
+            _masterSound = AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.buttonExitPressed);
+            _masterCoroutine = WaitForMasterSoundToEnd(AudioManager.Instance.buttonExitPressed.length); //AudioManager.Instance.buttonExitPressed.length
+            StartCoroutine(_masterCoroutine);
+        }
     }
 
-    private IEnumerator WaitForSoundToEnd(float time)
+    // play a sound whenever the slider value change and stop it before doing it if it's already playing
+    private void PlayMusicHandleSound()
+    {
+        // if another sound is already playing stop it
+        if (_musicCoroutine != null)
+        {
+            AudioManager.Instance.StopOneShotSound(_musicSound);
+            StopCoroutine(_musicCoroutine);
+            _musicCoroutine = null;
+        }
+        else
+        {
+            _musicSound = AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.buttonExitPressed);
+            _musicCoroutine = WaitForMasterSoundToEnd(AudioManager.Instance.buttonExitPressed.length); //AudioManager.Instance.buttonExitPressed.length
+            StartCoroutine(_musicCoroutine);
+        }
+    }
+
+    // play a sound whenever the slider value change and stop it before doing it if it's already playing
+    private void PlaySfxHandleSound()
+    {
+        // if another sound is already playing stop it
+        if (_sfxCoroutine != null)
+        {
+            AudioManager.Instance.StopOneShotSound(_sfxSound);
+            StopCoroutine(_sfxCoroutine);
+            _sfxCoroutine = null;
+        }
+        else
+        {
+            _sfxSound = AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.buttonExitPressed);
+            _sfxCoroutine = WaitForMasterSoundToEnd(AudioManager.Instance.buttonExitPressed.length); //AudioManager.Instance.buttonExitPressed.length
+            StartCoroutine(_sfxCoroutine);
+        }
+    }
+
+    private IEnumerator WaitForMasterSoundToEnd(float time)
     {
         yield return new WaitForSeconds(time);
         _masterCoroutine = null;
+    }
+
+    private IEnumerator WaitForMusicSoundToEnd(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _musicCoroutine = null;
+    }
+
+    private IEnumerator WaitForSfxSoundToEnd(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _sfxCoroutine = null;
     }
 }
