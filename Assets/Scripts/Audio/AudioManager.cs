@@ -31,8 +31,9 @@ public class AudioManager : MonoBehaviour
     // Singleton
     private AudioManager() { }
     private static AudioManager _instance = null;
-    
+
     //Public
+    public List<LevelProperties> levelProperties;
     public AudioCollection jump;
     public AudioClip plug;
     public AudioClip unplug;
@@ -317,22 +318,50 @@ public class AudioManager : MonoBehaviour
         _musicSource.volume = volume;
     }
 
-    // lower music, wait, increase it again slowly to the original level
-    public IEnumerator LowerMusicFor(float otherClipLength, float timeToGetBackToMax)
+    // wait then increase the volume slowly to the original level
+    public IEnumerator TransitionAfterTime(float originalVolume, float startWait, float timeToGetBackToMax)
     {
-        // lower music
-        float lowerTo = 0.4f;
-        SetMusicVolume(_musicSource.volume * lowerTo);
-        // then wait for the other sound to be finished
-        yield return new WaitForSeconds(otherClipLength);
-        // and finally increase the volume slowly back to the original level
+        // wait for the other sound to be finished
+        yield return new WaitForSeconds(startWait);
+        // and increase the volume slowly back to the original level
+        StartCoroutine(TransitionVolume(timeToGetBackToMax, originalVolume));
+    }
+
+    public void TransitionToMusic(AudioClip newMusic, float originalVolume, float startWait, float timeToGoToZero, float waitTime, float timeToGetBackToMax)
+    {
+        StartCoroutine(TransitionToMusicCR(newMusic, originalVolume, startWait, timeToGoToZero, waitTime, timeToGetBackToMax));
+    }
+
+    // transition from a background music to a new one smoothly
+    public IEnumerator TransitionToMusicCR(AudioClip newMusic, float originalVolume, float startWait, float timeToGoToZero, float waitTime, float timeToGetBackToMax)
+    {
+        // wait before lowering
+        yield return new WaitForSeconds(startWait);
+
+        // lower the current music volume smoothly to zero
+        StartCoroutine(TransitionVolume(timeToGoToZero, 0.0f));
+        yield return new WaitForSeconds(timeToGoToZero);
+
+        // switch music and play it
+        _musicSource.clip = newMusic;
+        _musicSource.Play();
+
+        // wait if needed
+        yield return new WaitForSeconds(waitTime);
+
+        // go back to the original volume 
+        StartCoroutine(TransitionVolume(timeToGetBackToMax, originalVolume));
+    }
+
+    // go smoothly from a volume to another
+    public IEnumerator TransitionVolume(float timeToTransition, float targetVolume)
+    {
         float timer = 0.0f;
-        float oldVolume = _musicSource.volume;
-        float targetVolume = _musicSource.volume / lowerTo;
-        while (timer < timeToGetBackToMax)
+        float startVolume = _musicSource.volume;
+        while (timer < timeToTransition)
         {
             timer += Time.deltaTime;
-            SetMusicVolume(Mathf.Lerp(oldVolume, targetVolume, timer / timeToGetBackToMax));
+            SetMusicVolume(Mathf.Lerp(startVolume, targetVolume, timer / timeToTransition));
             yield return null;
         }
     }

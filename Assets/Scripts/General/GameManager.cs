@@ -229,7 +229,21 @@ public class GameManager : MonoBehaviour
             
             // lower the background music to avoid going above the completed level sound
             AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.completedLevel);
-            StartCoroutine(AudioManager.Instance.LowerMusicFor(AudioManager.Instance.completedLevel.length, 1.0f));
+            // MUSIC TRANSITION
+            float originalVolume = AudioManager.Instance.MusicSource.volume;
+            float startWait = AudioManager.Instance.completedLevel.length * 0.4f;
+            LevelProperties level = AudioManager.Instance.levelProperties[LevelManager.GetLevelPlayed()];
+            AudioManager.Instance.MusicSource.volume *= 0.4f;
+            // changing clip
+            if (level.music != AudioManager.Instance.MusicSource.clip)
+            {
+                AudioManager.Instance.TransitionToMusic(level.music, originalVolume, startWait, level.timeToGoToZero, level.waitTime, level.timeToGetBackToMax);
+            }
+            // same clip
+            else
+            {
+                StartCoroutine(AudioManager.Instance.TransitionAfterTime(originalVolume, startWait, level.timeToGetBackToMax));
+            }
         }
         else
         {

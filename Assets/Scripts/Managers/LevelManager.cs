@@ -23,7 +23,16 @@ public class LevelManager : MonoBehaviour
             _levelPlayed = level;
             _nextLevel = level + 1;
             Debug.Log(SceneName(_levelPlayed));
-            SceneManager.LoadScene(SceneName(_levelPlayed));  
+            SceneManager.LoadScene(SceneName(_levelPlayed));
+
+            // MUSIC TRANSITION
+            float originalVolume = AudioManager.Instance.MusicSource.volume;
+            LevelProperties properties = AudioManager.Instance.levelProperties[level - 1];
+            // changing clip
+            if (properties.music != AudioManager.Instance.MusicSource.clip)
+            {
+                AudioManager.Instance.TransitionToMusic(properties.music, originalVolume, 0.0f, properties.timeToGoToZero, 0.0f, properties.timeToGetBackToMax);
+            }
         }
     }
 
