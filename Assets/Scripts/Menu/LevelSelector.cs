@@ -11,8 +11,9 @@ public class LevelSelector : MonoBehaviour
     public Button[] levelButtons;
     public Sprite notInteractableButtonSprite;
     public Sprite interactableButtonSprite;
+    public Sprite levelCompletedButtonSprite;
 
-    private int numOfTutorialLevels = 8;
+    private int _numOfTutorialLevels = 6;
 
     private DataManager _dataManager;
     public void Select(int level)
@@ -35,6 +36,7 @@ public class LevelSelector : MonoBehaviour
 
         //Level of the player
         int levelAt = _dataManager.LevelAt;
+        bool[] levelCompleted = _dataManager.LevelCompleted;
         Debug.Log("Level of the player" + levelAt);
 
         for (int i = 0; i < levelButtons.Length; i++)
@@ -42,11 +44,11 @@ public class LevelSelector : MonoBehaviour
             // cheat to be able to select all levels
             if (MenuManager.Instance.enableAllLevels)
             {
-                numOfTutorialLevels = 0;
+                _numOfTutorialLevels = 0;
             }
 
             //Tutorial levels
-            if (levelAt < numOfTutorialLevels)
+            if (levelAt < _numOfTutorialLevels)
             {
                 if (i > levelAt)
                 {
@@ -63,6 +65,13 @@ public class LevelSelector : MonoBehaviour
             {
                 levelButtons[i].interactable = true;
                 levelButtons[i].image.sprite = interactableButtonSprite;
+            }
+            
+            if (levelCompleted[i])
+            {
+                levelButtons[i].interactable = true;
+                levelButtons[i].transform.localScale = new Vector3(1.2f, 1.2f, 1);
+                levelButtons[i].image.sprite = levelCompletedButtonSprite;
             }
 
         }

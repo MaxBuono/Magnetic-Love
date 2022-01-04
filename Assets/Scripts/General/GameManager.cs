@@ -210,9 +210,10 @@ public class GameManager : MonoBehaviour
             if (levelAt > _dataManager.LevelAt)
             {
                 _dataManager.LevelAt = levelAt;
-                _dataManager.Save();
             }
             
+            _dataManager.LevelCompleted[levelAt - 1] = true;
+            _dataManager.Save();
         }
         
         if (!LevelManager.CompletedAllLevels())

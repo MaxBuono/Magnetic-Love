@@ -13,8 +13,14 @@ namespace GameManagement.Data
 
         public int LevelAt
         {
-            get { return _saveData.LevelAt;  }
-            set { _saveData.LevelAt = value; }
+            get => _saveData.levelAt;
+            set => _saveData.levelAt = value;
+        }
+
+        public bool[] LevelCompleted
+        {
+            get => _saveData.levelCompleted;
+            set => _saveData.levelCompleted = value;
         }
 
         private void Awake()

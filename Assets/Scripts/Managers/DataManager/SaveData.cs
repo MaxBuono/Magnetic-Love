@@ -5,11 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class SaveData
 {
-    public int LevelAt = 0;
+    public int levelAt = 0;
     public string hashValue;
+    public bool[] levelCompleted;
     
     public SaveData()
     {
-        LevelAt = 0;
+        levelAt = 0;
+        levelCompleted = new bool [50];
     }
 }
