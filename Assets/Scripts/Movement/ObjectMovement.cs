@@ -18,6 +18,10 @@ public class ObjectMovement : MonoBehaviour
 
     // animator hashes
     private int _isMovedHash;
+    // used to correctly set the animator parameters
+    private Vector3 currentPos;
+    private Vector3 previousPos;
+
 
     private void Awake()
     {
@@ -41,6 +45,9 @@ public class ObjectMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        previousPos = currentPos;
+        currentPos = transform.position;
+
         if (_gravity == 0)
         {
             _gravity = GameManager.Instance.Gravity;
@@ -97,7 +104,7 @@ public class ObjectMovement : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        bool isMoved = (Mathf.Abs(_velocity.x) > 0.1f || Mathf.Abs(_velocity.y) > 0.1f);
+        bool isMoved = Mathf.Abs(currentPos.x - previousPos.x) > 0.002f || Mathf.Abs(currentPos.y - previousPos.y) > 0.002f;
         _animator.SetBool(_isMovedHash, isMoved);
     }
 }
