@@ -18,6 +18,7 @@ public class ObjectMovement : MonoBehaviour
 
     // animator hashes
     private int _isMovedHash;
+    private int _isFallingHash;
     // used to correctly set the animator parameters
     private Vector3 currentPos;
     private Vector3 previousPos;
@@ -36,6 +37,7 @@ public class ObjectMovement : MonoBehaviour
 
         // cache animator's parameters hashes
         _isMovedHash = Animator.StringToHash("isMoved");
+        _isFallingHash = Animator.StringToHash("isFalling");
     }
 
     private void Update()
@@ -105,6 +107,8 @@ public class ObjectMovement : MonoBehaviour
     private void UpdateAnimator()
     {
         bool isMoved = Mathf.Abs(currentPos.x - previousPos.x) > 0.002f || Mathf.Abs(currentPos.y - previousPos.y) > 0.002f;
+        bool isFalling = (previousPos.y - currentPos.y) > 0.005f;
         _animator.SetBool(_isMovedHash, isMoved);
+        _animator.SetBool(_isFallingHash, isFalling);
     }
 }
