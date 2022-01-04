@@ -14,17 +14,29 @@ public class ObjectMovement : MonoBehaviour
     private Vector2 _velocity;
     private Controller2D _controller2D;
     private MagneticObject _magneticObject;
+    private Animator _animator;
 
+    // animator hashes
+    private int _isMovedHash;
 
     private void Awake()
     {
         _controller2D = GetComponent<Controller2D>();
         _magneticObject = GetComponent<MagneticObject>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
         _gravity = GameManager.Instance.Gravity;
+
+        // cache animator's parameters hashes
+        _isMovedHash = Animator.StringToHash("isMoved");
+    }
+
+    private void Update()
+    {
+        UpdateAnimator();
     }
 
     void FixedUpdate()
@@ -35,7 +47,7 @@ public class ObjectMovement : MonoBehaviour
         }
 
         CalculateVelocity();
- 
+
         // The frame independent multiplication with deltaTime is done here
         _controller2D.Move(_velocity * GameManager.Instance.gameVelocityMultiplier);
 
@@ -81,5 +93,11 @@ public class ObjectMovement : MonoBehaviour
     private float CalculateVerticalForce()
     {
         return _gravity * GameManager.Instance.gameVelocityMultiplier + _magneticObject.GetMagneticForce().y;
+    }
+
+    private void UpdateAnimator()
+    {
+        bool isMoved = (Mathf.Abs(_velocity.x) > 0.1f || Mathf.Abs(_velocity.y) > 0.1f);
+        _animator.SetBool(_isMovedHash, isMoved);
     }
 }
