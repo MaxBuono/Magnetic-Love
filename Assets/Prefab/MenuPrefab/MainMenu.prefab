@@ -1141,7 +1141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75cafc2659c5dd43825a79064dab1c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainInteractable: {fileID: 1926839091967647781}
   fadeToPlay: 1
 --- !u!1 &1926839093369349202
 GameObject:

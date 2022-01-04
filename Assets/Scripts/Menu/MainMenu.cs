@@ -12,7 +12,7 @@ namespace MenuManagement
         public void OnSettingsPressed()
         {
             print("SETTINGS");
-            SettingsMenu.Open();
+            SettingsMenuTabs.Open();
         }
 
         public void OnCreditPressed()
