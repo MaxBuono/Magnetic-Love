@@ -161,6 +161,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24c3710e2a9171040b771f7a885f2d24, type: 2}
   - {fileID: 11400000, guid: 1bb2de9e1633ddb4fb3cc8d27d6786cf, type: 2}
   - {fileID: 11400000, guid: d193cd4c43281324b8ce6073f39e6a39, type: 2}
+  mainMenuClips: {fileID: 11400000, guid: bc0683e16afa625499dcb17edd03877f, type: 2}
   jump: {fileID: 11400000, guid: b98bfd8508da6e04ab1f99b81dbd13f7, type: 2}
   plug: {fileID: 8300000, guid: c477113d7d4cdc344887a900a7385167, type: 3}
   unplug: {fileID: 8300000, guid: 153aa105337505242ab9462ca031ab98, type: 3}
@@ -169,5 +170,6 @@ MonoBehaviour:
   buttonPressed: {fileID: 8300000, guid: 9e884314029b9a34a9fa671ec25da8dd, type: 3}
   buttonExitPressed: {fileID: 8300000, guid: 619a71cef2777ab41b026b9b7d72d11d, type: 3}
   heartCharge: {fileID: 8300000, guid: 457e3a45156e0914fb16e4fabb813a51, type: 3}
+  finalWin: {fileID: 8300000, guid: 07a3591960ba440bbafc0751d30c3d9a, type: 3}
   _mixer: {fileID: 24100000, guid: 5db178fa10232bf49a2ebdcdb2852a96, type: 2}
   _maxSounds: 10

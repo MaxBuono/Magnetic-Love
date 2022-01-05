@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator LoadNextLevelFinishedTutorialRoutine(string str = "")
     {
         TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Congratulations you " +
-            "have completed all tutorial levels!\n\n\n" + "All levels are unlocked in the level selector", 
+            "have completed all tutorial levels!\n\n" + "All levels are unlocked in the level selector", 
             str);
 
         float fadeDelay = (fromLevelToLevel != null) ?
@@ -215,7 +215,11 @@ public class GameManager : MonoBehaviour
             _dataManager.LevelCompleted[levelAt - 1] = true;
             _dataManager.Save();
         }
-        
+
+
+        // save the starting volume 
+        float originalVolume = AudioManager.Instance.MusicSource.volume;
+
         if (!LevelManager.CompletedAllLevels())
         {
             //if levelAt is the last tutorial level
@@ -227,29 +231,39 @@ public class GameManager : MonoBehaviour
             {
                 StartCoroutine(LoadNextLevelRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
             }
-            
+
             // lower the background music to avoid going above the completed level sound
-            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.completedLevel);
-            // MUSIC TRANSITION
-            float originalVolume = AudioManager.Instance.MusicSource.volume;
-            float startWait = AudioManager.Instance.completedLevel.length * 0.4f;
-            LevelProperties level = AudioManager.Instance.levelProperties[LevelManager.GetLevelPlayed()];
             AudioManager.Instance.MusicSource.volume *= 0.4f;
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.completedLevel);
+            LevelProperties level = AudioManager.Instance.levelProperties[LevelManager.GetLevelPlayed()];
+
             // changing clip
             if (level.music != AudioManager.Instance.MusicSource.clip)
             {
+                float startWait = AudioManager.Instance.completedLevel.length * 0.4f;
                 AudioManager.Instance.TransitionToMusic(level.music, originalVolume, startWait, level.timeToGoToZero, level.waitTime, level.timeToGetBackToMax);
             }
             // same clip
             else
             {
+                float startWait = AudioManager.Instance.completedLevel.length;
                 StartCoroutine(AudioManager.Instance.TransitionAfterTime(originalVolume, startWait, level.timeToGetBackToMax));
             }
         }
         else
         {
-            print("GAME COMPLETED ROUTINE???");
+            print("GAME COMPLETED ROUTINE");
             StartCoroutine(GameCompletedRoutine());
+
+            // lower the background music to avoid going above the completed game sound
+            AudioManager.Instance.MusicSource.volume *= 0.05f;
+            // play the final win sound
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.finalWin);
+            float length = AudioManager.Instance.finalWin.length;
+            // audio transition to the main menu sound
+            float timeToGoToZero = 0.4f;
+            float timeToGoBackToMax = 0.5f;
+            AudioManager.Instance.TransitionToMusic(AudioManager.Instance.mainMenuClips.AudioClip, originalVolume, length, timeToGoToZero, 0.0f, timeToGoBackToMax);
         }
     }
 

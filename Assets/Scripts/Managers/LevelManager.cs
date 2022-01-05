@@ -16,6 +16,18 @@ public class LevelManager : MonoBehaviour
         return GameManager.Instance.Levels[level - 1];
     }
 
+    private static void TransitionMusicBetweenLevels(int level)
+    {
+        // MUSIC TRANSITION
+        float originalVolume = AudioManager.Instance.MusicSource.volume;
+        LevelProperties properties = AudioManager.Instance.levelProperties[level - 1];
+        // changing clip
+        if (properties.music != AudioManager.Instance.MusicSource.clip)
+        {
+            AudioManager.Instance.TransitionToMusic(properties.music, originalVolume, 0.0f, properties.timeToGoToZero, 0.0f, properties.timeToGetBackToMax);
+        }
+    }
+
     public static void LoadLevel(int level)
     {
         if (level < _maxLevel)
@@ -25,14 +37,7 @@ public class LevelManager : MonoBehaviour
             Debug.Log(SceneName(_levelPlayed));
             SceneManager.LoadScene(SceneName(_levelPlayed));
 
-            // MUSIC TRANSITION
-            float originalVolume = AudioManager.Instance.MusicSource.volume;
-            LevelProperties properties = AudioManager.Instance.levelProperties[level - 1];
-            // changing clip
-            if (properties.music != AudioManager.Instance.MusicSource.clip)
-            {
-                AudioManager.Instance.TransitionToMusic(properties.music, originalVolume, 0.0f, properties.timeToGoToZero, 0.0f, properties.timeToGetBackToMax);
-            }
+            TransitionMusicBetweenLevels(level);
         }
     }
 
@@ -42,6 +47,8 @@ public class LevelManager : MonoBehaviour
         _nextLevel = 2;
         Debug.Log("first level -> " + _levelPlayed);
         SceneManager.LoadScene(SceneName(_levelPlayed));
+
+        TransitionMusicBetweenLevels(_levelPlayed);
     }
 
     public static bool CompletedAllLevels()
