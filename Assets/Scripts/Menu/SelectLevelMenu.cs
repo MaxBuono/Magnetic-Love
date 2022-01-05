@@ -7,6 +7,7 @@ namespace MenuManagement
 {
     public class SelectLevelMenu : Menu<SelectLevelMenu>
     {
+        public static bool isTransitioning = false;
         public LevelSelector LevelSelector;
 
         public void Select(int level)
@@ -21,10 +22,12 @@ namespace MenuManagement
 
         private IEnumerator WaitBeforeLoad(int level)
         {
+            isTransitioning = true;
             TransitionFader.PlayTransition(GameManager.Instance.fromMainToFirstLevel, GameManager.Instance.LevelNames[level - 1]);
             yield return new WaitForSeconds(GameManager.Instance.fromMainToFirstLevel.FadeOnDuration + GameManager.Instance.fromMainToFirstLevel.delay);
             LevelManager.LoadLevel(level);
             GameMenu.Open();
+            isTransitioning = false;
         }
     }
 }
