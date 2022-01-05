@@ -77,6 +77,10 @@ public class LevelManager : MonoBehaviour
         MenuManager.Instance.ClearStack();
         SceneManager.LoadScene("Scenes/MainMenu_2");
         MainMenu.Open();
+
+        // transition to main menu music
+        AudioManager.Instance.TransitionToMusic(AudioManager.Instance.mainMenuClips.AudioClip, AudioManager.Instance.MusicSource.volume, 
+                                                0.0f, 0.2f, 0.0f, 0.6f);
     }
 
     public static int GetLevelPlayed()
