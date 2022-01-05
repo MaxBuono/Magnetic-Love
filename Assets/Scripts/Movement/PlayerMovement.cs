@@ -34,8 +34,6 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public float resultingVelX;
     [HideInInspector] public float resultingVelY;
 
-    [HideInInspector] public bool isJumpSoundPlaying;
-
     // Internals
     private float _gravity;
     private float _maxJumpSpeed;
@@ -253,13 +251,7 @@ public class PlayerMovement : MonoBehaviour
         //and I'm grounded (hitting below) while not pressing the downward _directionalInput
         if (_controller2D.collisionInfo.below && _directionalInput.y != -1)
         {
-            // avoid jump sounds to overlap too much
-            if (!_allyMovement.isJumpSoundPlaying)
-            {
-                AudioClip randomJump = AudioManager.Instance.jump.AudioClip;
-                AudioManager.Instance.PlayOneShotSound("SFX", randomJump);
-                StartCoroutine(UpdateJumpSoundBool(randomJump.length * 0.5f));
-            }
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.jump.AudioClip);
 
             if (_controller2D.collisionInfo.slidingDownMaxSlope)
             {
@@ -515,12 +507,5 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _wasAbove = _controller2D.collisionInfo.above;
-    }
-
-    private IEnumerator UpdateJumpSoundBool(float time)
-    {
-        isJumpSoundPlaying = true;
-        yield return new WaitForSeconds(time);
-        isJumpSoundPlaying = false;
     }
 }

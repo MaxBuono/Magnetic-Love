@@ -105,7 +105,6 @@ namespace MenuManagement
                 // if we are inside a level scene
                 if (GameManager.Instance.IsLevelPlaying())
                 {
-                    Debug.Log("TEST_1");
                     // open pause menu
                     if (!_isPauseMenuOpen)
                     {
@@ -130,10 +129,7 @@ namespace MenuManagement
                 }
                 else    // main menu
                 {
-                    if (!SelectLevelMenu.isTransitioning)
-                    {
-                        CloseMenu();
-                    }   
+                    CloseMenu();
                 }
             }
             // ******
