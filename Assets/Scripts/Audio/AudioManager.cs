@@ -34,6 +34,7 @@ public class AudioManager : MonoBehaviour
 
     //Public
     public List<LevelProperties> levelProperties;
+    public AudioCollection mainMenuClips;
     public AudioCollection jump;
     public AudioClip plug;
     public AudioClip unplug;
@@ -42,6 +43,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip buttonPressed;
     public AudioClip buttonExitPressed;
     public AudioClip heartCharge;
+    public AudioClip finalWin;
     
     public static AudioManager Instance { get { return _instance; } }
 
@@ -95,6 +97,13 @@ public class AudioManager : MonoBehaviour
             poolItem.gameObject.SetActive(false);
             _pool.Add(poolItem);
         }
+    }
+
+    private void Start()
+    {
+        // set a random starting music
+        _musicSource.clip = mainMenuClips.AudioClip;
+        _musicSource.Play();
     }
 
     // *** Always find an audio listener ***
