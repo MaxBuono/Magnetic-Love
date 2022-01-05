@@ -34,7 +34,15 @@ public class PlayerInput : MonoBehaviour
 
         // Horizontal/Vertical Input
         Vector2 directionalInput = new Vector2(Input.GetAxisRaw(horizontal), Input.GetAxisRaw(jump));
-        _playerMovement.SetDirectionalInput(directionalInput);
+        // avoid a dash-like effect then unplugging
+        if (!PlayerMovementOverride.startUnplug)
+        {
+            _playerMovement.SetDirectionalInput(directionalInput);
+        }
+        else
+        {
+            _playerMovement.SetDirectionalInput(Vector2.zero);
+        }
 
         // Jump
         // this is for the animator
