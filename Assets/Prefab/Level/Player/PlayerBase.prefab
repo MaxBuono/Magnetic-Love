@@ -232,8 +232,7 @@ MonoBehaviour:
   maxJumpHeight: 3.5
   minJumpHeight: 1
   timeToJumpApex: 0.5
-  jumpWidth: 0.7
-  jumpPushForce: 1.85
+  jumpFromObjectX: 1.1
   wallSlideMaxSpeed: 3
   wallStickTime: 0.15
   wallJumpClimb: {x: 7, y: 27}
@@ -257,9 +256,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontal: HorizontalBlue
-  vertical: VerticalBlue
   jump: JumpBlue
   isPressingJump: 0
+  isPressingUnplug: 0
 --- !u!114 &8900021729868056088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,3 +272,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   polarization: 1
+  forceReceived: 1
