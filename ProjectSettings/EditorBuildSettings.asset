@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/L6-Discovering Each Other.unity
     guid: 149fca167ead5a541ae5a3a355e2ad26
   - enabled: 1
-    path: Assets/Scenes/Levels/L7-Always much love, love, love.unity
+    path: Assets/Scenes/Levels/L10-Always much love, love, love.unity
     guid: ad392734ee0859a409733466f2eaf0e0
   - enabled: 1
     path: Assets/Scenes/Levels/L8-Love Is In The Air.unity
@@ -36,34 +36,34 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/L9-Happy moments.unity
     guid: c0f1f18908af72448bef1b9777b8e83f
   - enabled: 1
-    path: Assets/Scenes/Levels/L10-Unity is strength.unity
+    path: Assets/Scenes/Levels/L13-Unity is strength.unity
     guid: 3dd02590950906f4ea7c0ffc84cd4fa6
   - enabled: 1
-    path: Assets/Scenes/Levels/L11-Day after day.unity
+    path: Assets/Scenes/Levels/L14-Day after day.unity
     guid: 4f2bd4f2518b5014c896288354dc1f93
   - enabled: 1
     path: Assets/Scenes/Levels/L12- I will support you, whatever it takes.unity
     guid: cf0427c2d120dd045b789f6a1871fcbc
   - enabled: 1
-    path: Assets/Scenes/Levels/L13-You Push Me Over The Edge.unity
+    path: Assets/Scenes/Levels/L7-You Push Me Over The Edge.unity
     guid: eb44aeeca5b00bc478293b6debffe231
   - enabled: 1
-    path: Assets/Scenes/Levels/L14-Responsability.unity
+    path: Assets/Scenes/Levels/L11-Responsability.unity
     guid: b456853533c55d049b2e9232af27627a
   - enabled: 1
-    path: Assets/Scenes/Levels/L15-And That's Why I Love You.unity
+    path: Assets/Scenes/Levels/L12-And That's Why I Love You.unity
     guid: 873ca89681ea4c343929358b56c649e3
   - enabled: 1
-    path: Assets/Scenes/Levels/L16- It's your fault.unity
+    path: Assets/Scenes/Levels/L15- It's your fault.unity
     guid: 0fd5b3c8140a6a2408f1215323b6c915
   - enabled: 1
-    path: Assets/Scenes/Levels/L17-You just don't understand me..unity
+    path: Assets/Scenes/Levels/L16-You just don't understand me..unity
     guid: 87459fd9ed8815146952c2eed438159a
   - enabled: 1
     path: Assets/Scenes/Levels/L18-I Fall Down Without You.unity
     guid: 5bcc4e4e1689ddd4686d43cc3c4727e5
   - enabled: 1
-    path: Assets/Scenes/Levels/L19- Well, something snapped..unity
+    path: Assets/Scenes/Levels/L17- Well, something snapped..unity
     guid: 2f831a09a986e0e4e9426873d64d7af2
   - enabled: 1
     path: Assets/Scenes/Levels/L20-Finding Our Own Space.unity
