@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/L3-Shared Passion.unity
     guid: 32bfe8b761e44ee43ba8f4b99fbabeb8
   - enabled: 1
-    path: Assets/Scenes/Levels/L4- So... will you go out with me.unity
+    path: Assets/Scenes/Levels/L4- Love At First Sight.unity
     guid: 17ba1f906a745ab418a81eb7b42536d6
   - enabled: 1
     path: Assets/Scenes/Levels/L5-First kiss.unity
@@ -45,7 +45,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/L12- I will support you, whatever it takes.unity
     guid: cf0427c2d120dd045b789f6a1871fcbc
   - enabled: 1
-    path: Assets/Scenes/Levels/L7-You Push Me Over The Edge.unity
+    path: Assets/Scenes/Levels/L7-Hanging Out With Each Other.unity
     guid: eb44aeeca5b00bc478293b6debffe231
   - enabled: 1
     path: Assets/Scenes/Levels/L11-Responsability.unity
