@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strengthX: -10
-  strengthY: -10
+  strengthY: -13
 --- !u!1 &6946613832013721551
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   polarization: 1
-  forceReceived: 0.5
+  forceReceived: 1
 --- !u!114 &6946613832013721397
 MonoBehaviour:
   m_ObjectHideFlags: 0
