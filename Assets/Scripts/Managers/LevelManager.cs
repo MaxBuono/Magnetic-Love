@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     private static int _nextLevel = 1;
     private static int _maxLevel = SceneManager.sceneCountInBuildSettings - 1;
     private static int _levelPlayed = -1;
-    
+
     private static string SceneName(int level)
     {
         return GameManager.Instance.Levels[level - 1];
@@ -76,6 +76,10 @@ public class LevelManager : MonoBehaviour
     {
         MenuManager.Instance.ClearStack();
         SceneManager.LoadScene("Scenes/MainMenu_2");
+        if (MenuManager.Instance.VideoPlayer != null)
+        {
+            MenuManager.Instance.VideoPlayer.Play();
+        }
         MainMenu.Open();
 
         // transition to main menu music

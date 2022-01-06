@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 namespace MenuManagement
 {
@@ -46,9 +47,12 @@ namespace MenuManagement
         // Keyboard events
         private GameObject _mainButton;
         private GameObject _lastSelectedButton;
+        // VideoPlayer
+        private static UnityEngine.Video.VideoPlayer _videoPlayer;
 
         // Properties
         public bool PauseMenuOpen { get { return _isPauseMenuOpen; } set { _isPauseMenuOpen = value; } }
+        public UnityEngine.Video.VideoPlayer VideoPlayer { get { return _videoPlayer; } }
 
         // Pseudo-Singleton
         private static MenuManager _instance;
@@ -82,7 +86,6 @@ namespace MenuManagement
 
         private void Start()
         {
-            
             _mainButton = GameObject.FindGameObjectWithTag("MainInteractable");
             _lastSelectedButton = _mainButton;
         }
@@ -134,6 +137,24 @@ namespace MenuManagement
             }
             // ******
         }
+
+        // ****** VideoPlayer ******
+        void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            // grab the camera's videoplayer component
+            _videoPlayer = Camera.main.GetComponent<UnityEngine.Video.VideoPlayer>();
+        }
+        // ******
 
         public void OpenMenu(Menu menuInstance)
         {
