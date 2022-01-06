@@ -320,12 +320,12 @@ GameObject:
   - component: {fileID: 357209856}
   - component: {fileID: 357209855}
   m_Layer: 0
-  m_Name: EventSystem (1)
+  m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &357209855
 MonoBehaviour:
   m_ObjectHideFlags: 0
