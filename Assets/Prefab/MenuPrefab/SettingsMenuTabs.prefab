@@ -160,6 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 639227050569172419}
   - component: {fileID: 639227050569172421}
+  - component: {fileID: 115820597074622587}
   - component: {fileID: 639227050569172418}
   m_Layer: 5
   m_Name: Background
@@ -195,6 +196,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639227050569172416}
   m_CullTransparentMesh: 1
+--- !u!223 &115820597074622587
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639227050569172416}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!114 &639227050569172418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,7 +388,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &639227051477595420
 MonoBehaviour:
@@ -539,7 +561,7 @@ GameObject:
   - component: {fileID: 3064288762231713719}
   - component: {fileID: 2792498034955016254}
   m_Layer: 5
-  m_Name: Tab2
+  m_Name: ControlsTab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1643,7 +1665,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 42.237}
+  m_AnchoredPosition: {x: 0, y: 42.23694}
   m_SizeDelta: {x: 0, y: 259.58}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4432077808755904349
@@ -4552,6 +4574,7 @@ GameObject:
   - component: {fileID: 719178275728039090}
   - component: {fileID: 6526058861371432156}
   - component: {fileID: 7402105011169957923}
+  - component: {fileID: 4350621591115906875}
   m_Layer: 5
   m_Name: TabCanvas
   m_TagString: Untagged
@@ -4593,12 +4616,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6526058861371432156
 MonoBehaviour:
@@ -4640,6 +4663,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4350621591115906875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958658996161643402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5501d60ebb9f94c84cd952009f1b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabs:
+  - {fileID: 1577727308528308002}
+  - {fileID: 2643545831075747414}
 --- !u!1 &7166447895305148091
 GameObject:
   m_ObjectHideFlags: 0
@@ -5120,7 +5158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 25, y: 0}
+  m_AnchoredPosition: {x: 25, y: 32.3}
   m_SizeDelta: {x: -150, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8132370829774076467
@@ -5179,7 +5217,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 15
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -5275,7 +5313,7 @@ GameObject:
   - component: {fileID: 2384069148980670253}
   - component: {fileID: 2378835209420743089}
   m_Layer: 5
-  m_Name: Tab1
+  m_Name: SoundsTab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
