@@ -9,8 +9,7 @@ using UnityEngine.SceneManagement;
 public class HintHandler : MonoBehaviour
 {
     public GameObject hintPanel;
-    public GameObject hintButton;
-    public Image hintLight;
+    public Image hintButton;
     public TextMeshProUGUI hintText;
     
     private int _level;
@@ -19,7 +18,7 @@ public class HintHandler : MonoBehaviour
 
     public void ShowHint()
     {
-        Color color = hintLight.color; 
+        Color color = hintButton.color; 
 
         if (hintPanel.activeSelf)
         {
@@ -32,7 +31,7 @@ public class HintHandler : MonoBehaviour
             color = activeColor;
         }
 
-        hintLight.color = color;
+        hintButton.color = color;
     }
 
     private void OnEnable()
@@ -51,11 +50,11 @@ public class HintHandler : MonoBehaviour
         string hint = GameManager.Instance.levelProperties[_level - 1].hint;
         if (hint == "")
         {
-            hintButton.SetActive(false);
+            hintButton.gameObject.SetActive(false);
         }
         else
         {
-            hintButton.SetActive(true);
+            hintButton.gameObject.SetActive(true);
             hintText.text = hint;
         }
         
