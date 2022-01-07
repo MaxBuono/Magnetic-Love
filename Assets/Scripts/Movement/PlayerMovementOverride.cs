@@ -25,10 +25,11 @@ public class PlayerMovementOverride : MonoBehaviour
     private float _blueVelY;
     private float _blueToRed;
     private float _timeToWaitForSecondJumpInput = 0.1f;
-    private float _desiredStickDistance;
+    private float _desiredStickDistance = 0.0f;
+    private float _currentDistance;
 
-    private PlayerMovement movementRed;
-    private PlayerMovement movementBlue;
+    private PlayerMovement _movementRed;
+    private PlayerMovement _movementBlue;
     private IEnumerator _unplugCoroutine = null;
     private IEnumerator _waitForJumpInput = null;
 
@@ -59,29 +60,26 @@ public class PlayerMovementOverride : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
-    {
-        _desiredStickDistance = movementBlue.Collider.bounds.extents.x * 2;
-    }
-
     void Update()
     {
         // avoid to process anything if you are not inside a level scene
-        if (movementRed == null || movementBlue == null) return;
+        if (_movementRed == null || _movementBlue == null) return;
     }
 
     // put here only what's related to the movement
     private void FixedUpdate()
     {
         // avoid to process anything if you are not inside a level scene
-        if (movementRed == null || movementBlue == null) return;
+        if (_movementRed == null || _movementBlue == null) return;
 
-        if (movementRed.isStickToAlly || movementBlue.isStickToAlly)
+        if (_movementRed.isStickToAlly || _movementBlue.isStickToAlly)
         {
             // be sure that the characters are really attached
-            if (!unplugging)
+            _currentDistance = Mathf.Abs(_movementBlue.transform.position.x - _movementRed.transform.position.x);
+            // but do it only if they are not too far from each other (ideally, never)
+            if (!unplugging && _currentDistance < _desiredStickDistance + 0.5f)
             {
-                //CheckSticknessValidity();
+                CheckSticknessValidity();
             }
 
             CalculateResultantVelocity();
@@ -92,11 +90,11 @@ public class PlayerMovementOverride : MonoBehaviour
             ApplyMovement(finalRedVel, finalBlueVel);
 
             // reset the resultant y axis if at least one of them is colliding verically
-            if (movementRed.Controller.collisionInfo.below || movementRed.Controller.collisionInfo.above ||
-                movementBlue.Controller.collisionInfo.below || movementBlue.Controller.collisionInfo.above)
+            if (_movementRed.Controller.collisionInfo.below || _movementRed.Controller.collisionInfo.above ||
+                _movementBlue.Controller.collisionInfo.below || _movementBlue.Controller.collisionInfo.above)
             {
-                movementRed.resultingVelY = 0.0f;
-                movementBlue.resultingVelY = 0.0f;
+                _movementRed.resultingVelY = 0.0f;
+                _movementBlue.resultingVelY = 0.0f;
 
                 _redVelY = 0.0f;
                 _blueVelY = 0.0f;
@@ -117,13 +115,13 @@ public class PlayerMovementOverride : MonoBehaviour
         }
 
         // if you are above the other character, his X movement will influence yours
-        if (movementRed.isAboveCharacter)
+        if (_movementRed.isAboveCharacter)
         {
-            movementRed.Controller.Move(Vector2.right * movementBlue.Velocity.x * GameManager.Instance.gameVelocityMultiplier, movementBlue.DirectionalInput);
+            _movementRed.Controller.Move(Vector2.right * _movementBlue.Velocity.x * GameManager.Instance.gameVelocityMultiplier, _movementBlue.DirectionalInput);
         }
-        else if (movementBlue.isAboveCharacter)
+        else if (_movementBlue.isAboveCharacter)
         {
-            movementBlue.Controller.Move(Vector2.right * movementRed.Velocity.x * GameManager.Instance.gameVelocityMultiplier, movementRed.DirectionalInput);
+            _movementBlue.Controller.Move(Vector2.right * _movementRed.Velocity.x * GameManager.Instance.gameVelocityMultiplier, _movementRed.DirectionalInput);
         }
     }
 
@@ -146,26 +144,28 @@ public class PlayerMovementOverride : MonoBehaviour
 
         if (rg.IsMatch(scene.name))
         {
-            movementRed = GameObject.FindGameObjectWithTag("PlayerRed").GetComponent<PlayerMovement>();
-            movementBlue = GameObject.FindGameObjectWithTag("PlayerBlue").GetComponent<PlayerMovement>();
+            _movementRed = GameObject.FindGameObjectWithTag("PlayerRed").GetComponent<PlayerMovement>();
+            _movementBlue = GameObject.FindGameObjectWithTag("PlayerBlue").GetComponent<PlayerMovement>();
+
+            _desiredStickDistance = _movementBlue.Collider.bounds.extents.x * 2;
         }
         else
         {
-            movementRed = null;
-            movementBlue = null;
+            _movementRed = null;
+            _movementBlue = null;
         }
     }
 
     private int GetBlueToRedDir()
     {
-        return movementRed.transform.position.x > movementBlue.transform.position.x ? 1 : -1;
+        return _movementRed.transform.position.x > _movementBlue.transform.position.x ? 1 : -1;
     }
 
     private IEnumerator UnplugCharacters()
     {
         float timer = 0.0f;
 
-        while ((movementRed.Input.isPressingUnplug || movementBlue.Input.isPressingUnplug) && timer < timeToUnplug)
+        while ((_movementRed.Input.isPressingUnplug || _movementBlue.Input.isPressingUnplug) && timer < timeToUnplug)
         {
             timer += Time.deltaTime;
             startUnplug = true;
@@ -190,12 +190,12 @@ public class PlayerMovementOverride : MonoBehaviour
             unplugging = false;
 
             // register their fields again if the unplug force is not strong enough to make you exit
-            Collider2D redField = movementBlue.AllyField.Field;
+            Collider2D redField = _movementBlue.AllyField.Field;
             // we only need to check one field since they are symmetrical
-            if (redField.OverlapPoint(movementBlue.transform.position))
+            if (redField.OverlapPoint(_movementBlue.transform.position))
             {
-                movementRed.MagneticObject.RegisterForce(movementRed.AllyField.ID, Vector2.zero);
-                movementBlue.MagneticObject.RegisterForce(movementBlue.AllyField.ID, Vector2.zero);
+                _movementRed.MagneticObject.RegisterForce(_movementRed.AllyField.ID, Vector2.zero);
+                _movementBlue.MagneticObject.RegisterForce(_movementBlue.AllyField.ID, Vector2.zero);
             }
         }
 
@@ -210,27 +210,27 @@ public class PlayerMovementOverride : MonoBehaviour
         // It's fundamental to keep the two different movements (sticked or not) completely separated.
 
         // resulting x axis velocity 
-        _redVelX += movementRed.resultingVelX + movementBlue.resultingVelX;
-        _blueVelX += movementRed.resultingVelX + movementBlue.resultingVelX;
+        _redVelX += _movementRed.resultingVelX + _movementBlue.resultingVelX;
+        _blueVelX += _movementRed.resultingVelX + _movementBlue.resultingVelX;
 
         // avoid to go at double the speed on the x axis when both move in the same direction
-        if (movementRed.DirectionalInput.x == movementBlue.DirectionalInput.x &&
-            movementRed.DirectionalInput.x != 0 && movementBlue.DirectionalInput.x != 0)
+        if (_movementRed.DirectionalInput.x == _movementBlue.DirectionalInput.x &&
+            _movementRed.DirectionalInput.x != 0 && _movementBlue.DirectionalInput.x != 0)
         {
-            _redVelX -= movementRed.moveSpeed * movementRed.DirectionalInput.x;
-            _blueVelX -= movementBlue.moveSpeed * movementBlue.DirectionalInput.x;
+            _redVelX -= _movementRed.moveSpeed * _movementRed.DirectionalInput.x;
+            _blueVelX -= _movementBlue.moveSpeed * _movementBlue.DirectionalInput.x;
         }
 
         // Clamp the X velocity when sticked to avoid weird behaviors when connecting
         if (!unplugging)
         {
-            _redVelX = Mathf.Clamp(_redVelX, -movementRed.moveSpeed, movementRed.moveSpeed);
-            _blueVelX = Mathf.Clamp(_blueVelX, -movementBlue.moveSpeed, movementBlue.moveSpeed);
+            _redVelX = Mathf.Clamp(_redVelX, -_movementRed.moveSpeed, _movementRed.moveSpeed);
+            _blueVelX = Mathf.Clamp(_blueVelX, -_movementBlue.moveSpeed, _movementBlue.moveSpeed);
         }
 
         // resulting y axis velocity 
-        float redY = movementRed.resultingVelY;
-        float blueY = movementBlue.resultingVelY;
+        float redY = _movementRed.resultingVelY;
+        float blueY = _movementBlue.resultingVelY;
 
         // if the resulting velocities on the y axis have the same direction
         if (Mathf.Sign(redY) == Mathf.Sign(blueY))
@@ -251,62 +251,62 @@ public class PlayerMovementOverride : MonoBehaviour
     {
         // Apply movement in a specific order based on the x direction, otherwise one character
         // will collide with the other countering it's movement
-        _blueToRed = Mathf.Sign(movementRed.transform.position.x - movementBlue.transform.position.x);
+        _blueToRed = Mathf.Sign(_movementRed.transform.position.x - _movementBlue.transform.position.x);
         finalBlueVel *= GameManager.Instance.gameVelocityMultiplier;
         finalRedVel *= GameManager.Instance.gameVelocityMultiplier;
         if (_blueToRed == 1) // red on the right
         {
             if (_redVelX > 0 || _blueVelX > 0) // and moving to the right
             {
-                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
-                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
+                _movementRed.Controller.Move(finalRedVel, _movementRed.DirectionalInput);
+                _movementBlue.Controller.Move(finalBlueVel, _movementBlue.DirectionalInput);
             }
             else if (_redVelX < 0 || _blueVelX < 0) // moving to the left
             {
-                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
-                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
+                _movementBlue.Controller.Move(finalBlueVel, _movementBlue.DirectionalInput);
+                _movementRed.Controller.Move(finalRedVel, _movementRed.DirectionalInput);
             }
             else // in this case it doesn't matter which one you move first
             {
-                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
-                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
+                _movementRed.Controller.Move(finalRedVel, _movementRed.DirectionalInput);
+                _movementBlue.Controller.Move(finalBlueVel, _movementBlue.DirectionalInput);
             }
         }
         else //red on the left
         {
             if (_redVelX > 0 || _blueVelX > 0) // and moving to the right
             {
-                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
-                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
+                _movementBlue.Controller.Move(finalBlueVel, _movementBlue.DirectionalInput);
+                _movementRed.Controller.Move(finalRedVel, _movementRed.DirectionalInput);
             }
             else if (_redVelX < 0 || _blueVelX < 0) // moving to the left
             {
-                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
-                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
+                _movementRed.Controller.Move(finalRedVel, _movementRed.DirectionalInput);
+                _movementBlue.Controller.Move(finalBlueVel, _movementBlue.DirectionalInput);
             }
             else // in this case it doesn't matter which one you move first
             {
-                movementBlue.Controller.Move(finalBlueVel, movementBlue.DirectionalInput);
-                movementRed.Controller.Move(finalRedVel, movementRed.DirectionalInput);
+                _movementBlue.Controller.Move(finalBlueVel, _movementBlue.DirectionalInput);
+                _movementRed.Controller.Move(finalRedVel, _movementRed.DirectionalInput);
             }
         }
 
         // if only one character is touching the ground the other should remain sticked
         // This has to go after I called Move to properly set the below boolean
-        if ((movementRed.Controller.collisionInfo.below || movementBlue.Controller.collisionInfo.below)
+        if ((_movementRed.Controller.collisionInfo.below || _movementBlue.Controller.collisionInfo.below)
             && (_redVelY < 0 || _blueVelY < 0))
         {
             _redVelY = 0.0f;
             _blueVelY = 0.0f;
 
             // and also set their y position to be the same as the one character on the ground
-            if (movementRed.Controller.collisionInfo.below)
+            if (_movementRed.Controller.collisionInfo.below)
             {
-                movementBlue.transform.position = new Vector2(movementBlue.transform.position.x, movementRed.transform.position.y);
+                _movementBlue.transform.position = new Vector2(_movementBlue.transform.position.x, _movementRed.transform.position.y);
             }
-            if (movementBlue.Controller.collisionInfo.below)
+            if (_movementBlue.Controller.collisionInfo.below)
             {
-                movementRed.transform.position = new Vector2(movementRed.transform.position.x, movementBlue.transform.position.y);
+                _movementRed.transform.position = new Vector2(_movementRed.transform.position.x, _movementBlue.transform.position.y);
             }
         }
     }
@@ -331,18 +331,17 @@ public class PlayerMovementOverride : MonoBehaviour
     // check that characters are stick for real, if not, stick them manually
     private void CheckSticknessValidity()
     {
-        float distance = Mathf.Abs(movementBlue.transform.position.x - movementRed.transform.position.x);
         float tolerance = 0.01f;
 
         // if they are not really attached as they should be 
-        if (distance > _desiredStickDistance + tolerance)
+        if (_currentDistance > _desiredStickDistance + tolerance)
         {
             // then attach them
-            float offset = (distance - _desiredStickDistance - tolerance) * 0.5f;
-            float blueOffset = movementBlue.transform.position.x + offset * _blueToRed;
-            float redOffset = movementRed.transform.position.x - offset * _blueToRed;
-            movementBlue.transform.position = new Vector3(blueOffset, movementBlue.transform.position.y, 0.0f);
-            movementRed.transform.position = new Vector3(redOffset, movementRed.transform.position.y, 0.0f);
+            float offset = (_currentDistance - _desiredStickDistance - tolerance) * 0.5f;
+            float blueOffset = _movementBlue.transform.position.x + offset * _blueToRed;
+            float redOffset = _movementRed.transform.position.x - offset * _blueToRed;
+            _movementBlue.transform.position = new Vector3(blueOffset, _movementBlue.transform.position.y, 0.0f);
+            _movementRed.transform.position = new Vector3(redOffset, _movementRed.transform.position.y, 0.0f);
         }
     }
 
@@ -352,8 +351,8 @@ public class PlayerMovementOverride : MonoBehaviour
         // second jump in a short span of time
         if (waitingForSecondJump)
         {
-            _redVelY += movementRed.MaxJumpSpeed * 0.5f;
-            _blueVelY += movementBlue.MaxJumpSpeed * 0.5f;
+            _redVelY += _movementRed.MaxJumpSpeed * 0.5f;
+            _blueVelY += _movementBlue.MaxJumpSpeed * 0.5f;
 
             StopCoroutine(_waitForJumpInput);
             _waitForJumpInput = null;
@@ -380,8 +379,8 @@ public class PlayerMovementOverride : MonoBehaviour
         if (hits != 0)
         {
             // if both characters are jumping their jump forces will sum up
-            _redVelY += movementRed.MaxJumpSpeed * 0.7f;
-            _blueVelY += movementBlue.MaxJumpSpeed * 0.7f;
+            _redVelY += _movementRed.MaxJumpSpeed * 0.7f;
+            _blueVelY += _movementBlue.MaxJumpSpeed * 0.7f;
 
             if (_waitForJumpInput == null)
             {
@@ -396,7 +395,7 @@ public class PlayerMovementOverride : MonoBehaviour
     // when the player presses the unplug button while the characters are sticked
     public void OnUnplugInput()
     {
-        if ((movementRed.isStickToAlly || movementBlue.isStickToAlly) && _unplugCoroutine == null)
+        if ((_movementRed.isStickToAlly || _movementBlue.isStickToAlly) && _unplugCoroutine == null)
         {
             _unplugCoroutine = UnplugCharacters();
             StartCoroutine(_unplugCoroutine);
