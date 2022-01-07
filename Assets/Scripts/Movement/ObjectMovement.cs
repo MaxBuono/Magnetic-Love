@@ -12,6 +12,7 @@ public class ObjectMovement : MonoBehaviour
     private float _smoothedVelocityX;
     private float _accelerationTimeAirborne = 0.2f;
     private Vector2 _velocity;
+    private Collider2D _coll;
     private Controller2D _controller2D;
     private MagneticObject _magneticObject;
     private Animator _animator;
@@ -26,6 +27,7 @@ public class ObjectMovement : MonoBehaviour
 
     private void Awake()
     {
+        _coll = GetComponent<Collider2D>();
         _controller2D = GetComponent<Controller2D>();
         _magneticObject = GetComponent<MagneticObject>();
         _animator = GetComponent<Animator>();
@@ -33,6 +35,9 @@ public class ObjectMovement : MonoBehaviour
 
     private void Start()
     {
+        // Register this component in the Game Manager
+        GameManager.Instance.RegisterObjectMovement(_coll.GetInstanceID(), this);
+
         _gravity = GameManager.Instance.Gravity;
 
         // cache animator's parameters hashes
@@ -110,5 +115,11 @@ public class ObjectMovement : MonoBehaviour
         bool isFalling = (previousPos.y - currentPos.y) > 0.01f;
         _animator.SetBool(_isMovedHash, isMoved);
         _animator.SetBool(_isFallingHash, isFalling);
+    }
+
+    public void AddVelocity(float velX, float velY = 0.0f)
+    {
+        _velocity.x = velX;
+        _velocity.y += velY;
     }
 }

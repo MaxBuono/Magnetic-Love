@@ -81,7 +81,7 @@ public class PlayerMovementOverride : MonoBehaviour
             // be sure that the characters are really attached
             if (!unplugging)
             {
-                CheckSticknessValidity();
+                //CheckSticknessValidity();
             }
 
             CalculateResultantVelocity();

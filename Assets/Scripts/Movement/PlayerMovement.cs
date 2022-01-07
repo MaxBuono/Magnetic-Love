@@ -231,6 +231,10 @@ public class PlayerMovement : MonoBehaviour
                 if (magneticObj != null)
                 {
                     _velocity.x = _maxJumpSpeed * jumpFromObjectX * Vector2.left.x;
+
+                    // apply also a force to the magnetic object to avoid it to follow you right away
+                    ObjectMovement objectMov = GameManager.Instance.ObjectMovements[coll.GetInstanceID()];
+                    //objectMov.AddVelocity()
                 }
             }
         }

@@ -69,11 +69,13 @@ public class GameManager : MonoBehaviour
     // Dictionaries used to save performances by caching components avoiding getting them at runtime
     private Dictionary<int, MagneticObject> _magneticObjects = new Dictionary<int, MagneticObject>();
     private Dictionary<int, Controller2D> _controllers2D = new Dictionary<int, Controller2D>();
+    private Dictionary<int, ObjectMovement> _objectMovements = new Dictionary<int, ObjectMovement>();
     private List<string> _levelNames = new List<string>();
 
     // Properties
     public Dictionary<int, MagneticObject> MagneticObjects { get { return _magneticObjects; } }
     public Dictionary<int, Controller2D> Controllers2D { get { return _controllers2D; } }
+    public Dictionary<int, ObjectMovement> ObjectMovements { get { return _objectMovements; } }
     public float Gravity { get { return _gravity; } set { _gravity = value; } }
     public bool PlayerControlsBlocked { get { return _playerControlsBlocked; } set { _playerControlsBlocked = value; } }
     public List<string> Levels { get { return _levels; } }
@@ -200,7 +202,18 @@ public class GameManager : MonoBehaviour
 
         return false;
     }
-    
+
+    public bool RegisterObjectMovement(int id, ObjectMovement objectMovement)
+    {
+        if (!_objectMovements.ContainsKey(id))
+        {
+            _objectMovements.Add(id, objectMovement);
+            return true;
+        }
+
+        return false;
+    }
+
     public void LevelCompleted()
     {
         int levelAt = LevelManager.GetLevelPlayed();
