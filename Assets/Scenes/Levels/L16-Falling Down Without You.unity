@@ -253,6 +253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpMagnet ---
       objectReference: {fileID: 0}
+    - target: {fileID: 433765497174687957, guid: 3799b12705f72e0418daefb2efd4a129, type: 3}
+      propertyPath: m_SortingOrder
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 433765497174687958, guid: 3799b12705f72e0418daefb2efd4a129, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1905,6 +1909,10 @@ PrefabInstance:
     - target: {fileID: 4197570172846244765, guid: 0ef7e18e983276f4d8eab4ccd7e3e04b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197570172846244766, guid: 0ef7e18e983276f4d8eab4ccd7e3e04b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 101
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ef7e18e983276f4d8eab4ccd7e3e04b, type: 3}

@@ -452,6 +452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpMagnet ---
       objectReference: {fileID: 0}
+    - target: {fileID: 433765497174687957, guid: 3799b12705f72e0418daefb2efd4a129, type: 3}
+      propertyPath: m_SortingOrder
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 433765497174687958, guid: 3799b12705f72e0418daefb2efd4a129, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1060,6 +1064,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1503444834}
     m_Modifications:
+    - target: {fileID: 6098327341084054529, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
+      propertyPath: m_SortingOrder
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 6098327341084054530, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -789,6 +789,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 948079025}
     m_Modifications:
+    - target: {fileID: 6098327341084054529, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
+      propertyPath: m_SortingOrder
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 6098327341084054530, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1140,6 +1144,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 948079025}
     m_Modifications:
+    - target: {fileID: 6098327341084054529, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
+      propertyPath: m_SortingOrder
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 6098327341084054530, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2640,6 +2648,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4040751604055004306, guid: e6be69ba29cf815478bc2f20125f8c02, type: 3}
+      propertyPath: m_SortingOrder
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 4040751604055004308, guid: e6be69ba29cf815478bc2f20125f8c02, type: 3}
       propertyPath: m_Name
       value: 'JumpMagnet -- '
@@ -2728,6 +2740,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 948079025}
     m_Modifications:
+    - target: {fileID: 6098327341084054529, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
+      propertyPath: m_SortingOrder
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 6098327341084054530, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
       propertyPath: m_RootOrder
       value: 6
