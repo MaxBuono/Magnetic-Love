@@ -60,10 +60,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/L17-Carry Me Over Your Shoulders.unity
     guid: 87459fd9ed8815146952c2eed438159a
   - enabled: 1
-    path: Assets/Scenes/Levels/L18- To Each His Own.unity
+    path: Assets/Scenes/Levels/L19- To Each His Own.unity
     guid: 2f831a09a986e0e4e9426873d64d7af2
   - enabled: 1
-    path: Assets/Scenes/Levels/L19-Play Fast And Loose.unity
+    path: Assets/Scenes/Levels/L20-Play Fast And Loose.unity
     guid: 4bfaab91fedeee74e981f4f33c4642e0
   - enabled: 1
     path: Assets/Scenes/MainMenu_2.unity
