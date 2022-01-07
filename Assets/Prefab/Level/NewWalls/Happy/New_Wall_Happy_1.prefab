@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2481628297209902470}
   - component: {fileID: 7603630131057442552}
-  - component: {fileID: 3311516747175794801}
+  - component: {fileID: 5217915272120622158}
   m_Layer: 0
   m_Name: New_Wall_Happy_1
   m_TagString: Untagged
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -3341405361407403619, guid: 300674f929d4ff74cbdec0dfb17090b0, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -3341405361407403619, guid: 8cfcf3f958a4445409d5dc3e5c066b1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3311516747175794801
+--- !u!61 &5217915272120622158
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,8 +180,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4607cd45e5ff65d4fb94880def0af28b, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 3031168590299846931, guid: d690af1a1242ba54f918aa846630d532, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

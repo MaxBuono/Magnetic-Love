@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2481628297209902470}
   - component: {fileID: 7603630131057442552}
-  - component: {fileID: 4857880433070810954}
+  - component: {fileID: 9146357714788969675}
   m_Layer: 0
   m_Name: New_Wall_Happy_9
   m_TagString: Untagged
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 5723059806358887138, guid: e14661b1927bf3c4b8443dcd5b2c02e8, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 5723059806358887138, guid: ce8cccae8e4d9d74d8363aac92bd7a59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4857880433070810954
+--- !u!61 &9146357714788969675
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,14 +101,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.05, y: 0.39}
+    oldSize: {x: 4.05, y: 0.4}
     newSize: {x: 2.53, y: 0.39}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.05, y: 0.39}
+  m_Size: {x: 4.05, y: 0.4}
   m_EdgeRadius: 0
 --- !u!1 &4991941511687778041
 GameObject:
@@ -180,8 +180,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 3031168590299846931, guid: b0c7006e40a4f204caece37934583fcc, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 3031168590299846931, guid: d690af1a1242ba54f918aa846630d532, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
