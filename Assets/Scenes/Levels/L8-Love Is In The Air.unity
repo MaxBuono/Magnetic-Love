@@ -257,6 +257,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: New_Wall_Romance_2
       objectReference: {fileID: 0}
+    - target: {fileID: 2447059706254560247, guid: 922ed4088ad794d498290a4ecaac9518, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2481628297209902470, guid: 922ed4088ad794d498290a4ecaac9518, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -771,6 +775,10 @@ PrefabInstance:
     - target: {fileID: 844513715929404767, guid: 922ed4088ad794d498290a4ecaac9518, type: 3}
       propertyPath: m_Name
       value: New_Wall_Romance_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447059706254560247, guid: 922ed4088ad794d498290a4ecaac9518, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2481628297209902470, guid: 922ed4088ad794d498290a4ecaac9518, type: 3}
       propertyPath: m_RootOrder
@@ -1630,6 +1638,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: New_Wall_Romance_2
       objectReference: {fileID: 0}
+    - target: {fileID: 2447059706254560247, guid: 922ed4088ad794d498290a4ecaac9518, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2481628297209902470, guid: 922ed4088ad794d498290a4ecaac9518, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1673,6 +1685,10 @@ PrefabInstance:
     - target: {fileID: 2481628297209902470, guid: 922ed4088ad794d498290a4ecaac9518, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603630131057442552, guid: 922ed4088ad794d498290a4ecaac9518, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 922ed4088ad794d498290a4ecaac9518, type: 3}

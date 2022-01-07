@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/PauseMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/PauseMenu.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/SettingsMenuTabs.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/SettingsMenuTabs.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L11-Day after day.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L11-Day after day.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L7-Always much love, love, love.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L7-Always much love, love, love.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/TabInactive.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/TabInactive.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionMainToFirstLevel.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionMainToFirstLevel.prefab.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +16,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/HeartManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu/SettingsMenuTabs.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu/HintHandler.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zay63RDFtBM6YhBQ2RiluZrggD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -41,6 +34,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../Downloads/MagneticLoveLinux/MagneticLove.x86_64" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Users\Max\Downloads\MagneticLoveLinux" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -99,6 +100,7 @@
       <workItem from="1641314067233" duration="365000" />
       <workItem from="1641314852661" duration="604000" />
       <workItem from="1641337402006" duration="4496000" />
+      <workItem from="1641459618282" duration="860000" />
     </task>
     <servers />
   </component>

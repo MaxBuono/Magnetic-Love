@@ -1277,6 +1277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: New_Wall_Romance_3
       objectReference: {fileID: 0}
+    - target: {fileID: 2447059706254560247, guid: 68428a6d8f620dc4d8e28158d2f6a45c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2481628297209902470, guid: 68428a6d8f620dc4d8e28158d2f6a45c, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1320,6 +1324,10 @@ PrefabInstance:
     - target: {fileID: 2481628297209902470, guid: 68428a6d8f620dc4d8e28158d2f6a45c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603630131057442552, guid: 68428a6d8f620dc4d8e28158d2f6a45c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68428a6d8f620dc4d8e28158d2f6a45c, type: 3}
