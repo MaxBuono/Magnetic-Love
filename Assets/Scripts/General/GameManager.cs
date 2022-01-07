@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
 
 
     // Public/Serialized
+    public List<LevelProperties> levelProperties;
     public TransitionFader fromMainToFirstLevel;
     public TransitionFader fromLevelToLevel;
     public TransitionFader fromLastToMain;
@@ -248,7 +249,7 @@ public class GameManager : MonoBehaviour
             // lower the background music to avoid going above the completed level sound
             AudioManager.Instance.MusicSource.volume *= 0.4f;
             AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.completedLevel);
-            LevelProperties level = AudioManager.Instance.levelProperties[LevelManager.GetLevelPlayed()];
+            LevelProperties level = levelProperties[LevelManager.GetLevelPlayed()];
 
             // changing clip
             if (level.music != AudioManager.Instance.MusicSource.clip)

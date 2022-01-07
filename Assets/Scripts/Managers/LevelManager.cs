@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     {
         // MUSIC TRANSITION
         float originalVolume = AudioManager.Instance.MusicSource.volume;
-        LevelProperties properties = AudioManager.Instance.levelProperties[level - 1];
+        LevelProperties properties = GameManager.Instance.levelProperties[level - 1];
         // changing clip
         if (properties.music != AudioManager.Instance.MusicSource.clip)
         {

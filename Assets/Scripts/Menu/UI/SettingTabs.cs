@@ -8,6 +8,7 @@ public class SettingTabs : MonoBehaviour
 {
     public Button[] tabs;
 
+    private Color activeColor = Color.white;
     private Color notActiveColor = new Color(0.78f, 0.72f, 0.62f);
 
     private void Start()
@@ -25,7 +26,7 @@ public class SettingTabs : MonoBehaviour
 
             if (i == 0)
             {
-                colors.normalColor = Color.white;
+                colors.normalColor = activeColor;
             }
             else
             {
@@ -57,7 +58,7 @@ public class SettingTabs : MonoBehaviour
 
             if (i == buttonPressed)
             {
-                colors.normalColor = Color.white;
+                colors.normalColor = activeColor;
             }
             else
             {

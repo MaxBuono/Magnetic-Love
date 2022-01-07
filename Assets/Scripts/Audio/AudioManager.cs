@@ -33,7 +33,6 @@ public class AudioManager : MonoBehaviour
     private static AudioManager _instance = null;
 
     //Public
-    public List<LevelProperties> levelProperties;
     public AudioCollection mainMenuClips;
     public AudioCollection jump;
     public AudioClip plug;

@@ -1,37 +1,38 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using MenuManagement;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class HintHandler : MonoBehaviour
 {
-    public GameObject hint;
+    public GameObject hintPanel;
     public GameObject hintButton;
+    public Image hintLight;
     public TextMeshProUGUI hintText;
     
     private int _level;
-    //key -> level, value -> hint
-    private Dictionary<int, string> _hints = new Dictionary<int, string>
-    {
-        {10, "Mag e Net vengono attratti dai piccoli anche attraverso i muri"},
-        {12, "I piccoli possono essere usati come delle piattaforme per saltare"},
-        {14, "A volte le piattaforme verticali possono essere prese solo in un determinato modo..."},
-        {17, "L'attrazione tra Mag e Net va ben oltre i muri"}
-    };
+    private Color activeColor = new Color(1.0f, 0.93f, 0.83f);
+    private Color notActiveColor = new Color(0.8f, 0.8f, 0.8f);
 
     public void ShowHint()
     {
-        if (hint.activeSelf)
+        Color color = hintLight.color; 
+
+        if (hintPanel.activeSelf)
         {
-            hint.gameObject.SetActive(false);
+            hintPanel.gameObject.SetActive(false);
+            color = notActiveColor;
         }
         else
         {
-            hint.gameObject.SetActive(true);
+            hintPanel.gameObject.SetActive(true);
+            color = activeColor;
         }
+
+        hintLight.color = color;
     }
 
     private void OnEnable()
@@ -44,17 +45,18 @@ public class HintHandler : MonoBehaviour
         catch (FormatException e)
         {}
 
-        hint.gameObject.SetActive(false);
-        
+        hintPanel.gameObject.SetActive(false);
+
         //check if an hint exists
-        if (!_hints.ContainsKey(_level))
+        string hint = GameManager.Instance.levelProperties[_level - 1].hint;
+        if (hint == "")
         {
             hintButton.SetActive(false);
         }
         else
         {
             hintButton.SetActive(true);
-            hintText.text = _hints[_level];
+            hintText.text = hint;
         }
         
     }
