@@ -92,6 +92,7 @@ namespace MenuManagement
 
         private void Update()
         {
+            Debug.Log(_lastSelectedButton.gameObject.name);
             // keep the selection if I click somewhere on the screen
             if (EventSystem.current.currentSelectedGameObject == null)
             {

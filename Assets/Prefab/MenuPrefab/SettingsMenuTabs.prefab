@@ -560,6 +560,7 @@ GameObject:
   - component: {fileID: 2643545831075747414}
   - component: {fileID: 3064288762231713719}
   - component: {fileID: 2792498034955016254}
+  - component: {fileID: 3820908396849105628}
   m_Layer: 5
   m_Name: ControlsTab
   m_TagString: Untagged
@@ -681,6 +682,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3820908396849105628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689165870341052015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37db3ff07a49a0a419111cb4bdfb309a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &703363097468085801
 GameObject:
   m_ObjectHideFlags: 0
@@ -5312,6 +5325,7 @@ GameObject:
   - component: {fileID: 1577727308528308002}
   - component: {fileID: 2384069148980670253}
   - component: {fileID: 2378835209420743089}
+  - component: {fileID: 7557032710785976668}
   m_Layer: 5
   m_Name: SoundsTab
   m_TagString: Untagged
@@ -5433,6 +5447,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7557032710785976668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8370484655393205384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37db3ff07a49a0a419111cb4bdfb309a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8390477222911796522
 GameObject:
   m_ObjectHideFlags: 0
