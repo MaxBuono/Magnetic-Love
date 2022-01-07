@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2481628297209902470}
   - component: {fileID: 7603630131057442552}
-  - component: {fileID: 4857880433070810954}
+  - component: {fileID: 4006736662310671505}
   m_Layer: 0
   m_Name: New_Wall_Angry_9_no_circle
   m_TagString: Untagged
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 6110802827232003809, guid: 9989c7fa5bd6dea42a7248a5eb53ebef, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -3887117766250756832, guid: 625e823d2406d4d4bae97cdc3184e9c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4857880433070810954
+--- !u!61 &4006736662310671505
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,12 +100,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.05, y: 0.39}
+    oldSize: {x: 4.05, y: 0.4}
     newSize: {x: 2.53, y: 0.39}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.05, y: 0.39}
+  m_Size: {x: 4.05, y: 0.4}
   m_EdgeRadius: 0

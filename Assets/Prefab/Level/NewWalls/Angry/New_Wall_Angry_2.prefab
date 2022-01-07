@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2481628297209902470}
   - component: {fileID: 7603630131057442552}
-  - component: {fileID: 8472472643448924997}
+  - component: {fileID: 6437777844508549187}
   m_Layer: 0
   m_Name: New_Wall_Angry_2
   m_TagString: Untagged
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6457292939251703827, guid: af317fd33c627414c9cf3aec88001139, type: 3}
+  m_Sprite: {fileID: -7061155521232360239, guid: beb77967385328e4cab9994f2b5541ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8472472643448924997
+--- !u!61 &6437777844508549187
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,8 +180,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 1439995188534030633, guid: f3e361183eaf1bf4cadbac525262f9cf, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 1069856219177740395, guid: 52a78035e31833a4fb286c79209d3950, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6170826232335799845}
   - component: {fileID: 1755864315194224345}
   m_Layer: 0
-  m_Name: SideWalls02-Happy-Variant 1
+  m_Name: SideWalls02-Happy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
