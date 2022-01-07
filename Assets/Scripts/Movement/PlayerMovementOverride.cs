@@ -79,7 +79,10 @@ public class PlayerMovementOverride : MonoBehaviour
         if (movementRed.isStickToAlly || movementBlue.isStickToAlly)
         {
             // be sure that the characters are really attached
-            CheckSticknessValidity();
+            if (!unplugging)
+            {
+                CheckSticknessValidity();
+            }
 
             CalculateResultantVelocity();
 
