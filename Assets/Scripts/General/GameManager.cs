@@ -240,7 +240,7 @@ public class GameManager : MonoBehaviour
         // save the starting volume 
         float originalVolume = AudioManager.Instance.MusicSource.volume;
 
-        if (!LevelManager.ReachedLastLevel() && !LevelManager.IsBonusLevel() || LevelManager.ReachedLastLevel() && AllLevelsCompleted())
+        if ((!LevelManager.ReachedLastLevel() && !LevelManager.IsBonusLevel()) || (LevelManager.ReachedLastLevel() && AllLevelsCompleted()))
         {
             //if levelAt is the last tutorial level
             if (levelAt == 6)
@@ -270,29 +270,21 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(AudioManager.Instance.TransitionAfterTime(originalVolume, startWait, level.timeToGetBackToMax));
             }
         }
-        // LAST LEVEL BEFORE BONUS LEVEL
+        // LAST LEVEL WITHOUT COMPLETING EVERYTHING ELSE
         else if (LevelManager.ReachedLastLevel() && !AllLevelsCompleted())
         {
             string str = "Congratulations, you (almost) completed the game!\n\n" + "Thank you for playing :)";
             StartCoroutine(FromLevelToMainRoutine(str));
-            
-            // lower the background music to avoid going above the completed level sound
-            AudioManager.Instance.MusicSource.volume *= 0.4f;
-            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.completedLevel);
-            LevelProperties level = levelProperties[LevelManager.GetLevelPlayed()];
 
-            // changing clip
-            if (level.music != AudioManager.Instance.MusicSource.clip)
-            {
-                float startWait = AudioManager.Instance.completedLevel.length * 0.4f;
-                AudioManager.Instance.TransitionToMusic(level.music, originalVolume, startWait, level.timeToGoToZero, level.waitTime, level.timeToGetBackToMax);
-            }
-            // same clip
-            else
-            {
-                float startWait = AudioManager.Instance.completedLevel.length;
-                StartCoroutine(AudioManager.Instance.TransitionAfterTime(originalVolume, startWait, level.timeToGetBackToMax));
-            }
+            // lower the background music to avoid going above the completed game sound
+            AudioManager.Instance.MusicSource.volume *= 0.05f;
+            // play the final win sound
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.finalWin);
+            float length = AudioManager.Instance.finalWin.length;
+            // audio transition to the main menu sound
+            float timeToGoToZero = 0.4f;
+            float timeToGoBackToMax = 0.5f;
+            AudioManager.Instance.TransitionToMusic(AudioManager.Instance.mainMenuClips.AudioClip, originalVolume, length, timeToGoToZero, 0.0f, timeToGoBackToMax);
         }
         // BONUS LEVEL
         else
