@@ -240,7 +240,7 @@ public class GameManager : MonoBehaviour
         // save the starting volume 
         float originalVolume = AudioManager.Instance.MusicSource.volume;
 
-        if (!LevelManager.CompletedAllLevels() && !LevelManager.IsBonusLevel() || LevelManager.CompletedAllLevels() && AllLevelsCompleted())
+        if (!LevelManager.ReachedLastLevel() && !LevelManager.IsBonusLevel() || LevelManager.ReachedLastLevel() && AllLevelsCompleted())
         {
             //if levelAt is the last tutorial level
             if (levelAt == 6)
@@ -271,7 +271,7 @@ public class GameManager : MonoBehaviour
             }
         }
         // LAST LEVEL BEFORE BONUS LEVEL
-        else if (LevelManager.CompletedAllLevels() && !AllLevelsCompleted())
+        else if (LevelManager.ReachedLastLevel() && !AllLevelsCompleted())
         {
             string str = "Congratulations, you (almost) completed the game!\n\n" + "Thank you for playing :)";
             StartCoroutine(FromLevelToMainRoutine(str));
@@ -294,6 +294,7 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(AudioManager.Instance.TransitionAfterTime(originalVolume, startWait, level.timeToGetBackToMax));
             }
         }
+        // BONUS LEVEL
         else
         {
             string str = "WOW, your skill is impressive!\n\n" + "That was the last one, great job :D";

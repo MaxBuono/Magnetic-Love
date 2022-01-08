@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
         TransitionMusicBetweenLevels(_levelPlayed);
     }
 
-    public static bool CompletedAllLevels()
+    public static bool ReachedLastLevel()
     {
         return (_nextLevel == _maxLevel - 1);
     }

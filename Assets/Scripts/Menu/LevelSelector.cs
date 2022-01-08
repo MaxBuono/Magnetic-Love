@@ -12,6 +12,9 @@ public class LevelSelector : MonoBehaviour
     public Sprite notInteractableButtonSprite;
     public Sprite interactableButtonSprite;
     public Sprite levelCompletedButtonSprite;
+    // Bonus Level
+    public Sprite notInteractableBonus;
+    public Sprite interactableBonus;
 
     private int _numOfTutorialLevels = 6;
 
@@ -90,6 +93,21 @@ public class LevelSelector : MonoBehaviour
                 {
                     levelButtons[i].interactable = false;
                     levelButtons[i].image.sprite = notInteractableButtonSprite;
+                }
+            }
+
+            // Handle a special case for the bonus level
+            if (i == levelButtons.Length - 1)
+            {
+                if (i > levelAt)
+                {
+                    levelButtons[i].interactable = false;
+                    levelButtons[i].image.sprite = notInteractableBonus;
+                }
+                else
+                {
+                    levelButtons[i].interactable = true;
+                    levelButtons[i].image.sprite = notInteractableBonus;
                 }
             }
         }
