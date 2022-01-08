@@ -26,7 +26,8 @@ public class LevelManager : MonoBehaviour
         // changing clip
         if (properties.music != AudioManager.Instance.MusicSource.clip)
         {
-            AudioManager.Instance.TransitionToMusic(properties.music, originalVolume, 0.0f, properties.timeToGoToZero, 0.0f, properties.timeToGetBackToMax);
+            AudioManager.Instance.TransitionToMusic(properties.music, originalVolume, 0.0f, properties.timeToGoToZero,
+                0.0f, properties.timeToGetBackToMax);
         }
     }
 
@@ -73,7 +74,7 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene(SceneName(_levelPlayed));
         }
     }
-    
+
     public static void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -87,15 +88,22 @@ public class LevelManager : MonoBehaviour
         {
             MenuManager.Instance.VideoPlayer.Play();
         }
+
         MainMenu.Open();
 
         // transition to main menu music
-        AudioManager.Instance.TransitionToMusic(AudioManager.Instance.mainMenuClips.AudioClip, AudioManager.Instance.MusicSource.volume, 
-                                                0.0f, 0.2f, 0.0f, 0.6f);
+        AudioManager.Instance.TransitionToMusic(AudioManager.Instance.mainMenuClips.AudioClip,
+            AudioManager.Instance.MusicSource.volume,
+            0.0f, 0.2f, 0.0f, 0.6f);
     }
 
     public static int GetLevelPlayed()
     {
         return _levelPlayed;
+    }
+
+    public static int GetMaxLevel()
+    {
+        return _maxLevel;
     }
 }

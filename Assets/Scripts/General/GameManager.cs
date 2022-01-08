@@ -141,8 +141,8 @@ public class GameManager : MonoBehaviour
     
     private IEnumerator LoadNextLevelFinishedTutorialRoutine(string str = "")
     {
-        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Congratulations, you " +
-            "have completed all tutorial levels!\n\n" + "All levels are unlocked in the level selector now", 
+        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Congratulations you " +
+            "have completed all tutorial levels!\n\n" + "All levels are unlocked in the level selector", 
             str);
 
         float fadeDelay = (fromLevelToLevel != null) ?
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameCompletedRoutine(string str = "")
     {
-        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Congratulations, you (almost) completed the game!\n\n" +
+        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Congratulation, you completed the game!\n\n" +
             "Thank you for playing :)", str);
 
         float fadeDelay = (fromLevelToLevel != null) ?
@@ -163,11 +163,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(fadeDelay);
         LevelManager.LoadNextLevel();
     }
-
-    private IEnumerator BonusLevelCompleted()
+    
+    private IEnumerator FromLevelToMainRoutine(string str ="")
     {
-        TransitionFader.PlayTransition(fromLastToMain, "WOW, your skill is impressive!\n\n" +
-                                                       "That was the last one, great job :D");
+        TransitionFader.PlayTransition(fromLastToMain, str);
 
         float fadeDelay = (fromLastToMain != null) ?
             fromLastToMain.delay + fromLastToMain.FadeOnDuration : 0f;
@@ -271,34 +270,23 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(AudioManager.Instance.TransitionAfterTime(originalVolume, startWait, level.timeToGetBackToMax));
             }
         }
-        // LAST LEVEL BEFORE BONUS LEVEL
-        else if (LevelManager.CompletedAllLevels())     
+        else if (LevelManager.CompletedAllLevels() && AllLevelsCompleted())
         {
-            StartCoroutine(GameCompletedRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
-
-            // lower the background music to avoid going above the completed level sound
-            AudioManager.Instance.MusicSource.volume *= 0.4f;
-            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.completedLevel);
-            LevelProperties level = levelProperties[LevelManager.GetLevelPlayed()];
-
-            // changing clip
-            if (level.music != AudioManager.Instance.MusicSource.clip)
-            {
-                float startWait = AudioManager.Instance.completedLevel.length * 0.4f;
-                AudioManager.Instance.TransitionToMusic(level.music, originalVolume, startWait, level.timeToGoToZero, level.waitTime, level.timeToGetBackToMax);
-            }
-            // same clip
-            else
-            {
-                float startWait = AudioManager.Instance.completedLevel.length;
-                StartCoroutine(AudioManager.Instance.TransitionAfterTime(originalVolume, startWait, level.timeToGetBackToMax));
-            }
+            print("GAME COMPLETED ROUTINE");
+            StartCoroutine(LoadNextLevelRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
+        } 
+        else if (LevelManager.CompletedAllLevels() && !AllLevelsCompleted())
+        {
+            print("GAME COMPLETED ROUTINE");
+            string str = "Congratulation, you completed the last level!\n\n" + "Thank you for playing :)";
+            StartCoroutine(FromLevelToMainRoutine(str));
         }
-        // BONUS LEVEL
         else
         {
-            StartCoroutine(BonusLevelCompleted());
-    
+            print("GAME COMPLETED ROUTINE");
+            string str = "Bonus level!\n\n" + "Thank you for playing :)";
+            StartCoroutine(FromLevelToMainRoutine(str));
+            
             // lower the background music to avoid going above the completed game sound
             AudioManager.Instance.MusicSource.volume *= 0.05f;
             // play the final win sound
@@ -318,6 +306,20 @@ public class GameManager : MonoBehaviour
         Regex rg = new Regex(pattern);
         string name = sceneName == "" ? SceneManager.GetActiveScene().name : sceneName;
         return rg.IsMatch(name);        
+    }
+
+    private bool AllLevelsCompleted()
+    {
+        for (int i = 0; i < LevelManager.GetMaxLevel() - 2; i++)
+        {
+            Debug.Log(_dataManager.LevelCompleted[i]);
+            if (!_dataManager.LevelCompleted[i])
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
        
 }
