@@ -16,5 +16,4 @@ MonoBehaviour:
   timeToGoToZero: 1.3
   waitTime: 0.2
   timeToGetBackToMax: 1.5
-  hint: 'Did you know that the love of Mag and Net is so strong that they manage
-    to attract each other despite a wall? '
+  hint: When you feel like you're falling down, holding a hand can save you
