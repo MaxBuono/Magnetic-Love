@@ -163,11 +163,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(fadeDelay);
         LevelManager.LoadNextLevel();
     }
-
-    private IEnumerator BonusLevelCompleted()
+    
+    private IEnumerator FromLevelToMainRoutine(string str ="")
     {
-        TransitionFader.PlayTransition(fromLastToMain, "Bonus level!\n\n" +
-                                                       "Thank you for playing :)");
+        TransitionFader.PlayTransition(fromLastToMain, str);
 
         float fadeDelay = (fromLastToMain != null) ?
             fromLastToMain.delay + fromLastToMain.FadeOnDuration : 0f;
@@ -271,16 +270,23 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(AudioManager.Instance.TransitionAfterTime(originalVolume, startWait, level.timeToGetBackToMax));
             }
         }
-        else if (LevelManager.CompletedAllLevels())
+        else if (LevelManager.CompletedAllLevels() && AllLevelsCompleted())
         {
             print("GAME COMPLETED ROUTINE");
-            StartCoroutine(GameCompletedRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
+            StartCoroutine(LoadNextLevelRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
+        } 
+        else if (LevelManager.CompletedAllLevels() && !AllLevelsCompleted())
+        {
+            print("GAME COMPLETED ROUTINE");
+            string str = "Congratulation, you completed the last level!\n\n" + "Thank you for playing :)";
+            StartCoroutine(FromLevelToMainRoutine(str));
         }
         else
         {
             print("GAME COMPLETED ROUTINE");
-            StartCoroutine(BonusLevelCompleted());
-    
+            string str = "Bonus level!\n\n" + "Thank you for playing :)";
+            StartCoroutine(FromLevelToMainRoutine(str));
+            
             // lower the background music to avoid going above the completed game sound
             AudioManager.Instance.MusicSource.volume *= 0.05f;
             // play the final win sound
@@ -300,6 +306,20 @@ public class GameManager : MonoBehaviour
         Regex rg = new Regex(pattern);
         string name = sceneName == "" ? SceneManager.GetActiveScene().name : sceneName;
         return rg.IsMatch(name);        
+    }
+
+    private bool AllLevelsCompleted()
+    {
+        for (int i = 0; i < LevelManager.GetMaxLevel() - 2; i++)
+        {
+            Debug.Log(_dataManager.LevelCompleted[i]);
+            if (!_dataManager.LevelCompleted[i])
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
        
 }
