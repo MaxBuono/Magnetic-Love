@@ -171,11 +171,7 @@ public class GameManager : MonoBehaviour
     {
         Camera mainCamera = Camera.main;
         float aspectRatio = (float)Screen.width / (float)Screen.height;
-        // in the first run we tune the sizeRatio for a 16:9 ratio with a specific size
-        if (_cameraSizeRatio == 0)
-        {
-            _cameraSizeRatio = mainCamera.orthographicSize * (16.0f / 9.0f);
-        }
+        _cameraSizeRatio = mainCamera.orthographicSize * (16.0f / 9.0f);
         mainCamera.orthographicSize = _cameraSizeRatio / aspectRatio;
     }
 
