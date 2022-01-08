@@ -3,16 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Manager/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Manager/GameManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L11-Love Knows No Barriers.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L11-Love Knows No Barriers.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L22-The Mythical Tarpit.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L22-The Mythical Tarpit.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L23-Big Scaled Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L23-Bonus Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L23-Big Scaled Level.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L23-Bonus Level.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L7-Hanging Out Together.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L7-Hanging Out Together.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Levels/L23.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Levels/L23.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L23-Bonus Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L23-Bonus Level.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Candy Beans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Candy Beans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +18,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/HeartManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Users/Max/Documents/Unity/Magnetic-Love/Assets/Scripts/General/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Users/Max/Documents/Unity/Magnetic-Love/Assets/Scripts/General/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Users/Max/Documents/Unity/Magnetic-Love/Assets/Scripts/General/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Users/Max/Documents/Unity/Magnetic-Love/Assets/Scripts/General/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -114,7 +108,7 @@
       <workItem from="1641337402006" duration="4496000" />
       <workItem from="1641459618282" duration="860000" />
       <workItem from="1641590538751" duration="2373000" />
-      <workItem from="1641651585399" duration="8433000" />
+      <workItem from="1641651585399" duration="10267000" />
     </task>
     <servers />
   </component>
