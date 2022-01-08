@@ -49,7 +49,12 @@ public class HintHandler : MonoBehaviour
         hintPanel.gameObject.SetActive(false);
 
         //check if an hint exists
-        string hint = GameManager.Instance.levelProperties[_level - 1].hint;
+        string hint = "";
+        if (GameManager.Instance != null)
+        {
+            hint = GameManager.Instance.levelProperties[_level - 1].hint;
+        }
+
         if (hint == "")
         {
             hintButton.gameObject.SetActive(false);

@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
     public void LevelCompleted()
     {
         int levelAt = LevelManager.GetLevelPlayed();
-        
+
         if (_dataManager != null)
         {
             if (levelAt > _dataManager.LevelAt)
@@ -229,7 +229,6 @@ public class GameManager : MonoBehaviour
             _dataManager.LevelCompleted[levelAt - 1] = true;
             _dataManager.Save();
         }
-
 
         // save the starting volume 
         float originalVolume = AudioManager.Instance.MusicSource.volume;

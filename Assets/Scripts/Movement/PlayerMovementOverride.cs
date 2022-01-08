@@ -65,6 +65,9 @@ public class PlayerMovementOverride : MonoBehaviour
 
     void Update()
     {
+        // avoid to process anything if you are not inside a level scene
+        if (_movementRed == null || _movementBlue == null) return;
+
         _areGrounded = _movementBlue.Controller.collisionInfo.below || _movementRed.Controller.collisionInfo.below;
     }
 
