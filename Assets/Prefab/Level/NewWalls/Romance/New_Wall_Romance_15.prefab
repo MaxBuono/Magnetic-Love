@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2481628297209902470}
   - component: {fileID: 7603630131057442552}
-  - component: {fileID: 4310605142662226361}
+  - component: {fileID: 3269670069827983512}
   m_Layer: 0
-  m_Name: New_Wall_Romance_10
+  m_Name: New_Wall_Romance_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,18 +73,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 208614622264667869, guid: b0320649fea40494e868c1303f427d3e, type: 3}
+  m_Sprite: {fileID: -1913462946975738436, guid: e3fbe8501b53b9f4e86b0eca02710eac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.53, y: 0.39}
+  m_Size: {x: 6.55, y: 0.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4310605142662226361
+--- !u!61 &3269670069827983512
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,14 +101,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.94, y: 0.4}
-    newSize: {x: 2.53, y: 0.39}
+    oldSize: {x: 9.85, y: 0.4}
+    newSize: {x: 6.55, y: 0.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.94, y: 0.4}
+  m_Size: {x: 9.85, y: 0.4}
   m_EdgeRadius: 0
 --- !u!1 &4991941511687778041
 GameObject:
@@ -135,7 +135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4991941511687778041}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.265, y: 0, z: 0}
+  m_LocalPosition: {x: 4.7200003, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2481628297209902470}
