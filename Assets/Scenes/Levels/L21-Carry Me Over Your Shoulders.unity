@@ -1236,13 +1236,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpMagnet +  (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6098327342107454216, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
+      propertyPath: strengthY
+      value: 10.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098327342107454217, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
+      propertyPath: m_Size.x
+      value: 2.59
+      objectReference: {fileID: 0}
     - target: {fileID: 6098327342107454217, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
       propertyPath: m_Size.y
       value: 6.43
       objectReference: {fileID: 0}
     - target: {fileID: 6098327342107454217, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098327342107454217, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
       propertyPath: m_Offset.y
-      value: 2.9
+      value: 3.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaf14a4862b734242b6f080450aa5516, type: 3}
@@ -1515,8 +1527,16 @@ PrefabInstance:
       value: HorizJumpMagnetBase -
       objectReference: {fileID: 0}
     - target: {fileID: 8543230798902739145, guid: e7d3a6b39dee5414488008963ba7de4b, type: 3}
+      propertyPath: m_Size.y
+      value: 10.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543230798902739145, guid: e7d3a6b39dee5414488008963ba7de4b, type: 3}
       propertyPath: m_Offset.x
       value: -1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543230798902739145, guid: e7d3a6b39dee5414488008963ba7de4b, type: 3}
+      propertyPath: m_Offset.y
+      value: 4.68
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7d3a6b39dee5414488008963ba7de4b, type: 3}
@@ -2947,11 +2967,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 317930588974383423, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.73
+      value: -14.39
       objectReference: {fileID: 0}
     - target: {fileID: 317930588974383423, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.48
+      value: -8.72
       objectReference: {fileID: 0}
     - target: {fileID: 317930588974383423, guid: 1aa2418b07866b04793512e373c8c536, type: 3}
       propertyPath: m_LocalPosition.z
