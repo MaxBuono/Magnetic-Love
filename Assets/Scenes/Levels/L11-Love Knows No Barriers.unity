@@ -2108,7 +2108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8543230798902739144, guid: e7d3a6b39dee5414488008963ba7de4b, type: 3}
       propertyPath: strengthX
-      value: -360
+      value: -315
       objectReference: {fileID: 0}
     - target: {fileID: 8543230798902739145, guid: e7d3a6b39dee5414488008963ba7de4b, type: 3}
       propertyPath: m_Size.x
