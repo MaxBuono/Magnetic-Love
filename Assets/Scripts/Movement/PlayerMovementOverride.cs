@@ -33,6 +33,9 @@ public class PlayerMovementOverride : MonoBehaviour
     private IEnumerator _unplugCoroutine = null;
     private IEnumerator _waitForJumpInput = null;
 
+    // is at least one of the characters grounded
+    private bool _areGrounded;
+
     // audio parameter
     private ulong _delayedID;
 
@@ -62,8 +65,7 @@ public class PlayerMovementOverride : MonoBehaviour
 
     void Update()
     {
-        // avoid to process anything if you are not inside a level scene
-        if (_movementRed == null || _movementBlue == null) return;
+        _areGrounded = _movementBlue.Controller.collisionInfo.below || _movementRed.Controller.collisionInfo.below;
     }
 
     // put here only what's related to the movement
@@ -361,22 +363,8 @@ public class PlayerMovementOverride : MonoBehaviour
             return;
         }
 
-        HashSet<Collider2D> colliders = movement.Controller.RaycastVertically(Vector2.down, 0.0f, 0.02f);
-
-        int hits = 0;
-        foreach (Collider2D coll in colliders)
-        {
-            string layerName = LayerMask.LayerToName(coll.gameObject.layer);
-            if (layerName == "PlayerRed" || layerName == "PlayerBlue")
-            {
-                continue;
-            }
-
-            hits++;
-        }
-
         // jump only if you are touching or close enough to the ground
-        if (hits != 0)
+        if (_areGrounded)
         {
             // if both characters are jumping their jump forces will sum up
             _redVelY += _movementRed.MaxJumpSpeed * 0.7f;
