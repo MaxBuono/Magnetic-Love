@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public static bool isLoadingLevelFromMenu = false;
+
     private static int _nextLevel = 1;
     private static int _maxLevel = SceneManager.sceneCountInBuildSettings - 1;
     private static int _levelPlayed = -1;

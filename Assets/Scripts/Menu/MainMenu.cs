@@ -42,8 +42,10 @@ namespace MenuManagement
 
         private IEnumerator OnPlayPressedRoutine()
         {
+            LevelManager.isLoadingLevelFromMenu = true;
             TransitionFader.PlayTransition(GameManager.Instance.fromMainToFirstLevel, GameManager.Instance.LevelNames[0]);
             yield return new WaitForSeconds(GameManager.Instance.fromMainToFirstLevel.FadeOnDuration + GameManager.Instance.fromMainToFirstLevel.delay);
+            LevelManager.isLoadingLevelFromMenu = false;
             LevelManager.LoadFirstLevel();
             GameMenu.Open();
         }

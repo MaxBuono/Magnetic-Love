@@ -131,7 +131,7 @@ namespace MenuManagement
                         CloseMenu();
                     }
                 }
-                else    // main menu
+                else if (!LevelManager.isLoadingLevelFromMenu)   // main menu
                 {
                     CloseMenu();
                 }
