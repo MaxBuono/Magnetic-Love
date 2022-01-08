@@ -588,7 +588,7 @@ RectTransform:
   m_GameObject: {fileID: 1234985063}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5554999, z: 1}
+  m_LocalScale: {x: 0.48067993, y: 0.4640324, z: 1}
   m_Children: []
   m_Father: {fileID: 1425644470}
   m_RootOrder: 0
@@ -596,7 +596,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 12.4801, y: 8.0288}
+  m_SizeDelta: {x: 13.8859, y: 11.5685}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1234985065
 MonoBehaviour:
@@ -618,10 +618,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' If you are in trouble with some level press ESC and click
-
-    on the
-    light bulb to read a hint'
+  m_text: If you can't figure out how to solve a level, press ESC and click on the
+    light in the top right corner to get a hint
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3eceab745b273684ebea541ad2273c6c, type: 2}
   m_sharedMaterial: {fileID: -8511370793331104217, guid: 3eceab745b273684ebea541ad2273c6c, type: 2}
@@ -630,8 +628,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 3361650155
-  m_fontColor: {r: 0.92156863, g: 0.70980394, b: 0.36862746, a: 0.78431374}
+    rgba: 4284397035
+  m_fontColor: {r: 0.92156863, g: 0.70980394, b: 0.36862746, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1079,8 +1077,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425644468}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.69, y: 5.27, z: 0}
-  m_LocalScale: {x: 1.1999999, y: 1.2, z: 1}
+  m_LocalPosition: {x: -3.39, y: 5.67, z: 0}
+  m_LocalScale: {x: 1.2482318, y: 1.4365375, z: 1}
   m_Children:
   - {fileID: 1234985064}
   m_Father: {fileID: 0}
