@@ -337,8 +337,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137742199}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.73, y: -1.7, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.4, z: 1}
+  m_LocalPosition: {x: -13.73, y: -1.8, z: 0}
+  m_LocalScale: {x: 1.2, y: 1, z: 1}
   m_Children:
   - {fileID: 1533081379}
   m_Father: {fileID: 1457675075}
@@ -796,8 +796,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512146848}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.73, y: -1.7, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.4, z: 1}
+  m_LocalPosition: {x: 13.73, y: -1.8, z: 0}
+  m_LocalScale: {x: 1.2, y: 1, z: 1}
   m_Children:
   - {fileID: 2065584473}
   m_Father: {fileID: 1457675075}
@@ -1251,14 +1251,14 @@ RectTransform:
   m_GameObject: {fileID: 1533081378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.666, z: 1}
   m_Children: []
   m_Father: {fileID: 137742201}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.0291}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 12.8607, y: 13.4131}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1533081380
@@ -1281,8 +1281,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: These sleepy guys are special magnetic objects! They both receive and emit
-    a powerful force
+  m_text: 'These sleepy guys are special magnetic objects! '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3eceab745b273684ebea541ad2273c6c, type: 2}
   m_sharedMaterial: {fileID: -8511370793331104217, guid: 3eceab745b273684ebea541ad2273c6c, type: 2}
@@ -1309,8 +1308,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1345,7 +1344,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.014040948, y: 0, z: 0.017957687, w: 0}
+  m_margin: {x: 0.014040948, y: 2.6722069, z: 0.017957687, w: 2.6722074}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1724,14 +1723,14 @@ RectTransform:
   m_GameObject: {fileID: 2065584472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.666, z: 1}
   m_Children: []
   m_Father: {fileID: 512146850}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.0047}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 12.5959, y: 13.4096}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2065584474
@@ -1754,8 +1753,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Even if they would prefer to sleep, you can move them using Mag's and Net's
-    magnetic fields
+  m_text: They both receive and emit a powerful force!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3eceab745b273684ebea541ad2273c6c, type: 2}
   m_sharedMaterial: {fileID: -8511370793331104217, guid: 3eceab745b273684ebea541ad2273c6c, type: 2}
@@ -1782,8 +1780,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
