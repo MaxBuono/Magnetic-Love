@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141382818870140097}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0649999, y: -0.010000005, z: 0}
+  m_LocalPosition: {x: -1.0649999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2481628297209902470}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2481628297209902470}
   - component: {fileID: 7603630131057442552}
-  - component: {fileID: 4016753157692175461}
+  - component: {fileID: 5331437699230485392}
   m_Layer: 0
   m_Name: New_Wall_Romance_5_Double
   m_TagString: Untagged
@@ -167,7 +167,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4016753157692175461
+--- !u!61 &5331437699230485392
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,14 +184,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.54, y: 0.39}
+    oldSize: {x: 2.54, y: 0.4}
     newSize: {x: 2.53, y: 0.39}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.54, y: 0.39}
+  m_Size: {x: 2.54, y: 0.4}
   m_EdgeRadius: 0
 --- !u!1 &4991941511687778041
 GameObject:
@@ -218,7 +218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4991941511687778041}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0649999, y: -0.010000013, z: 0}
+  m_LocalPosition: {x: 1.0649999, y: -0.000000007450581, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2481628297209902470}
