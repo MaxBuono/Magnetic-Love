@@ -3118,6 +3118,8 @@ MonoBehaviour:
   - {fileID: 5408107550728330033}
   - {fileID: 2126386723112821156}
   - {fileID: 3091601691553052939}
+  - {fileID: 2025175993970370760}
+  - {fileID: 4604767029472951492}
   notInteractableButtonSprite: {fileID: 1562980393774229229, guid: c8760becf7ac36747a43763eb8a47661, type: 3}
   interactableButtonSprite: {fileID: 5458051950011281065, guid: db3356c87af3663418709e63948f0c60, type: 3}
   levelCompletedButtonSprite: {fileID: 3607083097805527339, guid: e7914c276e4dce740a478c132513df17, type: 3}

@@ -152,10 +152,22 @@ public class GameManager : MonoBehaviour
         LevelManager.LoadNextLevel();
     }
 
-    private IEnumerator GameCompletedRoutine()
+    private IEnumerator GameCompletedRoutine(string str = "")
     {
-        TransitionFader.PlayTransition(fromLastToMain, "Congratulation, you completed the game!\n\n" +
-                                                            "Thank you for playing :)");
+        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Congratulation, you completed the game!\n\n" +
+            "Thank you for playing :)", str);
+
+        float fadeDelay = (fromLevelToLevel != null) ?
+            fromLevelToLevel.delay + fromLevelToLevel.FadeOnDuration : 0f;
+
+        yield return new WaitForSeconds(fadeDelay);
+        LevelManager.LoadNextLevel();
+    }
+
+    private IEnumerator BonusLevelCompleted()
+    {
+        TransitionFader.PlayTransition(fromLastToMain, "Bonus level!\n\n" +
+                                                       "Thank you for playing :)");
 
         float fadeDelay = (fromLastToMain != null) ?
             fromLastToMain.delay + fromLastToMain.FadeOnDuration : 0f;
@@ -229,7 +241,7 @@ public class GameManager : MonoBehaviour
         // save the starting volume 
         float originalVolume = AudioManager.Instance.MusicSource.volume;
 
-        if (!LevelManager.CompletedAllLevels())
+        if (!LevelManager.CompletedAllLevels() && !LevelManager.IsBonusLevel())
         {
             //if levelAt is the last tutorial level
             if (levelAt == 6)
@@ -259,11 +271,16 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(AudioManager.Instance.TransitionAfterTime(originalVolume, startWait, level.timeToGetBackToMax));
             }
         }
+        else if (LevelManager.CompletedAllLevels())
+        {
+            print("GAME COMPLETED ROUTINE");
+            StartCoroutine(GameCompletedRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
+        }
         else
         {
             print("GAME COMPLETED ROUTINE");
-            StartCoroutine(GameCompletedRoutine());
-
+            StartCoroutine(BonusLevelCompleted());
+    
             // lower the background music to avoid going above the completed game sound
             AudioManager.Instance.MusicSource.volume *= 0.05f;
             // play the final win sound

@@ -37,6 +37,7 @@ public class LevelSelector : MonoBehaviour
         //Level of the player
         int levelAt = _dataManager.LevelAt;
         bool[] levelCompleted = _dataManager.LevelCompleted;
+        bool allLevelsCompleted = true;
         Debug.Log("Level of the player" + levelAt);
 
         for (int i = 0; i < levelButtons.Length; i++)
@@ -73,7 +74,24 @@ public class LevelSelector : MonoBehaviour
                 levelButtons[i].transform.localScale = new Vector3(1.2f, 1.2f, 1);
                 levelButtons[i].image.sprite = levelCompletedButtonSprite;
             }
-
+            else if (i != levelButtons.Length - 1)
+            {
+                allLevelsCompleted = false;
+            }
+            
+            if (i == levelButtons.Length - 1 && !levelCompleted[i])
+            {
+                if (allLevelsCompleted)
+                {
+                    levelButtons[i].interactable = true;
+                    levelButtons[i].image.sprite = interactableButtonSprite;
+                }
+                else
+                {
+                    levelButtons[i].interactable = false;
+                    levelButtons[i].image.sprite = notInteractableButtonSprite;
+                }
+            }
         }
     }
 }

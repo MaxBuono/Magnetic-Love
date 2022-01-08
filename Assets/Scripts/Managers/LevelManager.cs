@@ -53,9 +53,14 @@ public class LevelManager : MonoBehaviour
 
     public static bool CompletedAllLevels()
     {
-        return (_nextLevel == _maxLevel);
+        return (_nextLevel == _maxLevel - 1);
     }
-    
+
+    public static bool IsBonusLevel()
+    {
+        return _nextLevel == _maxLevel;
+    }
+
     public static void LoadNextLevel()
     {
         if (_nextLevel < _maxLevel)
