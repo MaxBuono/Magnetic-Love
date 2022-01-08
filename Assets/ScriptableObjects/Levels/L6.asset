@@ -16,4 +16,4 @@ MonoBehaviour:
   timeToGoToZero: 2
   waitTime: 0.5
   timeToGetBackToMax: 2
-  hint: "\rit's a tutorial! For now I rest"
+  hint: Jump just before Mag and Net stick together to invert their position
