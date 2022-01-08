@@ -271,14 +271,32 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(AudioManager.Instance.TransitionAfterTime(originalVolume, startWait, level.timeToGetBackToMax));
             }
         }
-        else if (LevelManager.CompletedAllLevels())
+        // LAST LEVEL BEFORE BONUS LEVEL
+        else if (LevelManager.CompletedAllLevels())     
         {
-            print("GAME COMPLETED ROUTINE");
             StartCoroutine(GameCompletedRoutine(_levelNames[LevelManager.GetLevelPlayed()]));
+
+            // lower the background music to avoid going above the completed level sound
+            AudioManager.Instance.MusicSource.volume *= 0.4f;
+            AudioManager.Instance.PlayOneShotSound("SFX", AudioManager.Instance.completedLevel);
+            LevelProperties level = levelProperties[LevelManager.GetLevelPlayed()];
+
+            // changing clip
+            if (level.music != AudioManager.Instance.MusicSource.clip)
+            {
+                float startWait = AudioManager.Instance.completedLevel.length * 0.4f;
+                AudioManager.Instance.TransitionToMusic(level.music, originalVolume, startWait, level.timeToGoToZero, level.waitTime, level.timeToGetBackToMax);
+            }
+            // same clip
+            else
+            {
+                float startWait = AudioManager.Instance.completedLevel.length;
+                StartCoroutine(AudioManager.Instance.TransitionAfterTime(originalVolume, startWait, level.timeToGetBackToMax));
+            }
         }
+        // BONUS LEVEL
         else
         {
-            print("GAME COMPLETED ROUTINE");
             StartCoroutine(BonusLevelCompleted());
     
             // lower the background music to avoid going above the completed game sound

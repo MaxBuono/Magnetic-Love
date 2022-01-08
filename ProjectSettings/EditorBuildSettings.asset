@@ -75,7 +75,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/L22-The Mythical Tarpit.unity
     guid: f81c4736364b2744ba627c891b892634
   - enabled: 1
-    path: Assets/Scenes/Levels/L23-Big Scaled Level.unity
+    path: Assets/Scenes/Levels/L23-Bonus Level.unity
     guid: 14b4e76d76265ce4d879a1ab8e51cf1c
   - enabled: 1
     path: Assets/Scenes/MainMenu_2.unity
