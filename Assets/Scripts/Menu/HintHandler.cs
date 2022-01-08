@@ -36,6 +36,8 @@ public class HintHandler : MonoBehaviour
 
     private void OnEnable()
     {
+        hintButton.color = notActiveColor;
+
         //handle first enable of pauseMenu
         try
         {
