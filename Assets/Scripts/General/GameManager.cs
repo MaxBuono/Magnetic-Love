@@ -141,8 +141,8 @@ public class GameManager : MonoBehaviour
     
     private IEnumerator LoadNextLevelFinishedTutorialRoutine(string str = "")
     {
-        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Congratulations you " +
-            "have completed all tutorial levels!\n\n" + "All levels are unlocked in the level selector", 
+        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Congratulations, you " +
+            "have completed all tutorial levels!\n\n" + "All levels are unlocked in the level selector now", 
             str);
 
         float fadeDelay = (fromLevelToLevel != null) ?
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameCompletedRoutine(string str = "")
     {
-        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Congratulation, you completed the game!\n\n" +
+        TransitionFader.PlayStringToStringTransition(fromLevelToLevelEndTutorial, "Congratulations, you (almost) completed the game!\n\n" +
             "Thank you for playing :)", str);
 
         float fadeDelay = (fromLevelToLevel != null) ?
@@ -166,8 +166,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator BonusLevelCompleted()
     {
-        TransitionFader.PlayTransition(fromLastToMain, "Bonus level!\n\n" +
-                                                       "Thank you for playing :)");
+        TransitionFader.PlayTransition(fromLastToMain, "WOW, your skill is impressive!\n\n" +
+                                                       "That was the last one, great job :D");
 
         float fadeDelay = (fromLastToMain != null) ?
             fromLastToMain.delay + fromLastToMain.FadeOnDuration : 0f;
