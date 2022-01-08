@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L22-The Mythical Tarpit.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L22-The Mythical Tarpit.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/SelectLevelMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/SelectLevelMenu.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L23-Bonus Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L23-Bonus Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/LevelSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/LevelSelector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/Heart_bonus_lock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/Heart_bonus_lock.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/Heart_bonus_unlock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/Heart_bonus_unlock.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +112,7 @@
       <workItem from="1641337402006" duration="4496000" />
       <workItem from="1641459618282" duration="860000" />
       <workItem from="1641590538751" duration="2373000" />
-      <workItem from="1641651585399" duration="10267000" />
+      <workItem from="1641651585399" duration="12187000" />
     </task>
     <servers />
   </component>
