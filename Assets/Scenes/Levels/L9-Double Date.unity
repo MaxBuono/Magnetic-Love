@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6946613832013721550, guid: efe0926468a382349967a1b2423be79f, type: 3}
       propertyPath: forceReceived
-      value: 0.193
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6946613832013721551, guid: efe0926468a382349967a1b2423be79f, type: 3}
       propertyPath: m_Name
