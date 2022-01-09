@@ -3,20 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TransitionFader : ScreenFader
 {
     public float lifetime = 1f;
     public float delay = 0.3f;
-    public TMP_Text transitionText;
-    public TMP_Text secondText;
+    public Text transitionText;
+    public Text secondText;
 
     private void Awake()
     {
         lifetime = Mathf.Clamp(lifetime, FadeOnDuration + FadeOffDuration + delay, 10f);
     }
 
-    public void SetText(string text="")
+    public void SetText(string text ="")
     {
         if (transitionText != null)
         {
@@ -59,7 +60,7 @@ public class TransitionFader : ScreenFader
         FirstStringFadeOff();
         yield return new WaitForSeconds(onTime);
         
-        secondText.SetText(levelNameString);
+        secondText.text = levelNameString;
         SecondStringFadeOn();
         
         yield return new WaitForSeconds(onTime);

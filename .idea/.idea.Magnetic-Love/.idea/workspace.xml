@@ -3,13 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/SelectLevelMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/MenuPrefab/SelectLevelMenu.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Levels/L23-Bonus Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Levels/L23-Bonus Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/LevelSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/LevelSelector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/Heart_bonus_lock.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/Heart_bonus_lock.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/Heart_bonus_unlock.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/Heart_bonus_unlock.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLastToMain.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLastToMain.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevelEndTutorial.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevelEndTutorial.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevelTutorial.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevelTutorial.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionMainToFirstLevel 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionMainToFirstLevel 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionMainToFirstLevel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionMainToFirstLevel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utility/TransitionFader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utility/TransitionFader.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
