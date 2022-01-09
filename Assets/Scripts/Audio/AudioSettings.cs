@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 // Note: the "PlaySomethingHandleSound" functions should be refactored in one using a delegate and referenced argumensts
 
 public class AudioSettings : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _masterValue;
-    [SerializeField] private TextMeshProUGUI _musicValue;
-    [SerializeField] private TextMeshProUGUI _sfxValue;
+    [SerializeField] private Text _masterValue;
+    [SerializeField] private Text _musicValue;
+    [SerializeField] private Text _sfxValue;
 
     // Feedback sounds when the sliders handle are used
     private ulong _masterSound = 0;

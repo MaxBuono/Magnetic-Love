@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLastToMain.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLastToMain.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevelEndTutorial.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevelEndTutorial.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevelTutorial.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionLevelToLevelTutorial.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionMainToFirstLevel 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionMainToFirstLevel 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionMainToFirstLevel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/TransitionScreens/TransitionMainToFirstLevel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utility/TransitionFader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utility/TransitionFader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Audio/AudioSettings.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
