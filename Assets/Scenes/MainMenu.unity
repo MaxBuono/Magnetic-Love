@@ -382,7 +382,7 @@ PrefabInstance:
     - target: {fileID: 5359771363141487633, guid: 593197232e2bd024db5c5f0ab7ba1b81, type: 3}
       propertyPath: mainMenuPrefab
       value: 
-      objectReference: {fileID: 6092510080712798837, guid: 723ab75ca93d85f46a6529b381b1ab0b, type: 3}
+      objectReference: {fileID: 6092510080712798837, guid: bc8e1d630681c394e9e8614e40956722, type: 3}
     - target: {fileID: 5359771363141487633, guid: 593197232e2bd024db5c5f0ab7ba1b81, type: 3}
       propertyPath: enableAllLevels
       value: 0
