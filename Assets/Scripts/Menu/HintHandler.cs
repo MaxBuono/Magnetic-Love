@@ -10,7 +10,7 @@ public class HintHandler : MonoBehaviour
 {
     public GameObject hintPanel;
     public Image hintButton;
-    public TextMeshProUGUI hintText;
+    public Text hintText;
     
     private int _level;
     private Color activeColor = new Color(1.0f, 0.93f, 0.83f);

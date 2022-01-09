@@ -1269,7 +1269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hintPanel: {fileID: 8127698930167756757}
   hintButton: {fileID: 4583330683892037113}
-  hintText: {fileID: 0}
+  hintText: {fileID: 3167721481771331584}
 --- !u!1 &5550379600551798921
 GameObject:
   m_ObjectHideFlags: 0
