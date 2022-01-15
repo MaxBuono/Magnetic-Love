@@ -322,6 +322,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1262575854, guid: 7655427415e9c85428b106ae1ced6f97, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: dd846d376cc8dc84699ccdc82ae4ed4c, type: 3}
     - target: {fileID: 3834908036129777562, guid: 7655427415e9c85428b106ae1ced6f97, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -382,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 5359771363141487633, guid: 593197232e2bd024db5c5f0ab7ba1b81, type: 3}
       propertyPath: mainMenuPrefab
       value: 
-      objectReference: {fileID: 6092510080712798837, guid: bc8e1d630681c394e9e8614e40956722, type: 3}
+      objectReference: {fileID: 6092510080712798837, guid: 723ab75ca93d85f46a6529b381b1ab0b, type: 3}
     - target: {fileID: 5359771363141487633, guid: 593197232e2bd024db5c5f0ab7ba1b81, type: 3}
       propertyPath: enableAllLevels
       value: 0

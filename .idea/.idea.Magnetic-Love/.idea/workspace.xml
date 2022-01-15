@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae1b81a0-4d40-4856-b226-4ffe4602e9f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Magnetic-Love/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/HintHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/HintHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/General/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,10 +17,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/HeartManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Users/Max/Documents/Unity/Magnetic-Love/Assets/Scripts/General/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Users/Max/Documents/Unity/Magnetic-Love/Assets/Scripts/General/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Users/Max/Documents/Unity/Magnetic-Love/Assets/Scripts/General/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Users/Max/Documents/Unity/Magnetic-Love/Assets/Scripts/General/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1zay63RDFtBM6YhBQ2RiluZrggD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -107,6 +104,7 @@
       <workItem from="1641459618282" duration="860000" />
       <workItem from="1641590538751" duration="2373000" />
       <workItem from="1641651585399" duration="12187000" />
+      <workItem from="1642269817453" duration="994000" />
     </task>
     <servers />
   </component>
