@@ -45,11 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableAllLevels: 0
   enableStartingMenu: 1
-  mainMenuPrefab: {fileID: 6092510080712798837, guid: 723ab75ca93d85f46a6529b381b1ab0b, type: 3}
+  mainMenuPrefab: {fileID: 6092510080712798837, guid: bc8e1d630681c394e9e8614e40956722, type: 3}
   selectLevelMenu: {fileID: 737161458467598457, guid: ad9f8411211d4e442b953a947fb8e731, type: 3}
-  settingsMenuPrefab: {fileID: 6443077626859581411, guid: c7a573353bbfa614ebd327ed6061dfba, type: 3}
   creditsScreenPrefab: {fileID: 2527524264483612585, guid: 18aeb9ffe6a6113439d61eb2ada54ea4, type: 3}
-  controlsMenuPrefab: {fileID: 0}
   settingsMenuTabs: {fileID: 1704585775511429863, guid: 60a2d7e6547e1af419d918d4218aaf7d, type: 3}
   gameMenuPrefab: {fileID: 512288497080825901, guid: d10577298f1701540b619c58799f15a5, type: 3}
   pauseMenuPrefab: {fileID: 365491642438586408, guid: 764e8edf4665f1e48a65af692cff2498, type: 3}
