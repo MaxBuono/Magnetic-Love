@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
 
         // Cache Objects
         _dataManager = FindObjectOfType<DataManager>();
+        _dataManager.Load();
     }
 
 
